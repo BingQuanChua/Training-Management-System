@@ -1,7 +1,7 @@
-# training-management-system
-
-<hr>
-
+<h1>
+    Michael Jackson Training Management System
+<h1>
+    
 Software Engineering Fundamentals Assignment
 
 <h2>
