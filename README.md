@@ -1,8 +1,6 @@
 <h1>
     Michael Jackson Training Management System
 <h1>
-    
-Software Engineering Fundamentals Assignment
 
 <h2>
     Opening project in Eclipse
