@@ -1,4 +1,4 @@
-package comm;
+package mj;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

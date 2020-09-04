@@ -1,4 +1,4 @@
-package comm;
+package mj;
 
 import java.util.ArrayList;
 

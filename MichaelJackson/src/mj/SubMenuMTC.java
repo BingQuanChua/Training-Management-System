@@ -1,10 +1,10 @@
-package comm;
+package mj;
 
 import javax.swing.JPanel;
 
-public class SubMenuTP extends JPanel {
+public class SubMenuMTC extends JPanel {
 
-    public SubMenuTP() {
+    public SubMenuMTC() {
         initComponents();
     }
 
@@ -19,10 +19,10 @@ public class SubMenuTP extends JPanel {
 
         jLabel1.setBackground(new java.awt.Color(155, 156, 237));
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel1.setText("    Training Progress");
+        jLabel1.setText("    Manage Training Course");
         jLabel1.setOpaque(true);
 
-        jButton1.setText("Search TP");
+        jButton1.setText("Search MTC");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

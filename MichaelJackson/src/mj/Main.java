@@ -1,4 +1,4 @@
-package comm;
+package mj;
 
 public class Main {
 

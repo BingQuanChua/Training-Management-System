@@ -1,4 +1,4 @@
-package comm;
+package mj;
 
 import java.awt.Color;
 import java.util.ArrayList;

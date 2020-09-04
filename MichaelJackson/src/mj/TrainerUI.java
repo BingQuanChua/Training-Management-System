@@ -1,40 +1,89 @@
-package comm;
+package mj;
 
-import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Dimension;
-import java.awt.Color;
+import java.util.ArrayList;
+
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.GroupLayout;
 
+public class TrainerUI extends JFrame {
 
-public class TraineeUI extends JFrame {
+	/**
+	 * Trainer interface (currently extends JFrame, will change to JPanel later)
+	 */
 	
-	// Variables declaration
-    private JScrollPane jScrollPane1;
-    private JPanel menus;
+	private static final long serialVersionUID = 1L;
+	// private JPanel contentPane;
+	private JScrollPane jScrollPane1;
+	private JPanel menus;
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
-    // End of variables declaration
+	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
 
- 
-    //Constructor
-    public TraineeUI() {
-    	super("MJ Training Management System");
-        initComponents();
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TrainerUI frame = new TrainerUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TrainerUI() {
+		super("MJ Training Management System");
+		initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        traineeUI(); //Based on role
-    }
-    
-
-	// This method is called from within the constructor to initialize the form.
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
+        trainerUI(); //Based on role
+        
+        
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setBounds(0, 0, 1920, 1080);
+//		contentPane = new JPanel();
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setLayout(new BorderLayout(0, 0));
+//		setContentPane(contentPane);
+//		
+//		
+//		//--Manage Training Course --//
+//		// Training train = new Training(1);
+//		// contentPane.add(train, BorderLayout.CENTER);
+//		TrainingList train = new TrainingList();
+//		contentPane.add(train, BorderLayout.CENTER);
+//		
+//		
+//		//TrainingRequestList trainingRequestPanel = new TrainingRequestList();
+//		//contentPane.add(trainingRequestPanel, BorderLayout.CENTER);
+//		
+//		
+//		JPanel titlePanel = new JPanel();
+//		contentPane.add(titlePanel, BorderLayout.NORTH);
+//		JLabel titleLabel = new JLabel("List of Training Requests");
+//		titleLabel.setFont(heading1);
+//		titlePanel.add(titleLabel);
+		
+		
+		
+	}
+	
+	private void initComponents() {
 
         panelHeader = new JPanel();	//Top header panel
         panelMenu = new JPanel();	//Left root panel
@@ -92,19 +141,14 @@ public class TraineeUI extends JFrame {
         setSize(new Dimension(871, 473));
         setLocationRelativeTo(null);
     }
-    
-    //private void traineeUI()
-    	//TraineeUI trainee = new TraineeUI(panelBody, menus);
-   
-    // This method is called from within the constructor to initialize the form.
-    private void traineeUI() {
-    	
-        //  create subMenu Training
-        MenuItem menuMTC = new MenuItem(" -- Manage Training Course", new ActionListener() {
+	
+	// This method is called from within the constructor to initialize the form.
+	private void trainerUI() {
+		MenuItem menuMTC = new MenuItem(" -- Manage Training Course", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(new SubMenuMTC());
+                panelBody.add(new TrainingList());
                 panelBody.repaint();
                 panelBody.revalidate();
             }
@@ -113,33 +157,26 @@ public class TraineeUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(new SubMenuTP());
+                panelBody.add(new TrainingProgressList());
                 panelBody.repaint();
                 panelBody.revalidate();
             }
         });
 
-        //  create submenu Demo menu 1 
-        MenuItem menuDemo1 = new MenuItem(" -- Demo 001", null);
-        MenuItem menuDemo2 = new MenuItem(" -- Demo 002", null);
-        //  create submenu Demo menu 2
-        MenuItem menuDemo3 = new MenuItem(" -- Demo 003", null);
-
         MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
-        MenuItem menu2 = new MenuItem("Demo menu 1", null, menuDemo1, menuDemo2);
-        MenuItem menu3 = new MenuItem("Demo menu 2", null, menuDemo3);
-        addMenu(menuTraining, menu2, menu3);
-    }
-
-    // Add all subMenu into menus
-    private void addMenu(MenuItem... menu) {
-        for (int i = 0; i < menu.length; i++) {
-            menus.add(menu[i]);
-            ArrayList<MenuItem> subMenu = menu[i].getSubMenu();
-            for (MenuItem m : subMenu) {
-                addMenu(m);
-            }
-        }
+        addMenu(menuTraining);
+	}
+	
+	// Add all subMenu into menus
+    private void addMenu(MenuItem menu) {
+        
+       menus.add(menu);
+       ArrayList<MenuItem> subMenu = menu.getSubMenu();
+       for (MenuItem m : subMenu) {
+           addMenu(m);
+       }
+        
         menus.revalidate();
     }
+
 }

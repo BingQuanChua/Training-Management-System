@@ -1,4 +1,4 @@
-package comm;
+package mj;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
