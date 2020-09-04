@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Login extends JPanel {
+public class Login extends JFrame {
 
 	/**
 	 * Create the panel.
@@ -24,9 +24,7 @@ public class Login extends JPanel {
 	private JLabel passwordLabel;
 	
 	public Login() {
-
-		setBackground(Color.WHITE);
-		setLayout(null);
+		super("MJ Training Management System");
 		
 		JButton loginButton = new JButton("Login");
 		loginButton.addActionListener(new ActionListener() {
@@ -34,30 +32,43 @@ public class Login extends JPanel {
 			}
 		});
 		loginButton.setBounds(273, 164, 97, 25);
-		add(loginButton);
+		getContentPane().add(loginButton);
 		
 		userIDField = new JTextField();
 		userIDField.setBounds(102, 92, 268, 25);
-		add(userIDField);
+		getContentPane().add(userIDField);
 		userIDField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(102, 126, 268, 25);
-		add(passwordField);
+		getContentPane().add(passwordField);
 		
 		JLabel titleLabel = new JLabel("MJ Training Management System");
 		titleLabel.setVerticalAlignment(SwingConstants.TOP);
 		titleLabel.setBounds(80, 13, 211, 57);
-		add(titleLabel);
+		getContentPane().add(titleLabel);
 		
 		userLabel = new JLabel("EmployeeID\r\n");
 		userLabel.setBounds(15, 94, 75, 21);
-		add(userLabel);
+		getContentPane().add(userLabel);
 		
 		passwordLabel = new JLabel("Password");
 		passwordLabel.setBounds(15, 128, 75, 21);
-		add(passwordLabel);
+		getContentPane().add(passwordLabel);
 		
+		setBackground(Color.WHITE);
+		setLayout(null);
+		setSize(1920, 1080);
+		setResizable(true);
+		setVisible(true);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+	}
+	
+	public static void main(String[] args) {
+		new Login();
 	}
 
 }

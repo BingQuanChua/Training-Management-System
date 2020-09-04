@@ -25,6 +25,7 @@ public class TraineeUI extends JFrame {
  
     //Constructor
     public TraineeUI() {
+    	super("MJ Training Management System");
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         traineeUI(); //Based on role
