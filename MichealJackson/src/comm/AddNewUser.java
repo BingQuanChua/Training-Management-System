@@ -93,7 +93,7 @@ public class AddNewUser extends JPanel {
         trainerBox.setHorizontalAlignment(SwingConstants.CENTER);
         trainerBox.setBounds(230, 492, 300, 46);
         frontPanel.add(trainerBox);
-        trainerBox.setForeground(Color.WHITE);
+        trainerBox.setForeground(Color.BLACK);
         trainerBox.setBackground(new Color(106, 90, 205));
         trainerBox.setFont(f1);
         
@@ -101,7 +101,7 @@ public class AddNewUser extends JPanel {
         traineeBox.setBounds(532, 492, 300, 46);
         frontPanel.add(traineeBox);
         traineeBox.setBackground(new Color(106, 90, 205));
-        traineeBox.setForeground(Color.WHITE);
+        traineeBox.setForeground(Color.BLACK);
         traineeBox.setFont(f1);
             
         addButton.setBackground(new Color(106, 90, 205));
