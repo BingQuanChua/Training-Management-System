@@ -15,7 +15,7 @@ public class Main {
 		login = new Login();
 		
 		int loginRole = 2;
-		login.setVisible(true);
+		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
 		roleLogin(loginRole);
