@@ -3,22 +3,22 @@ package comm;
 public class Main {
 
 	private static Login login;
-	// private static AdminUI adminUI;
+	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
 
 	public Main() {
 
-		// adminUI = new TrainerUI();
+		adminUI = new AdminUI();
 		trainerUI = new TrainerUI();
 		traineeUI = new TraineeUI();
 		login = new Login();
 		
-		int loginRole = 2;
+		int loginRole = 1;
 		login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
-		// roleLogin(loginRole);
+		roleLogin(loginRole);
 	}
 
 	public static void main(String args[]) {
@@ -33,18 +33,22 @@ public class Main {
 			}
 		} catch (ClassNotFoundException ex) {
 			java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
 			java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
 			java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
@@ -65,7 +69,7 @@ public class Main {
 		login.setVisible(false);
 		switch (loginRole) {
 		case 1:
-			// adminUI.setVisible(true);
+			adminUI.setVisible(true);
 			break;
 		case 2:
 			trainerUI.setVisible(true);
