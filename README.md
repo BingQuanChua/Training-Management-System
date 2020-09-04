@@ -32,5 +32,4 @@ change to
 1 - Admin
 2 - Trainer
 3 -Trainee
->>>>>>> master
 
