@@ -1,5 +1,5 @@
 <h1>
-    Michael Jackson Training Management System
+    Michael Jackson Training Management System 
 <h1>
 
 <h2>
@@ -32,3 +32,4 @@ change to
 1 - Admin
 2 - Trainer
 3 -Trainee
+
