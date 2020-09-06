@@ -43,7 +43,6 @@ public class MenuItem extends JPanel{
 
 
     // This method is called from within the constructor to initialize the form.
-    @SuppressWarnings("unchecked")
     private void initComponents() {
         jSeparator1 = new JSeparator();
         lbName = new JLabel();

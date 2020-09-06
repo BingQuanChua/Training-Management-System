@@ -53,16 +53,6 @@ public class Main {
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 
-		/*
-		 * Create and display the form java.awt.EventQueue.invokeLater(new Runnable() {
-		 * public void run() {
-		 * 
-		 * switch(loginRole) { case 1: // adminUI.setVisible(true); break; case 2:
-		 * trainerUI.setVisible(true); break; case 3: traineeUI.setVisible(true); break;
-		 * }
-		 * 
-		 * } });
-		 */
 	}
 
 	public void roleLogin(int loginRole) {

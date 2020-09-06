@@ -9,7 +9,6 @@ public class SubMenuTP extends JPanel {
     }
 
     // This method is called from within the constructor to initialize the form.
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

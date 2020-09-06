@@ -16,11 +16,12 @@ public class IndividualProgress extends JPanel {
 	 * This panel holds a progress bar for an individual trainee in a single training
 	 */
 	private JProgressBar progressBar;
-	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 15);
+	
+	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 18);
 	
 	public IndividualProgress(String name, int progress) {
 		
-		setPreferredSize(new Dimension(550, 60));
+		setPreferredSize(new Dimension(770, 70));
 		setLayout(null);
 		
 		JButton nameButton = new JButton(name);
@@ -32,12 +33,12 @@ public class IndividualProgress extends JPanel {
 		nameButton.setBorder(null);
 		nameButton.setBackground(SystemColor.menu);
 		nameButton.setFocusPainted(false);
-		nameButton.setBounds(0, 0, 150, 60);
+		nameButton.setBounds(0, 0, 230, 70);
 		add(nameButton);
 		
 		progressBar = new JProgressBar();
 		progressBar.setForeground(new Color(0, 0, 0));
-		progressBar.setBounds(150, 10, 400, 40);
+		progressBar.setBounds(235, 10, 530, 50);
 		progressBar.setValue(progress); // set progress 0-100
 		progressBar.setStringPainted(true);
 		add(progressBar);

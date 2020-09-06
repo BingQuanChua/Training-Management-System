@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 
 public class TraineeUI extends JFrame {
@@ -20,6 +24,8 @@ public class TraineeUI extends JFrame {
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
+    
+    private JButton logoButton;
     // End of variables declaration
 
  
@@ -33,7 +39,6 @@ public class TraineeUI extends JFrame {
     
 
 	// This method is called from within the constructor to initialize the form.
-    @SuppressWarnings("unchecked")
     private void initComponents() {
 
         panelHeader = new JPanel();	//Top header panel
@@ -46,8 +51,25 @@ public class TraineeUI extends JFrame {
 
         //Top header panel
         panelHeader.setBackground(new Color(102, 0, 153)); //Purple
-        panelHeader.setPreferredSize(new Dimension(500, 60));
-
+        panelHeader.setPreferredSize(new Dimension(500, 120));
+        
+        //Clickable logo in the top header panel
+        logoButton = new JButton();
+        logoButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        logoButton.setBackground(null);
+        logoButton.setBorder(null);
+        try {
+        	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
+        	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
+        	logoButton.setIcon(new ImageIcon(logo));
+        }
+        catch (Exception ex) {
+        	System.out.println("Image not found");
+        }
+        
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
@@ -62,7 +84,7 @@ public class TraineeUI extends JFrame {
 
         //Left root panel
         panelMenu.setBackground(new Color(204, 204, 204));
-        panelMenu.setPreferredSize(new Dimension(250, 384));
+        panelMenu.setPreferredSize(new Dimension(300, 384));
 
         //Able to scroll
         jScrollPane1.setBorder(null);

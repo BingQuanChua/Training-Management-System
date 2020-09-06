@@ -3,14 +3,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AdminUI extends JFrame {
 
@@ -25,6 +31,17 @@ public class AdminUI extends JFrame {
 	private JPanel panelBody;
 	private JPanel panelHeader;
 	private JPanel panelMenu;
+	
+	private JButton logoButton;
+	private JButton signOutButton;
+	
+	private AddNewUser addNewUser;
+	private AllTrainerList allTrainerList;
+	private AllTraineeList allTraineeList;
+	private AllTrainingCourse allTrainingCourse;
+	// private ?report
+	private Icon icon;
+	
 	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
 
 	/**
@@ -62,20 +79,71 @@ public class AdminUI extends JFrame {
 		jScrollPane1 = new JScrollPane(); // Able to scroll
 		menus = new JPanel(); // Left panel that store all submenu
 		panelBody = new JPanel(); // Right root panel
+		
+		addNewUser = new AddNewUser();
+		allTrainerList = new AllTrainerList();
+		allTraineeList = new AllTraineeList();
+		allTrainingCourse = new AllTrainingCourse();
+		icon = new Icon();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		// Top header panel
 		panelHeader.setBackground(new Color(102, 0, 153)); // Purple
-		panelHeader.setPreferredSize(new Dimension(500, 60));
-
-		GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
-		panelHeader.setLayout(panelHeaderLayout);
-		panelHeaderLayout.setHorizontalGroup(
-				panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 855, Short.MAX_VALUE));
-		panelHeaderLayout.setVerticalGroup(
-				panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
-		getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
+		panelHeader.setPreferredSize(new Dimension(500, 120));
+		
+		// Clickable logo in the top header panel
+        logoButton = new JButton();
+        logoButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		home();
+        	}
+        });
+        logoButton.setBackground(null);
+        logoButton.setBorder(null);
+        try {
+        	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
+        	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
+        	logoButton.setIcon(new ImageIcon(logo));
+        }
+        catch (Exception ex) {
+        	System.out.println("Image not found");
+        }
+        
+        // Sign out button in the top header panel
+        signOutButton = new JButton("Sign Out");
+        signOutButton.setForeground(Color.WHITE);
+        signOutButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		// Need to handle this later
+        		System.exit(0); 
+        	}
+        });
+        signOutButton.setBackground(null);
+        signOutButton.setBorder(null);
+		
+        GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
+        panelHeaderLayout.setHorizontalGroup(
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+        			.addComponent(signOutButton)
+        			.addGap(37))
+        );
+        panelHeaderLayout.setVerticalGroup(
+        	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addContainerGap())
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap(93, Short.MAX_VALUE)
+        			.addComponent(signOutButton)
+        			.addGap(24))
+        );
+        panelHeader.setLayout(panelHeaderLayout);
+        getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
 		// Left root panel
 		panelMenu.setBackground(new Color(204, 204, 204));
@@ -113,7 +181,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new AddNewUser());
+				panelBody.add(addNewUser);
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -122,7 +190,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new AllTrainerList());
+				panelBody.add(allTrainerList);
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -131,7 +199,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new AllTraineeList());
+				panelBody.add(allTraineeList);
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -141,7 +209,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new AllTrainingCourse());
+				panelBody.add(allTrainingCourse);
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -162,6 +230,7 @@ public class AdminUI extends JFrame {
 	    
 		addMenu(menuEmployee);
 		addMenu(menuTraining);
+		home(); //show home menu initially
 	}
 
 	// Add all subMenu into menus
@@ -175,5 +244,13 @@ public class AdminUI extends JFrame {
 
 		menus.revalidate();
 	}
+	
+	// Setting the panelBody (Home menu)
+    private void home() {
+    	panelBody.removeAll();
+    	panelBody.add(icon);
+        panelBody.repaint();
+        panelBody.revalidate();
+    }
 
 }

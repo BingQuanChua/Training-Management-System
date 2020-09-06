@@ -4,14 +4,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TrainerUI extends JFrame {
 
@@ -26,6 +32,14 @@ public class TrainerUI extends JFrame {
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
+    
+    private JButton logoButton;
+    private JButton signOutButton;
+    
+    private TrainingList trainingList;
+    private TrainingProgressList trainingProgressList;;
+    private Icon icon;
+
 	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
 
 	/**
@@ -44,43 +58,12 @@ public class TrainerUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	// Constructor
 	public TrainerUI() {
 		super("MJ Training Management System");
 		initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        trainerUI(); //Based on role
-        
-        
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setBounds(0, 0, 1920, 1080);
-//		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setLayout(new BorderLayout(0, 0));
-//		setContentPane(contentPane);
-//		
-//		
-//		//--Manage Training Course --//
-//		// Training train = new Training(1);
-//		// contentPane.add(train, BorderLayout.CENTER);
-//		TrainingList train = new TrainingList();
-//		contentPane.add(train, BorderLayout.CENTER);
-//		
-//		
-//		//TrainingRequestList trainingRequestPanel = new TrainingRequestList();
-//		//contentPane.add(trainingRequestPanel, BorderLayout.CENTER);
-//		
-//		
-//		JPanel titlePanel = new JPanel();
-//		contentPane.add(titlePanel, BorderLayout.NORTH);
-//		JLabel titleLabel = new JLabel("List of Training Requests");
-//		titleLabel.setFont(heading1);
-//		titlePanel.add(titleLabel);
-		
-		
-		
+        trainerUI(); //Based on role		
 	}
 	
 	private void initComponents() {
@@ -90,28 +73,73 @@ public class TrainerUI extends JFrame {
         jScrollPane1 = new JScrollPane(); //Able to scroll
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
+        
+        trainingList = new TrainingList();
+        trainingProgressList = new TrainingProgressList();
+        icon = new Icon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         //Top header panel
         panelHeader.setBackground(new Color(102, 0, 153)); //Purple
-        panelHeader.setPreferredSize(new Dimension(500, 60));
+        panelHeader.setPreferredSize(new Dimension(500, 120));
+        
+        // Clickable logo in the top header panel
+        logoButton = new JButton();
+        logoButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		home();
+        	}
+        });
+        logoButton.setBackground(null);
+        logoButton.setBorder(null);
+        try {
+        	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
+        	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
+        	logoButton.setIcon(new ImageIcon(logo));
+        }
+        catch (Exception ex) {
+        	System.out.println("Image not found");
+        }
+        
+        // Sign out button in the top header panel
+        signOutButton = new JButton("Sign Out");
+        signOutButton.setForeground(Color.WHITE);
+        signOutButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		// Need to handle this later
+        		System.exit(0); 
+        	}
+        });
+        signOutButton.setBackground(null);
+        signOutButton.setBorder(null);
 
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
-        panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
-            panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 855, Short.MAX_VALUE)
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+        			.addComponent(signOutButton)
+        			.addGap(37))
         );
         panelHeaderLayout.setVerticalGroup(
-            panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+        	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addContainerGap())
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap(93, Short.MAX_VALUE)
+        			.addComponent(signOutButton)
+        			.addGap(24))
         );
+        panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
         //Left root panel
         panelMenu.setBackground(new Color(204, 204, 204));
-        panelMenu.setPreferredSize(new Dimension(250, 384));
+        panelMenu.setPreferredSize(new Dimension(300, 384));
 
         //Able to scroll
         jScrollPane1.setBorder(null);
@@ -136,7 +164,8 @@ public class TrainerUI extends JFrame {
 
         panelBody.setBackground(new Color(255, 255, 200));
         panelBody.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(panelBody, java.awt.BorderLayout.CENTER);
+        JScrollPane scrollPane = new JScrollPane(panelBody);
+        getContentPane().add(scrollPane, java.awt.BorderLayout.CENTER);
 
         setSize(new Dimension(871, 473));
         setLocationRelativeTo(null);
@@ -148,7 +177,7 @@ public class TrainerUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(new TrainingList());
+                panelBody.add(trainingList);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
@@ -157,7 +186,7 @@ public class TrainerUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(new TrainingProgressList());
+                panelBody.add(trainingProgressList);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
@@ -165,7 +194,8 @@ public class TrainerUI extends JFrame {
 
         MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
         addMenu(menuTraining);
-	}
+        home(); //show home menu initially
+	} 
 	
 	// Add all subMenu into menus
     private void addMenu(MenuItem menu) {
@@ -178,5 +208,12 @@ public class TrainerUI extends JFrame {
         
         menus.revalidate();
     }
-
+    
+    // Setting the panelBody (Home menu)
+    private void home() {
+    	panelBody.removeAll();
+    	panelBody.add(icon);
+        panelBody.repaint();
+        panelBody.revalidate();
+    }
 }

@@ -22,12 +22,14 @@ public class TrainingProgress extends JPanel {
 	
 	private JPanel list;
 	private ArrayList<IndividualProgress> progressList;
+	
 	private boolean extend = false;
-	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+	
+	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
 	public TrainingProgress(String trainingName) {
 		
-		setPreferredSize(new Dimension(600, 60));
+		setPreferredSize(new Dimension(800, 417));
 		setLayout(null);
 		progressList = new ArrayList<>();
 		
@@ -38,13 +40,13 @@ public class TrainingProgress extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		trainingButton.setBounds(0, 0, 600, 60);
+		trainingButton.setBounds(0, 0, 800, 70);
 		add(trainingButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(0, 60, 600, 250);
+		scrollPane.setBounds(0, 70, 800, 335);
 		add(scrollPane);
 		
 		list = new JPanel();
@@ -57,6 +59,8 @@ public class TrainingProgress extends JPanel {
 		addProgress(new IndividualProgress("Pam Beesly", 60));
 		addProgress(new IndividualProgress("Kevin Malone", 90));
 		addProgress(new IndividualProgress("Creed Bratton", 20));
+		addProgress(new IndividualProgress("Andy Bernard", 10));
+		addProgress(new IndividualProgress("Toby Flenderson", 100));
 	
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -79,7 +83,7 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(600, 310));
+                setPreferredSize(new Dimension(800, 405));
                 
                 getParent().revalidate();
                 getParent().repaint();
@@ -92,7 +96,7 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(600, 60));
+                setPreferredSize(new Dimension(800, 70));
                 
                 getParent().revalidate();
                 getParent().repaint();

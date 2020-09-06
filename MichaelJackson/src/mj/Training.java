@@ -21,53 +21,75 @@ public class Training extends JPanel {
 	 * This panel holds a single training panel.
 	 */
 	
+	
+	private JButton trainingButton;
+	private JButton editButton;
+	private JTextPane textPane;
+	private JButton feedbackButton;
+	private JButton requestButton;
+	private JButton traineeListButton;
+	private JButton updateButton;
+	
 	private boolean extend = false;
-	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+	
+	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
+	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
 	public Training(String trainingName) {
 		
-		setPreferredSize(new Dimension(600, 60));
+		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
 		
-		JButton trainingButton = new JButton(trainingName);
+		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
 		trainingButton.setBackground(new Color(255, 165, 0));
 		trainingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		trainingButton.setBounds(0, 0, 600, 60);
+		trainingButton.setBounds(0, 0, 800, 70);
 		add(trainingButton);
 		
-		JButton editButton = new JButton("Edit");
-		editButton.setBounds(492, 65, 75, 87);
-		add(editButton);
-		
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
+		textPane.setFont(heading3);
 		textPane.setBackground(new Color(244, 164, 96));
-		textPane.setBounds(60, 65, 425, 90);
+		textPane.setBounds(50, 75, 620, 100);
 		add(textPane);
 		textPane.setText("Description for " + trainingName + ".");
 		
-		JButton feedbackButton = new JButton("Feedback");
-		feedbackButton.setBounds(60, 265, 510, 30);
-		add(feedbackButton);
-		
-		JButton requestButton = new JButton("Training Requests");
-		requestButton.addActionListener(new ActionListener() {
+		editButton = new JButton("Edit");
+		editButton.setFont(heading3);
+		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		requestButton.setBounds(60, 195, 510, 30);
+		editButton.setBounds(675, 75, 75, 100);
+		add(editButton);
+		
+		feedbackButton = new JButton("Feedback");
+		feedbackButton.setFont(heading3);
+		feedbackButton.setBounds(50, 345, 700, 50);
+		add(feedbackButton);
+		
+		requestButton = new JButton("Training Requests");
+		requestButton.setFont(heading3);
+		requestButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO 
+			}
+		});
+		requestButton.setBounds(50, 235, 700, 50);
 		add(requestButton);
 		
-		JButton traineeListButton = new JButton("List of Trainees");
-		traineeListButton.setBounds(60, 230, 510, 30);
+		traineeListButton = new JButton("List of Trainees");
+		traineeListButton.setFont(heading3);
+		traineeListButton.setBounds(50, 290, 700, 50);
 		add(traineeListButton);
 		
-		JButton updateButton = new JButton("Update Material");
-		updateButton.setBounds(60, 160, 510, 30);
+		updateButton = new JButton("Update Material");
+		updateButton.setFont(heading3);
+		updateButton.setBounds(50, 180, 700, 50);
 		add(updateButton);
 		
 		trainingButton.addMouseListener(new MouseAdapter() {
@@ -91,7 +113,7 @@ public class Training extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(600, 310));
+                setPreferredSize(new Dimension(800, 405));
                 
                 getParent().revalidate();
                 getParent().repaint();
@@ -104,7 +126,7 @@ public class Training extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(600, 60));
+                setPreferredSize(new Dimension(800, 70));
                 
                 getParent().revalidate();
                 getParent().repaint();
