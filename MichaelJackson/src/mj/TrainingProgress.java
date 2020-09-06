@@ -29,7 +29,7 @@ public class TrainingProgress extends JPanel {
 	
 	public TrainingProgress(String trainingName) {
 		
-		setPreferredSize(new Dimension(800, 417));
+		setPreferredSize(new Dimension(800, 70));
 		setLayout(null);
 		progressList = new ArrayList<>();
 		
