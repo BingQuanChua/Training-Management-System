@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.GroupLayout.Alignment;
 
 
 public class TraineeUI extends JFrame {
@@ -20,6 +22,7 @@ public class TraineeUI extends JFrame {
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
+    private JButton signOut;
     // End of variables declaration
 
  
@@ -47,17 +50,32 @@ public class TraineeUI extends JFrame {
         //Top header panel
         panelHeader.setBackground(new Color(102, 0, 153)); //Purple
         panelHeader.setPreferredSize(new Dimension(500, 60));
+        
+        signOut = new JButton("Sign Out");
+        signOut.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Login login = new Login();
+				dispose();
+				login.setVisible(true);
+        	}
+        });
 
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
-        panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
-            panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 855, Short.MAX_VALUE)
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap(696, Short.MAX_VALUE)
+        			.addComponent(signOut)
+        			.addGap(70))
         );
         panelHeaderLayout.setVerticalGroup(
-            panelHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap(26, Short.MAX_VALUE)
+        			.addComponent(signOut)
+        			.addContainerGap())
         );
+        panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
         //Left root panel

@@ -20,7 +20,7 @@ Click "Finish"
 
 To run the program, simply go to 
 
-"MichaelJackson\src\comm"
+"MichealJackson\src\comm"
 
 Run Main.java (for Nimbus style)
 
