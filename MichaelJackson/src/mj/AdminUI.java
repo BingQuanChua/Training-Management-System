@@ -155,7 +155,7 @@ public class AdminUI extends JFrame {
 		jScrollPane1.setBorder(null);
 
 		// Left panel that store all submenu
-		menus.setBackground(new Color(255, 255, 255)); // White
+		menus.setBackground(new Color(255, 250, 250)); // White
 		menus.setLayout(new javax.swing.BoxLayout(menus, javax.swing.BoxLayout.Y_AXIS));
 		jScrollPane1.setViewportView(menus);
 
@@ -168,7 +168,7 @@ public class AdminUI extends JFrame {
 
 		getContentPane().add(panelMenu, java.awt.BorderLayout.LINE_START);
 
-		panelBody.setBackground(new Color(255, 255, 200));
+		panelBody.setBackground(new Color(255, 255, 224));
 		panelBody.setLayout(new java.awt.BorderLayout());
 		JScrollPane scrollPane = new JScrollPane(panelBody);
 		//scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -197,7 +197,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("List of Trainers",allTrainerList));
+				panelBody.add(new SubMenu("Manage Trainer",allTrainerList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -206,7 +206,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("List of Trainees",allTraineeList));
+				panelBody.add(new SubMenu("Manage Trainee",allTraineeList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -216,7 +216,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("List of Training",allTrainingList));
+				panelBody.add(new SubMenu("Manage Training Course",allTrainingList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -226,15 +226,16 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("List of Training",new Report()));
+				panelBody.add(new SubMenu("Report",new Report()));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
 		});
 
 		MenuItem menuEmployee = new MenuItem("Employee", null, menuANU, menuMTR,menuMTE);
+		menuEmployee.setBackground(new Color(255, 250, 250));
 		MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuRpt);	
-	    
+		menuEmployee.setBackground(new Color(255, 250, 250));
 		addMenu(menuEmployee);
 		addMenu(menuTraining);
 		home(); //show home menu initially
