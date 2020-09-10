@@ -14,7 +14,7 @@ public class Main {
 		traineeUI = new TraineeUI();
 		login = new Login();
 		
-		int loginRole = 2;
+		int loginRole = 3;
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
@@ -22,7 +22,6 @@ public class Main {
 	}
 
 	public static void main(String args[]) {
-		new Main();
 		/* Set the Nimbus look and feel */
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -52,7 +51,7 @@ public class Main {
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-
+		new Main();
 	}
 
 	public void roleLogin(int loginRole) {

@@ -59,7 +59,7 @@ public class AllTrainerList extends JPanel {
         btmPanel.add(lblNumber);
         
         JLabel lblTraineeName = new JLabel("Trainer Name");
-        lblTraineeName.setBounds(431, 31, 257, 38);
+        lblTraineeName.setBounds(437, 31, 257, 38);
         lblTraineeName.setForeground(Color.DARK_GRAY);
         lblTraineeName.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblTraineeName);

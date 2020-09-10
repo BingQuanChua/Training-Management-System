@@ -22,8 +22,7 @@ public class AllTrainingList extends JPanel {
 	 * Create the panel.
 	 */
 	public AllTrainingList() {
-		setBackground(new Color(255, 255, 224));
-		setPreferredSize(new Dimension(1600, 1080));	
+		setBackground(new Color(255, 255, 200));
 		
 		JPanel list = new JPanel();
 		GridBagLayout gbl_list = new GridBagLayout();

@@ -226,7 +226,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("List of Training",new Report()));
+				//panelBody.add(new SubMenu("List of Training",new Report()));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
