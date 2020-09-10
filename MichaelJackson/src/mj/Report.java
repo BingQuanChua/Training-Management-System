@@ -27,7 +27,7 @@ public class Report extends JPanel {
 	
 	public Report() {
 		
-		setBackground(new Color(255, 255, 224));	
+		setBackground(new Color(255, 255, 200));	
 		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		
 		addTraining(new ManageAllReport("Python Advance Training Course",list));

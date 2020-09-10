@@ -86,7 +86,7 @@ public class AdminUI extends JFrame {
 		allTraineeList = new AllTraineeList();
 		allTrainingList = new AllTrainingList();
 		icon = new Icon();
-		icon.setBackground(new Color(255, 255, 224));
+		icon.setBackground(new Color(255, 255, 200));
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +103,7 @@ public class AdminUI extends JFrame {
         });
         logoButton.setBackground(null);
         logoButton.setBorder(null);
+        logoButton.setFocusable(false);
         try {
         	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
         	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
@@ -123,6 +124,7 @@ public class AdminUI extends JFrame {
         });
         signOutButton.setBackground(null);
         signOutButton.setBorder(null);
+        signOutButton.setFocusable(false);
 		
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
@@ -233,9 +235,9 @@ public class AdminUI extends JFrame {
 		});
 
 		MenuItem menuEmployee = new MenuItem("Employee", null, menuANU, menuMTR,menuMTE);
-		menuEmployee.setBackground(new Color(255, 250, 250));
+		menuEmployee.setBackground(new Color(250, 240, 230));
 		MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuRpt);	
-		menuEmployee.setBackground(new Color(255, 250, 250));
+		menuTraining.setBackground(new Color(250, 240, 230));
 		addMenu(menuEmployee);
 		addMenu(menuTraining);
 		home(); //show home menu initially

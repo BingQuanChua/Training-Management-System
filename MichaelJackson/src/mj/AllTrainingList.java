@@ -22,7 +22,7 @@ public class AllTrainingList extends JPanel {
 	 * Showing a list of all training
 	 */
 	public AllTrainingList() {
-		setBackground(new Color(255, 255, 224));
+		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 1080));	
 		
 		JPanel list = new JPanel();

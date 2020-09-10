@@ -40,6 +40,6 @@ public class SubMenu extends JPanel {
 					.addGap(93))
 		);
 		setLayout(layout);
-		setBackground(new Color(255, 255, 224));
+		setBackground(new Color(255, 255, 200));
 	}
 }

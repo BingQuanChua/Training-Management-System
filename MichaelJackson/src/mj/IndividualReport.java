@@ -15,14 +15,14 @@ public class IndividualReport extends JPanel{
 	setSize(1000,1080);
 	JPanel panel = new JPanel();
 	panel.setPreferredSize(new Dimension(1000, 1080));
-    panel.setBackground( new Color(255, 255, 224));
+    panel.setBackground( new Color(255, 255, 200));
     panel.setLayout(null);
     
 	JTextArea txtDesc = new JTextArea();
 	txtDesc.setText("Description");
 	txtDesc.setEditable(false);
 	txtDesc.setLineWrap(true);
-	txtDesc.setBackground(new Color(230, 230, 250));
+	txtDesc.setBackground(Color.WHITE);
 	txtDesc.setBounds(146, 87, 761, 100);
 	JScrollPane scrollPane_2 = new JScrollPane();
 	scrollPane_2.setViewportView(txtDesc);
@@ -31,9 +31,10 @@ public class IndividualReport extends JPanel{
 	
 	
 	JLabel lblFeedback = new JLabel();
-	lblFeedback.setFont(new Font("Dialog", Font.PLAIN, 20));
+	lblFeedback.setForeground(Color.BLACK);
+	lblFeedback.setFont(new Font("SansSerif", Font.PLAIN, 20));
 	lblFeedback.setHorizontalAlignment(SwingConstants.CENTER);
-	lblFeedback.setBackground(new Color(147, 112, 219));
+	lblFeedback.setBackground(new Color(255, 222, 173));
 	lblFeedback.setText("Feedback");
 	lblFeedback.setOpaque(true);
 	lblFeedback.setBounds(107, 187, 800, 70);
@@ -43,7 +44,7 @@ public class IndividualReport extends JPanel{
 	
 	JTextArea txtFeedback = new JTextArea();
 
-	txtFeedback.setBackground(new Color(230, 230, 250));
+	txtFeedback.setBackground(Color.WHITE);
 	txtFeedback.setBounds(146, 255, 761, 200);
 	txtFeedback.setLineWrap(true);
 	txtFeedback.setEditable(false);
@@ -56,12 +57,13 @@ public class IndividualReport extends JPanel{
 	panel.add(scrollPane_1);
 	
 	JLabel lblProgress = new JLabel();
-	lblProgress.setFont(new Font("Dialog", Font.PLAIN, 20));
+	lblProgress.setForeground(Color.BLACK);
+	lblProgress.setFont(new Font("SansSerif", Font.PLAIN, 20));
 	lblProgress.setHorizontalAlignment(SwingConstants.CENTER);
 	lblProgress.setText("Progress");
 	lblProgress.setOpaque(true);
-	lblProgress.setBackground(new Color(147, 112, 219));
-	lblProgress.setBounds(107, 454, 800, 70);
+	lblProgress.setBackground(new Color(255, 222, 173));
+	lblProgress.setBounds(107, 455, 800, 70);
 	panel.add(lblProgress);
 	
 	JScrollPane scrollPane = new JScrollPane();
@@ -73,15 +75,18 @@ public class IndividualReport extends JPanel{
 	scrollPane.setViewportView(list);
 	
 	JLabel lblTrainingCourseDescription = new JLabel();
+	lblTrainingCourseDescription.setForeground(Color.BLACK);
 	lblTrainingCourseDescription.setText("Training Course Description\r\n");
 	lblTrainingCourseDescription.setOpaque(true);
 	lblTrainingCourseDescription.setHorizontalAlignment(SwingConstants.CENTER);
-	lblTrainingCourseDescription.setFont(new Font("Dialog", Font.PLAIN, 20));
-	lblTrainingCourseDescription.setBackground(new Color(147, 112, 219));
-	lblTrainingCourseDescription.setBounds(107, 16, 800, 70);
+	lblTrainingCourseDescription.setFont(new Font("SansSerif", Font.PLAIN, 20));
+	lblTrainingCourseDescription.setBackground(new Color(255, 222, 173));
+	lblTrainingCourseDescription.setBounds(107, 18, 800, 70);
 	panel.add(lblTrainingCourseDescription);
 	
-	addProgress(new IndividualProgress("Jim Helpert", 50));
+	IndividualProgress individualProgress = new IndividualProgress("Jim Helpert", 50);
+	individualProgress.setBackground(Color.WHITE);
+	addProgress(individualProgress);
 	addProgress(new IndividualProgress("Michael Scott", 30));
 	addProgress(new IndividualProgress("Dwight Schrute", 70));
 	addProgress(new IndividualProgress("Pam Beesly", 60));

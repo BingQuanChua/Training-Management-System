@@ -13,13 +13,12 @@ public class AllTrainerList extends JPanel {
 		
 		JPanel btmPanel = new JPanel();
 		btmPanel.setForeground(Color.WHITE);
-		btmPanel.setPreferredSize(new Dimension(1500, 800));
-		btmPanel.setBounds(277, 121, 1300, 800);
+		btmPanel.setPreferredSize(new Dimension(1000, 1000));
 		btmPanel.setBackground( Color.WHITE);
              
-		setBackground(new Color(255, 255, 224));
-		setPreferredSize(new Dimension(1600, 1080));
-		setLayout(null);
+		setBackground(new Color(255, 255, 200));
+		setPreferredSize(new Dimension(1000, 1000));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btmPanel.setLayout(null);
 		
 		JPanel topPanel = new JPanel();
@@ -29,43 +28,46 @@ public class AllTrainerList extends JPanel {
 		topPanel.setBackground(Color.WHITE);
 		topPanel.setLayout(null);
 		        
-		ManageUser r1 = new ManageUser("Bryan Cranston");
+		ManageUser r1 = new ManageUser("Bryan Cranston",1);
 		r1.setLocation(0, 0);
-		r1.setSize(877, 60);
+		r1.setSize(800, 60);
 		topPanel.add(r1);
 		        
-		ManageUser r2 = new ManageUser("Edwin White");
-		r2.setBounds(0, 71, 877, 60);
+		ManageUser r2 = new ManageUser("Edwin White",2);
+		r2.setBounds(0, 58, 800, 60);
 		topPanel.add(r2);
 		
-		ManageUser r3 = new ManageUser("Keanu Reeves");
-		r3.setBounds(0, 142, 877, 60);
+		ManageUser r3 = new ManageUser("Keanu Reeves",3);
+		r3.setBounds(0, 116, 800, 60);
 		topPanel.add(r3);
 		
-		ManageUser r4 = new ManageUser("Rami Malek");
-		r4.setBounds(0, 217, 877, 60);
+		ManageUser r4 = new ManageUser("Rami Malek",4);
+		r4.setBounds(0, 174, 800, 60);
 		topPanel.add(r4);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(27, 80, 1244, 17);
+		separator_1.setBounds(26, 143, 1244, 17);
         separator_1.setForeground(Color.LIGHT_GRAY);
         separator_1.setBackground(Color.LIGHT_GRAY);
         btmPanel.add(separator_1);
         
         JLabel lblNumber = new JLabel("No.");
-        lblNumber.setBounds(68, 31, 46, 38);
+        lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNumber.setBounds(100, 85, 75, 50);
         lblNumber.setForeground(Color.DARK_GRAY);
         lblNumber.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblNumber);
         
-        JLabel lblTraineeName = new JLabel("Trainer Name");
-        lblTraineeName.setBounds(431, 31, 257, 38);
-        lblTraineeName.setForeground(Color.DARK_GRAY);
-        lblTraineeName.setFont(new Font("Serif", Font.PLAIN, 30));
-        btmPanel.add(lblTraineeName);
+        JLabel lblTrainerName = new JLabel("Trainer Name");
+        lblTrainerName.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTrainerName.setBounds(175, 85, 450, 50);
+        lblTrainerName.setForeground(Color.DARK_GRAY);
+        lblTrainerName.setFont(new Font("Serif", Font.PLAIN, 30));
+        btmPanel.add(lblTrainerName);
         
         JLabel lblAction = new JLabel("Action\r\n");
-        lblAction.setBounds(949, 31, 104, 38);
+        lblAction.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAction.setBounds(625, 85, 275, 50);
         lblAction.setForeground(Color.DARK_GRAY);
         lblAction.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblAction);
@@ -73,20 +75,21 @@ public class AllTrainerList extends JPanel {
         JSeparator separator_2 = new JSeparator();
         separator_2.setForeground(Color.LIGHT_GRAY);
         separator_2.setBackground(Color.LIGHT_GRAY);
-        separator_2.setBounds(31, 735, 1240, 10);
+        separator_2.setBounds(15, 931, 970, 17);
         btmPanel.add(separator_2);
         
         JScrollPane scrollPane = new JScrollPane(topPanel);
-		scrollPane.setBounds(326, 127, 945, 556);
+		scrollPane.setBounds(100, 187, 945, 556);
 		scrollPane.setBorder(null);
 		btmPanel.add(scrollPane);
 		add(btmPanel);
 		
 		JLabel lblListOfTrainers = new JLabel("List of Trainers");
+		lblListOfTrainers.setLocation(15, 0);
+		lblListOfTrainers.setSize(280, 50);
 		lblListOfTrainers.setForeground(Color.DARK_GRAY);
-		lblListOfTrainers.setFont(new Font("SansSerif", Font.PLAIN, 40));
-		lblListOfTrainers.setBounds(277, 48, 280, 73);
-		add(lblListOfTrainers);
+		lblListOfTrainers.setFont(new Font("Serif", Font.PLAIN, 40));
+		btmPanel.add(lblListOfTrainers);
 		
 						
 
