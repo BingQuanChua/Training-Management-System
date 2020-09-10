@@ -39,7 +39,7 @@ public class ManageTraining extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				list.removeAll();
-				list.add(new SubMenu("Edit Training Course",new EditCourse()));
+				list.add(new EditCourse());
 		        list.repaint();
 				list.revalidate();
 		
@@ -63,8 +63,7 @@ public class ManageTraining extends JPanel {
 		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
-		
-		
+
 
 	}
 }

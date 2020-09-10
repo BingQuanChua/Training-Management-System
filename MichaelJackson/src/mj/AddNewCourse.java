@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 
 public class AddNewCourse extends JPanel {
-	private JTextPane txtDesc;
+	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
 	private JTextField txtCourseID;
@@ -27,7 +27,7 @@ public class AddNewCourse extends JPanel {
         
         //Front Panel//
         frontPanel.setForeground(SystemColor.desktop);
-        frontPanel.setBounds(277, 121, 1071, 834);
+        frontPanel.setBounds(378, 138, 1071, 834);
         frontPanel.setBackground(Color.WHITE);
         frontPanel.setLayout(null);
         addNewCourse.add(frontPanel);
@@ -74,12 +74,12 @@ public class AddNewCourse extends JPanel {
         lblDesc.setBounds(157, 306, 153, 27);
         frontPanel.add(lblDesc);
         
-        txtDesc = new JTextPane();
+        txtDesc = new JTextArea();
         txtDesc.setText("Enter short description\r\n");
         txtDesc.setForeground(Color.GRAY);
+        txtDesc.setLineWrap(true);
         txtDesc.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDesc.setBorder(null);
-        
         txtDesc.setBounds(157, 356, 757, 110);
       
         txtDesc.addFocusListener(new FocusAdapter() {
@@ -94,7 +94,11 @@ public class AddNewCourse extends JPanel {
         			 txtDesc.setText("Enter short description");
         	}
         });
-        frontPanel.add(txtDesc);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBorder(null);
+        scrollPane.setBounds(157, 356, 757, 110);
+    	scrollPane.setViewportView(txtDesc);
+        frontPanel.add(scrollPane);
         
         JLabel lblTrainer = new JLabel("Trainer");
         lblTrainer.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -218,7 +222,7 @@ public class AddNewCourse extends JPanel {
         JLabel lblNewLabel = new JLabel("Add New Training Course");
         lblNewLabel.setForeground(Color.DARK_GRAY);
         lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 40));
-        lblNewLabel.setBounds(277, 51, 471, 73);
+        lblNewLabel.setBounds(378, 61, 471, 73);
         addNewCourse.add(lblNewLabel);
     
   

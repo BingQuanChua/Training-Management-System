@@ -91,7 +91,7 @@ public class AdminUI extends JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		// Top header panel
-		panelHeader.setBackground(new Color(102, 0, 153)); // Purple
+		panelHeader.setBackground(new Color(233, 150, 122));//peach
 		panelHeader.setPreferredSize(new Dimension(500, 120));
 		
 		// Clickable logo in the top header panel

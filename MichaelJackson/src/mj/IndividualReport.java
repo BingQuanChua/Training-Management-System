@@ -18,12 +18,16 @@ public class IndividualReport extends JPanel{
     panel.setBackground( new Color(255, 255, 224));
     panel.setLayout(null);
     
-	JTextPane crsDesc = new JTextPane();
-	crsDesc.setText("Description");
-	crsDesc.setEditable(false);
-	crsDesc.setBackground(new Color(230, 230, 250));
-	crsDesc.setBounds(146, 87, 761, 100);
-	panel.add(crsDesc);
+	JTextArea txtDesc = new JTextArea();
+	txtDesc.setText("Description");
+	txtDesc.setEditable(false);
+	txtDesc.setLineWrap(true);
+	txtDesc.setBackground(new Color(230, 230, 250));
+	txtDesc.setBounds(146, 87, 761, 100);
+	JScrollPane scrollPane_2 = new JScrollPane();
+	scrollPane_2.setViewportView(txtDesc);
+	scrollPane_2.setBounds(146, 87, 761, 100);
+	panel.add(scrollPane_2);
 	
 	
 	JLabel lblFeedback = new JLabel();
@@ -37,18 +41,19 @@ public class IndividualReport extends JPanel{
 	panel.add(lblFeedback);
 	add(panel);
 	
-	JTextPane textPane = new JTextPane();
+	JTextArea txtFeedback = new JTextArea();
 
-	textPane.setBackground(new Color(230, 230, 250));
-	textPane.setBounds(146, 255, 761, 200);
-	textPane.setEditable(false);
-	textPane.setText("1. This training course is awesome!!!!!!!!"
+	txtFeedback.setBackground(new Color(230, 230, 250));
+	txtFeedback.setBounds(146, 255, 761, 200);
+	txtFeedback.setLineWrap(true);
+	txtFeedback.setEditable(false);
+	txtFeedback.setText("1. This training course is awesome!!!!!!!!"
 			+ "\n2.Looking forward to the next training!!!"
 			+ "\n3.Best training course ever!!!");
-	JScrollPane scrollPane1 = new JScrollPane();
-	scrollPane1.setViewportView(textPane);
-	scrollPane1.setBounds(146, 255, 761, 200);
-	panel.add(scrollPane1);
+	JScrollPane scrollPane_1 = new JScrollPane();
+	scrollPane_1.setViewportView(txtFeedback);
+	scrollPane_1.setBounds(146, 255, 761, 200);
+	panel.add(scrollPane_1);
 	
 	JLabel lblProgress = new JLabel();
 	lblProgress.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -60,7 +65,7 @@ public class IndividualReport extends JPanel{
 	panel.add(lblProgress);
 	
 	JScrollPane scrollPane = new JScrollPane();
-	scrollPane.setBounds(107, 524, 800, 335);
+	scrollPane.setBounds(146, 524, 761, 335);
 	panel.add(scrollPane);
 	
 	list = new JPanel();
@@ -76,11 +81,7 @@ public class IndividualReport extends JPanel{
 	lblTrainingCourseDescription.setBounds(107, 16, 800, 70);
 	panel.add(lblTrainingCourseDescription);
 	
-	IndividualProgress individualProgress = new IndividualProgress("Jim Helpert", 50);
-	individualProgress.setBounds(107, 633, 798, 333);
-	panel.add(individualProgress);
-	individualProgress.setBackground(new Color(230, 230, 250));
-	addProgress(individualProgress);
+	addProgress(new IndividualProgress("Jim Helpert", 50));
 	addProgress(new IndividualProgress("Michael Scott", 30));
 	addProgress(new IndividualProgress("Dwight Schrute", 70));
 	addProgress(new IndividualProgress("Pam Beesly", 60));
@@ -88,10 +89,11 @@ public class IndividualReport extends JPanel{
 	addProgress(new IndividualProgress("Creed Bratton", 20));
 	addProgress(new IndividualProgress("Andy Bernard", 10));
 	addProgress(new IndividualProgress("Toby Flenderson", 100));
+	panel.add(scrollPane);
 
 	}
 	
 	private void addProgress(IndividualProgress p) {
-
+		list.add(p);
 	}
 }
