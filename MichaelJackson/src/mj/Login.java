@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import com.mysql.*;
 import java.awt.Font;
 
 public class Login extends JFrame {
