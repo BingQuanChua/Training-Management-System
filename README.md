@@ -28,7 +28,7 @@ To change the role,
 
 locate int loginRole
 
-change to 
+switch between
 1 - Admin
 2 - Trainer
 3 -Trainee
