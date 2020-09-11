@@ -19,10 +19,11 @@ import java.awt.Color;
 public class AllTrainingList extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Showing a list of all training
 	 */
 	public AllTrainingList() {
 		setBackground(new Color(255, 255, 200));
+		setPreferredSize(new Dimension(1000, 1080));	
 		
 		JPanel list = new JPanel();
 		GridBagLayout gbl_list = new GridBagLayout();

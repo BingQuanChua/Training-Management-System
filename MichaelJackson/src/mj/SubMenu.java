@@ -13,7 +13,7 @@ public class SubMenu extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	
+
 	private JLabel titleLabel;
 	
 	public SubMenu(String title, JPanel panel) {
@@ -45,6 +45,7 @@ public class SubMenu extends JPanel {
 		setLayout(layout);
 		setBackground(new Color(255, 255, 200));
 	}
+
 	
 	public void setTitle(String title) {
 		titleLabel.setText("    " + title);

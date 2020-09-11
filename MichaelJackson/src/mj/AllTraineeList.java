@@ -6,19 +6,18 @@ import java.awt.*;
 public class AllTraineeList extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Showing a list of all trainees
 	 */
 	public AllTraineeList() {
 		
 		JPanel btmPanel = new JPanel();
 		btmPanel.setForeground(Color.WHITE);
-		btmPanel.setPreferredSize(new Dimension(1500, 800));
-		btmPanel.setBounds(187, 89, 1300, 800);
+		btmPanel.setPreferredSize(new Dimension(1000, 1000));
 		btmPanel.setBackground( Color.WHITE);
              
-		setBackground(Color.LIGHT_GRAY);
-		setPreferredSize(new Dimension(1920,1080));
-		setLayout(null);
+		setBackground(new Color(255, 255, 200));
+		setPreferredSize(new Dimension(1000, 1000));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btmPanel.setLayout(null);
 		
 		JPanel topPanel = new JPanel();
@@ -28,43 +27,46 @@ public class AllTraineeList extends JPanel {
 		topPanel.setBackground(Color.WHITE);
 		topPanel.setLayout(null);
 		        
-		ManageTrainee r1 = new ManageTrainee("Bryan Cranston");
+		ManageUser r1 = new ManageUser("Bryan Cranston",1);
 		r1.setLocation(0, 0);
-		r1.setSize(877, 60);
+		r1.setSize(800, 60);
 		topPanel.add(r1);
 		        
-		ManageTrainee r2 = new ManageTrainee("Edwin White");
-		r2.setBounds(0, 71, 877, 60);
+		ManageUser r2 = new ManageUser("Edwin White",2);
+		r2.setBounds(0, 60, 800, 60);
 		topPanel.add(r2);
 		
-		ManageTrainee r3 = new ManageTrainee("Keanu Reeves");
-		r3.setBounds(0, 142, 877, 60);
+		ManageUser r3 = new ManageUser("Keanu Reeves",3);
+		r3.setBounds(0, 115, 800, 60);
 		topPanel.add(r3);
 		
-		ManageTrainee r4 = new ManageTrainee("Rami Malek");
-		r4.setBounds(0, 217, 877, 60);
+		ManageUser r4 = new ManageUser("Rami Malek",4);
+		r4.setBounds(0, 171, 800, 60);
 		topPanel.add(r4);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(27, 80, 1244, 17);
+		separator_1.setBounds(26, 143, 1244, 17);
         separator_1.setForeground(Color.LIGHT_GRAY);
         separator_1.setBackground(Color.LIGHT_GRAY);
         btmPanel.add(separator_1);
         
         JLabel lblNumber = new JLabel("No.");
-        lblNumber.setBounds(68, 31, 46, 38);
+        lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNumber.setBounds(100, 85, 75, 50);
         lblNumber.setForeground(Color.DARK_GRAY);
         lblNumber.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblNumber);
         
         JLabel lblTraineeName = new JLabel("Trainee Name");
-        lblTraineeName.setBounds(431, 31, 257, 38);
+        lblTraineeName.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTraineeName.setBounds(175, 85, 450, 50);
         lblTraineeName.setForeground(Color.DARK_GRAY);
         lblTraineeName.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblTraineeName);
         
         JLabel lblAction = new JLabel("Action\r\n");
-        lblAction.setBounds(949, 31, 104, 38);
+        lblAction.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAction.setBounds(625, 85, 275, 50);
         lblAction.setForeground(Color.DARK_GRAY);
         lblAction.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblAction);
@@ -72,22 +74,23 @@ public class AllTraineeList extends JPanel {
         JSeparator separator_2 = new JSeparator();
         separator_2.setForeground(Color.LIGHT_GRAY);
         separator_2.setBackground(Color.LIGHT_GRAY);
-        separator_2.setBounds(31, 735, 1240, 10);
+        separator_2.setBounds(15, 931, 970, 17);
         btmPanel.add(separator_2);
         
-        JLabel lblListOfTrainees = new JLabel("List of Trainees");
-        lblListOfTrainees.setForeground(Color.DARK_GRAY);
-        lblListOfTrainees.setFont(new Font("Serif", Font.PLAIN, 40));
-        lblListOfTrainees.setBounds(187, 35, 257, 38);
-        add(lblListOfTrainees);
-        
         JScrollPane scrollPane = new JScrollPane(topPanel);
-		scrollPane.setBounds(326, 127, 945, 556);
+		scrollPane.setBounds(107, 188, 945, 556);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(null);
 		btmPanel.add(scrollPane);
 		add(btmPanel);
+		
+		JLabel lblListOfTrainees = new JLabel("List of Trainees");
+		lblListOfTrainees.setLocation(15, 0);
+		lblListOfTrainees.setSize(331, 50);
+		lblListOfTrainees.setForeground(Color.DARK_GRAY);
+		lblListOfTrainees.setFont(new Font("Serif", Font.PLAIN, 40));
+		btmPanel.add(lblListOfTrainees);
 		
 						
 
