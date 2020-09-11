@@ -72,6 +72,7 @@ public class Login extends JFrame {
 		passwordLabel.setBounds(56, 160, 121, 32);
 		panel.add(passwordLabel);
 		
+
 		userLabel = new JLabel("UserID:");
 		userLabel.setForeground(Color.DARK_GRAY);
 		userLabel.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -83,6 +84,7 @@ public class Login extends JFrame {
 		userIDField.setBounds(221, 100, 322, 34);
 		panel.add(userIDField);
 		userIDField.setColumns(10);
+
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
