@@ -11,32 +11,40 @@ public class AddNewCourse extends JPanel {
 	private JTextField txtCourseID;
     
     AddNewCourse() {
-    	setBackground(new Color(255, 255, 200));
     	        
     	JPanel addNewCourse = new JPanel();
         JPanel frontPanel =  new JPanel();
         JPanel NavPanel = new JPanel();
+     
+       
+        //Add New User panel //        
+        addNewCourse.setPreferredSize(new Dimension(1920, 1080));
+        addNewCourse.setBackground( SystemColor.controlHighlight);
+        //getContentPane().setLayout(null);
+        addNewCourse.setLayout(null);      
+        //getContentPane().add(addNewCourse);
         
         //Front Panel//
         frontPanel.setForeground(SystemColor.desktop);
-        frontPanel.setBounds(378, 138, 1071, 834);
+        frontPanel.setBounds(216, 127, 1071, 834);
         frontPanel.setBackground(Color.WHITE);
         frontPanel.setLayout(null);
+        addNewCourse.add(frontPanel);
         
         JSeparator separator_1 = new JSeparator();
         separator_1.setForeground(Color.GRAY);
         separator_1.setBackground(Color.GRAY);
-        separator_1.setBounds(103, 371, 757, 2);
+        separator_1.setBounds(157, 273, 757, 2);
         frontPanel.add(separator_1);
         
         JLabel lblName = new JLabel("Training Course Name");
         lblName.setFont(new Font("Serif", Font.PLAIN, 30));
-        lblName.setBounds(103, 242, 291, 47);
+        lblName.setBounds(157, 144, 291, 47);
         frontPanel.add(lblName);
         
         JTextField txtName = new JTextField(); 
         txtName.setFont(new Font("Dialog", Font.PLAIN, 20));
-        txtName.setBounds(103, 313, 757, 47);
+        txtName.setBounds(157, 215, 757, 47);
         frontPanel.add(txtName);
         txtName.setText("Enter training course name");
         txtName.addFocusListener(new FocusAdapter() {
@@ -57,18 +65,17 @@ public class AddNewCourse extends JPanel {
         JSeparator separator_2 = new JSeparator();
         separator_2.setForeground(Color.GRAY);
         separator_2.setBackground(Color.GRAY);
-        separator_2.setBounds(103, 565, 757, 8);
+        separator_2.setBounds(157, 467, 757, 8);
         frontPanel.add(separator_2);
         
         JLabel lblDesc = new JLabel("Description\r\n");
         lblDesc.setFont(new Font("Serif", Font.PLAIN, 30));
-        lblDesc.setBounds(103, 404, 153, 27);
+        lblDesc.setBounds(157, 306, 153, 27);
         frontPanel.add(lblDesc);
         
         txtDesc = new JTextArea();
         txtDesc.setText("Enter short description\r\n");
         txtDesc.setForeground(Color.GRAY);
-        txtDesc.setLineWrap(true);
         txtDesc.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDesc.setBorder(null);
         txtDesc.setBounds(157, 356, 757, 110);
@@ -85,15 +92,11 @@ public class AddNewCourse extends JPanel {
         			 txtDesc.setText("Enter short description");
         	}
         });
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBorder(null);
-        scrollPane.setBounds(103, 454, 757, 110);
-    	scrollPane.setViewportView(txtDesc);
-        frontPanel.add(scrollPane);
+        frontPanel.add(txtDesc);
         
         JLabel lblTrainer = new JLabel("Trainer");
         lblTrainer.setFont(new Font("Serif", Font.PLAIN, 30));
-        lblTrainer.setBounds(103, 598, 100, 27);
+        lblTrainer.setBounds(157, 500, 100, 27);
         frontPanel.add(lblTrainer);
         
         txtTrainer = new JTextField();
@@ -101,7 +104,7 @@ public class AddNewCourse extends JPanel {
         txtTrainer.setForeground(Color.GRAY);
         txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtTrainer.setBorder(null);
-        txtTrainer.setBounds(103, 639, 757, 47);
+        txtTrainer.setBounds(157, 541, 757, 47);
         txtTrainer.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
@@ -119,12 +122,12 @@ public class AddNewCourse extends JPanel {
         JSeparator separator_3 = new JSeparator();
         separator_3.setForeground(Color.GRAY);
         separator_3.setBackground(Color.GRAY);
-        separator_3.setBounds(103, 697, 757, 2);
+        separator_3.setBounds(157, 599, 757, 2);
         frontPanel.add(separator_3);
         
         JLabel lblDate = new JLabel("Date");
         lblDate.setFont(new Font("Serif", Font.PLAIN, 30));
-        lblDate.setBounds(103, 738, 100, 27);
+        lblDate.setBounds(157, 640, 100, 27);
         frontPanel.add(lblDate);
         
         txtDate = new JTextField();
@@ -132,7 +135,7 @@ public class AddNewCourse extends JPanel {
         txtDate.setForeground(Color.GRAY);
         txtDate.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDate.setBorder(null);
-        txtDate.setBounds(103, 780, 757, 47);
+        txtDate.setBounds(157, 682, 757, 47);
         txtDate.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
@@ -150,35 +153,26 @@ public class AddNewCourse extends JPanel {
         JSeparator separator_4 = new JSeparator();
         separator_4.setForeground(Color.GRAY);
         separator_4.setBackground(Color.GRAY);
-        separator_4.setBounds(103, 838, 757, 2);
+        separator_4.setBounds(157, 740, 757, 2);
         frontPanel.add(separator_4);
         
         JButton addButton = new JButton("Add");
         addButton.setForeground(Color.WHITE);
-        addButton.setFont(new Font("Serif", Font.PLAIN, 20));
-        addButton.setBackground(new Color(205,133,63));
-        addButton.setBounds(710, 900, 150, 35);
+        addButton.setFont(new Font("Dialog", Font.PLAIN, 20));
+        addButton.setBackground(new Color(106, 90, 205));
+        addButton.setBounds(764, 772, 150, 35);
         frontPanel.add(addButton);
         
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		removeAll();
-				add(new AllTrainingList());
-		        repaint();
-				revalidate();
-        	}
-        });
         cancelButton.setForeground(Color.WHITE);
-        cancelButton.setFont(new Font("Serif", Font.PLAIN, 20));
-        cancelButton.setBackground(new Color(205,133,63));
-        cancelButton.setBounds(529, 900, 150, 35);
+        cancelButton.setFont(new Font("Dialog", Font.PLAIN, 20));
+        cancelButton.setBackground(new Color(106, 90, 205));
+        cancelButton.setBounds(594, 772, 150, 35);
         frontPanel.add(cancelButton);
         
         JLabel lblCourseID = new JLabel("Training Course ID");
-        lblCourseID.setForeground(Color.DARK_GRAY);
         lblCourseID.setFont(new Font("Serif", Font.PLAIN, 30));
-        lblCourseID.setBounds(103, 109, 291, 45);
+        lblCourseID.setBounds(157, 11, 291, 45);
         frontPanel.add(lblCourseID);
         
         txtCourseID = new JTextField();
@@ -186,7 +180,7 @@ public class AddNewCourse extends JPanel {
         txtCourseID.setForeground(Color.GRAY);
         txtCourseID.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtCourseID.setBorder(null);
-        txtCourseID.setBounds(103, 165, 757, 47);
+        txtCourseID.setBounds(157, 67, 757, 47);
         txtCourseID.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
@@ -204,25 +198,18 @@ public class AddNewCourse extends JPanel {
         JSeparator separator_3_1 = new JSeparator();
         separator_3_1.setForeground(Color.GRAY);
         separator_3_1.setBackground(Color.GRAY);
-        separator_3_1.setBounds(103, 223, 757, 2);
+        separator_3_1.setBounds(157, 125, 757, 2);
         frontPanel.add(separator_3_1);
-        frontPanel.setPreferredSize(new Dimension(1000, 1000));
-        setPreferredSize(new Dimension(1000, 1000));
-        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        add(frontPanel);
         
         JLabel lblNewLabel = new JLabel("Add New Training Course");
-        frontPanel.add(lblNewLabel);
         lblNewLabel.setForeground(Color.DARK_GRAY);
         lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 40));
-        lblNewLabel.setBounds(15, 0, 505, 73);
-        
-        JSeparator separator_3_2 = new JSeparator();
-        separator_3_2.setForeground(Color.GRAY);
-        separator_3_2.setBackground(Color.GRAY);
-        separator_3_2.setBounds(0, 71, 1000, 2);
-        frontPanel.add(separator_3_2);
- 
+        lblNewLabel.setBounds(222, 51, 493, 46);
+        addNewCourse.add(lblNewLabel);
+        setSize(1920,1080);
+        add(addNewCourse);
+    
+  
         //Navigation Bar
         //NavPanel.setBackground(new Color(54, 33, 89));
         //NavPanel.setBounds(0, 0, 311, 1041);
@@ -231,4 +218,6 @@ public class AddNewCourse extends JPanel {
         ////end of Add New User panel////
         
     }
+
+  
 }

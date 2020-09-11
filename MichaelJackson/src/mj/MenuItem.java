@@ -29,7 +29,6 @@ public class MenuItem extends JPanel{
     public MenuItem(String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
         lbName.setText(menuName);
-        lbName.setFont(new java.awt.Font("sanserif", 1, 15));
         if (act != null) {
             this.act = act;
         }
@@ -44,6 +43,7 @@ public class MenuItem extends JPanel{
 
 
     // This method is called from within the constructor to initialize the form.
+    @SuppressWarnings("unchecked")
     private void initComponents() {
         jSeparator1 = new JSeparator();
         lbName = new JLabel();

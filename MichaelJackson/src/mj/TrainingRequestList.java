@@ -7,13 +7,8 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
 
 public class TrainingRequestList extends JPanel {
 
@@ -21,61 +16,45 @@ public class TrainingRequestList extends JPanel {
 	 * Create the panel.
 	 */
 	public TrainingRequestList() {
-		setBackground(new Color(255, 255, 200));
-		setPreferredSize(new Dimension(1000, 800));
+		setBackground(UIManager.getColor("Button.darkShadow"));
+		setPreferredSize(new Dimension(850, 400));	
+		
+		JPanel list = new JPanel();
+		GridBagLayout gbl_list = new GridBagLayout();
+		gbl_list.columnWidths = new int[]{610, 0};
+		gbl_list.rowHeights = new int[]{60, 0};
+		gbl_list.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_list.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		list.setLayout(gbl_list);
+		
+		TrainingRequest r1 = new TrainingRequest("Keanu Reeves");
+		GridBagConstraints gbc_r1 = new GridBagConstraints();
+		gbc_r1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_r1.insets = new Insets(0, 0, 5, 0);
+		gbc_r1.gridx = 0;
+		gbc_r1.gridy = 0;
+		list.add(r1, gbc_r1);
+		
+		TrainingRequest r2 = new TrainingRequest("Bryan Cranston");
+		GridBagConstraints gbc_r2 = new GridBagConstraints();
+		gbc_r2.anchor = GridBagConstraints.NORTHWEST;
+		gbc_r2.insets = new Insets(0, 0, 5, 0);
+		gbc_r2.gridx = 0;
+		gbc_r2.gridy = 1;
+		list.add(r2, gbc_r2);
+		
+		TrainingRequest r3 = new TrainingRequest("Rami Malek");
+		GridBagConstraints gbc_r3 = new GridBagConstraints();
+		gbc_r3.anchor = GridBagConstraints.NORTHWEST;
+		gbc_r3.gridx = 0;
+		gbc_r3.gridy = 2;
+		list.add(r3, gbc_r3);
 		
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBackground(Color.WHITE);
-		panel.setPreferredSize(new Dimension(1000, 800));	
-		
-		JLabel label1 = new JLabel("No.");
-		label1.setHorizontalAlignment(SwingConstants.CENTER);
-		label1.setFont(new Font("Serif", Font.PLAIN, 30));
-		label1.setBounds(100, 85, 75, 50);
-		panel.add(label1);
-		
-		JLabel label2 = new JLabel("Trainee Name");
-		label2.setHorizontalAlignment(SwingConstants.CENTER);
-		label2.setFont(new Font("Serif", Font.PLAIN, 30));
-		label2.setBounds(175, 85, 450, 50);
-		panel.add(label2);
-		
-		JLabel label3 = new JLabel("Action");
-		label3.setHorizontalAlignment(SwingConstants.CENTER);
-		label3.setFont(new Font("Serif", Font.PLAIN, 30));
-		label3.setBounds(625, 85, 275, 50);
-		panel.add(label3);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(100, 140, 820, 10);
-        separator_1.setForeground(Color.LIGHT_GRAY);
-        separator_1.setBackground(Color.LIGHT_GRAY);
-        panel.add(separator_1);
-        
-        List requestList = new List();
-		requestList.setBackground(Color.WHITE);
-		requestList.addItem(new TrainingRequest("Norman Reedus", 1));
-		requestList.addItem(new TrainingRequest("Keanu Reeves", 2));
-		requestList.addItem(new TrainingRequest("Michael Jackson", 3));
-		
-		JScrollPane scrollPane = new JScrollPane(requestList);
-		scrollPane.setBounds(100, 150, 820, 550);
+		JScrollPane scrollPane = new JScrollPane(list);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(scrollPane);
+		add(scrollPane);
 		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(100, 710, 820, 10);
-		separator_2.setForeground(Color.LIGHT_GRAY);
-		separator_2.setBackground(Color.LIGHT_GRAY);
-        panel.add(separator_2);
-		
-		add(panel);
-		
-		JLabel title = new JLabel("Training Request");
-		title.setFont(new Font("Serif", Font.PLAIN, 40));
-		title.setBounds(100, 25, 299, 47);
-		panel.add(title);
+
 	}
 }

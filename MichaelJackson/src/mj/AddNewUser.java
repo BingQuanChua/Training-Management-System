@@ -8,10 +8,8 @@ import java.awt.event.*;
 public class AddNewUser extends JPanel {
     
     AddNewUser() {
-    	setBackground(new Color(255, 255, 200));
     	
-    	
-    	
+    	JPanel addNewUserPanel = new JPanel();
         JPanel frontPanel = new JPanel();
         JSeparator separator_1 = new JSeparator();
         JSeparator separator_2 = new JSeparator();
@@ -23,34 +21,32 @@ public class AddNewUser extends JPanel {
         JButton cancelButton = new JButton("Cancel");
         JLabel lblUserID = new JLabel("UserID");
         JLabel lblPassword = new JLabel("Password\r\n");
+        JLabel title = new JLabel("Add New User");
         JPanel NavPanel = new JPanel();
         Font heading1 = new Font(Font.SERIF, Font.PLAIN, 40);
-        Font f1 = new Font(Font.SERIF, Font.PLAIN, 20);
+        Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
        
         //Add New User panel //        
-           
+        addNewUserPanel.setPreferredSize(new Dimension(1920, 1080));
+        addNewUserPanel.setBackground( SystemColor.controlHighlight);
+        addNewUserPanel.setLayout(null);      
         
         //Front Panel//
         frontPanel.setForeground(SystemColor.desktop);
+        frontPanel.setBounds(454, 127, 1071, 762);
         frontPanel.setBackground(Color.WHITE);
         frontPanel.setLayout(null);
-        
-        JLabel lblUserInfo = new JLabel("User Info");
-        lblUserInfo.setForeground(Color.BLACK);
-        lblUserInfo.setFont(new Font("Serif", Font.PLAIN, 40));
-        lblUserInfo.setBounds(15, 0, 159, 52);
-        frontPanel.add(lblUserInfo);
-    
+        addNewUserPanel.add(frontPanel);
         
         //Separator//       
         separator_1.setBackground(Color.GRAY);
         separator_1.setForeground(Color.GRAY);
-        separator_1.setBounds(227, 320, 600, 2);
+        separator_1.setBounds(230, 243, 600, 2);
         frontPanel.add(separator_1);
                
         separator_2.setForeground(Color.GRAY);
         separator_2.setBackground(Color.GRAY);
-        separator_2.setBounds(227, 517, 600, 2);
+        separator_2.setBounds(230, 440, 600, 2);
         frontPanel.add(separator_2);
         
         //TextField// 
@@ -67,7 +63,7 @@ public class AddNewUser extends JPanel {
         	           userIDField.setText("Enter userID");
         	}
         }); 
-        userIDField.setBounds(227, 229, 600, 80);
+        userIDField.setBounds(230, 152, 600, 80);
         userIDField.setForeground(Color.GRAY);
         userIDField.setFont(f1);
         userIDField.setBorder(null);
@@ -85,7 +81,7 @@ public class AddNewUser extends JPanel {
                     passwordField.setText("Enter password");
         	}
         });
-        passwordField.setBounds(227, 429, 600, 80); 
+        passwordField.setBounds(230, 352, 600, 80); 
         passwordField.setForeground(Color.GRAY);
         passwordField.setFont(f1);
         passwordField.setBorder(null);
@@ -95,52 +91,49 @@ public class AddNewUser extends JPanel {
         
         //button  
         trainerBox.setHorizontalAlignment(SwingConstants.CENTER);
-        trainerBox.setBounds(227, 569, 300, 46);
+        trainerBox.setBounds(230, 492, 300, 46);
         frontPanel.add(trainerBox);
         trainerBox.setForeground(Color.BLACK);
         trainerBox.setBackground(new Color(106, 90, 205));
         trainerBox.setFont(f1);
         
         traineeBox.setHorizontalAlignment(SwingConstants.CENTER);
-        traineeBox.setBounds(529, 569, 300, 46);
+        traineeBox.setBounds(532, 492, 300, 46);
         frontPanel.add(traineeBox);
         traineeBox.setBackground(new Color(106, 90, 205));
         traineeBox.setForeground(Color.BLACK);
         traineeBox.setFont(f1);
             
-        addButton.setBackground(new Color(205,133,63));
+        addButton.setBackground(new Color(106, 90, 205));
         addButton.setForeground(Color.WHITE);
-        addButton.setBounds(677, 746, 150, 35);
+        addButton.setBounds(680, 669, 150, 35);
         frontPanel.add(addButton);
-        addButton.setFont(new Font("Serif", Font.PLAIN, 20));
+        addButton.setFont(f1);
              
-        cancelButton.setBackground(new Color(205,133,63));
+        cancelButton.setBackground(new Color(106, 90, 205));
         cancelButton.setForeground(Color.WHITE);
-        cancelButton.setBounds(502, 746, 150, 35);
+        cancelButton.setBounds(517, 669, 150, 35);
         frontPanel.add(cancelButton);
-        cancelButton.setFont(new Font("Serif", Font.PLAIN, 20));
+        cancelButton.setFont(f1);
          
-        lblUserID.setForeground(Color.BLACK);
+        lblUserID.setForeground(Color.DARK_GRAY);
         lblUserID.setFont(new Font("Serif", Font.BOLD, 30));
-        lblUserID.setBounds(227, 183, 103, 35);
+        lblUserID.setBounds(230, 106, 103, 35);
         frontPanel.add(lblUserID);
          
         lblPassword.setForeground(Color.DARK_GRAY);
         lblPassword.setFont(new Font("Serif", Font.BOLD, 30));
-        lblPassword.setBounds(227, 383, 150, 35);
+        lblPassword.setBounds(230, 306, 150, 35);
         frontPanel.add(lblPassword);
-        frontPanel.setPreferredSize(new Dimension(1000, 1000));
-        setPreferredSize(new Dimension(1000, 1000));
-        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        add(frontPanel);
-        
-        JSeparator separator_3 = new JSeparator();
-        separator_3.setForeground(Color.GRAY);
-        separator_3.setBackground(Color.GRAY);
-        separator_3.setBounds(0, 60, 1000, 2);
-        frontPanel.add(separator_3);
-        setBackground(new Color (255,255,200));
+         
+        title.setBounds(454, 33, 358, 83);
+        addNewUserPanel.add(title);
+        title.setForeground(Color.DARK_GRAY);
+        title.setFont(new Font("Serif", Font.PLAIN, 40));
+        setSize(1920,1080);
+        add(addNewUserPanel);
        
         ////end of Add New User panel///
     }
+
 }

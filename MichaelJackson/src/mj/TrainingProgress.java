@@ -22,34 +22,29 @@ public class TrainingProgress extends JPanel {
 	
 	private JPanel list;
 	private ArrayList<IndividualProgress> progressList;
-	private JButton trainingButton;
-	
 	private boolean extend = false;
-	private int extendedHeight = 430;
-	private int retractedHeight = 70;
-	
-	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
+	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	
 	public TrainingProgress(String trainingName) {
 		
-		setPreferredSize(new Dimension(800, retractedHeight));
+		setPreferredSize(new Dimension(600, 60));
 		setLayout(null);
 		progressList = new ArrayList<>();
 		
-		trainingButton = new JButton(trainingName);
+		JButton trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
-		trainingButton.setBackground(Color.LIGHT_GRAY);
+		trainingButton.setBackground(new Color(153, 50, 204));
 		trainingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		trainingButton.setBounds(0, 0, 800, 70);
+		trainingButton.setBounds(0, 0, 600, 60);
 		add(trainingButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(0, 70, 800, 360);
+		scrollPane.setBounds(0, 60, 600, 250);
 		add(scrollPane);
 		
 		list = new JPanel();
@@ -62,8 +57,6 @@ public class TrainingProgress extends JPanel {
 		addProgress(new IndividualProgress("Pam Beesly", 60));
 		addProgress(new IndividualProgress("Kevin Malone", 90));
 		addProgress(new IndividualProgress("Creed Bratton", 20));
-		addProgress(new IndividualProgress("Andy Bernard", 10));
-		addProgress(new IndividualProgress("Toby Flenderson", 100));
 	
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -86,7 +79,8 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, extendedHeight));
+                setPreferredSize(new Dimension(600, 310));
+                
                 getParent().revalidate();
                 getParent().repaint();
             }
@@ -98,7 +92,8 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, retractedHeight));
+                setPreferredSize(new Dimension(600, 60));
+                
                 getParent().revalidate();
                 getParent().repaint();
             }
