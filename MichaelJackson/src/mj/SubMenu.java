@@ -13,18 +13,21 @@ public class SubMenu extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+
+	private JLabel titleLabel;
+	
 	public SubMenu(String title, JPanel panel) {
 		
-		JLabel titleLabel = new JLabel("    " + title);
-		titleLabel.setBackground(new java.awt.Color(155, 156, 237));
-		titleLabel.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+		titleLabel = new JLabel("    " + title);
+		titleLabel.setBackground(new java.awt.Color(255, 218, 185));
+		titleLabel.setFont(new java.awt.Font("sansserif", 1, 20)); 
 		titleLabel.setOpaque(true);
 		
 		//JPanel panel = new JPanel(); // this line is for testing purposes :D
 		
 		GroupLayout layout = new GroupLayout(this);
 		layout.setHorizontalGroup(
-			layout.createParallelGroup(Alignment.TRAILING)
+			layout.createParallelGroup(Alignment.CENTER)
 				.addComponent(titleLabel, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
 				.addGroup(layout.createSequentialGroup()
 					.addGap(12)
@@ -32,7 +35,7 @@ public class SubMenu extends JPanel {
 					.addContainerGap())
 		);
 		layout.setVerticalGroup(
-			layout.createParallelGroup(Alignment.LEADING)
+			layout.createParallelGroup(Alignment.CENTER)
 				.addGroup(layout.createSequentialGroup()
 					.addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -41,5 +44,10 @@ public class SubMenu extends JPanel {
 		);
 		setLayout(layout);
 		setBackground(new Color(255, 255, 200));
+	}
+
+	
+	public void setTitle(String title) {
+		titleLabel.setText("    " + title);
 	}
 }

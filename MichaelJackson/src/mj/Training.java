@@ -10,10 +10,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.UIManager;
-
-;
+import javax.swing.JOptionPane;
 
 public class Training extends JPanel {
 
@@ -21,29 +21,38 @@ public class Training extends JPanel {
 	 * This panel holds a single training panel.
 	 */
 	
-	
 	private JButton trainingButton;
 	private JButton editButton;
-	private JTextPane textPane;
+	private JTextArea textArea;
 	private JButton feedbackButton;
 	private JButton requestButton;
 	private JButton traineeListButton;
 	private JButton updateButton;
 	
 	private boolean extend = false;
+	private int extendedHeight = 430;
+	private int retractedHeight = 70;
+	
+	private String feedbackFormLink;
+	private String description;
+	private boolean isTextAreaEditable = false;
 	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
+	private TrainingMaterialDetails trainingMaterial;
+	
 	public Training(String trainingName) {
 		
-		setPreferredSize(new Dimension(800, 70));
+		setPreferredSize(new Dimension(800, retractedHeight));
 		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
 		
+		trainingMaterial = new TrainingMaterialDetails(trainingName);
+		
 		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
-		trainingButton.setBackground(new Color(255, 165, 0));
+		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -51,25 +60,47 @@ public class Training extends JPanel {
 		trainingButton.setBounds(0, 0, 800, 70);
 		add(trainingButton);
 		
-		textPane = new JTextPane();
-		textPane.setFont(heading3);
-		textPane.setBackground(new Color(244, 164, 96));
-		textPane.setBounds(50, 75, 620, 100);
-		add(textPane);
-		textPane.setText("Description for " + trainingName + ".");
+		textArea = new JTextArea();
+		textArea.setFont(heading3);
+		textArea.setBackground(Color.WHITE);
+		textArea.setBounds(50, 75, 620, 125);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setSize(620, 125);
+		scrollPane.setLocation(50, 75);
+		add(scrollPane);
+		textArea.setText("Description for " + trainingName + ".");
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
 		
 		editButton = new JButton("Edit");
 		editButton.setFont(heading3);
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!isTextAreaEditable) {
+					textArea.setEditable(true);
+					editButton.setText("Save");
+					isTextAreaEditable = true;
+				}
+				else {
+					textArea.setEditable(false);
+					editButton.setText("Edit");
+					description = textArea.getText();
+					isTextAreaEditable = false;
+				}
 			}
 		});
-		editButton.setBounds(675, 75, 75, 100);
+		editButton.setBounds(675, 75, 75, 125);
 		add(editButton);
 		
 		feedbackButton = new JButton("Feedback");
 		feedbackButton.setFont(heading3);
-		feedbackButton.setBounds(50, 345, 700, 50);
+		feedbackButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				feedbackFormLink = JOptionPane.showInputDialog("Enter Google Form link");
+				System.out.println(feedbackFormLink);
+			}
+		});
+		feedbackButton.setBounds(50, 370, 700, 50);
 		add(feedbackButton);
 		
 		requestButton = new JButton("Training Requests");
@@ -79,17 +110,22 @@ public class Training extends JPanel {
 				// TODO 
 			}
 		});
-		requestButton.setBounds(50, 235, 700, 50);
+		requestButton.setBounds(50, 260, 700, 50);
 		add(requestButton);
 		
 		traineeListButton = new JButton("List of Trainees");
 		traineeListButton.setFont(heading3);
-		traineeListButton.setBounds(50, 290, 700, 50);
+		traineeListButton.setBounds(50, 315, 700, 50);
 		add(traineeListButton);
 		
 		updateButton = new JButton("Update Material");
 		updateButton.setFont(heading3);
-		updateButton.setBounds(50, 180, 700, 50);
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//? trainingMaterial.setVisible(true);
+			}
+		});
+		updateButton.setBounds(50, 205, 700, 50);
 		add(updateButton);
 		
 		trainingButton.addMouseListener(new MouseAdapter() {
@@ -108,13 +144,16 @@ public class Training extends JPanel {
 
 	}
 	
+	private String getFeedbackFormLink() {
+		return feedbackFormLink;
+	}
+	
 	private void showMenu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, 405));
-                
+                setPreferredSize(new Dimension(800, extendedHeight));
                 getParent().revalidate();
                 getParent().repaint();
             }
@@ -126,8 +165,7 @@ public class Training extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, 70));
-                
+                setPreferredSize(new Dimension(800, retractedHeight));
                 getParent().revalidate();
                 getParent().repaint();
             }

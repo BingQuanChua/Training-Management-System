@@ -29,6 +29,7 @@ public class MenuItem extends JPanel{
     public MenuItem(String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
         lbName.setText(menuName);
+        lbName.setFont(new java.awt.Font("sanserif", 1, 15));
         if (act != null) {
             this.act = act;
         }

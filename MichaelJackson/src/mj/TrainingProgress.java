@@ -22,20 +22,23 @@ public class TrainingProgress extends JPanel {
 	
 	private JPanel list;
 	private ArrayList<IndividualProgress> progressList;
+	private JButton trainingButton;
 	
 	private boolean extend = false;
+	private int extendedHeight = 430;
+	private int retractedHeight = 70;
 	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
 	public TrainingProgress(String trainingName) {
 		
-		setPreferredSize(new Dimension(800, 70));
+		setPreferredSize(new Dimension(800, retractedHeight));
 		setLayout(null);
 		progressList = new ArrayList<>();
 		
-		JButton trainingButton = new JButton(trainingName);
+		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
-		trainingButton.setBackground(new Color(153, 50, 204));
+		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -46,7 +49,7 @@ public class TrainingProgress extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(0, 70, 800, 335);
+		scrollPane.setBounds(0, 70, 800, 360);
 		add(scrollPane);
 		
 		list = new JPanel();
@@ -83,8 +86,7 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, 405));
-                
+                setPreferredSize(new Dimension(800, extendedHeight));
                 getParent().revalidate();
                 getParent().repaint();
             }
@@ -96,8 +98,7 @@ public class TrainingProgress extends JPanel {
             @Override
             public void run() {
                 sleep();
-                setPreferredSize(new Dimension(800, 70));
-                
+                setPreferredSize(new Dimension(800, retractedHeight));
                 getParent().revalidate();
                 getParent().repaint();
             }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -37,10 +36,16 @@ public class TrainerUI extends JFrame {
     private JButton logoButton;
     private JButton signOutButton;
     
-    private TrainingList trainingList;
-    private TrainingProgressList trainingProgressList;;
+    //private List trainingList;
+    private SubMenu subMenuMTC;
+    private List trainingProgressList;
+    private SubMenu subMenuTP;
     private Icon icon;
-
+    
+    // for screenshots
+    // private TrainingMaterialDetails trainingList; // just a name :P
+    private TrainingRequestList trainingList;
+    
 	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
 
 	/**
@@ -75,14 +80,36 @@ public class TrainerUI extends JFrame {
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
         
-        trainingList = new TrainingList();
-        trainingProgressList = new TrainingProgressList();
+        // for normal program
+        //trainingList = new List();
+        //
+        // for update material screenshot
+        // trainingList = new TrainingMaterialDetails("Python Advance Training Course"); 
+        // 
+        // for training request screenshot
+        trainingList = new TrainingRequestList();
+        //
+        // for list of trainees screenshot
+        // 
+        subMenuMTC = new SubMenu("Manage Training Course", trainingList);
+        // dummy data for trainingList
+        // trainingList.addItem(new Training("Python Advance Training Course"));
+        // trainingList.addItem(new Training("Software Engineering with Java"));
+        // trainingList.addItem(new Training("Introduction to OOPDS"));
+        //////
+        trainingProgressList = new List();
+        subMenuTP = new SubMenu("Training Progress", trainingProgressList);
+        // dummy data for trainingProgressList
+        trainingProgressList.addItem(new TrainingProgress("Python Advance Training Course"));
+        trainingProgressList.addItem(new TrainingProgress("Software Engineering with Java"));
+        trainingProgressList.addItem(new TrainingProgress("Introduction to OOPDS"));
+        //////
         icon = new Icon();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         //Top header panel
-        panelHeader.setBackground(new Color(102, 0, 153)); //Purple
+        panelHeader.setBackground(new Color(233, 150, 122)); 
         panelHeader.setPreferredSize(new Dimension(500, 120));
         
         // Clickable logo in the top header panel
@@ -178,7 +205,7 @@ public class TrainerUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(trainingList);
+                panelBody.add(subMenuMTC);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
@@ -187,13 +214,14 @@ public class TrainerUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(trainingProgressList);
+                panelBody.add(subMenuTP);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
         });
 
         MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
+        menuTraining.setBackground(new Color(250, 240, 230));
         addMenu(menuTraining);
         home(); //show home menu initially
 	} 
