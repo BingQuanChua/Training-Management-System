@@ -62,7 +62,7 @@ public class Login extends JFrame {
 		
 		setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
-		setSize(1920, 1080);
+		setSize(1920, 1080);       
 		setResizable(true);
 		setVisible(true);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
