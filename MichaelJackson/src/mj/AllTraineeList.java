@@ -28,20 +28,24 @@ public class AllTraineeList extends JPanel {
 		topPanel.setLayout(null);
 		        
 		ManageUser r1 = new ManageUser("Bryan Cranston",1);
+		r1.setForeground(Color.BLACK);
 		r1.setLocation(0, 0);
 		r1.setSize(800, 60);
 		topPanel.add(r1);
 		        
 		ManageUser r2 = new ManageUser("Edwin White",2);
-		r2.setBounds(0, 60, 800, 60);
+		r2.setForeground(Color.BLACK);
+		r2.setBounds(0, 58, 800, 60);
 		topPanel.add(r2);
 		
 		ManageUser r3 = new ManageUser("Keanu Reeves",3);
-		r3.setBounds(0, 115, 800, 60);
+		r3.setForeground(Color.BLACK);
+		r3.setBounds(0, 116, 800, 60);
 		topPanel.add(r3);
 		
 		ManageUser r4 = new ManageUser("Rami Malek",4);
-		r4.setBounds(0, 171, 800, 60);
+		r4.setForeground(Color.BLACK);
+		r4.setBounds(0, 174, 800, 60);
 		topPanel.add(r4);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -53,21 +57,21 @@ public class AllTraineeList extends JPanel {
         JLabel lblNumber = new JLabel("No.");
         lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
         lblNumber.setBounds(100, 85, 75, 50);
-        lblNumber.setForeground(Color.DARK_GRAY);
+        lblNumber.setForeground(Color.BLACK);
         lblNumber.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblNumber);
         
         JLabel lblTraineeName = new JLabel("Trainee Name");
         lblTraineeName.setHorizontalAlignment(SwingConstants.CENTER);
         lblTraineeName.setBounds(175, 85, 450, 50);
-        lblTraineeName.setForeground(Color.DARK_GRAY);
+        lblTraineeName.setForeground(Color.BLACK);
         lblTraineeName.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblTraineeName);
         
         JLabel lblAction = new JLabel("Action\r\n");
         lblAction.setHorizontalAlignment(SwingConstants.CENTER);
         lblAction.setBounds(625, 85, 275, 50);
-        lblAction.setForeground(Color.DARK_GRAY);
+        lblAction.setForeground(Color.BLACK);
         lblAction.setFont(new Font("Serif", Font.PLAIN, 30));
         btmPanel.add(lblAction);
         
@@ -88,7 +92,7 @@ public class AllTraineeList extends JPanel {
 		JLabel lblListOfTrainees = new JLabel("List of Trainees");
 		lblListOfTrainees.setLocation(15, 0);
 		lblListOfTrainees.setSize(331, 50);
-		lblListOfTrainees.setForeground(Color.DARK_GRAY);
+		lblListOfTrainees.setForeground(Color.BLACK);
 		lblListOfTrainees.setFont(new Font("Serif", Font.PLAIN, 40));
 		btmPanel.add(lblListOfTrainees);
 		

@@ -39,7 +39,7 @@ public class ManageUser extends JPanel {
 		add(deleteButton);
 
 		JButton profileButton = new JButton(name);
-		profileButton.setForeground(Color.DARK_GRAY);
+		profileButton.setForeground(Color.BLACK);
 		profileButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		profileButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,6 +59,7 @@ public class ManageUser extends JPanel {
 		label.setText(number+".");
 		
 		JButton background = new JButton();
+		background.setForeground(Color.BLACK);
 		background.setEnabled(false);
 		background.setBounds(0, 0, 800, 60);
 		add(background);

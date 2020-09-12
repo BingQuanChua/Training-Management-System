@@ -30,6 +30,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(separator_1);
         
         JLabel lblName = new JLabel("Training Course Name");
+        lblName.setForeground(Color.BLACK);
         lblName.setFont(new Font("Serif", Font.PLAIN, 30));
         lblName.setBounds(103, 242, 291, 47);
         frontPanel.add(lblName);
@@ -61,6 +62,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(separator_2);
         
         JLabel lblDesc = new JLabel("Description\r\n");
+        lblDesc.setForeground(Color.BLACK);
         lblDesc.setFont(new Font("Serif", Font.PLAIN, 30));
         lblDesc.setBounds(103, 404, 153, 27);
         frontPanel.add(lblDesc);
@@ -92,6 +94,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(scrollPane);
         
         JLabel lblTrainer = new JLabel("Trainer");
+        lblTrainer.setForeground(Color.BLACK);
         lblTrainer.setFont(new Font("Serif", Font.PLAIN, 30));
         lblTrainer.setBounds(103, 598, 100, 27);
         frontPanel.add(lblTrainer);
@@ -123,6 +126,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(separator_3);
         
         JLabel lblDate = new JLabel("Date");
+        lblDate.setForeground(Color.BLACK);
         lblDate.setFont(new Font("Serif", Font.PLAIN, 30));
         lblDate.setBounds(103, 738, 100, 27);
         frontPanel.add(lblDate);
@@ -176,7 +180,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(cancelButton);
         
         JLabel lblCourseID = new JLabel("Training Course ID");
-        lblCourseID.setForeground(Color.DARK_GRAY);
+        lblCourseID.setForeground(Color.BLACK);
         lblCourseID.setFont(new Font("Serif", Font.PLAIN, 30));
         lblCourseID.setBounds(103, 109, 291, 45);
         frontPanel.add(lblCourseID);
@@ -213,7 +217,7 @@ public class AddNewCourse extends JPanel {
         
         JLabel lblNewLabel = new JLabel("Add New Training Course");
         frontPanel.add(lblNewLabel);
-        lblNewLabel.setForeground(Color.DARK_GRAY);
+        lblNewLabel.setForeground(Color.BLACK);
         lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 40));
         lblNewLabel.setBounds(15, 0, 505, 73);
         

@@ -178,7 +178,7 @@ public class EditCourse extends JPanel{
         frontPanel.add(cancelButton);
         
         JLabel lblEditTrainingCourse = new JLabel("Edit Training Course Info");
-        lblEditTrainingCourse.setForeground(Color.DARK_GRAY);
+        lblEditTrainingCourse.setForeground(Color.BLACK);
         lblEditTrainingCourse.setFont(new Font("Serif", Font.PLAIN, 40));
         lblEditTrainingCourse.setBounds(15, 0, 532, 73);
         frontPanel.add(lblEditTrainingCourse);

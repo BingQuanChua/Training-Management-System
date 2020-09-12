@@ -32,6 +32,7 @@ public class ManageAllReport extends JPanel {
 		
 		
 		JButton trainingButton = new JButton(name);
+		trainingButton.setForeground(Color.BLACK);
 		trainingButton.setBounds(0, 0, 800, 70);
 		trainingButton.setPreferredSize(new Dimension(800, 70));
 		trainingButton.setFont(new Font("SansSerif", Font.PLAIN, 20));

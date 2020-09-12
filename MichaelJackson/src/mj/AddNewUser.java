@@ -125,7 +125,7 @@ public class AddNewUser extends JPanel {
         lblUserID.setBounds(227, 183, 103, 35);
         frontPanel.add(lblUserID);
          
-        lblPassword.setForeground(Color.DARK_GRAY);
+        lblPassword.setForeground(Color.BLACK);
         lblPassword.setFont(new Font("Serif", Font.BOLD, 30));
         lblPassword.setBounds(227, 383, 150, 35);
         frontPanel.add(lblPassword);
