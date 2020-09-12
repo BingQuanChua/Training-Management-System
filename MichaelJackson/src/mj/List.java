@@ -27,4 +27,15 @@ public class List extends JPanel {
 		list.add(item);
 		list.revalidate();
 	}
+	
+	
+	// for clearing the JPanel only, listOfItems is untouched
+	public void clearAll() {
+		list.removeAll();
+		list.repaint();
+		list.revalidate();
+	}
+	
+	
+	
 }

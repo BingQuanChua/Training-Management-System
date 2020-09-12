@@ -14,7 +14,7 @@ public class Main {
 		traineeUI = new TraineeUI();
 		login = new Login();
 		
-		int loginRole = 3;
+		int loginRole = 2;
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
