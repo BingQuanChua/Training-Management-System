@@ -36,7 +36,7 @@ public class TrainerUI extends JFrame {
     private JButton logoButton;
     private JButton signOutButton;
     
-    //private List trainingList;
+    private List trainingList;
     private SubMenu subMenuMTC;
     private List trainingProgressList;
     private SubMenu subMenuTP;
@@ -44,7 +44,7 @@ public class TrainerUI extends JFrame {
     
     // for screenshots
     // private TrainingMaterialDetails trainingList; // just a name :P
-    private TrainingRequestList trainingList;
+    // private TrainingRequestList trainingList;
     
 	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
 
@@ -81,21 +81,21 @@ public class TrainerUI extends JFrame {
         panelBody = new JPanel();	//Right root panel
         
         // for normal program
-        //trainingList = new List();
+        trainingList = new List();
         //
         // for update material screenshot
         // trainingList = new TrainingMaterialDetails("Python Advance Training Course"); 
         // 
         // for training request screenshot
-        trainingList = new TrainingRequestList();
+        // trainingList = new TrainingRequestList();
         //
         // for list of trainees screenshot
         // 
         subMenuMTC = new SubMenu("Manage Training Course", trainingList);
         // dummy data for trainingList
-        // trainingList.addItem(new Training("Python Advance Training Course"));
-        // trainingList.addItem(new Training("Software Engineering with Java"));
-        // trainingList.addItem(new Training("Introduction to OOPDS"));
+        trainingList.addItem(new Training("Python Advance Training Course"));
+        trainingList.addItem(new Training("Software Engineering with Java"));
+        trainingList.addItem(new Training("Introduction to OOPDS"));
         //////
         trainingProgressList = new List();
         subMenuTP = new SubMenu("Training Progress", trainingProgressList);

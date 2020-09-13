@@ -56,14 +56,13 @@ public class EnrolledTrainingMaterial extends JPanel {
 		doneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(!isDone) {
-					doneButton.setText("Mark Undone");
-					isDone = true;
+				int input = JOptionPane.showConfirmDialog(null, "This button can only be clicked once. Are you sure about that?", "Complete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					doneButton.setEnabled(false);
+					// update progress bar
 				}
-				else {
-					doneButton.setText("Mark As Done");
-					isDone = false;
-				}
+				
 			}
 		});
 		doneButton.setBounds(645, 30, 150, 55);
