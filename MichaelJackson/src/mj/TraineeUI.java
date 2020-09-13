@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,33 +30,22 @@ public class TraineeUI extends JFrame {
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
-    
     private JButton logoButton;
     private JButton signOutButton;
-    
     private List availableTrainingList;
     private SubMenu subMenuATC;
     private List enrolledTrainingList;
     private SubMenu subMenuETC;
     private Icon icon;
     
-    Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
+    //Profile
+    private JPanel panelMenuHeader;
+    private JButton profileButton;
+    private JButton accountSettingButton;
+    private Icon profileIcon;
     
-    /**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TraineeUI frame = new TraineeUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
+ 
  
     //Constructor
     public TraineeUI() {
@@ -73,6 +64,7 @@ public class TraineeUI extends JFrame {
         jScrollPane1 = new JScrollPane(); //Able to scroll
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
+        
         
         availableTrainingList = new List();
         subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
@@ -95,6 +87,45 @@ public class TraineeUI extends JFrame {
         panelHeader.setBackground(new Color(233, 150, 122)); //Purple
         panelHeader.setPreferredSize(new Dimension(500, 120));
         
+        
+
+		/**************************************************************
+         * Profile (Show profile and profile setting)
+         **************************************************************/
+        panelMenuHeader = new JPanel(); //Left header panel for profile
+        profileIcon = new Icon();		//Set Icon in button
+      
+        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
+        panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
+        panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
+        panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
+        //Profile setting
+        UserProfile profile = new UserProfile();
+        SubMenu subProfile = new SubMenu("Profile", profile);
+        profileButton = new JButton("Trainee Profile");
+        profileButton.addActionListener(new ActionListener() { 
+        	  public void actionPerformed(ActionEvent e) { 
+        		  panelBody.removeAll();
+                  panelBody.add(subProfile);
+                  panelBody.repaint();
+                  panelBody.revalidate();
+        	  } 
+        	} );
+        profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        profileButton.setBackground(null);
+        accountSettingButton = new JButton("account setting");
+        accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        accountSettingButton.setBackground(Color.WHITE);
+        panelMenuHeader.add(profileButton);
+        panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
+        panelMenuHeader.add(accountSettingButton);
+        menus.add(panelMenuHeader);
+		/**************************************************************
+         * Profile
+         **************************************************************/
+        
+        
         //Clickable logo in the top header panel
         logoButton = new JButton();
         logoButton.addActionListener(new ActionListener() {
@@ -108,6 +139,12 @@ public class TraineeUI extends JFrame {
         	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
         	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
         	logoButton.setIcon(new ImageIcon(logo));
+        	
+        	/**profile**********************************************************************/
+        	Image profLogo = ImageIO.read(getClass().getResource("images/profileLogo.PNG"));
+        	Image profileLogo = profLogo.getScaledInstance(75, 75, Image.SCALE_DEFAULT);
+        	profileButton.setIcon(new ImageIcon(profileLogo));
+        	/*******************************************************************************/
         }
         catch (Exception ex) {
         	System.out.println("Image not found");

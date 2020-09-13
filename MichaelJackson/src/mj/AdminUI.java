@@ -1,5 +1,6 @@
 package mj;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -43,23 +45,13 @@ public class AdminUI extends JFrame {
 	// private ?report
 	private Icon icon;
 	
+    //Profile
+    private JPanel panelMenuHeader;
+    private JButton profileButton;
+    private JButton accountSettingButton;
+    private Icon profileIcon;
+	
 	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminUI frame = new AdminUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -94,6 +86,42 @@ public class AdminUI extends JFrame {
 		panelHeader.setBackground(new Color(233, 150, 122));//peach
 		panelHeader.setPreferredSize(new Dimension(500, 120));
 		
+		/**************************************************************
+         * Profile (Show profile and profile setting)
+         **************************************************************/
+        panelMenuHeader = new JPanel(); //Left header panel for profile
+        profileIcon = new Icon();		//Set Icon in button
+      
+        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
+        panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
+        panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
+        panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
+        //Profile setting
+        UserProfile profile = new UserProfile();
+        SubMenu subProfile = new SubMenu("Profile", profile);
+        profileButton = new JButton("Admin Profile");
+        profileButton.addActionListener(new ActionListener() { 
+        	  public void actionPerformed(ActionEvent e) { 
+        		  panelBody.removeAll();
+                  panelBody.add(subProfile);
+                  panelBody.repaint();
+                  panelBody.revalidate();
+        	  } 
+        	} );
+        profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        profileButton.setBackground(null);
+        accountSettingButton = new JButton("account setting");
+        accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        accountSettingButton.setBackground(Color.WHITE);
+        panelMenuHeader.add(profileButton);
+        panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
+        panelMenuHeader.add(accountSettingButton);
+        menus.add(panelMenuHeader);
+        /**************************************************************
+         * Profile 
+         **************************************************************/
+		
 		// Clickable logo in the top header panel
         logoButton = new JButton();
         logoButton.addActionListener(new ActionListener() {
@@ -108,6 +136,12 @@ public class AdminUI extends JFrame {
         	Image originalLogo = ImageIO.read(getClass().getResource("images/logo.PNG"));
         	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
         	logoButton.setIcon(new ImageIcon(logo));
+        	
+        	/**profile**********************************************************************/
+        	Image profLogo = ImageIO.read(getClass().getResource("images/profileLogo.PNG"));
+        	Image profileLogo = profLogo.getScaledInstance(75, 75, Image.SCALE_DEFAULT);
+        	profileButton.setIcon(new ImageIcon(profileLogo));
+        	/*******************************************************************************/
         }
         catch (Exception ex) {
         	System.out.println("Image not found");

@@ -9,18 +9,15 @@ public class Main {
 
 	public Main() {
 
-		adminUI = new AdminUI();
-		trainerUI = new TrainerUI();
-		traineeUI = new TraineeUI();
 		login = new Login();
-		
-		int loginRole = 2;
+		int loginRole = 3;
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
 		roleLogin(loginRole);
 	}
 
+	
 	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
 		try {
@@ -58,12 +55,15 @@ public class Main {
 		login.setVisible(false);
 		switch (loginRole) {
 		case 1:
+			adminUI = new AdminUI();
 			adminUI.setVisible(true);
 			break;
 		case 2:
+			trainerUI = new TrainerUI();
 			trainerUI.setVisible(true);
 			break;
 		case 3:
+			traineeUI = new TraineeUI();
 			traineeUI.setVisible(true);
 			break;
 		}
