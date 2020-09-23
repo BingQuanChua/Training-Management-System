@@ -113,7 +113,7 @@ public class AdminUI extends JFrame {
         profileButton.setBackground(null);
         accountSettingButton = new JButton("account setting");
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        accountSettingButton.setBackground(Color.WHITE);
+        accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
@@ -149,7 +149,7 @@ public class AdminUI extends JFrame {
         
         // Sign out button in the top header panel
         signOutButton = new JButton("Sign Out");
-        signOutButton.setForeground(Color.WHITE);
+        // signOutButton.setForeground(Color.WHITE);
         signOutButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		// Need to handle this later
@@ -166,19 +166,19 @@ public class AdminUI extends JFrame {
         		.addGroup(panelHeaderLayout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(37))
+        			.addGap(1404)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(39, Short.MAX_VALUE))
         );
         panelHeaderLayout.setVerticalGroup(
         	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addGroup(panelHeaderLayout.createSequentialGroup()
+        					.addGap(80)
+        					.addComponent(signOutButton, GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
         			.addContainerGap())
-        		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addContainerGap(93, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(24))
         );
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);

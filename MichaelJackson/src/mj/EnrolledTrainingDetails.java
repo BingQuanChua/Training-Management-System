@@ -8,9 +8,12 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -65,7 +68,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		textArea.setEditable(false);
 		upperPanel.add(textArea);
 		
-		IndividualProgress individualProgress = new IndividualProgress("Trainee", 0);
+		IndividualProgress individualProgress = new IndividualProgress("Trainee", 100);
 		individualProgress.setBounds(115, 270, 770, 70);
 		upperPanel.add(individualProgress);
 		
@@ -81,8 +84,14 @@ public class EnrolledTrainingDetails extends JPanel {
 		JButton feedbackButton = new JButton("Feedback");
 		feedbackButton.setFont(heading3);
 		feedbackButton.setBounds(505, 350, 380, 50);
+		feedbackButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "https://forms.gle/9GR9tS3crgF1NmEj7");				
+			}
+		});
 		upperPanel.add(feedbackButton);
-		feedbackButton.setEnabled(false);
+		feedbackButton.setEnabled(true);
 		
 		JLabel label2 = new JLabel("Training Course Materials");
 		label2.setFont(heading2);
