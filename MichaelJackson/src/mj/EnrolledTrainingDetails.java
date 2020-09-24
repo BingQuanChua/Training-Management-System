@@ -68,7 +68,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		textArea.setEditable(false);
 		upperPanel.add(textArea);
 		
-		IndividualProgress individualProgress = new IndividualProgress("Trainee", 100);
+		IndividualProgress individualProgress = new IndividualProgress("Trainee", 0);
 		individualProgress.setBounds(115, 270, 770, 70);
 		upperPanel.add(individualProgress);
 		

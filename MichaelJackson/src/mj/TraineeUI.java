@@ -34,12 +34,12 @@ public class TraineeUI extends JFrame {
     private JButton signOutButton;
     private List availableTrainingList;
     private SubMenu subMenuATC;
-    // private List enrolledTrainingList;
+    private List enrolledTrainingList;
     private SubMenu subMenuETC;
     private Icon icon;
     
     // for screenshot
-    private EnrolledTrainingDetails enrolledTrainingList;
+    // private EnrolledTrainingDetails enrolledTrainingList;
     
     //Profile
     private JPanel panelMenuHeader;
@@ -76,12 +76,13 @@ public class TraineeUI extends JFrame {
         availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
 		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
         //////
-        enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
+		enrolledTrainingList = new List();
+        // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
         subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
         // dummy data for trainingList
-        // enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
-        // enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
-		// enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
+        enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
+        enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
+		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
         icon = new Icon();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
