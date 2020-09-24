@@ -60,7 +60,6 @@ public class UserProfile extends JPanel {
 		lblNewLabel_5.setBounds(200, 600, 300, 28);
 		panel.add(lblNewLabel_5);
 		
-		
 	
 		//Content
 		JLabel lblNewLabel_6 = new JLabel("Liew Kuan Yung");

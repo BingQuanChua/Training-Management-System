@@ -40,7 +40,7 @@ public class AddNewUser extends JPanel {
         lblUserInfo.setFont(new Font("Serif", Font.PLAIN, 40));
         lblUserInfo.setBounds(15, 0, 159, 52);
         frontPanel.add(lblUserInfo);
-    
+     
         
         //Separator//       
         separator_1.setBackground(Color.GRAY);
