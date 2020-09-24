@@ -7,7 +7,12 @@ import java.awt.event.*;
 
 public class AddNewUser extends JPanel {
     
-    AddNewUser() {
+	public AdminUI adminUI;
+	private int dialogButton_1;
+	private int dialogButton_2; 
+	
+    AddNewUser(AdminUI adminUI) {
+    	this.adminUI = adminUI;
     	setBackground(new Color(255, 255, 200));
     	
     	
@@ -20,7 +25,21 @@ public class AddNewUser extends JPanel {
         JCheckBox trainerBox = new JCheckBox("New Trainer", true);
         JCheckBox traineeBox = new JCheckBox("New Trainee", true);
         JButton addButton = new JButton("Add");
+        addButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
+    			if(dialogButton_1 == JOptionPane.YES_OPTION) {
+    				dialogButton_2 = JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    				adminUI.home();
+    			}
+        	}
+        });
         JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		adminUI.home();
+        	}
+        });
         JLabel lblUserID = new JLabel("UserID");
         JLabel lblPassword = new JLabel("Password\r\n");
         JPanel NavPanel = new JPanel();

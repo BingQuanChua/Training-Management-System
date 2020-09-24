@@ -73,7 +73,7 @@ public class AdminUI extends JFrame {
 		menus = new JPanel(); // Left panel that store all submenu
 		panelBody = new JPanel(); // Right root panel
 		
-		addNewUser = new AddNewUser();
+		addNewUser = new AddNewUser(this);
 		allTrainerList = new AllTrainerList();
 		allTraineeList = new AllTraineeList();
 		allTrainingList = new AllTrainingList();
@@ -92,7 +92,7 @@ public class AdminUI extends JFrame {
         panelMenuHeader = new JPanel(); //Left header panel for profile
         profileIcon = new Icon();		//Set Icon in button
       
-        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setBackground(new Color(255, 218, 185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
@@ -166,18 +166,18 @@ public class AdminUI extends JFrame {
         		.addGroup(panelHeaderLayout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-        			.addGap(1404)
-        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(39, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 1413, Short.MAX_VALUE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
         	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(panelHeaderLayout.createSequentialGroup()
-        					.addGap(80)
-        					.addComponent(signOutButton, GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+        					.addContainerGap()
+        					.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         			.addContainerGap())
         );
         panelHeader.setLayout(panelHeaderLayout);
@@ -290,7 +290,7 @@ public class AdminUI extends JFrame {
 	}
 	
 	// Setting the panelBody (Home menu)
-    private void home() {
+    public void home() {
     	panelBody.removeAll();
     	panelBody.add(icon);
         panelBody.repaint();
