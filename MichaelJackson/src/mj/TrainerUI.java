@@ -44,11 +44,6 @@ public class TrainerUI extends JFrame {
     private SubMenu subMenuTP;
     private Icon icon;
     
-    // for screenshots
-    // private TrainingMaterialDetails trainingList; // just a name :P
-    // private TrainingRequestList trainingList;
-    // private TrainingTraineeList trainingList;
-    
     //Profile
     private JPanel panelMenuHeader;
     private JButton profileButton;
@@ -73,32 +68,23 @@ public class TrainerUI extends JFrame {
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
         
-        // for normal program
+        // list of assigned training 
         trainingList = new List();
-        //
-        // for update material screenshot
-        // trainingList = new TrainingMaterialDetails("Python Advance Training Course"); 
-        // 
-        // for training request screenshot
-        // trainingList = new TrainingRequestList();
-        //
-        // for list of trainees screenshot
-        //trainingList = new TrainingTraineeList(); 
         subMenuMTC = new SubMenu("Manage Training Course", trainingList);
         // dummy data for trainingList
         trainingList.addItem(new Training("Python Advance Training Course"));
         trainingList.addItem(new Training("Software Engineering with Java"));
         trainingList.addItem(new Training("Introduction to OOPDS"));
-        //////
+        
+        // list of training progress
         trainingProgressList = new List();
         subMenuTP = new SubMenu("Training Progress", trainingProgressList);
         // dummy data for trainingProgressList
         trainingProgressList.addItem(new TrainingProgress("Python Advance Training Course"));
         trainingProgressList.addItem(new TrainingProgress("Software Engineering with Java"));
         trainingProgressList.addItem(new TrainingProgress("Introduction to OOPDS"));
-        //////
-        icon = new Icon();
 
+        icon = new Icon();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         //Top header panel
@@ -112,7 +98,7 @@ public class TrainerUI extends JFrame {
         panelMenuHeader = new JPanel(); //Left header panel for profile
         profileIcon = new Icon();		//Set Icon in button
       
-        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setBackground(new Color(255,218,185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
@@ -237,6 +223,19 @@ public class TrainerUI extends JFrame {
         setLocationRelativeTo(null);
     }
 	
+	public List getTrainingList() {
+		return trainingList;
+	}
+	
+	public List getTrainingProgressList() {
+		return trainingProgressList;
+	}
+	
+	public JPanel getPanelBody() {
+		return panelBody;
+	}
+	
+	
 	// This method is called from within the constructor to initialize the form.
 	private void trainerUI() {
 		MenuItem menuMTC = new MenuItem(" -- Manage Training Course", new ActionListener() {
@@ -277,7 +276,7 @@ public class TrainerUI extends JFrame {
     }
     
     // Setting the panelBody (Home menu)
-    private void home() {
+    public void home() {
     	panelBody.removeAll();
     	panelBody.add(icon);
         panelBody.repaint();

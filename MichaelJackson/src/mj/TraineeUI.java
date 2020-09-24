@@ -98,7 +98,7 @@ public class TraineeUI extends JFrame {
         panelMenuHeader = new JPanel(); //Left header panel for profile
         profileIcon = new Icon();		//Set Icon in button
       
-        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setBackground(new Color(255,218,185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));

@@ -1,4 +1,4 @@
-package mj;
+	package mj;
 
 import java.awt.Color;
 import java.awt.Dimension;

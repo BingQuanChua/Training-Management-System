@@ -22,12 +22,12 @@ public class List extends JPanel {
 		add(list);
 	}
 	
+	// adding a new JPanel to the list
 	public void addItem(JPanel item) {
 		listOfItems.add(item);
 		list.add(item);
 		list.revalidate();
 	}
-	
 	
 	// for clearing the JPanel only, listOfItems is untouched
 	public void clearAll() {
@@ -36,6 +36,9 @@ public class List extends JPanel {
 		list.revalidate();
 	}
 	
-	
+	// getting an item from the list
+	public JPanel getItem(int i) {
+		return listOfItems.get(i);
+	}
 	
 }
