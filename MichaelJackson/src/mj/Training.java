@@ -37,10 +37,12 @@ public class Training extends JPanel {
 	private String description;
 	private boolean isTextAreaEditable = false;
 	
+    private TrainingRequestList trainingRequestList;
+    private TrainingTraineeList trainingTraineeList;
+    private TrainingMaterialDetails trainingMaterialDetails; 
+	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
-	
-	private TrainingMaterialDetails trainingMaterial;
 	
 	public Training(String trainingName) {
 		
@@ -48,7 +50,10 @@ public class Training extends JPanel {
 		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
 		
-		trainingMaterial = new TrainingMaterialDetails(trainingName);
+		// for dummy program
+        trainingMaterialDetails = new TrainingMaterialDetails(trainingName); 
+        trainingRequestList = new TrainingRequestList();
+        trainingTraineeList = new TrainingTraineeList(); 
 		
 		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
@@ -144,8 +149,20 @@ public class Training extends JPanel {
 
 	}
 	
-	private String getFeedbackFormLink() {
+	public String getFeedbackFormLink() {
 		return feedbackFormLink;
+	}
+	
+	public TrainingRequestList getTrainingRequestList() {
+		return trainingRequestList;
+	}
+	
+	public TrainingTraineeList getTrainingTraineeList() {
+		return trainingTraineeList;
+	}
+	
+	public TrainingMaterialDetails getTrainingMaterialDetails() {
+		return trainingMaterialDetails;
 	}
 	
 	private void showMenu() {
@@ -178,4 +195,17 @@ public class Training extends JPanel {
         } catch (Exception e) {
         }
     }
+
+	// more to come above
+	public JButton getRequestButton() {
+		return requestButton;
+	}
+	
+	public JButton getTraineeListButton() {
+		return traineeListButton;
+	}
+	
+	public JButton getUpdateButton() {
+		return updateButton;
+	}
 }

@@ -10,7 +10,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 3;
+		int loginRole = 1;
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
@@ -60,6 +60,7 @@ public class Main {
 			break;
 		case 2:
 			trainerUI = new TrainerUI();
+			// new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:

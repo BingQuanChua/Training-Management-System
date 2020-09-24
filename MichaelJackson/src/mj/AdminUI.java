@@ -73,7 +73,7 @@ public class AdminUI extends JFrame {
 		menus = new JPanel(); // Left panel that store all submenu
 		panelBody = new JPanel(); // Right root panel
 		
-		addNewUser = new AddNewUser();
+		addNewUser = new AddNewUser(this);
 		allTrainerList = new AllTrainerList();
 		allTraineeList = new AllTraineeList();
 		allTrainingList = new AllTrainingList();
@@ -92,7 +92,7 @@ public class AdminUI extends JFrame {
         panelMenuHeader = new JPanel(); //Left header panel for profile
         profileIcon = new Icon();		//Set Icon in button
       
-        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setBackground(new Color(255, 218, 185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
@@ -113,7 +113,7 @@ public class AdminUI extends JFrame {
         profileButton.setBackground(null);
         accountSettingButton = new JButton("account setting");
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        accountSettingButton.setBackground(Color.WHITE);
+        accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
@@ -149,7 +149,7 @@ public class AdminUI extends JFrame {
         
         // Sign out button in the top header panel
         signOutButton = new JButton("Sign Out");
-        signOutButton.setForeground(Color.WHITE);
+        // signOutButton.setForeground(Color.WHITE);
         signOutButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		// Need to handle this later
@@ -166,19 +166,19 @@ public class AdminUI extends JFrame {
         		.addGroup(panelHeaderLayout.createSequentialGroup()
         			.addContainerGap()
         			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(37))
+        			.addPreferredGap(ComponentPlacement.RELATED, 1413, Short.MAX_VALUE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
         	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(panelHeaderLayout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         			.addContainerGap())
-        		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addContainerGap(93, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(24))
         );
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
@@ -290,7 +290,7 @@ public class AdminUI extends JFrame {
 	}
 	
 	// Setting the panelBody (Home menu)
-    private void home() {
+    public void home() {
     	panelBody.removeAll();
     	panelBody.add(icon);
         panelBody.repaint();

@@ -34,9 +34,12 @@ public class TraineeUI extends JFrame {
     private JButton signOutButton;
     private List availableTrainingList;
     private SubMenu subMenuATC;
-    private List enrolledTrainingList;
+    // private List enrolledTrainingList;
     private SubMenu subMenuETC;
     private Icon icon;
+    
+    // for screenshot
+    private EnrolledTrainingDetails enrolledTrainingList;
     
     //Profile
     private JPanel panelMenuHeader;
@@ -73,12 +76,12 @@ public class TraineeUI extends JFrame {
         availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
 		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
         //////
-        enrolledTrainingList = new List(); //
+        enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
         subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
         // dummy data for trainingList
-        enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
-        enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
-		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
+        // enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
+        // enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
+		// enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
         icon = new Icon();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,7 +98,7 @@ public class TraineeUI extends JFrame {
         panelMenuHeader = new JPanel(); //Left header panel for profile
         profileIcon = new Icon();		//Set Icon in button
       
-        panelMenuHeader.setBackground(new Color(233, 150, 122)); //
+        panelMenuHeader.setBackground(new Color(255,218,185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
@@ -116,7 +119,7 @@ public class TraineeUI extends JFrame {
         profileButton.setBackground(null);
         accountSettingButton = new JButton("account setting");
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        accountSettingButton.setBackground(Color.WHITE);
+        accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
@@ -152,7 +155,7 @@ public class TraineeUI extends JFrame {
         
         // Sign out button in the top header panel
         signOutButton = new JButton("Sign Out");
-        signOutButton.setForeground(Color.WHITE);
+        // signOutButton.setForeground(Color.WHITE);
         signOutButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		// Need to handle this later
@@ -164,23 +167,23 @@ public class TraineeUI extends JFrame {
         
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
-        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(37))
+            	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+            		.addGroup(panelHeaderLayout.createSequentialGroup()
+            			.addContainerGap()
+            			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+            			.addGap(1404)
+            			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+            			.addContainerGap(39, Short.MAX_VALUE))
         );
         panelHeaderLayout.setVerticalGroup(
-        	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        			.addContainerGap())
-        		.addGroup(panelHeaderLayout.createSequentialGroup()
-        			.addContainerGap(93, Short.MAX_VALUE)
-        			.addComponent(signOutButton)
-        			.addGap(24))
+            	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+            		.addGroup(panelHeaderLayout.createSequentialGroup()
+            			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+            				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            				.addGroup(panelHeaderLayout.createSequentialGroup()
+            					.addGap(80)
+            					.addComponent(signOutButton, GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+            			.addContainerGap())
         );
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
