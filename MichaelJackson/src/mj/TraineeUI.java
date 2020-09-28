@@ -32,9 +32,9 @@ public class TraineeUI extends JFrame {
     private JPanel panelMenu;
     private JButton logoButton;
     private JButton signOutButton;
-    private List availableTrainingList;
+    private ListPanel availableTrainingList;
     private SubMenu subMenuATC;
-    private List enrolledTrainingList;
+    private ListPanel enrolledTrainingList;
     private SubMenu subMenuETC;
     private Icon icon;
     
@@ -69,14 +69,14 @@ public class TraineeUI extends JFrame {
         panelBody = new JPanel();	//Right root panel
         
         
-        availableTrainingList = new List();
+        availableTrainingList = new ListPanel();
         subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
         // dummy data for trainingList
         availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
         availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
 		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
         //////
-		enrolledTrainingList = new List();
+		enrolledTrainingList = new ListPanel();
         // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
         subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
         // dummy data for trainingList

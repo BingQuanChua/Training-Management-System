@@ -38,9 +38,9 @@ public class TrainerUI extends JFrame {
     private JButton logoButton;
     private JButton signOutButton;
     
-    private List trainingList;
+    private ListPanel trainingList;
     private SubMenu subMenuMTC;
-    private List trainingProgressList;
+    private ListPanel trainingProgressList;
     private SubMenu subMenuTP;
     private Icon icon;
     
@@ -69,7 +69,7 @@ public class TrainerUI extends JFrame {
         panelBody = new JPanel();	//Right root panel
         
         // list of assigned training 
-        trainingList = new List();
+        trainingList = new ListPanel();
         subMenuMTC = new SubMenu("Manage Training Course", trainingList);
         // dummy data for trainingList
         trainingList.addItem(new Training("Python Advance Training Course"));
@@ -77,7 +77,7 @@ public class TrainerUI extends JFrame {
         trainingList.addItem(new Training("Introduction to OOPDS"));
         
         // list of training progress
-        trainingProgressList = new List();
+        trainingProgressList = new ListPanel();
         subMenuTP = new SubMenu("Training Progress", trainingProgressList);
         // dummy data for trainingProgressList
         trainingProgressList.addItem(new TrainingProgress("Python Advance Training Course"));
@@ -223,11 +223,11 @@ public class TrainerUI extends JFrame {
         setLocationRelativeTo(null);
     }
 	
-	public List getTrainingList() {
+	public ListPanel getTrainingList() {
 		return trainingList;
 	}
 	
-	public List getTrainingProgressList() {
+	public ListPanel getTrainingProgressList() {
 		return trainingProgressList;
 	}
 	

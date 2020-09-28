@@ -20,8 +20,9 @@ import java.awt.Color;
 public class Report extends JPanel {
 
 	/**
-	 * Show all the training reports 
+	 * 
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	JPanel list = new JPanel();
 	

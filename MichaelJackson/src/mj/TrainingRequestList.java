@@ -20,7 +20,7 @@ public class TrainingRequestList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private List requestList;
+	private ListPanel requestList;
 	
 	public TrainingRequestList() {
 		setBackground(new Color(255, 255, 200));
@@ -56,7 +56,7 @@ public class TrainingRequestList extends JPanel {
         separator_1.setBackground(Color.LIGHT_GRAY);
         panel.add(separator_1);
         
-        requestList = new List();
+        requestList = new ListPanel();
 		requestList.setBackground(Color.WHITE);
 		// dummy data input //
 		requestList.addItem(new TrainingRequest("Norman Reedus", 1));

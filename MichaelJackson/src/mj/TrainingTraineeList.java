@@ -16,7 +16,7 @@ public class TrainingTraineeList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-private List traineeList;
+private ListPanel traineeList;
 	
 	public TrainingTraineeList() {
 		setBackground(new Color(255, 255, 200));
@@ -52,7 +52,7 @@ private List traineeList;
         separator_1.setBackground(Color.LIGHT_GRAY);
         panel.add(separator_1);
         
-        traineeList = new List();
+        traineeList = new ListPanel();
         traineeList.setBackground(Color.WHITE);
         // dummy data input //
         traineeList.addItem(new ManageUser("Norman Reedus", 1));

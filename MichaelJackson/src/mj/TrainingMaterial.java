@@ -86,6 +86,9 @@ public class TrainingMaterial extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this material?", "Delete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
 				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 1) {
+					
+				}
 			}
 		});
 		deleteButton.setBounds(745, 30, 50, 55);
@@ -103,6 +106,10 @@ public class TrainingMaterial extends JPanel {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public JButton getDeleteButton() {
+		return deleteButton;
 	}
 
 }

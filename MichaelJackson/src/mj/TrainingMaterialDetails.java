@@ -22,6 +22,8 @@ public class TrainingMaterialDetails extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	private JButton addNewMaterialButton;
+	private ListPanel trainingMaterialList;
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
@@ -73,28 +75,17 @@ public class TrainingMaterialDetails extends JPanel {
 		label2.setBounds(100, 310, 800, 50);
 		upperPanel.add(label2);
 		
-		JButton addNewMaterialButton = new JButton("+ Add New Material");
+		addNewMaterialButton = new JButton("+ Add New Material");
 		addNewMaterialButton.setFont(heading3);
 		addNewMaterialButton.setBounds(100, 360, 800, 80);
-		addNewMaterialButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		
 		upperPanel.add(addNewMaterialButton);
 		////// end of upperPanel creation //////
 		
 		// creating a list of materials
-		////// dummy list creation //////
-		List trainingMaterialList = new List(); 
+		trainingMaterialList = new ListPanel(); 
 		trainingMaterialList.setBackground(new Color(255,255,200));
 		trainingMaterialList.addItem(new TrainingMaterial()); 
-		trainingMaterialList.addItem(new TrainingMaterial());
-		trainingMaterialList.addItem(new TrainingMaterial());
-		trainingMaterialList.addItem(new TrainingMaterial());
-		trainingMaterialList.addItem(new TrainingMaterial());
-		trainingMaterialList.addItem(new TrainingMaterial());
-		trainingMaterialList.addItem(new TrainingMaterial());
 		////// end of list creation //////
 			
 		// adding both panels into this panel
@@ -112,5 +103,13 @@ public class TrainingMaterialDetails extends JPanel {
 		panel.add(trainingMaterialList, gbc_trainingMaterialList);
 		
 		add(panel);
+	}
+	
+	public JButton getAddNewMaterialButton() {
+		return addNewMaterialButton;
+	}
+	
+	public ListPanel getTrainingMaterialList() {
+		return trainingMaterialList;
 	}
 }

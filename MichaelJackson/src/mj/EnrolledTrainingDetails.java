@@ -102,7 +102,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		
 		// creating a list of assigned materials
 		////// dummy list creation //////
-		List trainingMaterialList = new List();
+		ListPanel trainingMaterialList = new ListPanel();
 		trainingMaterialList.setBackground(new Color(255, 255, 200));
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());

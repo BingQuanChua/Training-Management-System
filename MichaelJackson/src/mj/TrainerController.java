@@ -19,20 +19,21 @@ public class TrainerController {
 	}
 	
 	public void setManageTrainingCourseListener() {
-		List temp = trainerUI.getTrainingList();
-		// will change
+		ListPanel temp = trainerUI.getTrainingList();
+		// will change, suppose to loop data from database
 		// items here are Training
 		JPanel tempTraining = temp.getItem(0);
 		tempTrainingMaterialDetails = ((Training) tempTraining).getTrainingMaterialDetails();
 		tempRequestList = ((Training) tempTraining).getTrainingRequestList();
 		tempTraineeList = ((Training) tempTraining).getTrainingTraineeList();
 		((Training) tempTraining).getUpdateButton().addActionListener(updateButtonListener);
+		tempTrainingMaterialDetails.getAddNewMaterialButton().addActionListener(addNewTrainingMaterialButtonListener);
 		((Training) tempTraining).getRequestButton().addActionListener(requestButtonListener);
 		((Training) tempTraining).getTraineeListButton().addActionListener(traineeListButtonListener);
 	}
 	
 	public void setTrainingProgressListener() {
-		
+		// should allow trainer to view trainee profile
 	}
 	
 	ActionListener updateButtonListener = new ActionListener() {
@@ -62,6 +63,15 @@ public class TrainerController {
 			trainerUI.getPanelBody().add(tempTraineeList);
 			trainerUI.getPanelBody().repaint();
 			trainerUI.getPanelBody().revalidate();
+		}
+	};
+	
+	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			tempTrainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
+			tempTrainingMaterialDetails.getTrainingMaterialList().repaint();
+			tempTrainingMaterialDetails.getTrainingMaterialList().revalidate();
 		}
 	};
 }
