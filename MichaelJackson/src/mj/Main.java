@@ -1,5 +1,10 @@
 package mj;
 
+import View.Login;
+import ViewAdmin.AdminUI;
+import ViewTrainee.TraineeUI;
+import ViewTrainer.TrainerUI;
+
 public class Main {
 
 	private static Login login;
