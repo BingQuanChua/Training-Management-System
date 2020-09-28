@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import View.ListPanel;
-import ViewTrainer.TrainerUI;
-import ViewTrainer.Training;
-import ViewTrainer.TrainingMaterial;
-import ViewTrainer.TrainingMaterialDetails;
-import ViewTrainer.TrainingRequestList;
-import ViewTrainer.TrainingTraineeList;
+import view.ListPanel;
+import viewTrainer.TrainerUI;
+import viewTrainer.Training;
+import viewTrainer.TrainingMaterial;
+import viewTrainer.TrainingMaterialDetails;
+import viewTrainer.TrainingRequestList;
+import viewTrainer.TrainingTraineeList;
 
 public class TrainerController {
 	private TrainerUI trainerUI;

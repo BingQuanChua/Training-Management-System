@@ -1,9 +1,9 @@
 package mj;
 
-import View.Login;
-import ViewAdmin.AdminUI;
-import ViewTrainee.TraineeUI;
-import ViewTrainer.TrainerUI;
+import view.Login;
+import viewAdmin.AdminUI;
+import viewTrainee.TraineeUI;
+import viewTrainer.TrainerUI;
 
 public class Main {
 
@@ -15,7 +15,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 1;
+		int loginRole = 3;
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
@@ -52,7 +52,7 @@ public class Main {
 			java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
+		}/**/
 		new Main();
 	}
 

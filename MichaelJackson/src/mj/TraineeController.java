@@ -1,6 +1,6 @@
 package mj;
 
-import ViewTrainee.TraineeUI;
+import viewTrainee.TraineeUI;
 
 public class TraineeController {
 	
