@@ -18,11 +18,13 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 
 public class AllTrainingList extends JPanel {
-
+	
+	public AdminUI adminUI;
 	/**
 	 * Showing a list of all training
 	 */
-	public AllTrainingList() {
+	public AllTrainingList(AdminUI adminUI) {
+		this.adminUI = adminUI;
 		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 1080));	
 		
@@ -43,7 +45,7 @@ public class AllTrainingList extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				list.removeAll();
-				list.add(new AddNewCourse());
+				list.add(new AddNewCourse(adminUI));
 		        list.repaint();
 				list.revalidate();
 		
@@ -58,7 +60,7 @@ public class AllTrainingList extends JPanel {
 		
 		list.add(btnAdd, gbc_r0);
 		
-		ManageTraining r1 = new ManageTraining("Python Advance Training Course",list);
+		ManageTraining r1 = new ManageTraining("Python Advance Training Course",list,adminUI);
 		GridBagConstraints gbc_r1 = new GridBagConstraints();
 		gbc_r1.anchor = GridBagConstraints.CENTER;
 		gbc_r1.insets = new Insets(0, 0, 5, 0);
@@ -66,7 +68,7 @@ public class AllTrainingList extends JPanel {
 		gbc_r1.gridy = 1;
 		list.add(r1, gbc_r1);
 		
-		ManageTraining r2 = new ManageTraining("Software Engineering with Java",list);
+		ManageTraining r2 = new ManageTraining("Software Engineering with Java",list,adminUI);
 		GridBagConstraints gbc_r2 = new GridBagConstraints();	
 		gbc_r2.anchor = GridBagConstraints.NORTHWEST;
 		gbc_r2.insets = new Insets(0, 0, 5, 0);
@@ -74,7 +76,7 @@ public class AllTrainingList extends JPanel {
 		gbc_r2.gridy = 2;
 		list.add(r2, gbc_r2);
 		
-		ManageTraining r3 = new ManageTraining("Introduction to OOPDS",list);
+		ManageTraining r3 = new ManageTraining("Introduction to OOPDS",list,adminUI);
 		GridBagConstraints gbc_r3 = new GridBagConstraints();
 		gbc_r3.anchor = GridBagConstraints.NORTHWEST;
 		gbc_r3.gridx = 0;

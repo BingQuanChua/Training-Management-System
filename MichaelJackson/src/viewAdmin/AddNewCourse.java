@@ -6,14 +6,18 @@ import java.awt.event.*;
 
 
 public class AddNewCourse extends JPanel {
+	public AdminUI adminUI;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
 	private JTextField txtCourseID;
+	private int dialogButton_1;
+	private int dialogButton_2; 
     
-    AddNewCourse() {
-    	setBackground(new Color(255, 255, 200));
-    	        
+    AddNewCourse(AdminUI adminUI) {
+    	
+    	this.adminUI = adminUI;
+    	setBackground(new Color(255, 255, 200));        
     	JPanel addNewCourse = new JPanel();
         JPanel frontPanel =  new JPanel();
         JPanel NavPanel = new JPanel();
@@ -159,6 +163,15 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(separator_4);
         
         JButton addButton = new JButton("Add");
+        addButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to add the training course?","WARNING",JOptionPane.YES_NO_OPTION);
+    			if(dialogButton_1 == JOptionPane.YES_OPTION) {
+    				dialogButton_2 = JOptionPane.showConfirmDialog (null, "New training course has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    				adminUI.home();
+    			}
+        	}
+        });
         addButton.setForeground(Color.WHITE);
         addButton.setFont(new Font("Serif", Font.PLAIN, 20));
         addButton.setBackground(new Color(205,133,63));
@@ -169,7 +182,7 @@ public class AddNewCourse extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		removeAll();
-				add(new AllTrainingList());
+				add(new AllTrainingList(adminUI));
 		        repaint();
 				revalidate();
         	}

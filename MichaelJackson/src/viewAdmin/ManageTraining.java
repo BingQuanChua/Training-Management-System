@@ -12,7 +12,8 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 public class ManageTraining extends JPanel {
-
+	
+	public AdminUI adminUI;
 	/**
 	 * Manage all training courses
 	 */
@@ -22,8 +23,8 @@ public class ManageTraining extends JPanel {
 	/**
 	 * 
 	 */
-	public ManageTraining(String name,JPanel list) {
-
+	public ManageTraining(String name,JPanel list,AdminUI adminUI) {
+		this.adminUI = adminUI;
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		
@@ -39,7 +40,7 @@ public class ManageTraining extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				list.removeAll();
-				list.add(new EditCourse());
+				list.add(new EditCourse(adminUI));
 		        list.repaint();
 				list.revalidate();
 		
