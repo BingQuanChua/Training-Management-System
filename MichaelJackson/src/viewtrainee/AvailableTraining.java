@@ -15,9 +15,10 @@ import java.awt.event.MouseEvent;
 public class AvailableTraining extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * 
 	 */
-	
+	private static final long serialVersionUID = 1L;
+
 	private JButton trainingButton;
 	private JButton enrollButton;
 	private JTextPane textPane;
@@ -39,7 +40,7 @@ public class AvailableTraining extends JPanel {
 		trainingButton = new JButton(trainingName);
 		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.setFont(heading2);
-		trainingButton.setBounds(0, -2, 700, 70);
+		trainingButton.setBounds(0, 0, 700, 70);
 		add(trainingButton);
 		
 		enrollButton = new JButton("Enroll");
@@ -114,5 +115,9 @@ public class AvailableTraining extends JPanel {
             Thread.sleep(20);
         } catch (Exception e) {
         }
+    }
+    
+    public JButton getEnrollButton() {
+    	return enrollButton;
     }
 }

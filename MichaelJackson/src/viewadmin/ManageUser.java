@@ -17,28 +17,36 @@ public class ManageUser extends JPanel {
 	 * Manage all users in the system
 	 */
 	private static final long serialVersionUID = 1L;
+	private JLabel numberLabel;
+	private JButton profileButton;
+	private JButton deleteButton;
+	
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+	
 
 	public ManageUser(String name, int number) {
 
 		setPreferredSize(new Dimension(1070, 60));
 		setBackground(Color.WHITE);
 		setLayout(null);
-
-		JButton deleteButton = new JButton("X");
+		
+		numberLabel = new JLabel();
+		numberLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		numberLabel.setFont(f1);
+		numberLabel.setBounds(12, 6, 56, 50);
+		add(numberLabel);
+		numberLabel.setText(number+".");
+		
+		deleteButton = new JButton("X");
 		deleteButton.setFont(new Font("SansSerif", Font.PLAIN, 25));
 		deleteButton.setBackground(new Color(205,133,63));
 		deleteButton.setForeground(Color.WHITE);
 		deleteButton.setFocusPainted(false);
 		deleteButton.setBorder(null);
-		deleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		deleteButton.setBounds(639, 2, 52, 56);
 		add(deleteButton);
 
-		JButton profileButton = new JButton(name);
+		profileButton = new JButton(name);
 		profileButton.setForeground(Color.BLACK);
 		profileButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		profileButton.addActionListener(new ActionListener() {
@@ -51,13 +59,6 @@ public class ManageUser extends JPanel {
 		profileButton.setBounds(75, 1, 450, 58);
 		add(profileButton);
 		
-		JLabel label = new JLabel();
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(f1);
-		label.setBounds(12, 6, 56, 50);
-		add(label);
-		label.setText(number+".");
-		
 		JButton background = new JButton();
 		background.setForeground(Color.BLACK);
 		background.setEnabled(false);
@@ -67,4 +68,17 @@ public class ManageUser extends JPanel {
 		//////////// end of one single request ////////////
 
 	}
+	
+	public JLabel getNumberLabel() {
+		return numberLabel;
+	}
+	
+	public JButton getProfileButton() {
+		return profileButton;
+	}
+	
+	public JButton getDeleteButton() {
+		return deleteButton;
+	}
+	
 }
