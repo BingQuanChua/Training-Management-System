@@ -29,18 +29,19 @@ public class Main {
 			System.out.println("TMS model testing\n");
 			Scanner scan = new Scanner(System.in);
 			user = new User();
-			boolean status = true;
 			boolean condition = true;
 			while(condition) {
+				
+				System.out.print("Please input a new data:");
 				String input = scan.nextLine();
-				if(input == "q") {
-					break;
-				} else if(status) {
-					user.setName("tnr00001", input);
-					status = false;
+				
+				if(input == "q" || input == " ") {
+					condition = false;
+					
 				} else {
+					user.setName("tnr00001", input);
 					user.getUserProfile("tnr00001", 1);
-					status = true;
+					
 				}
 			}
 			
