@@ -27,8 +27,8 @@ public class TrainingMaterial extends JPanel {
 	private JButton editButton;
 	private JButton deleteButton;
 	
-	private String title;
-	private String description;
+	private String title = "Title";
+	private String description = "Material Description.";
 	private boolean isEditing = false;
 	
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
@@ -39,7 +39,7 @@ public class TrainingMaterial extends JPanel {
 		setLayout(null);
 		
 		titleField = new JTextField();
-		titleField.setText("Title");
+		titleField.setText(title);
 		titleField.setFont(heading4);
 		titleField.setBounds(5, 5, 635, 30);
 		add(titleField);
@@ -48,7 +48,7 @@ public class TrainingMaterial extends JPanel {
 		
 		txtrDescription = new JTextArea();
 		txtrDescription.setFont(heading4);
-		txtrDescription.setText("Description");
+		txtrDescription.setText(description);
 		txtrDescription.setBounds(5, 35, 635, 75);
 		JScrollPane scrollPane = new JScrollPane(txtrDescription);
 		scrollPane.setSize(635, 75);
@@ -58,10 +58,12 @@ public class TrainingMaterial extends JPanel {
 		txtrDescription.setLineWrap(true);
 		
 		editButton = new JButton("Edit");
-		editButton.setFont(heading4);;
-		editButton.addMouseListener(new MouseAdapter() {
+		editButton.setFont(heading4);
+		editButton.setBackground(new Color(205,133,63));
+		editButton.setForeground(Color.WHITE);
+		editButton.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				if(!isEditing) {
 					titleField.setEditable(true);
 					txtrDescription.setEditable(true);
@@ -80,15 +82,13 @@ public class TrainingMaterial extends JPanel {
 		add(editButton);
 		
 		deleteButton = new JButton("X");
-		deleteButton.setFont(heading4);
-		deleteButton.addMouseListener(new MouseAdapter() {
+		deleteButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 25));
+		deleteButton.setBackground(new Color(205,133,63));
+		deleteButton.setForeground(Color.WHITE);
+		deleteButton.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this material?", "Delete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 1) {
-					
-				}
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		deleteButton.setBounds(745, 30, 50, 55);

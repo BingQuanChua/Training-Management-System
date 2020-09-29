@@ -123,6 +123,7 @@ public class UserProfile extends JPanel {
 		JButton btnNewButton = new JButton("Edit");
 		btnNewButton.setBounds(650, 727, 104, 31);
 		panel.add(btnNewButton);
+		btnNewButton.setVisible(false);
 		JButton btnNewButton_1 = new JButton("Back");
 		btnNewButton_1.setBounds(350, 727, 120, 31);
 		panel.add(btnNewButton_1);

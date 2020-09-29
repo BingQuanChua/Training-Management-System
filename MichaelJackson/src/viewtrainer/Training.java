@@ -79,6 +79,7 @@ public class Training extends JPanel {
 		
 		editButton = new JButton("Edit");
 		editButton.setFont(heading3);
+		editButton.setBackground(new Color(205,133,63));
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!isTextAreaEditable) {

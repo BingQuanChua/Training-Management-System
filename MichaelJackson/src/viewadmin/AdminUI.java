@@ -83,7 +83,7 @@ public class AdminUI extends JFrame {
 		addNewUser = new AddNewUser(this);
 		allTrainerList = new AllTrainerList();
 		allTraineeList = new AllTraineeList();
-		allTrainingList = new AllTrainingList();
+		allTrainingList = new AllTrainingList(this);
 		icon = new Icon();
 		icon.setBackground(new Color(255, 255, 200));
 

@@ -126,53 +126,47 @@ public class Login extends JFrame {
 
 		
 	}
-	
-public  void SQLconnector(String username, char[] password) {
-		
-		
-		String pass = new String(password);
-		AdminUI adminUI = new AdminUI();
-		TrainerUI trainerUI = new TrainerUI();
-		TraineeUI traineeUI = new TraineeUI();
-	
-		
-//		System.out.println(pass);
-	try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
-		Statement state =connection.createStatement();
-		String query = "select * from user_login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
-		ResultSet result = state.executeQuery(query);
-		if(result.next())
-		{
-			//JOptionPane.showMessageDialog(null, "'"+result.getString("user_Full_name")+"' Logged In");
-			if(result.getInt("user_role") == 1) {
-				adminUI.setVisible(true);
-			}
-			if(result.getInt("user_role") == 2) {
-				trainerUI.setVisible(true);
-			}
-			if(result.getInt("user_role") == 3) {
-				traineeUI.setVisible(true);
-			}
-		
 
+	public void SQLconnector(String username, char[] password) {
+		
+		
+			String pass = new String(password);
+			AdminUI adminUI = new AdminUI();
+			TrainerUI trainerUI = new TrainerUI();
+			TraineeUI traineeUI = new TraineeUI();
+		
+			
+	//		System.out.println(pass);
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
+			Statement state =connection.createStatement();
+			String query = "select * from user_login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
+			ResultSet result = state.executeQuery(query);
+			if(result.next())
+			{
+				//JOptionPane.showMessageDialog(null, "'"+result.getString("user_Full_name")+"' Logged In");
+				if(result.getInt("user_role") == 1) {
+					adminUI.setVisible(true);
+				}
+				if(result.getInt("user_role") == 2) {
+					trainerUI.setVisible(true);
+				}
+				if(result.getInt("user_role") == 3) {
+					traineeUI.setVisible(true);
+				}
+			
+	
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Invalid User");
+			}
+		} catch(Exception e) {
+			System.out.println(e);
 		}
-		else {
-			JOptionPane.showMessageDialog(null, "Invalid Options");
-		}
-	}
-	catch(Exception e)
-	{
-		System.out.println(e);
 	}
 	
-	
-	}
-
-	/*
 	public static void main(String[] args) {
 		new Login();
-	}/**/
-
+	}
 }

@@ -19,11 +19,14 @@ public class TrainingRequest extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private JLabel numberLabel;
+	private JButton profileButton;
+	private JButton acceptButton;
+	private JButton rejectButton;
+	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 22);
 	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 20);
-	/**
-	 * 
-	 */
+	
 	public TrainingRequest(String name, int number) {
 		
 		setPreferredSize(new Dimension(800, 60));
@@ -32,14 +35,14 @@ public class TrainingRequest extends JPanel {
 		
 		//////////// one single request ////////////
 		// will create an individual class later
-		JLabel label = new JLabel();
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(f2);
-		label.setBounds(12, 6, 56, 50);
-		add(label);
-		label.setText(number+".");
+		numberLabel = new JLabel();
+		numberLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		numberLabel.setFont(f2);
+		numberLabel.setBounds(12, 6, 56, 50);
+		add(numberLabel);
+		numberLabel.setText(number+".");
 				
-		JButton profileButton = new JButton(name);
+		profileButton = new JButton(name);
 		profileButton.setFont(f1);
 		profileButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,7 +54,7 @@ public class TrainingRequest extends JPanel {
 		profileButton.setBounds(75, 1, 450, 58);
 		add(profileButton);
 
-		JButton acceptButton = new JButton("Accept");
+		acceptButton = new JButton("Accept");
 		acceptButton.setFont(f2);
 		acceptButton.setBackground(new Color(205,133,63));
 		acceptButton.addActionListener(new ActionListener() {
@@ -61,7 +64,7 @@ public class TrainingRequest extends JPanel {
 		acceptButton.setBounds(537, 10, 120, 40);
 		add(acceptButton);
 		
-		JButton rejectButton = new JButton("Reject");
+		rejectButton = new JButton("Reject");
 		rejectButton.setFont(f2);
 		rejectButton.setBackground(new Color(205,133,63));
 		rejectButton.addActionListener(new ActionListener() {
@@ -76,6 +79,20 @@ public class TrainingRequest extends JPanel {
 		background.setBounds(0, 0, 800, 60);
 		add(background);
 		//////////// end of one single request ////////////
-
+	}
+	public JLabel getNumberLabel() {
+		return numberLabel;
+	}
+	
+	public JButton getProfileButton() {
+		return profileButton;
+	}
+	
+	public JButton getAcceptButton() {
+		return acceptButton;
+	}
+	
+	public JButton getRejectButton() {
+		return rejectButton;
 	}
 }

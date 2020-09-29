@@ -9,12 +9,14 @@ public class EditCourse extends JPanel{
 	/**
 	 * Showing page for editing training course
 	 */
+	public AdminUI adminUI;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
     
-    EditCourse() {
+    EditCourse(AdminUI adminUI) {
         
+    	this.adminUI = adminUI;
         JPanel frontPanel =  new JPanel();
         JPanel NavPanel = new JPanel();    
         
@@ -166,7 +168,7 @@ public class EditCourse extends JPanel{
         cancelButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		removeAll();
-				add(new AllTrainingList());
+				add(new AllTrainingList(adminUI));
 		        repaint();
 				revalidate();
         	}

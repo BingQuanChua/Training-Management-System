@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.net.URL;
 
+
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -27,8 +28,10 @@ public class Icon extends JPanel {
 		
 		JLabel iconLabel = new JLabel("");
 		try {
+
 			File iconPath = new File("src/images/icon.png");
 			Image originalIcon = ImageIO.read(iconPath);
+
         	Image icon = originalIcon.getScaledInstance(320, 320, Image.SCALE_DEFAULT);
         	iconLabel.setIcon(new ImageIcon(icon));
         }

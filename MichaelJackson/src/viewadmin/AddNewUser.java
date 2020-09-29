@@ -23,8 +23,9 @@ public class AddNewUser extends JPanel {
         JSeparator separator_2 = new JSeparator();
         JTextField userIDField = new JTextField(20);
         JTextField passwordField = new JTextField(20);
-        JCheckBox trainerBox = new JCheckBox("New Trainer", true);
-        JCheckBox traineeBox = new JCheckBox("New Trainee", true);
+        CheckboxGroup cbg = new CheckboxGroup();
+        Checkbox trainerBox = new Checkbox("New Trainer", cbg, false);
+        Checkbox traineeBox = new Checkbox("New Trainee", cbg, false);
         JButton addButton = new JButton("Add");
         addButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -113,20 +114,18 @@ public class AddNewUser extends JPanel {
         frontPanel.add(userIDField);
         frontPanel.add(passwordField);
         
-        //button  
-        trainerBox.setHorizontalAlignment(SwingConstants.CENTER);
+        //checkbox
         trainerBox.setBounds(227, 569, 300, 46);
         frontPanel.add(trainerBox);
-        trainerBox.setForeground(Color.BLACK);
-        trainerBox.setBackground(new Color(106, 90, 205));
-        trainerBox.setFont(f1);
+        trainerBox.setForeground(Color.WHITE);
+        trainerBox.setBackground(new Color(205,133,63));
+        trainerBox.setFont(new Font("Serif", Font.PLAIN, 20));
         
-        traineeBox.setHorizontalAlignment(SwingConstants.CENTER);
         traineeBox.setBounds(529, 569, 300, 46);
         frontPanel.add(traineeBox);
-        traineeBox.setBackground(new Color(106, 90, 205));
-        traineeBox.setForeground(Color.BLACK);
-        traineeBox.setFont(f1);
+        traineeBox.setBackground(new Color(205,133,63));
+        traineeBox.setForeground(Color.WHITE);
+        traineeBox.setFont(new Font("Serif", Font.PLAIN, 20));
             
         addButton.setBackground(new Color(205,133,63));
         addButton.setForeground(Color.WHITE);

@@ -12,18 +12,22 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 public class ManageTraining extends JPanel {
-
+	
+	public AdminUI adminUI;
 	/**
 	 * Manage all training courses
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private JButton trainingButton;
+	private JButton deleteButton;
+	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
 	/**
 	 * 
 	 */
-	public ManageTraining(String name,JPanel list) {
-
+	public ManageTraining(String name,JPanel list,AdminUI adminUI) {
+		this.adminUI = adminUI;
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		
@@ -31,7 +35,7 @@ public class ManageTraining extends JPanel {
 		// will create an individual class later
 		
 		
-		JButton trainingButton = new JButton(name);
+		trainingButton = new JButton(name);
 		trainingButton.setBounds(0, 0, 736, 70);
 		trainingButton.setPreferredSize(new Dimension(800, 70));
 		trainingButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
@@ -39,7 +43,7 @@ public class ManageTraining extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				list.removeAll();
-				list.add(new EditCourse());
+				list.add(new EditCourse(adminUI));
 		        list.repaint();
 				list.revalidate();
 		
@@ -47,7 +51,7 @@ public class ManageTraining extends JPanel {
 			
 		});
 		
-		JButton deleteButton = new JButton("X");
+		deleteButton = new JButton("X");
 		deleteButton.setFont(new Font("Dialog", Font.PLAIN, 25));
 		deleteButton.setBackground(new Color(205,133,63));
 		deleteButton.setForeground(Color.WHITE);
@@ -65,5 +69,13 @@ public class ManageTraining extends JPanel {
 		add(trainingButton);
 
 
+	}
+	
+	public JButton getTrainingButton() {
+		return trainingButton;
+	}
+	
+	public JButton getDeleteButton() {
+		return deleteButton;
 	}
 }
