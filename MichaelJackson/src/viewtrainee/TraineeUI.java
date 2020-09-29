@@ -1,25 +1,20 @@
-package viewTrainer;
+package viewtrainee;
 
-import java.awt.Color; 
-import java.awt.Component;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Component;
 
-import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.Icon;
@@ -28,28 +23,31 @@ import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
 
-public class TrainerUI extends JFrame {
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
-	/**
-	 * Trainer interface (currently extends JFrame, will change to JPanel later)
-	 */
+
+public class TraineeUI extends JFrame {
 	
-	private static final long serialVersionUID = 1L;
-	// private JPanel contentPane;
-	private JScrollPane jScrollPane1;
-	private JPanel menus;
+	// Variables declaration
+    private JScrollPane jScrollPane1;
+    private JPanel menus;
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
-    
     private JButton logoButton;
     private JButton signOutButton;
-    
-    private ListPanel trainingList;
-    private SubMenu subMenuMTC;
-    private ListPanel trainingProgressList;
-    private SubMenu subMenuTP;
+    private ListPanel availableTrainingList;
+    private SubMenu subMenuATC;
+    private ListPanel enrolledTrainingList;
+    private SubMenu subMenuETC;
     private Icon icon;
+    
+    // for screenshot
+    // private EnrolledTrainingDetails enrolledTrainingList;
     
     //Profile
     private JPanel panelMenuHeader;
@@ -57,17 +55,20 @@ public class TrainerUI extends JFrame {
     private JButton accountSettingButton;
     private Icon profileIcon;
     
-	Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
-
-	// Constructor
-	public TrainerUI() {
-		super("MJ Training Management System");
-		initComponents();
+    Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
+ 
+ 
+    //Constructor
+    public TraineeUI() {
+    	super("MJ Training Management System");
+        initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        trainerUI(); //Based on role		
-	}
-	
-	private void initComponents() {
+        traineeUI(); //Based on role
+    }
+    
+
+	// This method is called from within the constructor to initialize the form.
+    private void initComponents() {
 
         panelHeader = new JPanel();	//Top header panel
         panelMenu = new JPanel();	//Left root panel
@@ -75,31 +76,32 @@ public class TrainerUI extends JFrame {
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
         
-        // list of assigned training 
-        trainingList = new ListPanel();
-        subMenuMTC = new SubMenu("Manage Training Course", trainingList);
-        // dummy data for trainingList
-        trainingList.addItem(new Training("Python Advance Training Course"));
-        trainingList.addItem(new Training("Software Engineering with Java"));
-        trainingList.addItem(new Training("Introduction to OOPDS"));
         
-        // list of training progress
-        trainingProgressList = new ListPanel();
-        subMenuTP = new SubMenu("Training Progress", trainingProgressList);
-        // dummy data for trainingProgressList
-        trainingProgressList.addItem(new TrainingProgress("Python Advance Training Course"));
-        trainingProgressList.addItem(new TrainingProgress("Software Engineering with Java"));
-        trainingProgressList.addItem(new TrainingProgress("Introduction to OOPDS"));
-
+        availableTrainingList = new ListPanel();
+        subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
+        // dummy data for trainingList
+        availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
+        availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
+		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
+        //////
+		enrolledTrainingList = new ListPanel();
+        // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
+        subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
+        // dummy data for trainingList
+        enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
+        enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
+		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
         icon = new Icon();
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         //Top header panel
-        panelHeader.setBackground(new Color(233, 150, 122)); 
+        panelHeader.setBackground(new Color(233, 150, 122)); //Purple
         panelHeader.setPreferredSize(new Dimension(500, 120));
         
         
-        /**************************************************************
+
+		/**************************************************************
          * Profile (Show profile and profile setting)
          **************************************************************/
         panelMenuHeader = new JPanel(); //Left header panel for profile
@@ -113,7 +115,7 @@ public class TrainerUI extends JFrame {
         //Profile setting
         UserProfile profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
-        profileButton = new JButton("Trainer Profile");
+        profileButton = new JButton("Trainee Profile");
         profileButton.addActionListener(new ActionListener() { 
         	  public void actionPerformed(ActionEvent e) { 
         		  panelBody.removeAll();
@@ -131,13 +133,12 @@ public class TrainerUI extends JFrame {
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
         menus.add(panelMenuHeader);
-        /**************************************************************
-         * Profile 
+		/**************************************************************
+         * Profile
          **************************************************************/
         
         
-        
-        // Clickable logo in the top header panel
+        //Clickable logo in the top header panel
         logoButton = new JButton();
         logoButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -157,9 +158,8 @@ public class TrainerUI extends JFrame {
         	Image profileIcon = profIcon.getScaledInstance(75, 75, Image.SCALE_DEFAULT);
         	profileButton.setIcon(new ImageIcon(profileIcon));
         	/*******************************************************************************/
-        }
-        catch (Exception ex) {
-        	System.out.println("Trainer Image not found");
+        } catch (Exception ex) {
+        	System.out.println("Trainee Image not found");
         }
         
         // Sign out button in the top header panel
@@ -173,7 +173,7 @@ public class TrainerUI extends JFrame {
         });
         signOutButton.setBackground(null);
         signOutButton.setBorder(null);
-
+        
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
             	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
@@ -230,61 +230,49 @@ public class TrainerUI extends JFrame {
         setSize(new Dimension(871, 473));
         setLocationRelativeTo(null);
     }
-	
-	public ListPanel getTrainingList() {
-		return trainingList;
-	}
-	
-	public ListPanel getTrainingProgressList() {
-		return trainingProgressList;
-	}
-	
-	public JPanel getPanelBody() {
-		return panelBody;
-	}
-	
-	
-	// This method is called from within the constructor to initialize the form.
-	private void trainerUI() {
-		MenuItem menuMTC = new MenuItem(" -- Manage Training Course", new ActionListener() {
+   
+    // This method is called from within the constructor to initialize the form.
+    private void traineeUI() {
+    	
+        //  create subMenu Training
+        MenuItem menuMTC = new MenuItem(" -- Available Training Course", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(subMenuMTC);
+                panelBody.add(subMenuATC);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
         });
-        MenuItem menuTP = new MenuItem(" -- Training Progress", new ActionListener() {
+        MenuItem menuTP = new MenuItem(" -- Enrolled Training Course", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
             	panelBody.removeAll();
-                panelBody.add(subMenuTP);
+                panelBody.add(subMenuETC);
                 panelBody.repaint();
                 panelBody.revalidate();
             }
         });
-
+        
         MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
-        menuTraining.setBackground(new Color(250, 240, 230));
         addMenu(menuTraining);
         home(); //show home menu initially
-	} 
-	
-	// Add all subMenu into menus
-    private void addMenu(MenuItem menu) {
-        
-       menus.add(menu);
-       ArrayList<MenuItem> subMenu = menu.getSubMenu();
-       for (MenuItem m : subMenu) {
-           addMenu(m);
-       }
-        
+    }
+
+    // Add all subMenu into menus
+    private void addMenu(MenuItem... menu) {
+        for (int i = 0; i < menu.length; i++) {
+            menus.add(menu[i]);
+            ArrayList<MenuItem> subMenu = menu[i].getSubMenu();
+            for (MenuItem m : subMenu) {
+                addMenu(m);
+            }
+        }
         menus.revalidate();
     }
     
     // Setting the panelBody (Home menu)
-    public void home() {
+    private void home() {
     	panelBody.removeAll();
     	panelBody.add(icon);
         panelBody.repaint();

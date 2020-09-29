@@ -1,9 +1,13 @@
 package mj;
 
 import view.Login;
-import viewAdmin.AdminUI;
-import viewTrainee.TraineeUI;
-import viewTrainer.TrainerUI;
+import viewadmin.AdminUI;
+import viewtrainee.TraineeUI;
+import viewtrainer.TrainerUI;
+
+import java.util.Scanner;
+
+import model.*;
 
 public class Main {
 
@@ -11,15 +15,43 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
+	private User user;
 
 	public Main() {
 
 		login = new Login();
 		int loginRole = 3;
-		// login.setVisible(true);
+		login.setVisible(false);
+		
+		
+		/* Test Database */
+		try {
+			System.out.println("TMS model testing\n");
+			Scanner scan = new Scanner(System.in);
+			user = new User();
+			boolean status = true;
+			boolean condition = true;
+			while(condition) {
+				String input = scan.nextLine();
+				if(input == "q") {
+					break;
+				} else if(status) {
+					user.setName("tnr00001", input);
+					status = false;
+				} else {
+					user.getUserProfile("tnr00001", 1);
+					status = true;
+				}
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}/**/
+		
 		
 		// start showing the UI for admin/trainer/trainee
-		roleLogin(loginRole);
+		// roleLogin(loginRole);
 	}
 
 	
@@ -53,6 +85,7 @@ public class Main {
 			java.util.logging.Logger.getLogger(TrainerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 			java.util.logging.Logger.getLogger(TraineeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}/**/
+		
 		new Main();
 	}
 

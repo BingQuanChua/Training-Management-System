@@ -1,9 +1,9 @@
 package view;
 
 import mj.*;
-import viewAdmin.AdminUI;
-import viewTrainee.TraineeUI;
-import viewTrainer.TrainerUI;
+import viewadmin.AdminUI;
+import viewtrainee.TraineeUI;
+import viewtrainer.TrainerUI;
 
 import java.sql.*;
 import java.awt.Color;

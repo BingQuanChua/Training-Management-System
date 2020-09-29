@@ -1,4 +1,4 @@
-package viewTrainer;
+package viewtrainer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import view.ListPanel;
-import viewAdmin.ManageUser;
+import viewadmin.ManageUser;
 
 public class TrainingTraineeList extends JPanel {
 

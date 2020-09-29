@@ -1,4 +1,4 @@
-package viewTrainer;
+package viewtrainer;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;

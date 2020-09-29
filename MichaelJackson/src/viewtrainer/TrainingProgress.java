@@ -1,4 +1,4 @@
-package viewTrainer;
+package viewtrainer;
 import javax.swing.JPanel;
 import java.util.ArrayList;
 

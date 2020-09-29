@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import view.ListPanel;
-import viewTrainer.TrainerUI;
-import viewTrainer.Training;
-import viewTrainer.TrainingMaterial;
-import viewTrainer.TrainingMaterialDetails;
-import viewTrainer.TrainingRequestList;
-import viewTrainer.TrainingTraineeList;
+import viewtrainer.TrainerUI;
+import viewtrainer.Training;
+import viewtrainer.TrainingMaterial;
+import viewtrainer.TrainingMaterialDetails;
+import viewtrainer.TrainingRequestList;
+import viewtrainer.TrainingTraineeList;
 
 public class TrainerController {
 	private TrainerUI trainerUI;

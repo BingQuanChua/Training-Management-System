@@ -1,4 +1,4 @@
-package viewAdmin;
+package viewadmin;
 import javax.swing.*;
 import javax.swing.event.*;
 

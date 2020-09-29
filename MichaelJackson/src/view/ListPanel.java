@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import viewAdmin.ManageUser;
-import viewTrainee.AvailableTraining;
-import viewTrainer.TrainingMaterial;
-import viewTrainer.TrainingRequest;
+import viewadmin.ManageUser;
+import viewtrainee.AvailableTraining;
+import viewtrainer.TrainingMaterial;
+import viewtrainer.TrainingRequest;
 
 public class ListPanel extends JPanel {
 

@@ -1,4 +1,4 @@
-	package viewTrainer;
+	package viewtrainer;
 
 import java.awt.Color;
 import java.awt.Dimension;
