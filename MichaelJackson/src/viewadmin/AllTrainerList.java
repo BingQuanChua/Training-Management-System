@@ -1,4 +1,4 @@
-package viewAdmin;
+package viewadmin;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import view.ListPanel;
-import viewAdmin.ManageUser;
+import viewadmin.ManageUser;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

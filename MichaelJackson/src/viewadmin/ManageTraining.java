@@ -1,4 +1,4 @@
- package viewAdmin;
+package viewadmin;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -11,10 +11,11 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 
-public class ManageAllReport extends JPanel {
-
+public class ManageTraining extends JPanel {
+	
+	public AdminUI adminUI;
 	/**
-	 * Managing all training report 
+	 * Manage all training courses
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -22,8 +23,8 @@ public class ManageAllReport extends JPanel {
 	/**
 	 * 
 	 */
-	public ManageAllReport(String name,JPanel list) {
-
+	public ManageTraining(String name,JPanel list,AdminUI adminUI) {
+		this.adminUI = adminUI;
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		
@@ -32,28 +33,38 @@ public class ManageAllReport extends JPanel {
 		
 		
 		JButton trainingButton = new JButton(name);
-		trainingButton.setForeground(Color.BLACK);
-		trainingButton.setBounds(0, 0, 800, 70);
+		trainingButton.setBounds(0, 0, 736, 70);
 		trainingButton.setPreferredSize(new Dimension(800, 70));
 		trainingButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		trainingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
 				list.removeAll();
-				list.add(new IndividualReport());
+				list.add(new EditCourse(adminUI));
 		        list.repaint();
 				list.revalidate();
 		
 			}
 			
 		});
-
+		
+		JButton deleteButton = new JButton("X");
+		deleteButton.setFont(new Font("Dialog", Font.PLAIN, 25));
+		deleteButton.setBackground(new Color(205,133,63));
+		deleteButton.setForeground(Color.WHITE);
+		deleteButton.setFocusPainted(false);
+		deleteButton.setBorder(null);
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		deleteButton.setBounds(735, 0, 65, 70);
+		add(deleteButton);
 		setLayout(null);
 		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
-		
-		
+
 
 	}
 }

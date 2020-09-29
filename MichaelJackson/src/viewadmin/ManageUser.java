@@ -1,4 +1,4 @@
-package viewAdmin;
+package viewadmin;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -35,7 +35,7 @@ public class ManageUser extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		deleteButton.setBounds(639, 2, 52, 53);
+		deleteButton.setBounds(639, 2, 52, 56);
 		add(deleteButton);
 
 		JButton profileButton = new JButton(name);

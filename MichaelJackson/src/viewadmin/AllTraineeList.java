@@ -1,31 +1,33 @@
-package viewTrainer;
+package viewadmin;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Font;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-
-import view.ListPanel;
-
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class TrainingRequestList extends JPanel {
+import view.ListPanel;
+import viewadmin.ManageUser;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AllTraineeList extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	private ListPanel requestList;
-	
-	public TrainingRequestList() {
+private ListPanel traineeList;
+public AdminUI adminUI;
+
+	public AllTraineeList(AdminUI adminUI) {
+		this.adminUI = adminUI;
 		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 800));
 		
@@ -59,15 +61,17 @@ public class TrainingRequestList extends JPanel {
         separator_1.setBackground(Color.LIGHT_GRAY);
         panel.add(separator_1);
         
-        requestList = new ListPanel();
-		requestList.setBackground(Color.WHITE);
-		// dummy data input //
-		requestList.addItem(new TrainingRequest("Norman Reedus", 1));
-		requestList.addItem(new TrainingRequest("Keanu Reeves", 2));
-		requestList.addItem(new TrainingRequest("Michael Jackson", 3));
+        traineeList = new ListPanel();
+        traineeList.setBackground(Color.WHITE);
+        // dummy data input //
+        traineeList.addItem(new ManageUser("Yong Sheng Kai", 1));
+     	traineeList.addItem(new ManageUser("Kong Yee Ling", 2));
+     	traineeList.addItem(new ManageUser("Wong Keng Hao", 3));
+     	traineeList.addItem(new ManageUser("Wong Wen Yao", 4));
+		traineeList.addItem(new ManageUser("Hee Wai Bing", 5));
 		// end of dummy data //
 		
-		JScrollPane scrollPane = new JScrollPane(requestList);
+		JScrollPane scrollPane = new JScrollPane(traineeList);
 		scrollPane.setBounds(100, 150, 820, 550);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(scrollPane);
@@ -78,11 +82,24 @@ public class TrainingRequestList extends JPanel {
 		separator_2.setBackground(Color.LIGHT_GRAY);
         panel.add(separator_2);
 		
-        JLabel title = new JLabel("Training Request");
+        JLabel title = new JLabel("List of Trainees");
 		title.setFont(new Font("Serif", Font.PLAIN, 40));
 		title.setBounds(100, 25, 299, 47);
 		panel.add(title);
 		
 		add(panel);
+		
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				adminUI.home();
+			}
+		});
+		backButton.setForeground(Color.WHITE);
+		backButton.setFont(new Font("Serif", Font.PLAIN, 20));
+		backButton.setBackground(new Color(205, 133, 63));
+		backButton.setBounds(770, 724, 150, 35);
+		panel.add(backButton);
 	}
+
 }

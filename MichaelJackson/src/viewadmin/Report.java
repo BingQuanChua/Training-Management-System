@@ -1,4 +1,4 @@
-package viewAdmin;
+package viewadmin;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;

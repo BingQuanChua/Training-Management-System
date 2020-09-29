@@ -1,4 +1,4 @@
-package viewTrainee;
+package viewtrainee;
 
 import java.awt.Dimension;
 import java.awt.Font;

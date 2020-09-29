@@ -1,4 +1,4 @@
-package viewTrainee;
+package viewtrainee;
 
 import java.awt.Color;
 import java.awt.Dimension;

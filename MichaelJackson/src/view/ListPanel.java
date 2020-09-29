@@ -1,14 +1,19 @@
 package view;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import viewAdmin.ManageUser;
-import viewTrainee.AvailableTraining;
-import viewTrainer.TrainingMaterial;
-import viewTrainer.TrainingRequest;
+import viewadmin.ManageUser;
+import viewtrainee.AvailableTraining;
+import viewtrainer.TrainingMaterial;
+import viewtrainer.TrainingRequest;
+
 
 public class ListPanel extends JPanel {
 
@@ -38,30 +43,41 @@ public class ListPanel extends JPanel {
 			
 		}
 		if (item instanceof TrainingMaterial) {
-			// item.getDeleteButton().addActioncontainerener(...)
+			addNewTrainingMaterial(item);
 		}
 		if (item instanceof TrainingRequest) {
-			
+			// accept and reject
 		}
 		if (item instanceof AvailableTraining) {
-			
+			// enroll
 		}
 	}
-	
-	// for clearing the JPanel only, listOfItems is untouched
-	public void clearAll() {
-		removeAll();
-		repaint();
-		revalidate();
-	}
-	
+
 	// getting an item from the container
 	public JPanel getItem(int i) {
 		return listOfItems.get(i);
+	}	
+	
+	private void addNewTrainingMaterial(JPanel p) {
+		((TrainingMaterial) p).getDeleteButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this material?", "Delete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					listOfItems.remove(p);
+					container.removeAll();
+					for (JPanel existingItem : listOfItems) {
+						container.add(existingItem);
+					}
+					container.repaint();
+					container.revalidate();
+				}
+			}
+		});
 	}
 	
-	public JPanel getContainer() {
-		return container;
+	private void acceptRejectTrainer(JPanel p) {
+		
 	}
-	
 }

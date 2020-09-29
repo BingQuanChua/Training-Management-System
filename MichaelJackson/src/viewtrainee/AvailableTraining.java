@@ -1,4 +1,4 @@
-package viewTrainee;
+package viewtrainee;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;

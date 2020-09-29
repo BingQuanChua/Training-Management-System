@@ -1,9 +1,9 @@
 package mj;
 
 import view.Login;
-import viewAdmin.AdminUI;
-import viewTrainee.TraineeUI;
-import viewTrainer.TrainerUI;
+import viewadmin.AdminUI;
+import viewtrainee.TraineeUI;
+import viewtrainer.TrainerUI;
 
 public class Main {
 
@@ -16,6 +16,7 @@ public class Main {
 
 		login = new Login();
 		int loginRole = 3;
+
 		// login.setVisible(true);
 		
 		// start showing the UI for admin/trainer/trainee
@@ -65,7 +66,7 @@ public class Main {
 			break;
 		case 2:
 			trainerUI = new TrainerUI();
-			// new TrainerController(trainerUI);
+			new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:
