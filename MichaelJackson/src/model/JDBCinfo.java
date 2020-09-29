@@ -4,7 +4,7 @@ public class JDBCinfo {
 	
 	private static String url = "jdbc:mysql://localhost:3306/mjtms ?useTimezone=true&serverTimezone=UTC ";
 	private static String serverName = "root";
-	private static String serverPassword = "7My14SEQueL*";
+	private static String serverPassword = "";
 	
 	public static String getURL() {
 		return url;
