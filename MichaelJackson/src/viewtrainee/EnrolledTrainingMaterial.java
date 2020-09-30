@@ -73,5 +73,29 @@ public class EnrolledTrainingMaterial extends JPanel {
 		background.setBounds(0, 0, 800, 115);
 		add(background);
 	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public boolean getIsDone() {
+		return isDone;
+	}
+	
+	public void setIsDone(boolean isDone) {
+		this.isDone = isDone;
+	}
 
 }

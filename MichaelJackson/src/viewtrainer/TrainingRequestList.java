@@ -62,9 +62,9 @@ public class TrainingRequestList extends JPanel {
         requestList = new ListPanel();
 		requestList.setBackground(Color.WHITE);
 		// dummy data input //
-		requestList.addItem(new TrainingRequest("Norman Reedus", 1));
-		requestList.addItem(new TrainingRequest("Keanu Reeves", 2));
-		requestList.addItem(new TrainingRequest("Michael Jackson", 3));
+		requestList.addItem(new TrainingRequest("Norman Reedus"));
+		requestList.addItem(new TrainingRequest("Keanu Reeves"));
+		requestList.addItem(new TrainingRequest("Michael Jackson"));
 		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(requestList);

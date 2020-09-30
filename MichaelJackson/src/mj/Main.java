@@ -21,6 +21,7 @@ public class Main {
 
 		login = new Login();
 		int loginRole = 3;
+
 		login.setVisible(false);
 		
 		
@@ -103,6 +104,7 @@ public class Main {
 			break;
 		case 3:
 			traineeUI = new TraineeUI();
+			new TraineeController(traineeUI);
 			traineeUI.setVisible(true);
 			break;
 		}

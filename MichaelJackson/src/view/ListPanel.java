@@ -41,6 +41,7 @@ public class ListPanel extends JPanel {
 		container.add(item);
 		
 		if (item instanceof ManageUser) {
+			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
 			addDeleteUserListener((ManageUser) item);
 		}
 		if (item instanceof ManageTraining) {
@@ -50,6 +51,7 @@ public class ListPanel extends JPanel {
 			addDeleteMaterialListener((TrainingMaterial) item);
 		}
 		if (item instanceof TrainingRequest) {
+			((TrainingRequest) item).getNumberLabel().setText(listOfPanel.size()+".");
 			addAcceptRejectTraineeListener((TrainingRequest) item);
 		}
 		if (item instanceof AvailableTraining) {

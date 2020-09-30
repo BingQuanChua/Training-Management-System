@@ -10,7 +10,15 @@ public class AllTrainerList extends JPanel {
 	/**
 	 * Showing a list of all trainers
 	 */
-	public AllTrainerList() {
+
+private ListPanel trainerList;
+public AdminUI adminUI;
+	
+	public AllTrainerList(AdminUI adminUI) {
+		this.adminUI = adminUI;
+		setBackground(new Color(255, 255, 200));
+		setPreferredSize(new Dimension(1000, 1000));
+
 		
 		JPanel btmPanel = new JPanel();
 		btmPanel.setForeground(Color.WHITE);
@@ -52,6 +60,7 @@ public class AllTrainerList extends JPanel {
         separator_1.setBackground(Color.LIGHT_GRAY);
         btmPanel.add(separator_1);
         
+
         JLabel lblNumber = new JLabel("No.");
         lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
         lblNumber.setBounds(100, 85, 75, 50);
@@ -84,6 +93,33 @@ public class AllTrainerList extends JPanel {
 		scrollPane.setBorder(null);
 		btmPanel.add(scrollPane);
 		add(btmPanel);
+
+        trainerList = new ListPanel();
+        trainerList.setBackground(Color.WHITE);
+        // dummy data input //
+        trainerList.addItem(new ManageUser("Yong Sheng Kai", this));
+		trainerList.addItem(new ManageUser("Kong Yee Ling", this));
+		trainerList.addItem(new ManageUser("Wong Keng Hao", this));
+		trainerList.addItem(new ManageUser("Wong Wen Yao", this));
+		trainerList.addItem(new ManageUser("Hee Wai Bing", this));
+		// end of dummy data //
+		
+		JScrollPane scrollPane = new JScrollPane(trainerList);
+		scrollPane.setBounds(100, 150, 820, 550);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(scrollPane);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(100, 710, 820, 10);
+		separator_2.setForeground(Color.LIGHT_GRAY);
+		separator_2.setBackground(Color.LIGHT_GRAY);
+        panel.add(separator_2);
+		
+        JLabel title = new JLabel("List of Trainers");
+		title.setFont(new Font("Serif", Font.PLAIN, 40));
+		title.setBounds(100, 25, 299, 47);
+		panel.add(title);
+
 		
 		JLabel lblListOfTrainers = new JLabel("List of Trainers");
 		lblListOfTrainers.setLocation(15, 0);

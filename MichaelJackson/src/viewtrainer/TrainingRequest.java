@@ -27,7 +27,7 @@ public class TrainingRequest extends JPanel {
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 22);
 	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 20);
 	
-	public TrainingRequest(String name, int number) {
+	public TrainingRequest(String name) {
 		
 		setPreferredSize(new Dimension(800, 60));
 		setBackground(UIManager.getColor("Button.background"));
@@ -40,7 +40,6 @@ public class TrainingRequest extends JPanel {
 		numberLabel.setFont(f2);
 		numberLabel.setBounds(12, 6, 56, 50);
 		add(numberLabel);
-		numberLabel.setText(number+".");
 				
 		profileButton = new JButton(name);
 		profileButton.setFont(f1);

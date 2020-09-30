@@ -9,7 +9,15 @@ public class AllTraineeList extends JPanel {
 	/**
 	 * Showing a list of all trainees
 	 */
-	public AllTraineeList() {
+
+private ListPanel traineeList;
+public AdminUI adminUI;
+
+	public AllTraineeList(AdminUI adminUI) {
+		this.adminUI = adminUI;
+		setBackground(new Color(255, 255, 200));
+		setPreferredSize(new Dimension(1000, 1000));
+
 		
 		JPanel btmPanel = new JPanel();
 		btmPanel.setForeground(Color.WHITE);
@@ -55,6 +63,7 @@ public class AllTraineeList extends JPanel {
         separator_1.setBackground(Color.LIGHT_GRAY);
         btmPanel.add(separator_1);
         
+
         JLabel lblNumber = new JLabel("No.");
         lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
         lblNumber.setBounds(100, 85, 75, 50);
@@ -84,6 +93,20 @@ public class AllTraineeList extends JPanel {
         
         JScrollPane scrollPane = new JScrollPane(topPanel);
 		scrollPane.setBounds(107, 188, 945, 556);
+
+        traineeList = new ListPanel();
+        traineeList.setBackground(Color.WHITE);
+        // dummy data input //
+        traineeList.addItem(new ManageUser("Yong Sheng Kai", this));
+     	traineeList.addItem(new ManageUser("Kong Yee Ling", this));
+     	traineeList.addItem(new ManageUser("Wong Keng Hao", this));
+     	traineeList.addItem(new ManageUser("Wong Wen Yao", this));
+		traineeList.addItem(new ManageUser("Hee Wai Bing", this));
+		// end of dummy data //
+		
+		JScrollPane scrollPane = new JScrollPane(traineeList);
+		scrollPane.setBounds(100, 150, 820, 550);
+
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(null);

@@ -26,21 +26,20 @@ public class TrainerController {
         setTrainingProgressListener();
 	}
 	
-	public void setManageTrainingCourseListener() {
-		ListPanel temp = trainerUI.getTrainingList();
+	private void setManageTrainingCourseListener() {
 		// will change, suppose to loop data from database
 		// items here are Training
-		JPanel tempTraining = temp.getItem(0);
-		tempTrainingMaterialDetails = ((Training) tempTraining).getTrainingMaterialDetails();
-		tempRequestList = ((Training) tempTraining).getTrainingRequestList();
-		tempTraineeList = ((Training) tempTraining).getTrainingTraineeList();
-		((Training) tempTraining).getUpdateButton().addActionListener(updateButtonListener);
+		Training tempTraining = (Training) trainerUI.getTrainingList().getItem(0);
+		tempTrainingMaterialDetails = tempTraining.getTrainingMaterialDetails();
+		tempRequestList = tempTraining.getTrainingRequestList();
+		tempTraineeList = tempTraining.getTrainingTraineeList();
+		tempTraining.getUpdateButton().addActionListener(updateButtonListener);
 		tempTrainingMaterialDetails.getAddNewMaterialButton().addActionListener(addNewTrainingMaterialButtonListener);
-		((Training) tempTraining).getRequestButton().addActionListener(requestButtonListener);
-		((Training) tempTraining).getTraineeListButton().addActionListener(traineeListButtonListener);
+		tempTraining.getRequestButton().addActionListener(requestButtonListener);
+		tempTraining.getTraineeListButton().addActionListener(traineeListButtonListener);
 	}
 	
-	public void setTrainingProgressListener() {
+	private void setTrainingProgressListener() {
 		// should allow trainer to view trainee profile
 	}
 	

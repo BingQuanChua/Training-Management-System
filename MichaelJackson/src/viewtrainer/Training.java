@@ -18,8 +18,9 @@ import javax.swing.JOptionPane;
 public class Training extends JPanel {
 
 	/**
-	 * This panel holds a single training panel.
+	 * This panel holds a single training course panel.
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JButton trainingButton;
 	private JButton editButton;
@@ -33,14 +34,14 @@ public class Training extends JPanel {
 	private int extendedHeight = 430;
 	private int retractedHeight = 70;
 	
-	private String feedbackFormLink;
+	private String feedbackFormLink = "";
 	private String description;
 	private boolean isTextAreaEditable = false;
 	
+	private TrainingMaterialDetails trainingMaterialDetails; 
     private TrainingRequestList trainingRequestList;
     private TrainingTraineeList trainingTraineeList;
-    private TrainingMaterialDetails trainingMaterialDetails; 
-	
+    
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
@@ -102,20 +103,24 @@ public class Training extends JPanel {
 		feedbackButton.setFont(heading3);
 		feedbackButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				feedbackFormLink = JOptionPane.showInputDialog("Enter Google Form link");
-				System.out.println(feedbackFormLink);
+				if (feedbackFormLink == "") {
+					feedbackFormLink = JOptionPane.showInputDialog("Enter Google Form link");
+				}
+				else {
+					feedbackFormLink = JOptionPane.showInputDialog("Existing Google Form link:\n" + feedbackFormLink + "\n\nEnter new Google Form link");
+				}
 			}
 		});
 		feedbackButton.setBounds(50, 370, 700, 50);
 		add(feedbackButton);
 		
+		updateButton = new JButton("Update Material");
+		updateButton.setFont(heading3);
+		updateButton.setBounds(50, 205, 700, 50);
+		add(updateButton);
+		
 		requestButton = new JButton("Training Requests");
 		requestButton.setFont(heading3);
-		requestButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO 
-			}
-		});
 		requestButton.setBounds(50, 260, 700, 50);
 		add(requestButton);
 		
@@ -123,16 +128,6 @@ public class Training extends JPanel {
 		traineeListButton.setFont(heading3);
 		traineeListButton.setBounds(50, 315, 700, 50);
 		add(traineeListButton);
-		
-		updateButton = new JButton("Update Material");
-		updateButton.setFont(heading3);
-		updateButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//? trainingMaterial.setVisible(true);
-			}
-		});
-		updateButton.setBounds(50, 205, 700, 50);
-		add(updateButton);
 		
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -152,6 +147,15 @@ public class Training extends JPanel {
 	
 	public String getFeedbackFormLink() {
 		return feedbackFormLink;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+		textArea.setText(description);
 	}
 	
 	public TrainingRequestList getTrainingRequestList() {

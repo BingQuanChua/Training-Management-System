@@ -12,6 +12,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import view.UserProfile;
+
 public class ManageUser extends JPanel {
 	/**
 	 * Manage all users in the system
@@ -20,12 +22,14 @@ public class ManageUser extends JPanel {
 	private JLabel numberLabel;
 	private JButton profileButton;
 	private JButton deleteButton;
+	private UserProfile userProfile;
 	
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	
 
-	public ManageUser(String name, int number) {
-
+	public ManageUser(String name, JPanel list) {
+		
+		userProfile = new UserProfile();
 		setPreferredSize(new Dimension(1070, 60));
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -35,7 +39,6 @@ public class ManageUser extends JPanel {
 		numberLabel.setFont(f1);
 		numberLabel.setBounds(12, 6, 56, 50);
 		add(numberLabel);
-		numberLabel.setText(number+".");
 		
 		deleteButton = new JButton("X");
 		deleteButton.setFont(new Font("SansSerif", Font.PLAIN, 25));
@@ -45,12 +48,17 @@ public class ManageUser extends JPanel {
 		deleteButton.setBorder(null);
 		deleteButton.setBounds(639, 2, 52, 56);
 		add(deleteButton);
-
+		
 		profileButton = new JButton(name);
 		profileButton.setForeground(Color.BLACK);
 		profileButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		profileButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				list.removeAll();
+                list.add(userProfile);
+                list.repaint();
+                list.revalidate();
+                userProfile.getEditButton().setVisible(false);
 			}
 		});
 		profileButton.setBorder(null);

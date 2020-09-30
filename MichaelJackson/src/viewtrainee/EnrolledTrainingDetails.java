@@ -24,8 +24,16 @@ import view.ListPanel;
 public class EnrolledTrainingDetails extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * This panel holds the details of one single training course
 	 */
+	private static final long serialVersionUID = 1L;
+
+	private ListPanel trainingMaterialList;
+	private IndividualProgress individualProgress;
+	private JButton trainerProfileButton;
+	
+	private int completedMaterial = 0;
+	private String feedbackLink = "";
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
@@ -71,16 +79,12 @@ public class EnrolledTrainingDetails extends JPanel {
 		textArea.setEditable(false);
 		upperPanel.add(textArea);
 		
-		IndividualProgress individualProgress = new IndividualProgress("Trainee", 0);
+		individualProgress = new IndividualProgress("Trainee", 0);
 		individualProgress.setBounds(115, 270, 770, 70);
 		upperPanel.add(individualProgress);
 		
-		JButton trainerProfileButton = new JButton("Trainer");
+		trainerProfileButton = new JButton("Trainer");
 		trainerProfileButton.setFont(heading3);
-		trainerProfileButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		trainerProfileButton.setBounds(115, 350, 380, 50);
 		upperPanel.add(trainerProfileButton);
 		
@@ -90,11 +94,11 @@ public class EnrolledTrainingDetails extends JPanel {
 		feedbackButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "https://forms.gle/9GR9tS3crgF1NmEj7");				
+				JOptionPane.showMessageDialog(null, feedbackLink);				
 			}
 		});
 		upperPanel.add(feedbackButton);
-		feedbackButton.setEnabled(true);
+		feedbackButton.setEnabled(false);
 		
 		JLabel label2 = new JLabel("Training Course Materials");
 		label2.setFont(heading2);
@@ -105,7 +109,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		
 		// creating a list of assigned materials
 		////// dummy list creation //////
-		ListPanel trainingMaterialList = new ListPanel();
+		trainingMaterialList = new ListPanel();
 		trainingMaterialList.setBackground(new Color(255, 255, 200));
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
@@ -131,5 +135,25 @@ public class EnrolledTrainingDetails extends JPanel {
 		panel.add(trainingMaterialList, gbc_trainingMaterialList);
 		
 		add(panel);
+	}
+	
+	public ListPanel getTrainingMaterialList() {
+		return trainingMaterialList;
+	}
+	
+	public IndividualProgress getIndividualProgress() {
+		return individualProgress;
+	}
+	
+	public JButton getTrainerProfileButton() {
+		return trainerProfileButton;
+	}
+	
+	public String getFeedbackLink() {
+		return feedbackLink;
+	}
+	
+	public void setFeedbackLink(String feedbackLink) {
+		this.feedbackLink = feedbackLink;
 	}
 }
