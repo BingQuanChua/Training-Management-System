@@ -1,4 +1,5 @@
 CREATE DATABASE mjtms;
+USE mjtms;
 
 CREATE TABLE USER (
   USER_ID char(8) NOT NULL,
@@ -13,10 +14,16 @@ CREATE TABLE USER (
   PRIMARY KEY (USER_ID)
 ) ;
 
+INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
+INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
+
+SELECT * FROM USER;
+
 CREATE TABLE ADMIN (
   USER_ID char(8) NOT NULL,
   PRIMARY KEY (USER_ID),
- FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID)
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID)
 ) ;
 
 CREATE TABLE TRAINER (

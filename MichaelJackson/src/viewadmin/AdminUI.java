@@ -83,8 +83,8 @@ public class AdminUI extends JFrame {
 		panelBody = new JPanel(); // Right root panel
 		
 		addNewUser = new AddNewUser(this);
-		allTrainerList = new AllTrainerList(this);
-		allTraineeList = new AllTraineeList(this);
+		allTrainerList = new AllTrainerList();
+		allTraineeList = new AllTraineeList();
 		allTrainingList = new AllTrainingList(this);
 		changePassword = new ChangePassword();
 		icon = new Icon();

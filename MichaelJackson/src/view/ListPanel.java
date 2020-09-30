@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
 import viewadmin.ManageTraining;
 import viewadmin.ManageUser;
 import viewtrainee.AvailableTraining;
 import viewtrainer.TrainingMaterial;
 import viewtrainer.TrainingRequest;
-
 
 public class ListPanel extends JPanel {
 
