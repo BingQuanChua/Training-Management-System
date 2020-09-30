@@ -24,7 +24,7 @@ public class ManageUser extends JPanel {
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	
 
-	public ManageUser(String name, int number) {
+	public ManageUser(String name) {
 
 		setPreferredSize(new Dimension(1070, 60));
 		setBackground(Color.WHITE);
@@ -35,7 +35,6 @@ public class ManageUser extends JPanel {
 		numberLabel.setFont(f1);
 		numberLabel.setBounds(12, 6, 56, 50);
 		add(numberLabel);
-		numberLabel.setText(number+".");
 		
 		deleteButton = new JButton("X");
 		deleteButton.setFont(new Font("SansSerif", Font.PLAIN, 25));

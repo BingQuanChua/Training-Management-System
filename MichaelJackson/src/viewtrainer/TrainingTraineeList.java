@@ -58,9 +58,9 @@ private ListPanel traineeList;
         traineeList = new ListPanel();
         traineeList.setBackground(Color.WHITE);
         // dummy data input //
-        traineeList.addItem(new ManageUser("Norman Reedus", 1));
-		traineeList.addItem(new ManageUser("Keanu Reeves", 2));
-		traineeList.addItem(new ManageUser("Michael Jackson", 3));
+        traineeList.addItem(new ManageUser("Norman Reedus"));
+		traineeList.addItem(new ManageUser("Keanu Reeves"));
+		traineeList.addItem(new ManageUser("Michael Jackson"));
 		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(traineeList);

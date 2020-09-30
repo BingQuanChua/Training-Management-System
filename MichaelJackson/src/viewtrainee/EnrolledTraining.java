@@ -14,12 +14,12 @@ import java.awt.event.MouseEvent;
 public class EnrolledTraining extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * 
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JButton enrolledTrainingButton;
 	private EnrolledTrainingDetails trainingDetails;
-	private SubMenu training;
 	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
@@ -29,7 +29,6 @@ public class EnrolledTraining extends JPanel {
 		setLayout(null);
 		
 		trainingDetails = new EnrolledTrainingDetails(trainingName);
-		training = new SubMenu(trainingName, trainingDetails);
 		
 		enrolledTrainingButton = new JButton(trainingName);
 		enrolledTrainingButton.addMouseListener(new MouseAdapter() {
@@ -42,6 +41,14 @@ public class EnrolledTraining extends JPanel {
 		enrolledTrainingButton.setBackground(Color.LIGHT_GRAY);
 		enrolledTrainingButton.setBounds(0, 0, 800, 70);
 		add(enrolledTrainingButton);
+	}
+	
+	public JButton getEnrolledTrainingButton() {
+		return enrolledTrainingButton;
+	}
+	
+	public EnrolledTrainingDetails getTrainingDetails() {
+		return trainingDetails;
 	}
 
 }

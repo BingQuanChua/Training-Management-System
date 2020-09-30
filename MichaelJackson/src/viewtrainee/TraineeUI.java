@@ -32,14 +32,20 @@ import javax.swing.JButton;
 
 public class TraineeUI extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Variables declaration
     private JScrollPane jScrollPane1;
     private JPanel menus;
     private JPanel panelBody;
     private JPanel panelHeader;
     private JPanel panelMenu;
+    
     private JButton logoButton;
     private JButton signOutButton;
+    
     private ListPanel availableTrainingList;
     private SubMenu subMenuATC;
     private ListPanel enrolledTrainingList;
@@ -230,6 +236,19 @@ public class TraineeUI extends JFrame {
         setSize(new Dimension(871, 473));
         setLocationRelativeTo(null);
     }
+    
+    
+   public ListPanel getAvailableTrainingList() {
+	   return availableTrainingList;
+   }
+   
+   public ListPanel getEnrolledTrainingList() {
+	   return enrolledTrainingList;
+   }
+   
+   public JPanel getPanelBody() {
+	   return panelBody;
+   }
    
     // This method is called from within the constructor to initialize the form.
     private void traineeUI() {

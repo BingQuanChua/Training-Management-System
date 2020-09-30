@@ -64,11 +64,11 @@ public AdminUI adminUI;
         trainerList = new ListPanel();
         trainerList.setBackground(Color.WHITE);
         // dummy data input //
-        trainerList.addItem(new ManageUser("Yong Sheng Kai", 1));
-		trainerList.addItem(new ManageUser("Kong Yee Ling", 2));
-		trainerList.addItem(new ManageUser("Wong Keng Hao", 3));
-		trainerList.addItem(new ManageUser("Wong Wen Yao", 4));
-		trainerList.addItem(new ManageUser("Hee Wai Bing", 5));
+        trainerList.addItem(new ManageUser("Yong Sheng Kai"));
+		trainerList.addItem(new ManageUser("Kong Yee Ling"));
+		trainerList.addItem(new ManageUser("Wong Keng Hao"));
+		trainerList.addItem(new ManageUser("Wong Wen Yao"));
+		trainerList.addItem(new ManageUser("Hee Wai Bing"));
 		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(trainerList);
