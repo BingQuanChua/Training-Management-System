@@ -29,7 +29,7 @@ public AdminUI adminUI;
 	public AllTrainerList(AdminUI adminUI) {
 		this.adminUI = adminUI;
 		setBackground(new Color(255, 255, 200));
-		setPreferredSize(new Dimension(1000, 800));
+		setPreferredSize(new Dimension(1000, 1000));
 		
 		
 		JPanel panel = new JPanel();
@@ -64,11 +64,11 @@ public AdminUI adminUI;
         trainerList = new ListPanel();
         trainerList.setBackground(Color.WHITE);
         // dummy data input //
-        trainerList.addItem(new ManageUser("Yong Sheng Kai"));
-		trainerList.addItem(new ManageUser("Kong Yee Ling"));
-		trainerList.addItem(new ManageUser("Wong Keng Hao"));
-		trainerList.addItem(new ManageUser("Wong Wen Yao"));
-		trainerList.addItem(new ManageUser("Hee Wai Bing"));
+        trainerList.addItem(new ManageUser("Yong Sheng Kai", this));
+		trainerList.addItem(new ManageUser("Kong Yee Ling", this));
+		trainerList.addItem(new ManageUser("Wong Keng Hao", this));
+		trainerList.addItem(new ManageUser("Wong Wen Yao", this));
+		trainerList.addItem(new ManageUser("Hee Wai Bing", this));
 		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(trainerList);

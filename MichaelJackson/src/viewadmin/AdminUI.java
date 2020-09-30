@@ -25,6 +25,7 @@ import view.Icon;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
+import view.UserProfileController;
 import view.*;
 
 import javax.swing.ScrollPaneConstants;
@@ -50,6 +51,7 @@ public class AdminUI extends JFrame {
 	private AllTrainerList allTrainerList;
 	private AllTraineeList allTraineeList;
 	private AllTrainingList allTrainingList;
+	private ChangePassword changePassword;
 	// private ?report
 	private Icon icon;
 	
@@ -84,6 +86,7 @@ public class AdminUI extends JFrame {
 		allTrainerList = new AllTrainerList(this);
 		allTraineeList = new AllTraineeList(this);
 		allTrainingList = new AllTrainingList(this);
+		changePassword = new ChangePassword();
 		icon = new Icon();
 		icon.setBackground(new Color(255, 255, 200));
 
@@ -114,9 +117,18 @@ public class AdminUI extends JFrame {
                   panelBody.revalidate();
         	  } 
         	} );
+        UserProfileController profileController =  new UserProfileController(profile);
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
-        accountSettingButton = new JButton("account setting");
+        accountSettingButton = new JButton("Change Password");
+        accountSettingButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		 panelBody.removeAll();
+                 panelBody.add(new SubMenu("Change Password",changePassword));
+                 panelBody.repaint();
+                 panelBody.revalidate();
+        	}
+        });
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);
