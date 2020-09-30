@@ -34,7 +34,7 @@ public class UserProfileController {
 				userProfile.getTxtDesc().setEditable(false);
 				userProfile.getEditButton().setText("Edit");
 				isTextAreaEditable = false;
-				JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showConfirmDialog (null, "All changes have been saved.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	};

@@ -52,6 +52,8 @@ public class AdminUI extends JFrame {
 	private AllTraineeList allTraineeList;
 	private AllTrainingList allTrainingList;
 	private ChangePassword changePassword;
+	private UserProfile profile;
+	private UserProfileController profileController;
 	// private ?report
 	private Icon icon;
 	
@@ -83,10 +85,10 @@ public class AdminUI extends JFrame {
 		panelBody = new JPanel(); // Right root panel
 		
 		addNewUser = new AddNewUser(this);
-		allTrainerList = new AllTrainerList();
-		allTraineeList = new AllTraineeList();
+		allTrainerList = new AllTrainerList(this);
+		allTraineeList = new AllTraineeList(this);
 		allTrainingList = new AllTrainingList(this);
-		changePassword = new ChangePassword();
+		changePassword = new ChangePassword();// Change password panel
 		icon = new Icon();
 		icon.setBackground(new Color(255, 255, 200));
 
@@ -106,7 +108,7 @@ public class AdminUI extends JFrame {
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
         //Profile setting
-        UserProfile profile = new UserProfile();
+        profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
         profileButton = new JButton("Admin Profile");
         profileButton.addActionListener(new ActionListener() { 
@@ -117,7 +119,7 @@ public class AdminUI extends JFrame {
                   panelBody.revalidate();
         	  } 
         	} );
-        UserProfileController profileController =  new UserProfileController(profile);
+        profileController =  new UserProfileController(profile);
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
         accountSettingButton = new JButton("Change Password");

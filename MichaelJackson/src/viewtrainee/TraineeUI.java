@@ -17,11 +17,13 @@ import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import view.ChangePassword;
 import view.Icon;
 import view.ListPanel;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
+import view.UserProfileController;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -50,6 +52,9 @@ public class TraineeUI extends JFrame {
     private SubMenu subMenuATC;
     private ListPanel enrolledTrainingList;
     private SubMenu subMenuETC;
+    private ChangePassword changePassword;
+    private UserProfile profile;
+    private UserProfileController profileController;
     private Icon icon;
     
     // for screenshot
@@ -81,7 +86,7 @@ public class TraineeUI extends JFrame {
         jScrollPane1 = new JScrollPane(); //Able to scroll
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
-        
+        changePassword = new ChangePassword();// Change password panel
         
         availableTrainingList = new ListPanel();
         subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
@@ -119,7 +124,7 @@ public class TraineeUI extends JFrame {
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
         //Profile setting
-        UserProfile profile = new UserProfile();
+        profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
         profileButton = new JButton("Trainee Profile");
         profileButton.addActionListener(new ActionListener() { 
@@ -130,9 +135,18 @@ public class TraineeUI extends JFrame {
                   panelBody.revalidate();
         	  } 
         	} );
+        profileController =  new UserProfileController(profile);
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
-        accountSettingButton = new JButton("account setting");
+        accountSettingButton = new JButton("Change Password");
+        accountSettingButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		 panelBody.removeAll();
+                 panelBody.add(new SubMenu("Change Password",changePassword));
+                 panelBody.repaint();
+                 panelBody.revalidate();
+        	}
+        });
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);

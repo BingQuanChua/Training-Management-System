@@ -27,6 +27,8 @@ import view.ListPanel;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
+import view.UserProfileController;
+import view.ChangePassword;
 
 public class TrainerUI extends JFrame {
 
@@ -49,6 +51,9 @@ public class TrainerUI extends JFrame {
     private SubMenu subMenuMTC;
     private ListPanel trainingProgressList;
     private SubMenu subMenuTP;
+    private ChangePassword changePassword;
+    private UserProfile profile;
+    private UserProfileController profileController;
     private Icon icon;
     
     //Profile
@@ -74,6 +79,7 @@ public class TrainerUI extends JFrame {
         jScrollPane1 = new JScrollPane(); //Able to scroll
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
+        changePassword = new ChangePassword();// Change password panel
         
         // list of assigned training 
         trainingList = new ListPanel();
@@ -111,7 +117,7 @@ public class TrainerUI extends JFrame {
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
         //Profile setting
-        UserProfile profile = new UserProfile();
+        profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
         profileButton = new JButton("Trainer Profile");
         profileButton.addActionListener(new ActionListener() { 
@@ -124,7 +130,16 @@ public class TrainerUI extends JFrame {
         	} );
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
-        accountSettingButton = new JButton("account setting");
+        accountSettingButton = new JButton("Change Password");
+        accountSettingButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		 panelBody.removeAll();
+                 panelBody.add(new SubMenu("Change Password",changePassword));
+                 panelBody.repaint();
+                 panelBody.revalidate();
+        	}
+        });
+        profileController =  new UserProfileController(profile);
         accountSettingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         accountSettingButton.setBackground(null);
         panelMenuHeader.add(profileButton);

@@ -27,7 +27,7 @@ public class ManageUser extends JPanel {
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	
 
-	public ManageUser(String name, JPanel list) {
+	public ManageUser(String name) {
 		
 		userProfile = new UserProfile();
 		setPreferredSize(new Dimension(1070, 60));
@@ -52,7 +52,7 @@ public class ManageUser extends JPanel {
 		profileButton = new JButton(name);
 		profileButton.setForeground(Color.BLACK);
 		profileButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		profileButton.addActionListener(new ActionListener() {
+		/*profileButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				list.removeAll();
                 list.add(userProfile);
@@ -60,7 +60,7 @@ public class ManageUser extends JPanel {
                 list.revalidate();
                 userProfile.getEditButton().setVisible(false);
 			}
-		});
+		});*/
 		profileButton.setBorder(null);
 		profileButton.setBackground(Color.WHITE);
 		profileButton.setFocusPainted(false);

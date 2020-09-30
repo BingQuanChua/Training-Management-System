@@ -24,8 +24,8 @@ public class Main {
 
 		login.setVisible(false);
 		
-		
-		/* Test Database */
+		/*
+		// test database
 		try {
 			System.out.println("TMS model testing\n");
 			Scanner scan = new Scanner(System.in);
@@ -49,10 +49,10 @@ public class Main {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}/**/
+		}*/
 		
 		// start showing the UI for admin/trainer/trainee
-		// roleLogin(loginRole);
+		roleLogin(loginRole);
 	}
 
 	
