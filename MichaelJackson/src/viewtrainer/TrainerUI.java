@@ -27,7 +27,7 @@ import view.ListPanel;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
-import view.UserProfileController;
+import mj.UserProfileController;
 import view.ChangePassword;
 
 public class TrainerUI extends JFrame {

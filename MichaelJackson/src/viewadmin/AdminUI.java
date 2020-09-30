@@ -25,7 +25,7 @@ import view.Icon;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
-import view.UserProfileController;
+import mj.UserProfileController;
 import view.*;
 
 import javax.swing.ScrollPaneConstants;

@@ -20,7 +20,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 3;
+		int loginRole = 1;
 
 		login.setVisible(false);
 		

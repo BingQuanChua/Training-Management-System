@@ -23,7 +23,7 @@ import view.ListPanel;
 import view.MenuItem;
 import view.SubMenu;
 import view.UserProfile;
-import view.UserProfileController;
+import mj.UserProfileController;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;

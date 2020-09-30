@@ -1,5 +1,5 @@
 package mj;
-import viewAdmin.AdminUI;
+import viewadmin.AdminUI;
 import java.awt.event.ActionEvent;
 
 public class AdminController {
