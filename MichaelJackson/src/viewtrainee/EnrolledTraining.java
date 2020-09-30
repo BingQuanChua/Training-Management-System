@@ -31,12 +31,6 @@ public class EnrolledTraining extends JPanel {
 		trainingDetails = new EnrolledTrainingDetails(trainingName);
 		
 		enrolledTrainingButton = new JButton(trainingName);
-		enrolledTrainingButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-							
-			}
-		});
 		enrolledTrainingButton.setFont(heading2);
 		enrolledTrainingButton.setBackground(Color.LIGHT_GRAY);
 		enrolledTrainingButton.setBounds(0, 0, 800, 70);

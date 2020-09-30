@@ -31,8 +31,9 @@ public class EnrolledTrainingDetails extends JPanel {
 	private ListPanel trainingMaterialList;
 	private IndividualProgress individualProgress;
 	private JButton trainerProfileButton;
+	private JButton feedbackButton;
 	
-	private int completedMaterial = 0;
+	private int numberOfCompletedMaterial = 0;
 	private String feedbackLink = "";
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
@@ -88,17 +89,17 @@ public class EnrolledTrainingDetails extends JPanel {
 		trainerProfileButton.setBounds(115, 350, 380, 50);
 		upperPanel.add(trainerProfileButton);
 		
-		JButton feedbackButton = new JButton("Feedback");
+		feedbackButton = new JButton("Feedback");
 		feedbackButton.setFont(heading3);
 		feedbackButton.setBounds(505, 350, 380, 50);
 		feedbackButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, feedbackLink);				
+				JOptionPane.showMessageDialog(null, "Please use this link to do the feedback: \n" + feedbackLink);				
 			}
 		});
 		upperPanel.add(feedbackButton);
-		feedbackButton.setEnabled(false);
+		feedbackButton.setVisible(false);
 		
 		JLabel label2 = new JLabel("Training Course Materials");
 		label2.setFont(heading2);
@@ -149,11 +150,28 @@ public class EnrolledTrainingDetails extends JPanel {
 		return trainerProfileButton;
 	}
 	
+	public JButton getFeedbackButton() {
+		return feedbackButton;
+	}
+	
 	public String getFeedbackLink() {
 		return feedbackLink;
 	}
 	
 	public void setFeedbackLink(String feedbackLink) {
 		this.feedbackLink = feedbackLink;
+	}
+	
+	public int getNumberOfCompletedMaterial() {
+		return numberOfCompletedMaterial;
+	}
+	
+	public void setNumberOfCompletedMaterial(int numberOfCompletedMaterial) {
+		this.numberOfCompletedMaterial = numberOfCompletedMaterial;
+	}
+	
+	// this attribute increases
+	public void increaseNumberOfCompletedMaterial() {
+		numberOfCompletedMaterial++;
 	}
 }

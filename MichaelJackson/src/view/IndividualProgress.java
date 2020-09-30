@@ -18,9 +18,15 @@ public class IndividualProgress extends JPanel {
 	private JButton nameButton;
 	private JProgressBar progressBar;
 	
+	private String name;
+	private int progress;
+	
 	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 18);
 	
 	public IndividualProgress(String name, int progress) {
+		this.name = name;
+		this.progress = progress;
+		
 		setBackground(new Color(230, 230, 250));
 		
 		setPreferredSize(new Dimension(743, 70));
@@ -38,7 +44,7 @@ public class IndividualProgress extends JPanel {
 		nameButton.setBounds(0, 0, 230, 70);
 		add(nameButton);
 		
-		progressBar = new JProgressBar();
+		progressBar = new JProgressBar(0, 100);
 		progressBar.setBackground(new Color(230, 230, 250));
 		progressBar.setForeground(new Color(0, 0, 0));
 		progressBar.setBounds(235, 10, 493, 50);
@@ -47,12 +53,26 @@ public class IndividualProgress extends JPanel {
 		add(progressBar);
 	}
 	
-	public void setName(String n) {
-		nameButton.setText(n);
+	public String getName() {
+		return name;
 	}
 	
-	public void setProgress(int p) {
-		progressBar.setValue(p);
+	public void setName(String name) {
+		this.name = name;
+		nameButton.setText(name);
 	}
-
+	
+	public int getProgress() {
+		return progress;
+	}
+	
+	public void setProgress(int progress) {
+		this.progress = progress;
+		progressBar.setValue(progress);
+	}
+	
+	public JButton getNameButton() {
+		return nameButton;
+	}
+	
 }

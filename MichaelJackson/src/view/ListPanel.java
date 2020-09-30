@@ -64,6 +64,10 @@ public class ListPanel extends JPanel {
 		return listOfPanel.get(i);
 	}	
 	
+	public ArrayList<JPanel> getListOfPanel() {
+		return listOfPanel;
+	}
+	
 	private void addDeleteUserListener(ManageUser p) {
 		p.getDeleteButton().addActionListener(new ActionListener() {
 			@Override

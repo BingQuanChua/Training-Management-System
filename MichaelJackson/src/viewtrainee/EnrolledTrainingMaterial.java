@@ -53,18 +53,6 @@ public class EnrolledTrainingMaterial extends JPanel {
 		
 		doneButton = new JButton("Mark As Done");
 		doneButton.setFont(heading4);
-		doneButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "This button can only be clicked once. Are you sure about that?", "Complete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					doneButton.setEnabled(false);
-					// update progress bar
-				}
-				
-			}
-		});
 		doneButton.setBounds(645, 30, 150, 55);
 		add(doneButton);
 		
@@ -74,12 +62,25 @@ public class EnrolledTrainingMaterial extends JPanel {
 		add(background);
 	}
 	
+	public JTextField getTitleField() {
+		return titleField;
+	}
+	
+	public JTextArea getTxtrDescription() {
+		return txtrDescription;
+	}
+	
+	public JButton getDoneButton() {
+		return doneButton;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
 	
 	public void setTitle(String title) {
 		this.title = title;
+		titleField.setText(title);
 	}
 	
 	public String getDescription() {
@@ -88,6 +89,7 @@ public class EnrolledTrainingMaterial extends JPanel {
 	
 	public void setDescription(String description) {
 		this.description = description;
+		txtrDescription.setText(description);
 	}
 	
 	public boolean getIsDone() {
