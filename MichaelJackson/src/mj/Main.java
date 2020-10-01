@@ -24,8 +24,7 @@ public class Main {
 
 		login.setVisible(false);
 		
-		/*
-		// test database
+		/* test database *
 		try {
 			System.out.println("TMS model testing\n");
 			Scanner scan = new Scanner(System.in);
@@ -38,18 +37,16 @@ public class Main {
 				
 				if(input == "q" || input == " ") {
 					condition = false;
-					
 				} else {
 					user.setName("tnr00001", input);
 					user.getUserProfile("tnr00001", 1);
 					
 				}
-			}
-			
+			}	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}/**/
 		
 		// start showing the UI for admin/trainer/trainee
 		roleLogin(loginRole);
