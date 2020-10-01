@@ -1,7 +1,84 @@
 package model;
 
+import java.sql.SQLException;
+
 public class AdminModel extends User {
 	
+private String adminID;
 	
+	public AdminModel(String adminID){
+		super();
+		this.adminID = adminID;
+	}
+	
+	public String getAdminProfile(int choice) {
+		try {
+			return super.getUserProfile(adminID, choice);
+		} catch (Exception e) {
+			System.out.println("getTrainerProfile fail");
+		}
+		
+		return "";
+	}
+	
+	public boolean setAdminProfile(String content, int choice) {
+		try {
+			return super.setUserProfile(content, adminID, choice);
+		} catch (Exception e) {
+			System.out.println("setTrainerProfile fail");
+		}
+		
+		return false;
+	}
+	
+	// Admin can set other users' password
+	public boolean setUserPassword(String userID, String newPassword) {
+		try {
+			return super.setUserPassword(userID, newPassword);
+		} catch (Exception e) {
+			System.out.println("setUserPassword fail");
+		}
+		
+		return false;
+	}
+	
+	// Admin can set other users' ID
+	public boolean setUserID(String oldUserID, String newUserID) {
+		try {
+			return super.setUserID(oldUserID, newUserID);
+		} catch (Exception e) {
+			System.out.println("setUserID fail");
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 	1:USER_ID
+	 *  2:USER_NAME
+	 *  3:USER_PASS
+	 *  4:USER_POS
+	 *  5:USER_DESC
+	 *  6:USER_GENDER
+	 *  7:USER_CONTACT
+	 *  8:USER_EMAIL
+	 *  9:USER_TYPE
+	 */
+	public boolean addNewUser() {
+		
+		String query = "INSERT INTO USER " +
+				       "VALUES(" + ")";
+		
+		return super.executeQuery(query);
+	}
+	
+	public boolean deleteExistingUser(String userID) {
+		
+		String query = "DELETE FROM USER " +
+                	   "WHERE USER_ID = '" + userID + "'";
+	
+		return super.executeQuery(query);
+
+	}
 
 }

@@ -15,7 +15,7 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
-	private User user;
+	private AdminModel user;
 
 	public Main() {
 
@@ -24,23 +24,33 @@ public class Main {
 
 		login.setVisible(false);
 		
-		/* test database *
+		 
+		/* TEST MODEL */
+		/* TEST MODEL *DELETE-ME/ 
 		try {
+			
 			System.out.println("TMS model testing\n");
 			Scanner scan = new Scanner(System.in);
-			user = new User();
+			user = new AdminModel("adm00001");
+			
 			boolean condition = true;
 			while(condition) {
 				
-				System.out.print("Please input a new data:");
-				String input = scan.nextLine();
+				System.out.print("\nPlease input a choice:");
+				int choice = scan.nextInt();
+				System.out.print("\nPlease input a new data:");
+				String newData = scan.next();
 				
-				if(input == "q" || input == " ") {
+				if(choice < 1 || choice > 8 ) {
 					condition = false;
 				} else {
-					user.setName("tnr00001", input);
-					user.getUserProfile("tnr00001", 1);
-					
+					if(choice == 8) {
+						user.deleteExistingUser(newData);
+					} else if(choice != 7) {
+						System.out.println("\n\nDatabase Execution\n");
+						user.setAdminProfile(newData, choice);
+						user.getAdminProfile(choice);
+					}
 				}
 			}	
 		} catch (Exception e) {
