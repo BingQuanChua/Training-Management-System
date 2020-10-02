@@ -1,6 +1,10 @@
 CREATE DATABASE mjtms;
 USE mjtms;
 
+####################
+# User Management  #
+####################
+
 CREATE TABLE USER (
   USER_ID char(8) NOT NULL,
   USER_NAME varchar(50) ,
@@ -13,12 +17,6 @@ CREATE TABLE USER (
   USER_TYPE varchar(10),
   PRIMARY KEY (USER_ID)
 ) ;
-
-INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
-INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
-
-SELECT * FROM USER;
 
 CREATE TABLE ADMIN (
   USER_ID char(8) NOT NULL,
@@ -37,6 +35,34 @@ CREATE TABLE TRAINEE (
   PRIMARY KEY (USER_ID),
  FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID)
 ) ;
+
+INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
+INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
+INSERT INTO USER VALUES ('tne00002', 'noob','trainee1234', null, null, null, null, null, 'trainee');
+
+DELETE FROM USER 
+	WHERE USER_ID = 'tne00003';
+    
+UPDATE USER 
+	SET USER_DESC = 'New Description' 
+	WHERE USER_ID = 'tnr00001';
+
+SELECT * FROM USER;
+
+INSERT INTO ADMIN VALUES ('adm00001');
+SELECT * FROM ADMIN;
+
+INSERT INTO TRAINER VALUES ('tnr00001');
+SELECT * FROM TRAINER;
+
+INSERT INTO TRAINEE VALUES ('tne00001');
+SELECT * FROM TRAINEE;
+
+
+###################################
+# Training Course Management      #
+###################################
 
 CREATE TABLE TRAINING_COURSE (
 COURSE_ID CHAR(8) NOT NULL,
@@ -65,6 +91,34 @@ MATERIAL_DESC VARCHAR(200),
 PRIMARY KEY(MATERIAL_ID),
 FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_COURSE(COURSE_ID)
 ) ;
+
+INSERT INTO TRAINING_COURSE VALUES ('trc00001', 'tnr00001','Testing Course', 'Testing 01', '2020-10-02');
+INSERT INTO TRAINING_COURSE VALUES ('trc00002', 'tnr00002','Testing Course 2', 'Testing 02', '2020-10-02');
+
+UPDATE TRAINING_COURSE
+	SET COURSE_DESC = 'newDetails'
+	WHERE COURSE_ID = 'trc00001';
+
+DELETE FROM TRAINING_COURSE
+	WHERE COURSE_ID = 'trc00001';
+
+SELECT * FROM TRAINING_COURSE;
+
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'trc00001', 'mtr 1 - trc 1', 'Material 1 from Course 1');
+
+UPDATE COURSE_MATERIAL
+	SET MATERIAL_TITLE = 'newDetails'
+	WHERE MATERIAL_ID = 'mtr00001';
+
+DELETE FROM COURSE_MATERIAL
+	WHERE MATERIAL_ID = 'mtr00001';
+
+SELECT * FROM COURSE_MATERIAL;
+
+
+########################################
+# Progress and Evaluation Management   #
+########################################
 
 CREATE TABLE REPORT(
 REPORT_ID CHAR(8) NOT NULL,

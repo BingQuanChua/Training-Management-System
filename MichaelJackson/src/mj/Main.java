@@ -20,26 +20,27 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 1;
+		int loginRole = 3;
 
 		login.setVisible(false);
 		
 		 
 		/* TEST MODEL */
-		/* TEST MODEL *DELETE-ME/ 
+		/* TEST MODEL */ 
 		try {
 			
 			System.out.println("TMS model testing\n");
 			Scanner scan = new Scanner(System.in);
-			user = new AdminModel("adm00001");
+			user = new AdminModel("adm00003");
 			
 			boolean condition = true;
 			while(condition) {
 				
-				System.out.print("\nPlease input a choice:");
+				System.out.println("Please input a choice:");
 				int choice = scan.nextInt();
-				System.out.print("\nPlease input a new data:");
-				String newData = scan.next();
+				scan.nextLine(); //to consume the "Enter" 
+				System.out.println("Please input a new data:");
+				String newData = scan.nextLine();
 				
 				if(choice < 1 || choice > 8 ) {
 					condition = false;
