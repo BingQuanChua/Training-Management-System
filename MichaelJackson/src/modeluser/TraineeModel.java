@@ -1,4 +1,4 @@
-package model;
+package modeluser;
 
 public class TraineeModel extends User{
 	
@@ -13,36 +13,29 @@ public class TraineeModel extends User{
 		try {
 			return super.getUserProfile(traineeID, choice);
 		} catch (Exception e) {
-			System.out.println("getTrainerProfile fail");
+			System.out.println("getTraineeProfile fail");
 		}
 		
 		return "";
 	}
 	
-	public boolean setTrainerProfile(String content, int choice) {
+	public boolean setTraineeProfile(String content, int choice) {
 		try {
 			return super.setUserProfile(content, traineeID, choice);
 		} catch (Exception e) {
-			System.out.println("setTrainerProfile fail");
+			System.out.println("setTraineeProfile fail");
 		}
 		
 		return false;
 	}
 	
-	public boolean setTrainerPassword(String newPassword) {
+	public boolean setTraineePassword(String newPassword) {
 		try {
 			return super.setUserPassword(traineeID, newPassword);
 		} catch (Exception e) {
-			System.out.println("setTrainerPassword fail");
+			System.out.println("setTraineePassword fail");
 		}
 		
 		return false;
 	}
-	
-	@Override
-	public boolean setUserID(String oldUserID, String newUserID) {
-		System.out.println("Trainee is not allow to change User ID");
-		return false;
-	}
-
 }

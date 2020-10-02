@@ -8,6 +8,7 @@ import viewtrainer.TrainerUI;
 import java.util.Scanner;
 
 import model.*;
+import modeluser.AdminModel;
 
 public class Main {
 

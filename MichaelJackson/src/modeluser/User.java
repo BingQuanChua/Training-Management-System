@@ -1,15 +1,17 @@
-package model;
+package modeluser;
+
+import model.JDBCexecute;
 
 public class User {
 
-	private JDBCexecute exe;
+	private JDBCexecute database;
 	
 	/***************
 	 * Constructor
 	 **************/
 	protected User()
 	{
-		exe = new JDBCexecute();
+		database = new JDBCexecute();
 	}
 
 	
@@ -30,9 +32,9 @@ public class User {
 	 * @return profileDetails // based on choice
 	 * @throws Exception 
 	 ****************************************/
-	protected String getUserProfile(String userID, int choice) throws Exception {
+	public String getUserProfile(String userID, int choice) throws Exception {
 		
-		String profileDetails = "";
+		String profileDetails = "Fail To Obtain Result";
 		String query = "";
 		String column = "";
 
@@ -69,12 +71,12 @@ public class User {
 			break;
 		default:
 			System.out.println("Invalid choice");
-			throw new Exception();
+			return profileDetails;
 		}
 
 		
 		// Execute Query
-		profileDetails = exe.executeQuery(query, column);
+		profileDetails = database.executeQuery(query, column);
 		System.out.println("getUserpProfile Result \n"
 				+ "User: " + userID + "\n" 
 				+ column + ": " + profileDetails);
@@ -133,7 +135,7 @@ public class User {
 			throw new Exception();
 		}
 			
-		if(exe.executeUpdate(query)) {
+		if(database.executeUpdate(query)) {
 			System.out.println("setUserProfile Successful");
 			return true;
 		} else {
@@ -150,6 +152,7 @@ public class User {
 	 * 
 	 * @param userID
 	 * @param newPass
+	 * 
 	 * @return boolean
 	 ****************************************/
 	protected boolean setUserPassword(String userID, String newPass) {
@@ -160,7 +163,7 @@ public class User {
 			String query = ("UPDATE USER SET USER_PASS = '" + newPass + "' WHERE USER_ID = '"+ userID +"';");
 
 			// Execute Query 
-			if(exe.executeUpdate(query)) {			
+			if(database.executeUpdate(query)) {			
 				System.out.println("setUserPassword Success");
 				return true;
 			} else {
@@ -177,28 +180,28 @@ public class User {
 	/*******************
 	 * Only for admin
 	 ******************/
-	protected boolean setUserID(String oldUserID, String newUserID) {
-		
-		// Query
-		String query = ("UPDATE USER SET USER_ID = '" + newUserID + "' WHERE USER_ID = '"+ oldUserID +"';");
-		System.out.println(query);
-
-		// Execute Query 
-		if (exe.executeUpdate(query)) {			
-			System.out.println("setUserPassword Success");
-			return true;
-		} else
-			System.out.println("setUserPassword Fail");
-			return false;
-	}
-
 	protected boolean executeUpdate(String query) {
 
 		// Execute Query 
-		exe.executeUpdate(query);			
+		database.executeUpdate(query);			
 		System.out.println("User executeUpdate Success");
 		return true;
 
+	}
+	
+	protected String executeQuery(String query, String column) {
+
+		// Execute Query 
+		String result = "Fail To Obtain Result";
+		try {
+			result = database.executeQuery(query, column);
+			System.out.println("User executeUpdate Success");
+			return result;
+		} catch (Exception e) {
+			System.out.println("User executeUpdate Fail");
+		}	
+		
+		return "Fail To Obtain Result";
 	}
 	
 	

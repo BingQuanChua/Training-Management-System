@@ -1,4 +1,4 @@
-package model;
+package modeluser;
 
 public class TrainerModel extends User{
 	
@@ -38,11 +38,4 @@ public class TrainerModel extends User{
 		
 		return false;
 	}
-	
-	@Override
-	public boolean setUserID(String oldUserID, String newUserID) {
-		System.out.println("Trainer is not allow to change User ID");
-		return false;
-	}
-
 }

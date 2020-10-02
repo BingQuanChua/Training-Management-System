@@ -21,7 +21,7 @@ public class JDBCexecute {
 	 * Constructor
 	 * initialize JDBC
 	 *****************/
-	protected JDBCexecute(){
+	public JDBCexecute(){
 		
 		try {
 			con = DriverManager.getConnection(url, serverName, serverPassword);
@@ -98,7 +98,7 @@ public class JDBCexecute {
 			// Close statement
 			st.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Database fail to closed"); 
 			e.printStackTrace();
 		}
 		System.out.println("Database closed");

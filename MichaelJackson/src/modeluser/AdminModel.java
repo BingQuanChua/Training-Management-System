@@ -1,6 +1,5 @@
-package model;
+package modeluser;
 
-import java.sql.SQLException;
 
 public class AdminModel extends User {
 	
@@ -34,6 +33,7 @@ private String adminID;
 	// Admin can set other users' password
 	public boolean setUserPassword(String userID, String newPassword) {
 		try {
+			//String query = ("UPDATE USER SET USER_ID = '" + newUserID + "' WHERE USER_ID = '"+ oldUserID +"';");
 			return super.setUserPassword(userID, newPassword);
 		} catch (Exception e) {
 			System.out.println("setUserPassword fail");
@@ -45,7 +45,8 @@ private String adminID;
 	// Admin can set other users' ID
 	public boolean setUserID(String oldUserID, String newUserID) {
 		try {
-			return super.setUserID(oldUserID, newUserID);
+			String query = ("UPDATE USER SET USER_ID = '" + newUserID + "' WHERE USER_ID = '"+ oldUserID +"';");
+			return super.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println("setUserID fail");
 		}
