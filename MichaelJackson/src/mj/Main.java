@@ -26,7 +26,7 @@ public class Main {
 		login.setVisible(false);
 		 
 		/* TEST MODEL */
-		/* TEST MODEL *DELETE_ME/ 
+		/* TEST MODEL */ 
 		try {
 			
 			System.out.println("TMS model testing\n");

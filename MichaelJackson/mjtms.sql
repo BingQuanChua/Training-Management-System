@@ -37,7 +37,7 @@ CREATE TABLE TRAINEE (
 ) ;
 
 INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
-INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tnr00003', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
 INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
 INSERT INTO USER VALUES ('tne00002', 'noob','trainee1234', null, null, null, null, null, 'trainee');
 
@@ -115,6 +115,7 @@ DELETE FROM COURSE_MATERIAL
 
 SELECT * FROM COURSE_MATERIAL;
 
+SELECT * FROM `JOIN`;
 
 ########################################
 # Progress and Evaluation Management   #
