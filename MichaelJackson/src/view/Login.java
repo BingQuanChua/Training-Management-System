@@ -1,6 +1,6 @@
 package view;
 
-import mj.*;
+import mj.*; 
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;

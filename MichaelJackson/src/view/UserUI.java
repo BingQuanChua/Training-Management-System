@@ -1,6 +1,8 @@
 package view;
 
-import java.util.ArrayList; 
+import mj.UserProfileController;
+
+import java.util.ArrayList;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,11 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import mj.UserProfileController;
-import viewtrainee.AvailableTraining;
-import viewtrainee.EnrolledTraining;
-
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.GroupLayout;
@@ -30,33 +27,32 @@ import javax.swing.JButton;
 public class UserUI extends JFrame {
 	
 	// Variables declaration
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;	
 	
+	// Right side panel body
     private JScrollPane jScrollPane1;
-    private JPanel menus;
     private JPanel panelBody;
-    private JPanel panelHeader;
+    
+    // Navigation bar menu
+    private JPanel menus;
     private JPanel panelMenu;
     
+    // Top Horizontal Header
+    private JPanel panelHeader;
     private JButton logoButton;
     private JButton signOutButton;
     
-    private ListPanel availableTrainingList;
-    private SubMenu subMenuATC;
-    private ListPanel enrolledTrainingList;
-    private SubMenu subMenuETC;
-    private ChangePassword changePassword;
-    private UserProfile profile;
-    private UserProfileController profileController;
-    private Icon icon;
-    
-    //Profile
+    // Profile
     private JPanel panelMenuHeader;
     private JButton profileButton;
     private JButton accountSettingButton;
-    private Icon profileIcon;
+    private ChangePassword changePassword;
+    private UserProfile profile;
+    private UserProfileController profileController;  
     
-    Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
+    // Other
+    private Icon icon;
+    private Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
  
  
     //Constructor
@@ -64,12 +60,11 @@ public class UserUI extends JFrame {
     	super("MJ Training Management System");
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        traineeUI(); //Based on role
     }
     
 
 	// This method is called from within the constructor to initialize the form.
-    private void initComponents() {
+    protected void initComponents() {
 
         panelHeader = new JPanel();	//Top header panel
         panelMenu = new JPanel();	//Left root panel
@@ -117,7 +112,7 @@ public class UserUI extends JFrame {
          * Profile (Show profile and profile setting)
          **************************************************************/
         panelMenuHeader = new JPanel(); //Left header panel for profile
-        profileIcon = new Icon();		//Set Icon in button
+        new Icon();
       
         panelMenuHeader.setBackground(new Color(255,218,185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
@@ -157,12 +152,12 @@ public class UserUI extends JFrame {
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
         menus.add(panelMenuHeader);
+
+        
+        
 		/**************************************************************
-         * Profile
+         * Set Icon Image
          **************************************************************/
-        
-        
-        //Icon set image
         try {
         	File logoPath = new File("src/images/logo.png");
 			Image originalLogo = ImageIO.read(logoPath);
@@ -178,6 +173,9 @@ public class UserUI extends JFrame {
         	System.out.println("Trainee Image not found");
         }
         
+		/**************************************************************
+         * Set panelHeader layout
+         **************************************************************/
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
             	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
@@ -201,6 +199,9 @@ public class UserUI extends JFrame {
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
+        /**************************************************************
+         * panelMenu and panelBody
+         **************************************************************/
         //Left root panel
         panelMenu.setBackground(new Color(204, 204, 204));
         panelMenu.setPreferredSize(new Dimension(300, 384));
@@ -235,49 +236,14 @@ public class UserUI extends JFrame {
         setLocationRelativeTo(null);
     }
     
-    
-   public ListPanel getAvailableTrainingList() {
-	   return availableTrainingList;
-   }
    
-   public ListPanel getEnrolledTrainingList() {
-	   return enrolledTrainingList;
-   }
-   
-   public JPanel getPanelBody() {
+    // Return for child class
+   protected JPanel getPanelBody() {
 	   return panelBody;
    }
-   
-    // This method is called from within the constructor to initialize the form.
-    private void traineeUI() {
-    	
-        //  create subMenu Training
-        MenuItem menuMTC = new MenuItem(" -- Available Training Course", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-            	panelBody.removeAll();
-                panelBody.add(subMenuATC);
-                panelBody.repaint();
-                panelBody.revalidate();
-            }
-        });
-        MenuItem menuTP = new MenuItem(" -- Enrolled Training Course", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-            	panelBody.removeAll();
-                panelBody.add(subMenuETC);
-                panelBody.repaint();
-                panelBody.revalidate();
-            }
-        });
-        
-        MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
-        addMenu(menuTraining);
-        home(); //show home menu initially
-    }
 
     // Add all subMenu into menus
-    private void addMenu(MenuItem... menu) {
+    protected void addMenu(MenuItem... menu) {
         for (int i = 0; i < menu.length; i++) {
             menus.add(menu[i]);
             ArrayList<MenuItem> subMenu = menu[i].getSubMenu();
@@ -289,11 +255,10 @@ public class UserUI extends JFrame {
     }
     
     // Setting the panelBody (Home menu)
-    private void home() {
+    protected void home() {
     	panelBody.removeAll();
     	panelBody.add(icon);
         panelBody.repaint();
         panelBody.revalidate();
     }
-
 }

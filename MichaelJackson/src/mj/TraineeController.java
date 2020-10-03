@@ -26,6 +26,7 @@ public class TraineeController {
 		setAvailableTrainingCourseListener();
 		setEnrolledTrainingCourseListener();
 	}
+
 	
 	private void setAvailableTrainingCourseListener() {
 		

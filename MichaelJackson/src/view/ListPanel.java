@@ -4,11 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import java.util.ArrayList;
 
 import viewadmin.ManageTraining;
 import viewadmin.ManageUser;

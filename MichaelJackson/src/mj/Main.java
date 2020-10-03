@@ -21,12 +21,12 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 2;
+		int loginRole = 1;
 
 		login.setVisible(false);
 		 
 		/* TEST MODEL */
-		/* TEST MODEL */ 
+		/* TEST MODEL *DeleteMe/ 
 		try {
 			
 			System.out.println("TMS model testing\n");
@@ -60,7 +60,6 @@ public class Main {
 		}/**/
 	
 		// start showing the UI for admin/trainer/trainee
-		loginRole = 3;
 		
 		roleLogin(loginRole);
 	}
