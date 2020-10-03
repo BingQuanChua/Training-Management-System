@@ -13,22 +13,26 @@ import javax.swing.JPanel;
 ;
 
 public class AdminUI extends UserUI {
-
+    
 	/**
 	 * Admin interface
 	 */
+	private static final long serialVersionUID = 1L;
 	private AddNewUser addNewUser;
 	private AllTrainerList allTrainerList;
 	private AllTraineeList allTraineeList;
 	private AllTrainingList allTrainingList;
 	private ListPanel reportList;
 	
+	private String userID;
 
 	/**
 	 * Create the frame.
 	 */
-	public AdminUI() {
-		super();
+	public AdminUI(String userID) {
+	
+		super(userID);
+		this.userID = userID;
 		initAdminComponents();
 		initAdminMenu();
 	}

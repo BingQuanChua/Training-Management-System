@@ -18,6 +18,7 @@ public class AdminController {
 	private AdminUI adminUI;
 	private AddNewCourse addNewCourse; // all adding and editing a training course shares the same panel
 	private EditCourse editCourse; 
+	private boolean isTextAreaEditable = false;
 	
 	public AdminController(AdminUI adminUI) {
 		this.adminUI = adminUI;
@@ -57,6 +58,7 @@ public class AdminController {
 		}
 		// editCourse.getEditButton().addActionListener(editButtonListener);
 		editCourse.getCancelButton().addActionListener(backToMenuListener);
+		editCourse.getEditButton().addActionListener(editButtonListener);
 	}
 	
 	private void setReportListener() {
@@ -114,6 +116,23 @@ public class AdminController {
 			// enable edit
 			// "edit" -> "save"
 			// rewrite data in database
+		
+				if(!isTextAreaEditable) {
+					editCourse.getTrainingName().setEditable(true);
+					editCourse.getTrainerID().setEditable(true);
+					editCourse.getTrainingDate().setEditable(true);
+					editCourse.getTrainingDesc().setEditable(true);
+					editCourse.getEditButton().setText("Save");
+					isTextAreaEditable = true;
+				}
+				else {
+					editCourse.getTrainingName().setEditable(false);
+					editCourse.getTrainerID().setEditable(false);
+					editCourse.getTrainingDate().setEditable(false);
+					editCourse.getTrainingDesc().setEditable(false);
+					editCourse.getEditButton().setText("Edit");
+					isTextAreaEditable = false;
+				}
 		}
 	};
 	

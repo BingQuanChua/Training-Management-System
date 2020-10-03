@@ -23,10 +23,12 @@ public class TrainerUI extends UserUI {
     private SubMenu subMenuMTC;
     private ListPanel trainingProgressList;
     private SubMenu subMenuTP;
+    private String userID;
 
 	// Constructor
-	public TrainerUI() {
-		super();
+	public TrainerUI(String userID) {
+		super(userID);
+		this.userID = userID;
 		initTrainerComponents();
 		initTrainerMenu(); //Based on role		
 	}

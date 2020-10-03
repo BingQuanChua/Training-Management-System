@@ -131,9 +131,9 @@ public class Login extends JFrame {
 		
 		
 			String pass = new String(password);
-			AdminUI adminUI = new AdminUI();
-			TrainerUI trainerUI = new TrainerUI();
-			TraineeUI traineeUI = new TraineeUI();
+			//AdminUI adminUI = new AdminUI();
+			//TrainerUI trainerUI = new TrainerUI();
+			//TraineeUI traineeUI = new TraineeUI();
 		
 			
 	//		System.out.println(pass);
@@ -147,13 +147,13 @@ public class Login extends JFrame {
 			{
 				//JOptionPane.showMessageDialog(null, "'"+result.getString("user_Full_name")+"' Logged In");
 				if(result.getInt("user_role") == 1) {
-					adminUI.setVisible(true);
+					//adminUI.setVisible(true);
 				}
 				if(result.getInt("user_role") == 2) {
-					trainerUI.setVisible(true);
+					//trainerUI.setVisible(true);
 				}
 				if(result.getInt("user_role") == 3) {
-					traineeUI.setVisible(true);
+					//traineeUI.setVisible(true);
 				}
 			
 	

@@ -1,6 +1,7 @@
 package mj;
 
 import view.Login; 
+import view.UserUI;
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
@@ -16,15 +17,18 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
+	private static UserUI userUI;
 	private AdminModel user;
+	private String userID;
 	
 	public Main() {
 
 		login = new Login();
-		int loginRole = 2;
+		int loginRole = 1;
 
 		login.setVisible(false);
-		 
+		userID = "adm00001";
+
 		/* TEST MODEL */
 		/* TEST MODEL *DeleteMe/ 
 		try {
@@ -103,17 +107,17 @@ public class Main {
 		login.setVisible(false);
 		switch (loginRole) {
 		case 1:
-			adminUI = new AdminUI();
+			adminUI = new AdminUI(userID);
 			new AdminController(adminUI);
 			adminUI.setVisible(true);
 			break;
 		case 2:
-			trainerUI = new TrainerUI();
+			trainerUI = new TrainerUI(userID);
 			new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:
-			traineeUI = new TraineeUI();
+			traineeUI = new TraineeUI(userID);
 			new TraineeController(traineeUI);
 			traineeUI.setVisible(true);
 			break;

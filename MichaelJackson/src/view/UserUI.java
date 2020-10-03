@@ -53,11 +53,13 @@ public class UserUI extends JFrame {
     // Other
     private Icon icon;
     private Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
+    private String userID;
  
  
     //Constructor
-    public UserUI() {
+    public UserUI(String userID) {
     	super("MJ Training Management System");
+    	this.userID = userID;
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -122,7 +124,7 @@ public class UserUI extends JFrame {
         //Profile setting
         profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
-        profileButton = new JButton("Trainee Profile");
+        profileButton = new JButton("User Profile");
         profileButton.setOpaque(false);
         profileButton.setContentAreaFilled(false);
         profileButton.setBorderPainted(false);
@@ -134,7 +136,7 @@ public class UserUI extends JFrame {
                   panelBody.revalidate();
         	  } 
         	} );
-        profileController =  new UserProfileController(profile);
+        profileController =  new UserProfileController(profile,userID);
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
         accountSettingButton = new JButton("Change Password");
@@ -178,23 +180,23 @@ public class UserUI extends JFrame {
          **************************************************************/
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
-            	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-            		.addGroup(panelHeaderLayout.createSequentialGroup()
-            			.addContainerGap()
-            			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-            			.addGap(1404)
-            			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-            			.addContainerGap(39, Short.MAX_VALUE))
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
-            	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
-            		.addGroup(panelHeaderLayout.createSequentialGroup()
-            			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-            				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            				.addGroup(panelHeaderLayout.createSequentialGroup()
-            					.addGap(80)
-            					.addComponent(signOutButton, GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
-            			.addContainerGap())
+        	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+        			.addContainerGap())
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap(72, Short.MAX_VALUE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+        			.addGap(8))
         );
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);

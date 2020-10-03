@@ -11,6 +11,7 @@ public class EditCourse extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private JTextField txtName;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
@@ -39,7 +40,7 @@ public class EditCourse extends JPanel{
         lblName.setBounds(157, 160, 100, 27);
         frontPanel.add(lblName);
         
-        JTextField txtName = new JTextField(); 
+        txtName = new JTextField(); 
         txtName.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtName.setBounds(157, 211, 757, 47);
         frontPanel.add(txtName);
@@ -58,6 +59,7 @@ public class EditCourse extends JPanel{
         });
         txtName.setForeground(Color.GRAY);
         txtName.setBorder(null);
+        txtName.setEditable(false);
         
         JSeparator separator_2 = new JSeparator();
         separator_2.setForeground(Color.GRAY);
@@ -76,6 +78,7 @@ public class EditCourse extends JPanel{
         txtDesc.setLineWrap(true);
         txtDesc.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDesc.setBorder(null);
+        txtDesc.setEditable(false);
         txtDesc.setBounds(157, 279, 757, 110);
       
         txtDesc.addFocusListener(new FocusAdapter() {
@@ -107,6 +110,7 @@ public class EditCourse extends JPanel{
         txtTrainer.setForeground(Color.GRAY);
         txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtTrainer.setBorder(null);
+        txtTrainer.setEditable(false);
         txtTrainer.setBounds(157, 537, 757, 47);
         txtTrainer.addFocusListener(new FocusAdapter() {
         	@Override
@@ -139,6 +143,7 @@ public class EditCourse extends JPanel{
         txtDate.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDate.setBorder(null);
         txtDate.setBounds(157, 678, 757, 47);
+        txtDate.setEditable(false);
         txtDate.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
@@ -192,13 +197,29 @@ public class EditCourse extends JPanel{
 
         ////end of Edit User panel////
     }
-    
+   
     public JButton getEditButton() {
     	return editButton;
     }
     
     public JButton getCancelButton() {
     	return cancelButton;
+    }
+    
+    public JTextField getTrainingName() {
+    	return txtName;
+    }
+    
+    public JTextField getTrainerID() {
+    	return txtTrainer;
+    }
+    
+    public JTextField getTrainingDate() {
+    	return txtDate;
+    }
+    
+    public JTextArea getTrainingDesc() {
+    	return txtDesc;
     }
 
 }
