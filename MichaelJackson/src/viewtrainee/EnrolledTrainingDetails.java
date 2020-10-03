@@ -70,6 +70,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		JLabel label1 = new JLabel("Training Course Details");
 		label1.setFont(heading2);
 		label1.setHorizontalAlignment(SwingConstants.CENTER);
+		label1.setBackground(new Color(255, 222, 173));
+		label1.setOpaque(true);
 		label1.setBounds(100, 85, 800, 50);
 		upperPanel.add(label1);
 		
@@ -104,6 +106,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		JLabel label2 = new JLabel("Training Course Materials");
 		label2.setFont(heading2);
 		label2.setHorizontalAlignment(SwingConstants.CENTER);
+		label2.setBackground(new Color(255, 222, 173));
+		label2.setOpaque(true);
 		label2.setBounds(100, 450, 800, 50);
 		upperPanel.add(label2);
 		////// end of upperPanel creation //////

@@ -19,39 +19,73 @@ import java.awt.Color;
 import view.ListPanel;
 
 public class AllTrainingList extends JPanel {
-	public ListPanel trainingList; 
-	public AdminUI adminUI;
 	/**
 	 * Showing a list of all training
 	 */
-	public AllTrainingList(AdminUI adminUI) {
-		trainingList = new ListPanel();
-		this.adminUI = adminUI;
+	private static final long serialVersionUID = 1L;
+	
+	private JButton addNewTrainingButton;
+	private ListPanel trainingList; 
+	
+	public AllTrainingList() {
+		
 		setBackground(new Color(255, 255, 200));
-		setPreferredSize(new Dimension(1000, 1080));	
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 200));
 		
-		JButton btnAdd = new JButton("+ Add New Training Course");
-		btnAdd.setForeground(Color.BLACK);
-		btnAdd.setBackground(new Color(240,240,240));
-		btnAdd.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnAdd.setPreferredSize(new Dimension(300, 45));
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				removeAll();
-				add(new AddNewCourse(adminUI));
-		        repaint();
-				revalidate();
-			}	
-		});
-		GridBagConstraints gbc_r0 = new GridBagConstraints();
-		gbc_r0.anchor = GridBagConstraints.CENTER;
-		gbc_r0.gridx = 0;
-		gbc_r0.gridy = 2;
-		add(btnAdd, gbc_r0);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{1, 0};
+		gridBagLayout.rowHeights = new int[]{1, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		panel.setLayout(gridBagLayout);
 		
-		trainingList.addItem(new ManageTraining("Python Advance Training Course",this,adminUI));
-		trainingList.addItem(new ManageTraining("Software Engineering with Java",this,adminUI));
-		trainingList.addItem(new ManageTraining("Python Advance Training Course",this,adminUI));
-		add(trainingList);
+		JPanel upperPanel = new JPanel();
+		upperPanel.setLayout(null);
+		upperPanel.setBackground(new Color(255, 255, 200));
+		upperPanel.setPreferredSize(new Dimension(800, 70));
+		
+		addNewTrainingButton = new JButton("+ Add New Training Course");
+		addNewTrainingButton.setForeground(Color.BLACK);
+		addNewTrainingButton.setBackground(new Color(240,240,240));
+		addNewTrainingButton.setFont(new Font("Dialog", Font.PLAIN, 20));
+		addNewTrainingButton.setBounds(0, 0, 800, 70);
+		upperPanel.add(addNewTrainingButton);
+//		addNewTraningButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				removeAll();
+//				add(new AddNewCourse(adminUI));
+//		        repaint();
+//				revalidate();
+//			}	
+//		});
+		
+		trainingList = new ListPanel();
+		trainingList.addItem(new ManageTraining("Python Advance Training Course"));
+		trainingList.addItem(new ManageTraining("Software Engineering with Java"));
+		trainingList.addItem(new ManageTraining("Python Advance Training Course"));
+		
+		GridBagConstraints gbc_upperButton = new GridBagConstraints();
+		gbc_upperButton.anchor = GridBagConstraints.CENTER;
+		gbc_upperButton.fill = GridBagConstraints.NORTH;
+		gbc_upperButton.gridx = 0;
+		gbc_upperButton.gridy = 0;
+		panel.add(upperPanel, gbc_upperButton);
+		GridBagConstraints gbc_trainingList = new GridBagConstraints();
+		gbc_trainingList.anchor = GridBagConstraints.CENTER;
+		gbc_trainingList.fill = GridBagConstraints.NORTH;
+		gbc_trainingList.gridx = 0;
+		gbc_trainingList.gridy = 1;
+		panel.add(trainingList, gbc_trainingList);
+		
+		add(panel);
+	}
+	
+	public JButton getAddNewTrainingButton() {
+		return addNewTrainingButton;
+	}
+	
+	public ListPanel getTrainingList() {
+		return trainingList;
 	}
 }

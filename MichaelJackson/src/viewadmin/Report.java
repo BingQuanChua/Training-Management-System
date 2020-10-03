@@ -1,44 +1,53 @@
-package viewadmin;
+ package viewadmin;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-
-import java.awt.Font;
-import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class Report extends JPanel {
 
 	/**
-	 * 
+	 * Managing all training report 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JButton trainingButton;
+	private IndividualReport individualReport; // individual report for each report
 	
-	JPanel list = new JPanel();
+	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
 	
-	public Report() {
+	public Report(String name) {
+
+		setPreferredSize(new Dimension(800, 70));
+		setBackground(UIManager.getColor("Button.background"));
 		
-		setBackground(new Color(255, 255, 200));	
-		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		
-		addTraining(new ManageAllReport("Python Advance Training Course",list));
-		addTraining(new ManageAllReport("Software Engineering with Java",list));
-		addTraining(new ManageAllReport("Introduction to OOPDS",list));
-		add(list);
+		trainingButton = new JButton(name);
+		trainingButton.setForeground(Color.BLACK);
+		trainingButton.setBounds(0, 0, 800, 70);
+		trainingButton.setPreferredSize(new Dimension(800, 70));
+		trainingButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
+
+		setLayout(null);
+		trainingButton.setBackground(Color.LIGHT_GRAY);
+		trainingButton.setFocusPainted(false);
+		add(trainingButton);
+				
+		individualReport = new IndividualReport(name);
 	}
-			
-	private void addTraining(ManageAllReport t) {
-		list.add(t);
+	
+	public JButton getTrainingButton() {
+		return trainingButton;
 	}
+	
+	public IndividualReport getIndividualReport() {
+		return individualReport;
+	}
+	
 }

@@ -1,6 +1,6 @@
 package mj;
 
-import view.Login;
+import view.Login; 
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
@@ -21,7 +21,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 1;
+		int loginRole = 2;
 
 		login.setVisible(false);
 		 
@@ -58,8 +58,10 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}/**/
-		
+	
 		// start showing the UI for admin/trainer/trainee
+		loginRole = 3;
+		
 		roleLogin(loginRole);
 	}
 
@@ -103,6 +105,7 @@ public class Main {
 		switch (loginRole) {
 		case 1:
 			adminUI = new AdminUI();
+			new AdminController(adminUI);
 			adminUI.setVisible(true);
 			break;
 		case 2:

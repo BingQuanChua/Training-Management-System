@@ -7,41 +7,33 @@ import java.awt.event.*;
 
 
 public class AddNewUser extends JPanel {
-    
-	public AdminUI adminUI;
-	private int dialogButton_1;
-	private int dialogButton_2; 
+   
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
-    AddNewUser(AdminUI adminUI) {
-    	this.adminUI = adminUI;
+	private JTextField userIDField;
+	private JTextField passwordField;
+	private CheckboxGroup cbg;
+	private JButton addButton;
+	private JButton cancelButton;
+	
+    public AddNewUser() {
+    	
     	setBackground(new Color(255, 255, 200));
-    	
-    	
     	
         JPanel frontPanel = new JPanel();
         JSeparator separator_1 = new JSeparator();
         JSeparator separator_2 = new JSeparator();
-        JTextField userIDField = new JTextField(20);
-        JTextField passwordField = new JTextField(20);
-        CheckboxGroup cbg = new CheckboxGroup();
+        userIDField = new JTextField(20);
+        passwordField = new JTextField(20);
+        cbg = new CheckboxGroup();
         Checkbox trainerBox = new Checkbox("New Trainer", cbg, false);
         Checkbox traineeBox = new Checkbox("New Trainee", cbg, false);
-        JButton addButton = new JButton("Add");
-        addButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
-    			if(dialogButton_1 == JOptionPane.YES_OPTION) {
-    				dialogButton_2 = JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-    				adminUI.home();
-    			}
-        	}
-        });
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		adminUI.home();
-        	}
-        });
+        addButton = new JButton("Add");
+        cancelButton = new JButton("Cancel");
+
         JLabel lblUserID = new JLabel("UserID");
         JLabel lblPassword = new JLabel("Password\r\n");
         JPanel NavPanel = new JPanel();
@@ -162,4 +154,26 @@ public class AddNewUser extends JPanel {
        
         ////end of Add New User panel///
     }
+    
+    public JTextField getUserIDField() {
+    	return userIDField;
+    }
+    
+    public JTextField getPasswordField() {
+    	return passwordField;
+    }
+    
+    public CheckboxGroup getCBG() {
+    	return cbg;
+    }
+    
+    public JButton getAddButton() {
+    	return addButton;
+    }
+    
+    public JButton getCancelButton() {
+    	return cancelButton;
+    }
+    
+
 }

@@ -6,17 +6,21 @@ import java.awt.event.*;
 
 
 public class AddNewCourse extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public AdminUI adminUI;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
 	private JTextField txtCourseID;
-	private int dialogButton_1;
-	private int dialogButton_2; 
+	private JButton addButton;
+	private JButton cancelButton;
     
-    AddNewCourse(AdminUI adminUI) {
+    public AddNewCourse() {
     	
-    	this.adminUI = adminUI;
     	setBackground(new Color(255, 255, 200));        
     	JPanel addNewCourse = new JPanel();
         JPanel frontPanel =  new JPanel();
@@ -162,31 +166,14 @@ public class AddNewCourse extends JPanel {
         separator_4.setBounds(103, 838, 757, 2);
         frontPanel.add(separator_4);
         
-        JButton addButton = new JButton("Add");
-        addButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to add the training course?","WARNING",JOptionPane.YES_NO_OPTION);
-    			if(dialogButton_1 == JOptionPane.YES_OPTION) {
-    				dialogButton_2 = JOptionPane.showConfirmDialog (null, "New training course has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-    				adminUI.home();
-    			}
-        	}
-        });
+        addButton = new JButton("Add");
         addButton.setForeground(Color.WHITE);
         addButton.setFont(new Font("Serif", Font.PLAIN, 20));
         addButton.setBackground(new Color(205,133,63));
         addButton.setBounds(710, 900, 150, 35);
         frontPanel.add(addButton);
         
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		removeAll();
-				add(new AllTrainingList(adminUI));
-		        repaint();
-				revalidate();
-        	}
-        });
+        cancelButton = new JButton("Cancel");
         cancelButton.setForeground(Color.WHITE);
         cancelButton.setFont(new Font("Serif", Font.PLAIN, 20));
         cancelButton.setBackground(new Color(205,133,63));
@@ -248,5 +235,13 @@ public class AddNewCourse extends JPanel {
        
         ////end of Add New User panel////
         
+    }
+    
+    public JButton getAddButton() {
+    	return addButton;
+    }
+    
+    public JButton getCancelButton() {
+    	return cancelButton;
     }
 }

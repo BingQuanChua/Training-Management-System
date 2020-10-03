@@ -9,14 +9,16 @@ public class EditCourse extends JPanel{
 	/**
 	 * Showing page for editing training course
 	 */
-	public AdminUI adminUI;
+	private static final long serialVersionUID = 1L;
+	
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
+	private JButton editButton;
+	private JButton cancelButton;
     
-    EditCourse(AdminUI adminUI) {
+    public EditCourse() {
         
-    	this.adminUI = adminUI;
         JPanel frontPanel =  new JPanel();
         JPanel NavPanel = new JPanel();    
         
@@ -157,22 +159,14 @@ public class EditCourse extends JPanel{
         separator_4.setBounds(157, 736, 757, 2);
         frontPanel.add(separator_4);
         
-        JButton editButton = new JButton("Edit\r\n");
+        editButton = new JButton("Edit\r\n");
         editButton.setForeground(Color.WHITE);
         editButton.setFont(new Font("Dialog", Font.PLAIN, 20));
         editButton.setBackground(new Color(205,133,63));
         editButton.setBounds(770, 819, 150, 35);
         frontPanel.add(editButton);
         
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		removeAll();
-				add(new AllTrainingList(adminUI));
-		        repaint();
-				revalidate();
-        	}
-        });
+        cancelButton = new JButton("Cancel");
         setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         cancelButton.setForeground(Color.WHITE);
         cancelButton.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -197,6 +191,14 @@ public class EditCourse extends JPanel{
         setBackground(new Color (255,255,200));
 
         ////end of Edit User panel////
+    }
+    
+    public JButton getEditButton() {
+    	return editButton;
+    }
+    
+    public JButton getCancelButton() {
+    	return cancelButton;
     }
 
 }

@@ -51,6 +51,7 @@ public class AdminUI extends JFrame {
 	private AllTrainerList allTrainerList;
 	private AllTraineeList allTraineeList;
 	private AllTrainingList allTrainingList;
+	private ListPanel reportList;
 	private ChangePassword changePassword;
 	private UserProfile profile;
 	private UserProfileController profileController;
@@ -84,10 +85,11 @@ public class AdminUI extends JFrame {
 		menus = new JPanel(); // Left panel that store all submenu
 		panelBody = new JPanel(); // Right root panel
 		
-		addNewUser = new AddNewUser(this);
-		allTrainerList = new AllTrainerList(this);
-		allTraineeList = new AllTraineeList(this);
-		allTrainingList = new AllTrainingList(this);
+		addNewUser = new AddNewUser();
+		allTrainerList = new AllTrainerList();
+		allTraineeList = new AllTraineeList();
+		allTrainingList = new AllTrainingList();
+		reportList = new ListPanel();
 		changePassword = new ChangePassword();// Change password panel
 		icon = new Icon();
 		icon.setBackground(new Color(255, 255, 200));
@@ -111,6 +113,10 @@ public class AdminUI extends JFrame {
         profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
         profileButton = new JButton("Admin Profile");
+        profileButton.setOpaque(false);
+        profileButton.setContentAreaFilled(false);
+        profileButton.setBorderPainted(false);
+        
         profileButton.addActionListener(new ActionListener() { 
         	  public void actionPerformed(ActionEvent e) { 
         		  panelBody.removeAll();
@@ -137,6 +143,12 @@ public class AdminUI extends JFrame {
         panelMenuHeader.add(Box.createRigidArea(new Dimension(10,10)));
         panelMenuHeader.add(accountSettingButton);
         menus.add(panelMenuHeader);
+        
+        reportList.addItem(new Report("Python Advance Training Course"));
+        reportList.addItem(new Report("Software Engineering with Java"));
+		reportList.addItem(new Report("Introduction to OOPDS"));
+        
+        
         /**************************************************************
          * Profile 
          **************************************************************/
@@ -148,9 +160,12 @@ public class AdminUI extends JFrame {
         		home();
         	}
         });
-        logoButton.setBackground(null);
+        // logoButton.setBackground(null);
         logoButton.setBorder(null);
-        logoButton.setFocusable(false);
+        logoButton.setOpaque(false);
+        logoButton.setContentAreaFilled(false);
+        logoButton.setBorderPainted(false);
+        
         try {
         	File logoPath = new File("src/images/logo.png");
 			Image originalLogo = ImageIO.read(logoPath);
@@ -244,7 +259,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("Add New User",addNewUser));
+				panelBody.add(new SubMenu("Add New User", addNewUser));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -253,7 +268,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("Manage Trainer",allTrainerList));
+				panelBody.add(new SubMenu("Manage Trainer", allTrainerList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -262,7 +277,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("Manage Trainee",allTraineeList));
+				panelBody.add(new SubMenu("Manage Trainee", allTraineeList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -272,7 +287,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("Manage Training Course",allTrainingList));
+				panelBody.add(new SubMenu("Manage Training Course", allTrainingList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -282,7 +297,7 @@ public class AdminUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				panelBody.removeAll();
-				panelBody.add(new SubMenu("Report",new Report()));
+				panelBody.add(new SubMenu("Report", reportList));
 				panelBody.repaint();
 				panelBody.revalidate();
 			}
@@ -295,6 +310,30 @@ public class AdminUI extends JFrame {
 		addMenu(menuEmployee);
 		addMenu(menuTraining);
 		home(); //show home menu initially
+	}
+	
+	public JPanel getPanelBody() {
+		return panelBody;
+	}
+	
+	public AddNewUser getAddNewUser() {
+		return addNewUser;
+	}
+	
+	public AllTrainerList getAllTrainerList() {
+		return allTrainerList;
+	}
+	
+	public AllTraineeList getAllTraineeList() {
+		return allTraineeList;
+	}
+	 
+	public AllTrainingList getAllTrainingList() {
+		return allTrainingList;
+	}
+	
+	public ListPanel getReportList() {
+		return reportList;
 	}
 
 	// Add all subMenu into menus
