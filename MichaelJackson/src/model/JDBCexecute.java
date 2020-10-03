@@ -89,9 +89,10 @@ public class JDBCexecute {
 		return result;
 	}
 	
-	/*********************************
-	 * Close Database (after log out)
-	 ********************************/
+	/**
+	 * Close Database 
+	 * (After log out)
+	 */
 	public void closeDatabase() {
 		
 		try {

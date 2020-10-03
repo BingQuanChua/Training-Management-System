@@ -1,0 +1,77 @@
+/*****************************
+ *	Admin
+ *****************************
+ * 
+ * Training Course Management
+ *    - addNewCourse()
+ *    - setCourseDetails()
+ *	* courseID 
+ * 	* courseTitle
+ *  	* courseDesc
+ *  	* courseTrainer
+ *  	* courseStartDate
+ *  	* courseEndDate
+ */
+
+/**************************** 
+ *	Trainer
+ ****************************
+ * 
+ * Training Course Registration Management
+ *    - enrollTrainee()
+ *    - declineTrainee()
+ *    - getEnrolledTraineeList()
+ * 
+ * Training Course Material Management
+ *    - addCourseMaterial() - Many materials
+ *    - setCourseMaterial()
+ *  	* courseID
+ *  	* materialID
+ *	* courseTitle
+ *  	* courseDesc
+ *    - addCourseFeedback() - 1 feedback
+ *    - setCourseFeedback()
+ *  	* courseID
+ *  	* feedbackFormLink
+ */
+	
+/****************************
+ * 	Trainee
+ *****************************
+ *
+ * Training Progress and Evaluation Management
+ *  - markAsDone()
+ *  - individualProgress()
+ *  - Report
+ *  
+ */
+
+	
+/****************************
+ * Training Course View Management
+ * getCourseDetails
+ ****************************
+ * Basic details:
+ *  - courseID 
+ *  - courseTitle
+ *  - courseDesc
+ *  - courseTrainer
+ *  - courseStartDate
+ *  - courseEndDate
+ *  - courseMaterial
+ *  - courseFeedbackForm
+ * Advanced details:
+ *  - courseEnrolledTrainee
+ *  - courseFeedbackResult
+ *  
+ * ----------------------------------------------
+ * | Admin	| Trainer	| Trainee	|
+ * |------------+---------------+---------------|
+ * | All 	| Only		| Only		|
+ * | courses	| assigned	| enrolled	|
+ * |------------+---------------+---------------|
+ * | All 	| All		| Only		|
+ * | details	| details	| Basic		|
+ * ----------------------------------------------
+ *
+ *****************************/

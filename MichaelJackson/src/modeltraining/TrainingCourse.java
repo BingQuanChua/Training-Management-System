@@ -2,6 +2,7 @@ package modeltraining;
 
 import model.JDBCexecute;
 
+
 public class TrainingCourse {
 
 	private JDBCexecute database;
