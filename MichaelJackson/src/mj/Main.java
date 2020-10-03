@@ -21,7 +21,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 1;
+		int loginRole = 2;
 
 		login.setVisible(false);
 		 

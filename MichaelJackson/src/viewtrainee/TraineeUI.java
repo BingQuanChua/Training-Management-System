@@ -22,7 +22,7 @@ public class TraineeUI extends UserUI {
     public TraineeUI() {
     	super();
     	initTraineeComponents();
-        traineeUI(); //Based on role
+    	initTraineeMenu();
     }
     
 
@@ -44,23 +44,9 @@ public class TraineeUI extends UserUI {
         enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
 		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
     }
-    
-    
-   public ListPanel getAvailableTrainingList() {
-	   return availableTrainingList;
-   }
-   
-   public ListPanel getEnrolledTrainingList() {
-	   return enrolledTrainingList;
-   }
-   
-   
-   public JPanel getPanelBody() {
-	   return super.getPanelBody();
-   }
    
     // This method is called from within the constructor to initialize the form.
-    private void traineeUI() {
+    private void initTraineeMenu() {
     	
         //  create subMenu Training
         MenuItem menuMTC = new MenuItem(" -- Available Training Course", new ActionListener() {
@@ -86,4 +72,20 @@ public class TraineeUI extends UserUI {
         super.addMenu(menuTraining);
         super.home(); //show home menu initially
     }
+    
+    public JPanel getPanelBody() {
+ 	   return super.getPanelBody();
+    }
+    
+ 	public void home() {
+ 		super.home();
+ 	} 
+    
+   public ListPanel getAvailableTrainingList() {
+	   return availableTrainingList;
+   }
+   
+   public ListPanel getEnrolledTrainingList() {
+	   return enrolledTrainingList;
+   }
 }
