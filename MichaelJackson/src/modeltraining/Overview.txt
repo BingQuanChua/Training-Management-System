@@ -5,13 +5,14 @@
  * Training Course Management
  *    - addNewCourse()
  *    - setCourseDetails()
- *	* courseID 
- * 	* courseTitle
+ *		* courseID 
+ * 		* courseTitle
  *  	* courseDesc
  *  	* courseTrainer
  *  	* courseStartDate
  *  	* courseEndDate
  */
+
 
 /**************************** 
  *	Trainer
@@ -27,13 +28,14 @@
  *    - setCourseMaterial()
  *  	* courseID
  *  	* materialID
- *	* courseTitle
+ *		* courseTitle
  *  	* courseDesc
  *    - addCourseFeedback() - 1 feedback
  *    - setCourseFeedback()
  *  	* courseID
  *  	* feedbackFormLink
  */
+	
 	
 /****************************
  * 	Trainee
@@ -61,17 +63,18 @@
  *  - courseMaterial
  *  - courseFeedbackForm
  * Advanced details:
+ *  - courseRegisteredTrainee
  *  - courseEnrolledTrainee
  *  - courseFeedbackResult
  *  
  * ----------------------------------------------
- * | Admin	| Trainer	| Trainee	|
+ * | Admin		| Trainer		| Trainee		|
  * |------------+---------------+---------------|
- * | All 	| Only		| Only		|
- * | courses	| assigned	| enrolled	|
+ * | All 		| Only			| Only			|
+ * | courses	| assigned		| enrolled		|
  * |------------+---------------+---------------|
- * | All 	| All		| Only		|
- * | details	| details	| Basic		|
+ * | All 		| All			| Only			|
+ * | details	| details		| Basic			|
  * ----------------------------------------------
  *
  *****************************/

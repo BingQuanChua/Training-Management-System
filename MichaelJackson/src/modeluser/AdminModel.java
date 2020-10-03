@@ -3,7 +3,7 @@ package modeluser;
 
 public class AdminModel extends User {
 	
-private String adminID;
+	private String adminID;
 	
 	public AdminModel(String adminID){
 		super();

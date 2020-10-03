@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import modeluser.TrainerModel;
 import view.ListPanel;
 import viewtrainer.TrainerUI;
 import viewtrainer.Training;

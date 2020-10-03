@@ -1,4 +1,4 @@
-package viewtrainee;
+package view;
 
 import java.util.ArrayList; 
 import java.awt.event.ActionEvent;
@@ -17,13 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import view.ChangePassword;
-import view.Icon;
-import view.ListPanel;
-import view.MenuItem;
-import view.SubMenu;
-import view.UserProfile;
 import mj.UserProfileController;
+import viewtrainee.AvailableTraining;
+import viewtrainee.EnrolledTraining;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -31,14 +27,11 @@ import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-
-public class TraineeUI extends JFrame {
+public class UserUI extends JFrame {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	// Variables declaration
+	private static final long serialVersionUID = 1L;
+	
     private JScrollPane jScrollPane1;
     private JPanel menus;
     private JPanel panelBody;
@@ -57,9 +50,6 @@ public class TraineeUI extends JFrame {
     private UserProfileController profileController;
     private Icon icon;
     
-    // for screenshot
-    // private EnrolledTrainingDetails enrolledTrainingList;
-    
     //Profile
     private JPanel panelMenuHeader;
     private JButton profileButton;
@@ -70,7 +60,7 @@ public class TraineeUI extends JFrame {
  
  
     //Constructor
-    public TraineeUI() {
+    public UserUI() {
     	super("MJ Training Management System");
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -87,30 +77,41 @@ public class TraineeUI extends JFrame {
         menus = new JPanel();		//Left panel that store all submenu
         panelBody = new JPanel();	//Right root panel
         changePassword = new ChangePassword();// Change password panel
-        
-        availableTrainingList = new ListPanel();
-        subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
-        // dummy data for trainingList
-        availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
-        availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
-		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
-        //////
-		enrolledTrainingList = new ListPanel();
-        // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
-        subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
-        // dummy data for trainingList
-        enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
-        enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
-		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
         icon = new Icon();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        //Top header panel
-        panelHeader.setBackground(new Color(233, 150, 122)); //Purple
+        
+        /**************************************************************
+         * Top header panel
+         **************************************************************/
+        panelHeader.setBackground(new Color(233, 150, 122));
         panelHeader.setPreferredSize(new Dimension(500, 120));
         
+      //Clickable logo in the top header panel
+        logoButton = new JButton();
+        logoButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		home();
+        	}
+        });
+        //logoButton.setBackground(null);
+        logoButton.setBorder(null);
+        logoButton.setOpaque(false);
+        logoButton.setContentAreaFilled(false);
+        logoButton.setBorderPainted(false);
         
+        // Sign out button in the top header pane;
+        signOutButton = new JButton("Sign Out");
+        // signOutButton.setForeground(Color.WHITE);
+        signOutButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		// Need to handle this later
+        		System.exit(0); 
+        	}
+        });
+        signOutButton.setBackground(null);
+        signOutButton.setBorder(null);
 
 		/**************************************************************
          * Profile (Show profile and profile setting)
@@ -161,19 +162,7 @@ public class TraineeUI extends JFrame {
          **************************************************************/
         
         
-        //Clickable logo in the top header panel
-        logoButton = new JButton();
-        logoButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		home();
-        	}
-        });
-        //logoButton.setBackground(null);
-        logoButton.setBorder(null);
-        logoButton.setOpaque(false);
-        logoButton.setContentAreaFilled(false);
-        logoButton.setBorderPainted(false);
-        
+        //Icon set image
         try {
         	File logoPath = new File("src/images/logo.png");
 			Image originalLogo = ImageIO.read(logoPath);
@@ -188,18 +177,6 @@ public class TraineeUI extends JFrame {
         } catch (Exception ex) {
         	System.out.println("Trainee Image not found");
         }
-        
-        // Sign out button in the top header panel
-        signOutButton = new JButton("Sign Out");
-        // signOutButton.setForeground(Color.WHITE);
-        signOutButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		// Need to handle this later
-        		System.exit(0); 
-        	}
-        });
-        signOutButton.setBackground(null);
-        signOutButton.setBorder(null);
         
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
@@ -318,4 +295,5 @@ public class TraineeUI extends JFrame {
         panelBody.repaint();
         panelBody.revalidate();
     }
+
 }

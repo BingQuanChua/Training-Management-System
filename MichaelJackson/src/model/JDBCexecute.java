@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,7 +61,7 @@ public class JDBCexecute {
 	 * 
 	 * @param query
 	 * @param column
-	 * @return
+	 * @return result
 	 * @throws Exception
 	 */
 	public String executeQuery(String query, String column) throws Exception {

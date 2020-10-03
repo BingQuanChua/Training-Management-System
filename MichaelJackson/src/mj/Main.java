@@ -17,17 +17,16 @@ public class Main {
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
 	private AdminModel user;
-
+	
 	public Main() {
 
 		login = new Login();
-		int loginRole = 3;
+		int loginRole = 1;
 
 		login.setVisible(false);
-		
 		 
 		/* TEST MODEL */
-		/* TEST MODEL */ 
+		/* TEST MODEL *DELETE_ME/ 
 		try {
 			
 			System.out.println("TMS model testing\n");
