@@ -21,44 +21,44 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 3;
+		int loginRole = 1;
 
 		login.setVisible(false);
 		
 		 
-		/* TEST MODEL */
-		/* TEST MODEL */ 
-		try {
-			
-			System.out.println("TMS model testing\n");
-			Scanner scan = new Scanner(System.in);
-			user = new AdminModel("adm00003");
-			
-			boolean condition = true;
-			while(condition) {
-				
-				System.out.println("Please input a choice:");
-				int choice = scan.nextInt();
-				scan.nextLine(); //to consume the "Enter" 
-				System.out.println("Please input a new data:");
-				String newData = scan.nextLine();
-				
-				if(choice < 1 || choice > 8 ) {
-					condition = false;
-				} else {
-					if(choice == 8) {
-						user.deleteExistingUser(newData);
-					} else if(choice != 7) {
-						System.out.println("\n\nDatabase Execution\n");
-						user.setAdminProfile(newData, choice);
-						user.getAdminProfile(choice);
-					}
-				}
-			}	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}/**/
+//		/* TEST MODEL */
+//		/* TEST MODEL */ 
+//		try {
+//			
+//			System.out.println("TMS model testing\n");
+//			Scanner scan = new Scanner(System.in);
+//			user = new AdminModel("adm00003");
+//			
+//			boolean condition = true;
+//			while(condition) {
+//				
+//				System.out.println("Please input a choice:");
+//				int choice = scan.nextInt();
+//				scan.nextLine(); //to consume the "Enter" 
+//				System.out.println("Please input a new data:");
+//				String newData = scan.nextLine();
+//				
+//				if(choice < 1 || choice > 8 ) {
+//					condition = false;
+//				} else {
+//					if(choice == 8) {
+//						user.deleteExistingUser(newData);
+//					} else if(choice != 7) {
+//						System.out.println("\n\nDatabase Execution\n");
+//						user.setAdminProfile(newData, choice);
+//						user.getAdminProfile(choice);
+//					}
+//				}
+//			}	
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}/**/
 		
 		// start showing the UI for admin/trainer/trainee
 		roleLogin(loginRole);
@@ -104,6 +104,7 @@ public class Main {
 		switch (loginRole) {
 		case 1:
 			adminUI = new AdminUI();
+			new AdminController(adminUI);
 			adminUI.setVisible(true);
 			break;
 		case 2:

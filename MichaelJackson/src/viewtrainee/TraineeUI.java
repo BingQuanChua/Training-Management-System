@@ -169,7 +169,7 @@ public class TraineeUI extends JFrame {
         		home();
         	}
         });
-        //logoButton.setBackground(null);
+        // logoButton.setBackground(null);
         logoButton.setBorder(null);
         logoButton.setOpaque(false);
         logoButton.setContentAreaFilled(false);

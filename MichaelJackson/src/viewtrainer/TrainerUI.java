@@ -120,6 +120,10 @@ public class TrainerUI extends JFrame {
         profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
         profileButton = new JButton("Trainer Profile");
+        profileButton.setOpaque(false);
+        profileButton.setContentAreaFilled(false);
+        profileButton.setBorderPainted(false);
+        
         profileButton.addActionListener(new ActionListener() { 
         	  public void actionPerformed(ActionEvent e) { 
         		  panelBody.removeAll();
@@ -159,8 +163,13 @@ public class TrainerUI extends JFrame {
         		home();
         	}
         });
-        logoButton.setBackground(null);
+        // logoButton.setBackground(null);
         logoButton.setBorder(null);
+        logoButton.setBorder(null);
+        logoButton.setOpaque(false);
+        logoButton.setContentAreaFilled(false);
+        logoButton.setBorderPainted(false);
+        
         try {
         	File logoPath = new File("src/images/logo.png");
 			Image originalLogo = ImageIO.read(logoPath);

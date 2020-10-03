@@ -23,11 +23,12 @@ public class AllTraineeList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-private ListPanel traineeList;
-public AdminUI adminUI;
+	private static final long serialVersionUID = 1L;
+	
+	private ListPanel traineeList;
+	private JButton backButton;
 
-	public AllTraineeList(AdminUI adminUI) {
-		this.adminUI = adminUI;
+	public AllTraineeList() {
 		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 1000));
 		
@@ -89,17 +90,16 @@ public AdminUI adminUI;
 		
 		add(panel);
 		
-		JButton backButton = new JButton("Back");
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				adminUI.home();
-			}
-		});
+		backButton = new JButton("Back");
 		backButton.setForeground(Color.WHITE);
 		backButton.setFont(new Font("Serif", Font.PLAIN, 20));
 		backButton.setBackground(new Color(205, 133, 63));
 		backButton.setBounds(770, 724, 150, 35);
 		panel.add(backButton);
+	}
+	
+	public JButton getBackButton() {
+		return backButton;
 	}
 
 }

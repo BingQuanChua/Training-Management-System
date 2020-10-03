@@ -23,52 +23,31 @@ public class ManageTraining extends JPanel {
 	private JButton deleteButton;
 	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
-	/**
-	 * 
-	 */
-	public ManageTraining(String name,JPanel list,AdminUI adminUI) {
-		this.adminUI = adminUI;
+
+	public ManageTraining(String name) {
+		
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
-		
-		//////////// one single request ////////////
-		// will create an individual class later
-		
 		
 		trainingButton = new JButton(name);
 		trainingButton.setBounds(0, 0, 736, 70);
 		trainingButton.setPreferredSize(new Dimension(800, 70));
 		trainingButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		trainingButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				list.removeAll();
-				list.add(new EditCourse(adminUI));
-		        list.repaint();
-				list.revalidate();
-		
-			}
-			
-		});
-		
+
 		deleteButton = new JButton("X");
 		deleteButton.setFont(new Font("Dialog", Font.PLAIN, 25));
 		deleteButton.setBackground(new Color(205,133,63));
 		deleteButton.setForeground(Color.WHITE);
 		deleteButton.setFocusPainted(false);
 		deleteButton.setBorder(null);
-		deleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		deleteButton.setBounds(735, 0, 65, 70);
 		add(deleteButton);
+		
 		setLayout(null);
 		trainingButton.setBackground(Color.LIGHT_GRAY);
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
-
-
+		
 	}
 	
 	public JButton getTrainingButton() {
