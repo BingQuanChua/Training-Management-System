@@ -62,7 +62,6 @@ public class TrainingCourseMaterial {
 	 *****************************************/
 	public boolean setMaterialDetails(String materialID, String newDetails, int choice) {
 		
-		
 		// Query
 		String query = "";
 		if (choice == 1) {

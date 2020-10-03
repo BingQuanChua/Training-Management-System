@@ -1,5 +1,7 @@
-package modelprogress;
+package modeltraining;
 
 public class TrainingProgress {
+	
+	
 
 }

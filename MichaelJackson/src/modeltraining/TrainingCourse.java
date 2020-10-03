@@ -101,15 +101,15 @@ public class TrainingCourse {
 	}
 	
 	/**
-	 * Delete material
-	 * @param materialID
+	 * Delete existing training course
+	 * @param courseID
 	 * @return boolean
 	 */
 	public boolean deleteTrainingCourse(String courseID) {
 		
 		// Query
 		String query = ("DELETE FROM TRAINING_COURSE" + 
-				"WHERE MATERIAL_ID = '" + courseID + "';" );
+						"WHERE COURSE_ID = '" + courseID + "';" );
 
 		// Execute Query 
 		if(database.executeUpdate(query)) {
