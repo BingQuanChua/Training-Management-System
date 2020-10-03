@@ -41,37 +41,37 @@ public class User {
 		// Query
 		switch(choice) 
 		{
-		case 1:	
-			query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_NAME";
-			break;
-		case 2: 
-			query = ("SELECT USER_POS FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_POS";
-			break;
-		case 3: 
-			query = ("SELECT USER_DESC FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_DESC";
-			break;
-		case 4: 
-			query = ("SELECT USER_GENDER FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_GENDER";
-			break;
-		case 5: 
-			query = ("SELECT USER_CONTACT FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_CONTACT";
-			break;
-		case 6: 
-			query = ("SELECT USER_EMAIL FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_EMAIL";
-			break;
-		case 7: 
-			query = ("SELECT USER_TYPE FROM USER WHERE USER_ID = '"+ userID +"';");
-			column = "USER_TYPE";
-			break;
-		default:
-			System.out.println("Invalid choice");
-			return profileDetails;
+			case 1:	
+				query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_NAME";
+				break;
+			case 2: 
+				query = ("SELECT USER_POS FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_POS";
+				break;
+			case 3: 
+				query = ("SELECT USER_DESC FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_DESC";
+				break;
+			case 4: 
+				query = ("SELECT USER_GENDER FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_GENDER";
+				break;
+			case 5: 
+				query = ("SELECT USER_CONTACT FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_CONTACT";
+				break;
+			case 6: 
+				query = ("SELECT USER_EMAIL FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_EMAIL";
+				break;
+			case 7: 
+				query = ("SELECT USER_TYPE FROM USER WHERE USER_ID = '"+ userID +"';");
+				column = "USER_TYPE";
+				break;
+			default:
+				System.out.println("Invalid choice");
+				return profileDetails;
 		}
 
 		
@@ -112,27 +112,27 @@ public class User {
 		// Query
 		switch(choice) 
 		{
-		case 1:     //USER_NAME
-			query = ("UPDATE USER SET USER_NAME = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		case 2: 	//USER_POS"
-			query = ("UPDATE USER SET USER_POS = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		case 3: 	//USER_DESC
-			query = ("UPDATE USER SET USER_DESC = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		case 4: 	//USER_GENDER
-			query = ("UPDATE USER SET USER_GENER = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		case 5: 	//USER_CONTACT
-			query = ("UPDATE USER SET USER_CONTACT = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		case 6: 	//USER_EMAIL
-			query = ("UPDATE USER SET USER_EMAIL = '" + content + "' WHERE USER_ID = '"+ userID +"';");
-			break;
-		default:
-			System.out.println("Invalid choice");
-			throw new Exception();
+			case 1:     //USER_NAME
+				query = ("UPDATE USER SET USER_NAME = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			case 2: 	//USER_POS"
+				query = ("UPDATE USER SET USER_POS = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			case 3: 	//USER_DESC
+				query = ("UPDATE USER SET USER_DESC = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			case 4: 	//USER_GENDER
+				query = ("UPDATE USER SET USER_GENDER = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			case 5: 	//USER_CONTACT
+				query = ("UPDATE USER SET USER_CONTACT = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			case 6: 	//USER_EMAIL
+				query = ("UPDATE USER SET USER_EMAIL = '" + content + "' WHERE USER_ID = '"+ userID +"';");
+				break;
+			default:
+				System.out.println("Invalid choice");
+				throw new Exception();
 		}
 			
 		if(database.executeUpdate(query)) {
