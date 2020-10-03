@@ -204,23 +204,23 @@ public class TraineeUI extends JFrame {
         
         GroupLayout panelHeaderLayout = new GroupLayout(panelHeader);
         panelHeaderLayout.setHorizontalGroup(
-            	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-            		.addGroup(panelHeaderLayout.createSequentialGroup()
-            			.addContainerGap()
-            			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-            			.addGap(1404)
-            			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-            			.addContainerGap(39, Short.MAX_VALUE))
+        	panelHeaderLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(logoButton, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
-            	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
-            		.addGroup(panelHeaderLayout.createSequentialGroup()
-            			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.LEADING)
-            				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            				.addGroup(panelHeaderLayout.createSequentialGroup()
-            					.addGap(80)
-            					.addComponent(signOutButton, GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
-            			.addContainerGap())
+        	panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(panelHeaderLayout.createSequentialGroup()
+        			.addGroup(panelHeaderLayout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(panelHeaderLayout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(logoButton, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         panelHeader.setLayout(panelHeaderLayout);
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
