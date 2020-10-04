@@ -97,7 +97,7 @@ public class Main {
 		switch (loginRole) {
 		case 1:
 			adminUI = new AdminUI(userID);
-			new AdminController(adminUI);
+			new AdminController(adminUI,userID);
 			adminUI.setVisible(true);
 			break;
 		case 2:
