@@ -1,10 +1,12 @@
-package model;
+package login;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import model.JDBCinfo;
 
 public class LoginModel {
 	

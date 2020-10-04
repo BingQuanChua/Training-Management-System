@@ -1,4 +1,4 @@
-package view;
+package login;
 
 import mj.*; 
 import viewadmin.AdminUI;

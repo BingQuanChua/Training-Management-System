@@ -1,14 +1,14 @@
 package mj;
 
-import view.Login; 
+import login.Login;
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
+import modeluser.AdminModel;
+import modeluser.TrainerModel;
+import modeluser.TraineeModel;
 
 import java.util.Scanner;
-
-import model.*;
-import modeluser.AdminModel;
 
 public class Main {
 
@@ -21,7 +21,7 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		int loginRole = 2;
+		int loginRole = 3;
 
 		login.setVisible(false);
 		 

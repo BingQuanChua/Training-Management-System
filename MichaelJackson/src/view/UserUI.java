@@ -66,13 +66,14 @@ public class UserUI extends JFrame {
 	// This method is called from within the constructor to initialize the form.
     protected void initComponents() {
 
-        panelHeader = new JPanel();	//Top header panel
-        panelMenu = new JPanel();	//Left root panel
-        jScrollPane1 = new JScrollPane(); //Able to scroll
-        menus = new JPanel();		//Left panel that store all submenu
-        panelBody = new JPanel();	//Right root panel
+        panelHeader = new JPanel();			//Top header panel
+        panelMenu = new JPanel();			//Left root panel that store menus
+        menus = new JPanel();				//Left panel that store all submenu
+        panelBody = new JPanel();			//Right root panel
+        jScrollPane1 = new JScrollPane(); 	//Able to scroll
+        panelMenuHeader = new JPanel(); 	//Left header panel inside panelMenu for profile
         changePassword = new ChangePassword();// Change password panel
-        icon = new Icon();
+        icon = new Icon();					//Set image
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +84,7 @@ public class UserUI extends JFrame {
         panelHeader.setBackground(new Color(233, 150, 122));
         panelHeader.setPreferredSize(new Dimension(500, 120));
         
-      //Clickable logo in the top header panel
+        //Clickable logo in the top left header panel
         logoButton = new JButton();
         logoButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -108,21 +109,20 @@ public class UserUI extends JFrame {
         signOutButton.setBackground(null);
         signOutButton.setBorder(null);
 
+        
 		/**************************************************************
          * Profile (Show profile and profile setting)
-         **************************************************************/
-        panelMenuHeader = new JPanel(); //Left header panel for profile
-        new Icon();
-      
+         **************************************************************/      
         panelMenuHeader.setBackground(new Color(255,218,185)); //
         panelMenuHeader.setLayout(new javax.swing.BoxLayout(panelMenuHeader, javax.swing.BoxLayout.Y_AXIS));
         panelMenuHeader.setSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130));
         panelMenuHeader.setMinimumSize(new Dimension(Integer.MAX_VALUE, 130));
-        //Profile setting
+        
+        //Profile setting (change password)
         profile = new UserProfile();
         SubMenu subProfile = new SubMenu("Profile", profile);
-        profileButton = new JButton("Trainee Profile");
+        profileButton = new JButton("User Profile");
         profileButton.setOpaque(false);
         profileButton.setContentAreaFilled(false);
         profileButton.setBorderPainted(false);
@@ -154,23 +154,25 @@ public class UserUI extends JFrame {
         menus.add(panelMenuHeader);
 
         
-        
 		/**************************************************************
          * Set Icon Image
          **************************************************************/
         try {
+        	/**MJ logoButton****************************************************************/
         	File logoPath = new File("src/images/logo.png");
 			Image originalLogo = ImageIO.read(logoPath);
         	Image logo = originalLogo.getScaledInstance(370, 120, Image.SCALE_DEFAULT);
         	logoButton.setIcon(new ImageIcon(logo));
-        	/**profile**********************************************************************/
+        	
+        	/**Profile**********************************************************************/
         	File profIconPath = new File("src/images/profileLogo.png");
 			Image profIcon = ImageIO.read(profIconPath);
         	Image profileIcon = profIcon.getScaledInstance(75, 75, Image.SCALE_DEFAULT);
         	profileButton.setIcon(new ImageIcon(profileIcon));
+        	
         	/*******************************************************************************/
         } catch (Exception ex) {
-        	System.out.println("Trainee Image not found");
+        	System.out.println("UserUI Image not found");
         }
         
 		/**************************************************************
