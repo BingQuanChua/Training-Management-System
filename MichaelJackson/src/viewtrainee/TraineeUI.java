@@ -17,10 +17,12 @@ public class TraineeUI extends UserUI {
     private SubMenu subMenuATC;
     private ListPanel enrolledTrainingList;
     private SubMenu subMenuETC; 
+    private String userID;
  
     //Constructor
-    public TraineeUI() {
-    	super();
+    public TraineeUI(String userID) {
+    	super(userID);
+    	this.userID = userID;
     	initTraineeComponents();
     	initTraineeMenu();
     }

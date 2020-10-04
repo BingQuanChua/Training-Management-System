@@ -1,6 +1,7 @@
 package mj;
 
-import login.Login;
+import login.Login; 
+import view.UserUI;
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
@@ -16,54 +17,9 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
+	private static UserUI userUI;
 	private AdminModel user;
-	
-	public Main() {
-
-		login = new Login();
-		int loginRole = 3;
-
-		login.setVisible(false);
-		 
-		/* TEST MODEL */
-		/* TEST MODEL *DeleteMe/ 
-		try {
-			
-			System.out.println("TMS model testing\n");
-			Scanner scan = new Scanner(System.in);
-			user = new AdminModel("adm00003");
-			
-			boolean condition = true;
-			while(condition) {
-				
-				System.out.println("Please input a choice:");
-				int choice = scan.nextInt();
-				scan.nextLine(); //to consume the "Enter" 
-				System.out.println("Please input a new data:");
-				String newData = scan.nextLine();
-				
-				if(choice < 1 || choice > 8 ) {
-					condition = false;
-				} else {
-					if(choice == 8) {
-						user.deleteExistingUser(newData);
-					} else if(choice != 7) {
-						System.out.println("\n\nDatabase Execution\n");
-						user.setAdminProfile(newData, choice);
-						user.getAdminProfile(choice);
-					}
-				}
-			}	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}/**/
-	
-		// start showing the UI for admin/trainer/trainee
-		
-		roleLogin(loginRole);
-	}
-
+	private String userID;
 	
 	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
@@ -99,21 +55,58 @@ public class Main {
 		new Main();
 	}
 
+	
+	public Main() {
+
+		login = new Login();
+		login.setVisible(false);
+		
+
+		Scanner scan = new Scanner(System.in);
+		int loginRole = 0;
+		boolean invalidChoice = true;
+		while(invalidChoice) {
+			
+			System.out.println("Select loginRole (1 / 2 / 3) :");
+			int choice = scan.nextInt();
+			
+			if(choice ==1) {
+				loginRole = 1;
+				userID = "adm00001";
+				invalidChoice = false;
+			} else
+			if(choice == 2) {
+				loginRole = 2;
+				userID = "tnr00001";
+				invalidChoice = false;
+			} else
+			if (choice == 3) {
+				loginRole = 3;
+				userID = "tne00001";
+				invalidChoice = false;
+			}
+		}	
+		
+		// start showing the UI for admin/trainer/trainee	
+		roleLogin(loginRole);
+	}
+	
+	
 	public void roleLogin(int loginRole) {
 		login.setVisible(false);
 		switch (loginRole) {
 		case 1:
-			adminUI = new AdminUI();
+			adminUI = new AdminUI(userID);
 			new AdminController(adminUI);
 			adminUI.setVisible(true);
 			break;
 		case 2:
-			trainerUI = new TrainerUI();
+			trainerUI = new TrainerUI(userID);
 			new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:
-			traineeUI = new TraineeUI();
+			traineeUI = new TraineeUI(userID);
 			new TraineeController(traineeUI);
 			traineeUI.setVisible(true);
 			break;
