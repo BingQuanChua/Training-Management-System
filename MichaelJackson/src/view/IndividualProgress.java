@@ -24,11 +24,11 @@ public class IndividualProgress extends JPanel {
 	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 18);
 	
 	public IndividualProgress(String name, int progress) {
+		
 		this.name = name;
 		this.progress = progress;
 		
 		setBackground(new Color(230, 230, 250));
-		
 		setPreferredSize(new Dimension(743, 70));
 		setLayout(null);
 		

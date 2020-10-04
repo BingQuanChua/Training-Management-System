@@ -26,9 +26,9 @@ public class JDBCexecute {
 		try {
 			con = DriverManager.getConnection(url, serverName, serverPassword);
 			st = con.createStatement();
-			System.out.println("JDBCquery: Connected to Database\n");
+			System.out.println("JDBCexecute: Connected to Database\n");
 		} catch (SQLException e) {
-			System.out.println("??? JDBCquery: Fail to Connect Database ???\n");
+			System.out.println("??? JDBCexecute: Fail to Connect Database ???\n");
 		}	
 	}
 	

@@ -4,15 +4,30 @@ import javax.swing.JButton;
 
 public class JButtonWithID extends JButton {
 	
-	String ID;
+	String firstID;
+	String secondID;
 	
-	JButtonWithID(String text , String ID){
+	JButtonWithID(String text){
 		super(text);
-		this.ID = ID;
 	}
 	
-	public String getID(){
-		return ID;
+	JButtonWithID(String text , String firstID){
+		super(text);
+		this.firstID = firstID;
+	}
+	
+	JButtonWithID(String text , String firstID, String secondID){
+		super(text);
+		this.firstID = firstID;
+		this.secondID = secondID;
+	}
+	
+	public String getFirstID(){
+		return firstID;
+	}
+	
+	public String getSecondID(){
+		return secondID;
 	}
 
 }

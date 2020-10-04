@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 public class SubMenu extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Right panel.
 	 */
-
+	
 	private JLabel titleLabel;
 	
 	public SubMenu(String title, JPanel panel) {
