@@ -66,12 +66,12 @@ public class AdminModel extends User {
 	 *  8:USER_EMAIL
 	 *  9:USER_TYPE not null
 	 */
-	public boolean addNewUser(String newUserID, String newUserName, String newUserPassword, String newUserType) {
+	public boolean addNewUser(String newUserID, String newUserPassword, String newUserType) {
 		
 		String query =("INSERT INTO USER " +
 				       "VALUES('" +
-				       newUserID + "' ,'" +
-				       newUserName + "', '" +
+				       newUserID + "', " +
+				       "null, '" +
 				       newUserPassword + "', " +
 				       "null, null, null, null, null, '" +
 				       newUserType + "');" );

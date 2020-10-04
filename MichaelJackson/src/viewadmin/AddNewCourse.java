@@ -12,6 +12,7 @@ public class AddNewCourse extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public AdminUI adminUI;
+	private JTextField txtName;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
@@ -44,7 +45,7 @@ public class AddNewCourse extends JPanel {
         lblName.setBounds(103, 242, 291, 47);
         frontPanel.add(lblName);
         
-        JTextField txtName = new JTextField(); 
+        txtName = new JTextField(); 
         txtName.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtName.setBounds(103, 313, 757, 47);
         frontPanel.add(txtName);

@@ -18,6 +18,8 @@ public class AddNewUser extends JPanel {
 	private CheckboxGroup cbg;
 	private JButton addButton;
 	private JButton cancelButton;
+	private Checkbox trainerBox;
+	private Checkbox traineeBox;
 	
     public AddNewUser() {
     	
@@ -29,8 +31,8 @@ public class AddNewUser extends JPanel {
         userIDField = new JTextField(20);
         passwordField = new JTextField(20);
         cbg = new CheckboxGroup();
-        Checkbox trainerBox = new Checkbox("New Trainer", cbg, false);
-        Checkbox traineeBox = new Checkbox("New Trainee", cbg, false);
+        trainerBox = new Checkbox("New Trainer", cbg, false);
+        traineeBox = new Checkbox("New Trainee", cbg, false);
         addButton = new JButton("Add");
         cancelButton = new JButton("Cancel");
 
@@ -167,6 +169,13 @@ public class AddNewUser extends JPanel {
     	return cbg;
     }
     
+    public Checkbox getTrainerBox() {
+    	return trainerBox;
+    }
+    
+    public Checkbox getTraineeBox() {
+    	return traineeBox;
+    }
     public JButton getAddButton() {
     	return addButton;
     }
