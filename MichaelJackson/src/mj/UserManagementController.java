@@ -21,35 +21,39 @@ public class UserManagementController {
 	}	
 	
 	public void addNewUser() {
-		if(adminUI.getAddNewUser().getTrainerBox().getState() == true) {
-			
-			trainerChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
-			if(validateTrainer(trainerChar)) {
-			userType = "trainer";
-			}
-			else {
-				JOptionPane.showConfirmDialog (null, "Error! ","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-			}
-			
-		}
-		else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
-		
-			traineeChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
-			if(validateTrainee(traineeChar)) {
-			userType = "trainee";
-			}
-			else {
-				JOptionPane.showConfirmDialog (null, "Error! ","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-			
-			}
-		}
 		
 		int response = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
 		if (response == 0) {
+			
 			if(validateEmpty() && validateCheckBox()) {
-				adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText().toLowerCase(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
-				JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-				adminUI.home();
+				
+				if(adminUI.getAddNewUser().getTrainerBox().getState() == true) {
+					
+					trainerChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
+					if(validateTrainer(trainerChar)) {
+					userType = "trainer";
+					adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText().toLowerCase(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
+					JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					adminUI.home();
+					}
+					else {
+						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainer. Example of correct format: trn00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+					}
+					
+				}
+				else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
+				
+					traineeChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
+					if(validateTrainee(traineeChar)) {
+						userType = "trainee";
+						adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText().toLowerCase(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
+						JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						adminUI.home();
+					}
+					else {
+						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainee. Example of correct format: tre00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+					}
+				}
 			}
 			else {
 				JOptionPane.showConfirmDialog (null, "Error! No empty field or checkbox allowed.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
