@@ -99,7 +99,7 @@ public class Main {
 		case 1:
 			adminUI = new AdminUI(userID);
 			adminModel = new AdminModel(userID);
-			new AdminController(adminUI,userID);
+			new AdminController(adminUI,adminModel);
 			adminUI.setVisible(true);
 			break;
 		case 2:
