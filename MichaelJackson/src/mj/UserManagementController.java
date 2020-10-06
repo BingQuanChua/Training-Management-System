@@ -28,7 +28,7 @@ public class UserManagementController {
 			userType = "trainer";
 			}
 			else {
-				JOptionPane.showConfirmDialog (null, "Error! No empty field or checkbox allowed.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showConfirmDialog (null, "Error! ","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 			}
 			
 		}
@@ -39,7 +39,7 @@ public class UserManagementController {
 			userType = "trainee";
 			}
 			else {
-				JOptionPane.showConfirmDialog (null, "Error! No empty field or checkbox allowed.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showConfirmDialog (null, "Error! ","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 			
 			}
 		}
