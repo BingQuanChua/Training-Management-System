@@ -38,4 +38,8 @@ public class TraineeModel extends User{
 		
 		return false;
 	}
+	
+	public String getTraineeID() {
+		return traineeID;
+	}
 }

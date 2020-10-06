@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import modeltraining.AllTrainingCourse;
+import modeltraining.TrainingCourseGetterModel;
 import modeluser.TraineeModel;
 import view.IndividualProgress;
 import view.ListPanel;
@@ -21,7 +21,7 @@ public class TraineeController {
 	
 	private TraineeUI traineeUI;
 	private TraineeModel traineeModel;
-	private AllTrainingCourse allTrainingCourseModel;
+	private TrainingCourseGetterModel trainingCourseGetterModel;
 	
 	private EnrolledTrainingDetails tempEnrolledTrainingDetails;
 	private IndividualProgress tempProgressBar;
@@ -30,22 +30,24 @@ public class TraineeController {
 	TraineeController(TraineeUI traineeUI, TraineeModel traineeModel){
 		this.traineeUI = traineeUI;
 		this.traineeModel = traineeModel;
-		allTrainingCourseModel = new AllTrainingCourse();
+		trainingCourseGetterModel = new TrainingCourseGetterModel();
 		setAvailableTrainingCourse();
-		//setEnrolledTrainingCourse();
+		setEnrolledTrainingCourse();
 		setAvailableTrainingCourseListener();
-		//setEnrolledTrainingCourseListener();
+		setEnrolledTrainingCourseListener();
 	}
 
+	
+	
 	public void setAvailableTrainingCourse() {
 		
 		ArrayList <String> availableTrainingCourseList = new ArrayList<>();
-		allTrainingCourseModel.getAllTrainingCourseID(availableTrainingCourseList);
+		trainingCourseGetterModel.getAllTrainingCourseID(availableTrainingCourseList);
 		try {
 			for(int i = 0;  i< availableTrainingCourseList.size(); i++) {
 
 				traineeUI.addAvailableTraining(
-						allTrainingCourseModel.getTrainingCourseDetails(availableTrainingCourseList.get(i), 2), 
+						trainingCourseGetterModel.getTrainingCourseDetails(availableTrainingCourseList.get(i), 2), 
 						availableTrainingCourseList.get(i));
 			}
 		} catch (Exception e) {
@@ -56,17 +58,19 @@ public class TraineeController {
 	
 	public void setEnrolledTrainingCourse() {
 		
+		ArrayList <String> enrolledTrainingCourseList = new ArrayList<>();
+		trainingCourseGetterModel.getEnrolledTrainingCourseID(traineeModel.getTraineeID(), enrolledTrainingCourseList);
+		try {
+			for(int i = 0;  i< enrolledTrainingCourseList.size(); i++) {
+				
+				traineeUI.addEnrolledTraining(
+						trainingCourseGetterModel.getTrainingCourseDetails(enrolledTrainingCourseList.get(i), 2), 
+						enrolledTrainingCourseList.get(i));
+			}
+		} catch (Exception e) {
+			System.out.println("setEnrolledTrainingCourse Fail");
+		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	private void setAvailableTrainingCourseListener() {

@@ -110,6 +110,6 @@
  *			  .getItem()  //return EnrolledTraining
  *			  .getTrainingDetails()  // return EnrolledTrainingDetail
  *			  .setIndividualProgress(name, id, progress)) //each trainee has one progress only in every course
- * - TrainingProgress.
+ *
  */
  

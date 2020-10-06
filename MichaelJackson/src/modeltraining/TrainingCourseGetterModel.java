@@ -4,21 +4,32 @@ import java.util.ArrayList;
 
 import model.JDBCexecute;
 
-public class AllTrainingCourse {
+public class TrainingCourseGetterModel {
 	
 	private JDBCexecute database;
 	
-	public AllTrainingCourse(){
+	public TrainingCourseGetterModel(){
 	
 		database = new JDBCexecute();
 	}
 	
-	public void getAllTrainingCourseID(ArrayList<String> IDList) {
+	public void getAllTrainingCourseID(ArrayList<String> list) {
 		
 		String column = "COURSE_ID";
 		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
 		
-		database.executeMultiRowQuery(query, column, IDList);
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	public void getEnrolledTrainingCourseID(String traineeID, ArrayList<String> list) {
+		
+		String status = "approved";
+		String column = "COURSE_ID";
+		String query = ("SELECT COURSE_ID FROM ENROLL " + 
+						"WHERE USER_ID = '" + traineeID + "' " +
+						"AND TRAINING_STATUS = '"+ status + "' ;" );
+		
+		database.executeMultiRowQuery(query, column, list);
 	}
 	
 	
