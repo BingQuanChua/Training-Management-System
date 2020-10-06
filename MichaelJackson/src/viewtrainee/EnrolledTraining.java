@@ -13,28 +13,33 @@ import java.awt.event.MouseEvent;
 
 public class EnrolledTraining extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JButton enrolledTrainingButton;
 	private EnrolledTrainingDetails trainingDetails;
+	private String trainingName;
+	private String trainingID;
+	private Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
-	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
-	
-	public EnrolledTraining(String trainingName) {
+	public EnrolledTraining(String trainingName, String trainingID) {
+		
+		this.trainingName = trainingName;
+		this.trainingID = trainingID;
 		
 		setPreferredSize(new Dimension(800, 70));
 		setLayout(null);
 		
-		trainingDetails = new EnrolledTrainingDetails(trainingName);
+		trainingDetails = new EnrolledTrainingDetails(trainingName, trainingID);
 		
 		enrolledTrainingButton = new JButton(trainingName);
 		enrolledTrainingButton.setFont(heading2);
 		enrolledTrainingButton.setBackground(Color.LIGHT_GRAY);
 		enrolledTrainingButton.setBounds(0, 0, 800, 70);
 		add(enrolledTrainingButton);
+	}
+	
+	public String getTrainingID() {
+		return trainingID;
 	}
 	
 	public JButton getEnrolledTrainingButton() {

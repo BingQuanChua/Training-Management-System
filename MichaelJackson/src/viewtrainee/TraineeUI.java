@@ -34,17 +34,17 @@ public class TraineeUI extends UserUI {
         availableTrainingList = new ListPanel();
         subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
         // dummy data for trainingList
-        availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
-        availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
-		availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
+        //availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
+        //availableTrainingList.addItem(new AvailableTraining("Software Engineering with Java", "Dr Yap Mou En"));
+		//availableTrainingList.addItem(new AvailableTraining("Introduction to OOPDS", "Dr Suddhish"));
         //////
 		enrolledTrainingList = new ListPanel();
         // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
         subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
         // dummy data for trainingList
-        enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course"));
-        enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java"));
-		enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS"));
+        //enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course", "trc00001"));
+        //enrolledTrainingList.addItem(new EnrolledTraining("Software Engineering with Java", "noID"));
+		//enrolledTrainingList.addItem(new EnrolledTraining("Introduction to OOPDS", "noID"));
     }
    
     // This method is called from within the constructor to initialize the form.
@@ -76,7 +76,7 @@ public class TraineeUI extends UserUI {
     }
     
     public JPanel getPanelBody() {
- 	   return super.getPanelBody();
+    	return super.getPanelBody();
     }
     
  	public void home() {
@@ -89,5 +89,13 @@ public class TraineeUI extends UserUI {
    
    public ListPanel getEnrolledTrainingList() {
 	   return enrolledTrainingList;
+   }
+   
+   public void addAvailableTraining(String trainingName, String trainingID) {
+	   availableTrainingList.addItem(new AvailableTraining(trainingName, trainingID));
+   }
+   
+   public void addEnrolledTraining(String trainingName, String trainingID) {
+	   enrolledTrainingList.addItem(new EnrolledTraining(trainingName, trainingID));
    }
 }

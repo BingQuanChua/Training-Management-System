@@ -10,7 +10,7 @@ import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
 import viewadmin.AllTrainingList;
 import viewadmin.EditCourse;
-import viewadmin.IndividualReport;
+import viewadmin.ReportTraining;
 import viewadmin.ManageTraining;
 import viewadmin.Report;
 import modeluser.AdminModel;
@@ -110,6 +110,7 @@ public class AdminController {
 			adminUI.getPanelBody().revalidate();
 		}
 	};
+	
 	
 	// handles what happens after pressing "add" button
 	ActionListener addNewTrainingButtonListener = new ActionListener() {

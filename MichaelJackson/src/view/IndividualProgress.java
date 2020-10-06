@@ -15,24 +15,24 @@ public class IndividualProgress extends JPanel {
 	/**
 	 * This panel holds a progress bar for an individual trainee in a single training
 	 */
-	private JButton nameButton;
+	private JButtonID nameButton;
 	private JProgressBar progressBar;
-	
-	private String name;
+	private String traineeName;
+	private String traineeID;
 	private int progress;
+	private Font f2 = new Font(Font.DIALOG, Font.PLAIN, 18);
 	
-	Font f2 = new Font(Font.DIALOG, Font.PLAIN, 18);
-	
-	public IndividualProgress(String name, int progress) {
+	public IndividualProgress(String traineeName, String traineeID, int progress) {
 		
-		this.name = name;
+		this.traineeName = traineeName;
+		this.traineeID = traineeID;
 		this.progress = progress;
 		
 		setBackground(new Color(230, 230, 250));
 		setPreferredSize(new Dimension(743, 70));
 		setLayout(null);
 		
-		nameButton = new JButton(name);
+		nameButton = new JButtonID(traineeName, traineeID);
 		nameButton.setFont(f2);
 		nameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -54,12 +54,21 @@ public class IndividualProgress extends JPanel {
 	}
 	
 	public String getName() {
-		return name;
+		return traineeName;
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		this.traineeName = name;
 		nameButton.setText(name);
+	}
+	
+	public String getTraineeID() {
+		return traineeID;
+	}
+	
+	public void setTraineeID(String traineeID) {
+		this.traineeID = traineeID;
+		nameButton.setUserID(traineeID);
 	}
 	
 	public int getProgress() {
@@ -74,5 +83,13 @@ public class IndividualProgress extends JPanel {
 	public JButton getNameButton() {
 		return nameButton;
 	}
+	
+	public void setIndividualProgress(String userName, String traineeID, int progress) {
+		//individualProgress
+		setName(userName);
+		setTraineeID(traineeID);
+		setProgress(progress);
+	}
+
 	
 }

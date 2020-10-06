@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class JDBCexecute {
 	
@@ -87,6 +88,32 @@ public class JDBCexecute {
 		}
 		
 		return result;
+	}
+	
+	public boolean executeMultiRowQuery(String query, String column, ArrayList<String> dataList) {
+		
+	    //using the new runSelect method
+	    try {
+	    	// Query
+	    	System.out.println(query);
+	    	System.out.println(column);
+	    	
+	    	// Execute query
+			rs = st.executeQuery(query);
+			
+			// Add data into ArrayList
+			String data;
+			while (rs.next()) {
+				data = rs.getString(column);
+				dataList.add(data);
+		        System.out.println(data);
+		    }
+			
+		} catch (SQLException e) {
+			System.out.print("??? executeMultiRowQuery Fail ???");
+		}
+	    
+	    return false;
 	}
 	
 	/**

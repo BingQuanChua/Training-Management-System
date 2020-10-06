@@ -1,12 +1,15 @@
 package mj;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import modeltraining.AllTrainingCourse;
+import modeluser.TraineeModel;
 import view.IndividualProgress;
 import view.ListPanel;
 import viewtrainee.EnrolledTraining;
@@ -15,18 +18,56 @@ import viewtrainee.EnrolledTrainingMaterial;
 import viewtrainee.TraineeUI;
 
 public class TraineeController {
+	
 	private TraineeUI traineeUI;
+	private TraineeModel traineeModel;
+	private AllTrainingCourse allTrainingCourseModel;
 	
 	private EnrolledTrainingDetails tempEnrolledTrainingDetails;
 	private IndividualProgress tempProgressBar;
 	private ListPanel tempTrainingMaterialList;
 	
-	TraineeController(TraineeUI traineeUI){
+	TraineeController(TraineeUI traineeUI, TraineeModel traineeModel){
 		this.traineeUI = traineeUI;
+		this.traineeModel = traineeModel;
+		allTrainingCourseModel = new AllTrainingCourse();
+		setAvailableTrainingCourse();
+		//setEnrolledTrainingCourse();
 		setAvailableTrainingCourseListener();
-		setEnrolledTrainingCourseListener();
+		//setEnrolledTrainingCourseListener();
 	}
 
+	public void setAvailableTrainingCourse() {
+		
+		ArrayList <String> availableTrainingCourseList = new ArrayList<>();
+		allTrainingCourseModel.getAllTrainingCourseID(availableTrainingCourseList);
+		try {
+			for(int i = 0;  i< availableTrainingCourseList.size(); i++) {
+
+				traineeUI.addAvailableTraining(
+						allTrainingCourseModel.getTrainingCourseDetails(availableTrainingCourseList.get(i), 2), 
+						availableTrainingCourseList.get(i));
+			}
+		} catch (Exception e) {
+			System.out.println("setAvailableTrainingCourse Fail");
+		}
+		
+	}
+	
+	public void setEnrolledTrainingCourse() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private void setAvailableTrainingCourseListener() {
 		
@@ -44,11 +85,12 @@ public class TraineeController {
 		tempProgressBar = tempEnrolledTrainingDetails.getIndividualProgress();
 		
 		
+		/*
 		tempTrainingMaterialList = tempEnrolledTrainingDetails.getTrainingMaterialList();
 		for (JPanel material : tempTrainingMaterialList.getListOfPanel()) {
 			// add listener to each mark as done button on each training material
 			addMarkAsDoneListener((EnrolledTrainingMaterial) material);
-		}
+		}/**/
 		// tempProgress
 		// feedbackButton
 		// tempMaterialList
@@ -65,6 +107,7 @@ public class TraineeController {
 		}
 	};
 	
+	/*
 	private void addMarkAsDoneListener(EnrolledTrainingMaterial m) {
 		m.getDoneButton().addActionListener(new ActionListener() {
 			@Override
@@ -84,4 +127,5 @@ public class TraineeController {
 			}
 		});
 	}
+	*/
 }

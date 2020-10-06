@@ -32,16 +32,20 @@ public class EnrolledTrainingDetails extends JPanel {
 	private IndividualProgress individualProgress;
 	private JButton trainerProfileButton;
 	private JButton feedbackButton;
-	
-	private int numberOfCompletedMaterial = 0;
 	private String feedbackLink = "";
+	private String trainingName;
+	private String trainingID;
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public EnrolledTrainingDetails(String trainingName) {
+	public EnrolledTrainingDetails(String trainingName, String trainingID) {
+		
+		this.trainingName = trainingName;
+		this.trainingID = trainingID;
+		
 		setBackground(new Color(255, 255, 200));
 		
 		JPanel panel = new JPanel();
@@ -82,7 +86,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		textArea.setEditable(false);
 		upperPanel.add(textArea);
 		
-		individualProgress = new IndividualProgress("Trainee", 0);
+		individualProgress = new IndividualProgress("Trainee", "TraineeID", 0);
 		individualProgress.setBounds(115, 270, 770, 70);
 		upperPanel.add(individualProgress);
 		
@@ -146,10 +150,6 @@ public class EnrolledTrainingDetails extends JPanel {
 		return trainingMaterialList;
 	}
 	
-	public IndividualProgress getIndividualProgress() {
-		return individualProgress;
-	}
-	
 	public JButton getTrainerProfileButton() {
 		return trainerProfileButton;
 	}
@@ -166,16 +166,11 @@ public class EnrolledTrainingDetails extends JPanel {
 		this.feedbackLink = feedbackLink;
 	}
 	
-	public int getNumberOfCompletedMaterial() {
-		return numberOfCompletedMaterial;
+	public String getCourseID() {
+		return trainingID;
 	}
 	
-	public void setNumberOfCompletedMaterial(int numberOfCompletedMaterial) {
-		this.numberOfCompletedMaterial = numberOfCompletedMaterial;
-	}
-	
-	// this attribute increases
-	public void increaseNumberOfCompletedMaterial() {
-		numberOfCompletedMaterial++;
+	public IndividualProgress getIndividualProgress() {
+		return individualProgress;
 	}
 }

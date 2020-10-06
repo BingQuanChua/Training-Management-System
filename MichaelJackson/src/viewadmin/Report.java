@@ -18,7 +18,7 @@ public class Report extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton trainingButton;
-	private IndividualReport individualReport; // individual report for each report
+	private ReportTraining individualReport; // individual report for each report
 	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
 	
@@ -39,14 +39,14 @@ public class Report extends JPanel {
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
 				
-		individualReport = new IndividualReport(name);
+		individualReport = new ReportTraining(name);
 	}
 	
 	public JButton getTrainingButton() {
 		return trainingButton;
 	}
 	
-	public IndividualReport getIndividualReport() {
+	public ReportTraining getIndividualReport() {
 		return individualReport;
 	}
 	

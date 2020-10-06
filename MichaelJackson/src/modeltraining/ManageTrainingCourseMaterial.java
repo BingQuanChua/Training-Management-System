@@ -2,7 +2,7 @@ package modeltraining;
 
 import model.JDBCexecute;
 
-public class TrainingCourseMaterial {
+public class ManageTrainingCourseMaterial {
 	
 	// For database
 	private JDBCexecute database;
@@ -12,7 +12,7 @@ public class TrainingCourseMaterial {
 	 * Constructor
 	 * init JDBC
 	 *************/
-	public TrainingCourseMaterial() {
+	public ManageTrainingCourseMaterial() {
 		
 		database = new JDBCexecute();
 	}

@@ -3,11 +3,11 @@ package modeltraining;
 import model.JDBCexecute;
 
 
-public class TrainingCourse {
+public class ManageTrainingCourse {
 
 	private JDBCexecute database;
 	
-	public TrainingCourse(){
+	public ManageTrainingCourse(){
 	
 		database = new JDBCexecute();
 	}

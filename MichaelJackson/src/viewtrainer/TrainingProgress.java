@@ -58,6 +58,7 @@ public class TrainingProgress extends JPanel {
 		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		scrollPane.setViewportView(list);
 		
+		/*
 		addProgress(new IndividualProgress("Jim Helpert", 50));
 		addProgress(new IndividualProgress("Michael Scott", 30));
 		addProgress(new IndividualProgress("Dwight Schrute", 70));
@@ -66,6 +67,7 @@ public class TrainingProgress extends JPanel {
 		addProgress(new IndividualProgress("Creed Bratton", 20));
 		addProgress(new IndividualProgress("Andy Bernard", 10));
 		addProgress(new IndividualProgress("Toby Flenderson", 100));
+		*/
 	
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override

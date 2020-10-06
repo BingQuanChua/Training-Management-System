@@ -17,8 +17,9 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
-	private static UserUI userUI;
-	private AdminModel user;
+	private AdminModel adminModel;
+	private TrainerModel trainerModel;
+	private TraineeModel traineeModel;
 	private String userID;
 	
 	public static void main(String args[]) {
@@ -97,17 +98,20 @@ public class Main {
 		switch (loginRole) {
 		case 1:
 			adminUI = new AdminUI(userID);
+			adminModel = new AdminModel(userID);
 			new AdminController(adminUI,userID);
 			adminUI.setVisible(true);
 			break;
 		case 2:
 			trainerUI = new TrainerUI(userID);
+			trainerModel = new TrainerModel(userID);
 			new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:
 			traineeUI = new TraineeUI(userID);
-			new TraineeController(traineeUI);
+			traineeModel = new TraineeModel(userID);
+			new TraineeController(traineeUI, traineeModel);
 			traineeUI.setVisible(true);
 			break;
 		}

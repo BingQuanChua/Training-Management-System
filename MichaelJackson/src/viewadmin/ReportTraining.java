@@ -6,14 +6,14 @@ import view.IndividualProgress;
 import java.awt.*;
 import java.awt.event.*;
 
-public class IndividualReport extends JPanel{
+public class ReportTraining extends JPanel{
 	/**
 	 * Report of one training
 	 */
 	private JPanel list = new JPanel();
 	
 	// need to pass something in...
-	public IndividualReport(String trainingName) {
+	public ReportTraining(String trainingName) {
 		setBackground( new Color(255, 255, 200));
 		
 		JPanel panel = new JPanel();
@@ -89,6 +89,7 @@ public class IndividualReport extends JPanel{
 		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		scrollPane.setViewportView(list);
 		
+		/*
 		addProgress(new IndividualProgress("Jim Helpert", 50));
 		addProgress(new IndividualProgress("Michael Scott", 30));
 		addProgress(new IndividualProgress("Dwight Schrute", 70));
@@ -97,10 +98,12 @@ public class IndividualReport extends JPanel{
 		addProgress(new IndividualProgress("Creed Bratton", 20));
 		addProgress(new IndividualProgress("Andy Bernard", 10));
 		addProgress(new IndividualProgress("Toby Flenderson", 100));
+		*/
 		panel.add(scrollPane);
 
 	}
 	
+	// Progress Update
 	private void addProgress(IndividualProgress p) {
 		list.add(p);
 	}

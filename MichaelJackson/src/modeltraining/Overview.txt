@@ -65,7 +65,6 @@
  * Advanced details:
  *  - courseRegisteredTrainee
  *  - courseEnrolledTrainee
- *  - courseFeedbackResult
  *  
  * ----------------------------------------------
  * | Admin		| Trainer		| Trainee		|
@@ -79,15 +78,38 @@
  *
  *****************************/
  
+ 
  /***************************
  * Progress & Evaluation
  ****************************
+ * View
+ * - IndividualProgress
+ * - JButtonID
  *
- * 
+ * Admin:
+ * - AdminUI => add Report panel
+ * - Report (knows how many courses + CourseID)
+ * - Report training (individual report)
  *
+ * Trainer:
+ * - TrainerUI.getTrainingProgressList()
+ *			  .getItem() // return TrainingProgress
+ *			  .addProgress(IndividualProgress p)
  *
+ * Trainee:
+ *	// mark as done
+ * - TraineeUI.getEnrolledTrainingList()
+ *			  .getItem()  //return EnrolledTraining
+ *			  .getTrainingDetails()  // return EnrolledTrainingDetail
+ *			  .getTrainingMaterialList()
+ *			  .getItem()  // return EnrolledTrainingMaterial
+ *			  .getDoneButton()
  *
- *
- *
+ *	// progress bar
+ * - TraineeUI.getEnrolledTrainingList()
+ *			  .getItem()  //return EnrolledTraining
+ *			  .getTrainingDetails()  // return EnrolledTrainingDetail
+ *			  .setIndividualProgress(name, id, progress)) //each trainee has one progress only in every course
+ * - TrainingProgress.
  */
  
