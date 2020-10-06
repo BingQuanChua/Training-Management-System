@@ -10,7 +10,7 @@ import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
 import viewadmin.AllTrainingList;
 import viewadmin.EditCourse;
-import viewadmin.ReportTraining;
+import viewadmin.IndividualReport;
 import viewadmin.ManageTraining;
 import viewadmin.Report;
 import modeluser.AdminModel;
@@ -21,13 +21,14 @@ public class AdminController {
 	private AddNewCourse addNewCourse; // all adding and editing a training course shares the same panel
 	private EditCourse editCourse; 
 	private boolean isTextAreaEditable = false;
-	private String userType;
-	private String userID;
+	private UserManagementController userManagementController;
+
 	
-	public AdminController(AdminUI adminUI,String userID) {
-		this.userID = userID;
+	public AdminController(AdminUI adminUI,AdminModel adminModel) {
+	
 		this.adminUI = adminUI;
-		adminModel = new AdminModel(userID);
+		this.adminModel = adminModel;
+		userManagementController = new UserManagementController(adminUI,adminModel);
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
 		
@@ -78,18 +79,7 @@ public class AdminController {
 	ActionListener addUserButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(adminUI.getAddNewUser().getTrainerBox().getState() == true) {
-				userType = "trainer";
-			}
-			else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
-				userType = "trainee";
-			}
-			int response = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
-			if (response == 0) {
-				adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
-				JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-				adminUI.home();
-			}
+			userManagementController.addNewUser();
 		}
 	};
 	
@@ -110,7 +100,6 @@ public class AdminController {
 			adminUI.getPanelBody().revalidate();
 		}
 	};
-	
 	
 	// handles what happens after pressing "add" button
 	ActionListener addNewTrainingButtonListener = new ActionListener() {

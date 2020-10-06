@@ -33,12 +33,29 @@ public class UserProfileController {
 	}
 	
 	private void updateProfile() {
+		if(validateEmpty()){
 		adminModel.setAdminProfile((userProfile.getTxtName().getText()),1);
-		adminModel.setAdminProfile((userProfile.getTxtGender().getText()),4);
+		
+		if(validateGender()) {
+			adminModel.setAdminProfile((userProfile.getTxtGender().getText()),4);
+		}
+		else {
+			JOptionPane.showConfirmDialog (null, "Error!Gender can only be 'm' or 'f'.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}
 		adminModel.setAdminProfile((userProfile.getTxtPosition().getText()),2);
-		adminModel.setAdminProfile((userProfile.getTxtContact().getText()),5);
+		
+		if(validateContact(userProfile.getTxtContact().getText())) {
+			adminModel.setAdminProfile((userProfile.getTxtContact().getText()),5);
+		}
+		else {
+			JOptionPane.showConfirmDialog (null, "Error! Please enter correct contact number format (E.g.,0125707526).","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}
 		adminModel.setAdminProfile((userProfile.getTxtEmail().getText()),6);
 		adminModel.setAdminProfile((userProfile.getTxtDesc().getText()),3);
+	}
+		else {
+			JOptionPane.showConfirmDialog (null, "Error! No empty field allowed.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
 	ActionListener editButtonListener = new ActionListener() {
@@ -61,18 +78,53 @@ public class UserProfileController {
 				userProfile.getTxtEmail().setEditable(false);
 				userProfile.getTxtDesc().setEditable(false);
 				updateProfile();
-				userProfile.getEditButton().setText("Edit");
-				isTextAreaEditable = false;
-				JOptionPane.showConfirmDialog (null, "All changes have been saved.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				
+				if(validateGender() && validateEmpty() && validateContact(userProfile.getTxtContact().getText())) {
+					userProfile.getEditButton().setText("Edit");
+					isTextAreaEditable = false;
+					JOptionPane.showConfirmDialog (null, "All changes have been saved.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				else {
+					JOptionPane.showConfirmDialog (null, "Error! Changes have not been saved.","Error",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				userProfile.getTxtName().setEditable(true);
+				userProfile.getTxtGender().setEditable(true);
+				userProfile.getTxtPosition().setEditable(true);
+				userProfile.getTxtContact().setEditable(true);
+				userProfile.getTxtEmail().setEditable(true);
+				userProfile.getTxtDesc().setEditable(true);
+				}
 			}
 		}
 	};
-	/*
-	ActionListener profileListener = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			userProfile.getTxtName().setText(adminModel.getAdminProfile(1));
+	
+	private boolean validateGender() {
+		if(userProfile.getTxtGender().getText().equals("m") || userProfile.getTxtGender().getText().equals("f")) {
+			return true;
 		}
-	};
-	*/
+		else {
+			return false;
+		}
+	}
+	
+	private boolean validateEmpty() {
+		if(userProfile.getTxtName().getText().equals("") || userProfile.getTxtGender().getText().equals("") || 
+			userProfile.getTxtPosition().getText().equals("") || userProfile.getTxtContact().getText().equals("") ||
+			userProfile.getTxtEmail().getText().equals("") || userProfile.getTxtDesc().getText().equals("")){
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	private boolean validateContact(String content) {
+		 try {
+			 Integer.parseInt(content);  
+			 return true;
+		 } catch(NumberFormatException e){  
+			 return false;  
+		 }  
+	}
 	
 }
