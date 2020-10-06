@@ -10,7 +10,7 @@ import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
 import viewadmin.AllTrainingList;
 import viewadmin.EditCourse;
-import viewadmin.IndividualReport;
+import viewadmin.ReportTraining;
 import viewadmin.ManageTraining;
 import viewadmin.Report;
 import modeluser.AdminModel;
