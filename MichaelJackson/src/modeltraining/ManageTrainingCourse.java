@@ -12,6 +12,18 @@ public class ManageTrainingCourse {
 		database = new JDBCexecute();
 	}
 	
+	/**
+	 * training_course table
+	 * +-------------+--------------+------+-----+---------+-------+
+	 * | Field       | Type         | Null | Key | Default | Extra |
+	 * +-------------+--------------+------+-----+---------+-------+
+	 * | COURSE_ID   | char(8)      | NO   | PRI | NULL    |       |
+	 * | USER_ID     | char(8)      | NO   | MUL | NULL    |       |
+	 * | COURSE_NAME | varchar(50)  | YES  |     | NULL    |       |
+	 * | COURSE_DESC | varchar(200) | YES  |     | NULL    |       |
+	 * | COURSE_DATE | date         | YES  |     | NULL    |       |
+	 * +-------------+--------------+------+-----+---------+-------+
+	 */
 	
 	/********************************
 	 * Add new training course
@@ -109,7 +121,7 @@ public class ManageTrainingCourse {
 	public boolean deleteTrainingCourse(String courseID) {
 		
 		// Query
-		String query = ("DELETE FROM TRAINING_COURSE" + 
+		String query = ("DELETE FROM TRAINING_COURSE " + 
 						"WHERE COURSE_ID = '" + courseID + "';" );
 
 		// Execute Query 
@@ -121,6 +133,123 @@ public class ManageTrainingCourse {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * training_course table
+	 * +-------------+--------------+------+-----+---------+-------+
+	 * | Field       | Type         | Null | Key | Default | Extra |
+	 * +-------------+--------------+------+-----+---------+-------+
+	 * | COURSE_ID   | char(8)      | NO   | PRI | NULL    |       |
+	 * | USER_ID     | char(8)      | NO   | MUL | NULL    |       |
+	 * | COURSE_NAME | varchar(50)  | YES  |     | NULL    |       |
+	 * | COURSE_DESC | varchar(200) | YES  |     | NULL    |       |
+	 * | COURSE_DATE | date         | YES  |     | NULL    |       |
+	 * +-------------+--------------+------+-----+---------+-------+
+	 */
+	
+	/**********************
+	 * Getter
+	 * @param courseID
+	 * @return trainerID (userID)
+	 * @throws Exception 
+	 *********************/
+	public String getTrainerID(String courseID) throws Exception {
+		
+		// Query
+		String trainerID = "Fail to Obtain Result";
+		String query = ("SELECT USER_ID FROM TRAINING_COURSE " +
+				"WHERE COURSE_ID = '" + courseID + "';" );
+		String column = "USER_ID";
+		
+		// Execute Query
+		courseID = database.executeQuery(query, column);
+		System.out.println("getTrainerID executed");
+
+		// Extract result
+		System.out.println("getTrainerID result: \n"
+				+ "Training_ID: " + courseID + "\n"
+				+ "Trainer_ID: " + trainerID ); 
+			
+		return trainerID;
+	}
+	
+	/**********************
+	 * Getter
+	 * @param courseID
+	 * @return courseName
+	 * @throws Exception 
+	 *********************/
+	public String getCourseName(String courseID) throws Exception {
+		
+		// Query
+		String courseName = "Fail to Obtain Result";
+		String query = ("SELECT COURSE_NAME FROM TRAINING_COURSE " +
+				"WHERE COURSE_ID = '" + courseID + "';" );
+		String column = "COURSE_NAME";
+		
+		// Execute Query
+		courseID = database.executeQuery(query, column);
+		System.out.println("getCourseName executed");
+
+		// Extract result
+		System.out.println("getCourseName result: \n"
+				+ "Training_ID: " + courseID + "\n"
+				+ "Course_Name: " + courseName ); 
+			
+		return courseName;
+	}
+	
+	/**********************
+	 * Getter
+	 * @param courseID
+	 * @return courseName
+	 * @throws Exception 
+	 *********************/
+	public String getCourseDescription(String courseID) throws Exception {
+		
+		// Query
+		String courseDesc = "Fail to Obtain Result";
+		String query = ("SELECT COURSE_DESC FROM TRAINING_COURSE " +
+				"WHERE COURSE_ID = '" + courseID + "';" );
+		String column = "COURSE_DESC";
+		
+		// Execute Query
+		courseID = database.executeQuery(query, column);
+		System.out.println("getCourseDescription executed");
+
+		// Extract result
+		System.out.println("getCourseDescription result: \n"
+				+ "Training_ID: " + courseID + "\n"
+				+ "Course_Desc: " + courseDesc ); 
+			
+		return courseDesc;
+	}
+	
+	/**********************
+	 * Getter
+	 * @param courseID
+	 * @return courseName
+	 * @throws Exception 
+	 *********************/
+	public String getCourseDate(String courseID) throws Exception {
+		
+		// Query
+		String courseDate = "Fail to Obtain Result";
+		String query = ("SELECT COURSE_DATE FROM TRAINING_COURSE " +
+				"WHERE COURSE_ID = '" + courseID + "';" );
+		String column = "COURSE_DATE";
+		
+		// Execute Query
+		courseID = database.executeQuery(query, column);
+		System.out.println("getCourseDate executed");
+
+		// Extract result
+		System.out.println("getCourseDate result: \n"
+				+ "Training_ID: " + courseID + "\n"
+				+ "Course_Date: " + courseDate ); 
+			
+		return courseDate;
 	}
 	
 }

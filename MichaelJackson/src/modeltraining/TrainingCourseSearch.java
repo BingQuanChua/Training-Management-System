@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import model.JDBCexecute;
 
-public class TraineeTrainingCourseModel {
+public class TrainingCourseSearch {
 	
 	private JDBCexecute database;
 	
-	public TraineeTrainingCourseModel(){
+	public TrainingCourseSearch(){
 	
 		database = new JDBCexecute();
 	}

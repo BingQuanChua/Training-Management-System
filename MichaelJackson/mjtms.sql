@@ -37,8 +37,9 @@ CREATE TABLE TRAINEE (
 ) ;
 
 INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
-INSERT INTO USER VALUES ('tnr00003', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
 INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
+INSERT INTO USER VALUES ('tnr00002', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
 INSERT INTO USER VALUES ('tne00002', 'noob','trainee1234', null, null, null, null, null, 'trainee');
 
 DELETE FROM USER 
@@ -60,7 +61,11 @@ SELECT * FROM TRAINER;
 INSERT INTO TRAINEE VALUES ('tne00001');
 SELECT * FROM TRAINEE;
 
+INSERT INTO TRAINER VALUES ('tnr00002');
+SELECT * FROM TRAINER;
 
+INSERT INTO TRAINEE VALUES ('tne00002');
+SELECT * FROM TRAINEE;
 ###################################
 # Training Course Management      #
 ###################################
@@ -97,10 +102,15 @@ INSERT INTO TRAINING_COURSE VALUES ('crs00001', 'tnr00001','Testing Course', 'Te
 INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Testing Course 2', 'Testing 02', '2020-10-02');
 
 UPDATE TRAINING_COURSE
+<<<<<<< HEAD
 	SET COURSE_ID = 'crs00003'
     WHERE USER_ID = 'tnr00001';
 DELETE FROM TRAINING_COURSE
 	WHERE COURSE_ID = 'trc00001';
+=======
+	SET COURSE_NAME = 'Testing Course 3'
+	WHERE COURSE_ID = 'crs00003';
+>>>>>>> 5ee86c7045d094613b25a5b90f6017973ca99763
 
 SELECT * FROM TRAINING_COURSE;
 
@@ -108,11 +118,15 @@ INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'crs00001', 'mtr 1 - trc 1', 'Ma
 INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'crs00001', 'mtr 2 - trc 1', 'Material 2 from Course 1');
 INSERT INTO COURSE_MATERIAL VALUES ('mtr00003', 'crs00001', 'mtr 3 - trc 1', 'Material 3 from Course 1');
 INSERT INTO COURSE_MATERIAL VALUES ('mtr00004', 'crs00002', 'mtr 1 - trc 2', 'Material 1 from Course 2');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ee86c7045d094613b25a5b90f6017973ca99763
 
 UPDATE COURSE_MATERIAL
 	SET MATERIAL_TITLE = 'newDetails'
 	WHERE MATERIAL_ID = 'mtr00001';
+<<<<<<< HEAD
 DELETE FROM COURSE_MATERIAL
 	WHERE COURSE_ID = 'trc00001';
 
@@ -121,6 +135,15 @@ SELECT MATERIAL_ID FROM COURSE_MATERIAL WHERE COURSE_ID = 'trc00001';
 
 INSERT INTO ENROLL VALUES ('tne00001', 'crs00001', 'approved');
 INSERT INTO ENROLL VALUES ('tne00001', 'crs00002', 'rejected');
+=======
+
+SELECT * FROM COURSE_MATERIAL;
+
+SELECT MATERIAL_ID FROM COURSE_MATERIAL WHERE COURSE_ID = 'crs00001';
+
+INSERT INTO ENROLL VALUES('tne00001','crs00001','approved');
+INSERT INTO ENROLL VALUES('tne00001','crs00002','approved');
+>>>>>>> 5ee86c7045d094613b25a5b90f6017973ca99763
 
 SELECT * FROM ENROLL;
 
@@ -147,7 +170,6 @@ FOREIGN KEY(MATERIAL_ID) REFERENCES COURSE_MATERIAL(MATERIAL_ID)
 INSERT INTO PROGRESS VALUES ('tne00001','mtr00001','false');
 INSERT INTO PROGRESS VALUES ('tne00001','mtr00002','true');
 INSERT INTO PROGRESS VALUES ('tne00001','mtr00003','true');
-INSERT INTO PROGRESS VALUES ('tne00001','mtr00001','true');
 
 UPDATE PROGRESS
 	SET MATERIAL_IS_DONE = 'false'

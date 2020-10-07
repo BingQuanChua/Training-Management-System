@@ -12,11 +12,13 @@ public class AddNewCourse extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public AdminUI adminUI;
+	
+	private JTextField txtCourseID;
 	private JTextField txtName;
 	private JTextArea txtDesc;
 	private JTextField txtTrainer;
 	private JTextField txtDate;
-	private JTextField txtCourseID;
+	
 	private JButton addButton;
 	private JButton cancelButton;
     
@@ -110,7 +112,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(lblTrainer);
         
         txtTrainer = new JTextField();
-        txtTrainer.setText("Enter trainer ID for this training course(e.g. TRN12345)");
+        txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
         txtTrainer.setForeground(Color.GRAY);
         txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtTrainer.setBorder(null);
@@ -118,13 +120,13 @@ public class AddNewCourse extends JPanel {
         txtTrainer.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
-        		if( txtTrainer.getText().trim().equals("Enter trainer ID for this training course(e.g. TRN12345)"))
+        		if( txtTrainer.getText().trim().equals("Enter trainer ID for this training course (e.g. tnr12345)"))
         			 txtTrainer.setText("");
         	}
         	@Override
         	public void focusLost(FocusEvent e) {
         		 if( txtTrainer.getText().trim().equals("")) 
-        			 txtTrainer.setText("Enter trainer ID for this training course(e.g. TRN12345)");
+        			 txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
         	}
         });
         frontPanel.add(txtTrainer);
@@ -142,7 +144,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(lblDate);
         
         txtDate = new JTextField();
-        txtDate.setText("Enter training date");
+        txtDate.setText("Enter training date (format: YYYY-MM-DD)");
         txtDate.setForeground(Color.GRAY);
         txtDate.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtDate.setBorder(null);
@@ -150,13 +152,13 @@ public class AddNewCourse extends JPanel {
         txtDate.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
-        		if( txtDate.getText().trim().equals("Enter training date")) 
+        		if( txtDate.getText().trim().equals("Enter training date (format: YYYY-MM-DD)")) 
         			 txtDate.setText("");
         	}
         	@Override
         	public void focusLost(FocusEvent e) {
         		 if( txtDate.getText().trim().equals("")) 
-        			 txtDate.setText("Enter training date");
+        			 txtDate.setText("Enter training date (format: YYYY-MM-DD)");
         	}
         });
         frontPanel.add(txtDate);
@@ -188,7 +190,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(lblCourseID);
         
         txtCourseID = new JTextField();
-        txtCourseID.setText("Enter training course ID(e.g. ABC-1234)");
+        txtCourseID.setText("Enter training course ID (e.g. crs12345)");
         txtCourseID.setForeground(Color.GRAY);
         txtCourseID.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtCourseID.setBorder(null);
@@ -196,13 +198,13 @@ public class AddNewCourse extends JPanel {
         txtCourseID.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
-        		if(txtCourseID.getText().trim().equals("Enter training course ID(e.g. ABC-1234)")) 
+        		if(txtCourseID.getText().trim().equals("Enter training course ID (e.g. crs12345)")) 
         	         txtCourseID.setText("");
         	}
         	@Override
         	public void focusLost(FocusEvent e) {
         		 if(txtCourseID.getText().trim().equals("")) 
-        	           txtCourseID.setText("Enter training course ID(e.g. ABC-1234)");
+        	           txtCourseID.setText("Enter training course ID (e.g. crs12345)");
         	}
         });
         frontPanel.add(txtCourseID);
@@ -237,7 +239,28 @@ public class AddNewCourse extends JPanel {
         ////end of Add New User panel////
         
     }
-    
+    	
+	
+	public JTextField getTxtCourseID() {
+		return txtCourseID;
+	}
+	
+	public JTextField getTxtName() {
+		return txtName;
+	}
+	
+	public JTextArea getTxtDesc() {
+		return txtDesc;
+	}
+	
+	public JTextField getTxtTrainer() {
+		return txtTrainer;
+	}
+	
+	public JTextField getTxtDate() {
+		return txtDate;
+	}
+		
     public JButton getAddButton() {
     	return addButton;
     }

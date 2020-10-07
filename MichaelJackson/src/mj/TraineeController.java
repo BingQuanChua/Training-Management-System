@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import modeltraining.TraineeTrainingCourseModel;
+import modeltraining.TrainingCourseSearch;
 import modeltraining.TrainingProgress;
 import modeluser.TraineeModel;
 import view.IndividualProgress;
@@ -22,9 +22,9 @@ public class TraineeController {
 	
 	private TraineeUI traineeUI;
 	private TraineeModel traineeModel;
-	private TraineeTrainingCourseModel courseModel;
+	private TrainingCourseSearch courseModel;
 	private TrainingProgress progressModel;
-	
+
 	private EnrolledTrainingDetails tempEnrolledTrainingDetails;
 	private IndividualProgress tempProgressBar;
 	private ListPanel tempTrainingMaterialList;
@@ -33,23 +33,26 @@ public class TraineeController {
 	
 	TraineeController(TraineeUI traineeUI, TraineeModel traineeModel){
 		
-		System.out.println("\n\n####################\n"
+		System.out.println("\n\n********************\n"
 						+ "TraineeController\n"
-						+ "####################\n");
+						+ "********************\n");
 		
 		this.traineeUI = traineeUI;
 		this.traineeModel = traineeModel;
 		this.traineeID = traineeModel.getTraineeID();
-		courseModel = new TraineeTrainingCourseModel();
+		courseModel = new TrainingCourseSearch();
 		progressModel = new TrainingProgress();
+		System.out.println("\n\n***\nSetAvailableTrainingCourse\n***\n");
 		setAvailableTrainingCourse();
+		System.out.println("\n\n***\nsetEnrolledTrainingCourse\n***\n");
 		setEnrolledTrainingCourse();
+		System.out.println("\n\n***\nsetListener\n***\n");
 		setAvailableTrainingCourseListener();
 		setEnrolledTrainingCourseListener();
 		
-		System.out.println("\n\n####################\n"
+		System.out.println("\n\n*********************\n"
 						+ "TraineeController End\n"
-						+ "####################\n");
+						+ "*********************\n");
 	}
 
 	
