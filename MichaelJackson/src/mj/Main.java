@@ -17,11 +17,9 @@ public class Main {
 	private static AdminUI adminUI;
 	private static TrainerUI trainerUI;
 	private static TraineeUI traineeUI;
-	private static AdminModel adminModel;
-	private static TrainerModel trainerModel;
-	private static TraineeModel traineeModel;
-	private static UserUI userUI;
-	private AdminModel user;
+	private AdminModel adminModel;
+	private TrainerModel trainerModel;
+	private TraineeModel traineeModel;
 	private String userID;
 	
 	public static void main(String args[]) {
@@ -107,7 +105,7 @@ public class Main {
 		case 2:
 			trainerUI = new TrainerUI(userID);
 			trainerModel = new TrainerModel(userID);
-			new TrainerController(trainerUI, trainerModel);
+			new TrainerController(trainerUI);
 			trainerUI.setVisible(true);
 			break;
 		case 3:

@@ -40,9 +40,9 @@ public class ListPanel extends JPanel {
 			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
 			addDeleteUserListener((ManageUser) item);
 		}
-//		if (item instanceof ManageTraining) {
-//			addDeleteTrainingListener((ManageTraining) item);
-//		}
+		if (item instanceof ManageTraining) {
+			addDeleteTrainingListener((ManageTraining) item);
+		}
 		if (item instanceof TrainingMaterial) {
 			addDeleteMaterialListener((TrainingMaterial) item);
 		}
@@ -62,10 +62,6 @@ public class ListPanel extends JPanel {
 	
 	public ArrayList<JPanel> getListOfPanel() {
 		return listOfPanel;
-	}
-	
-	public JPanel getContainerPanel() {
-		return container;
 	}
 	
 	private void addDeleteUserListener(ManageUser p) {
@@ -89,24 +85,24 @@ public class ListPanel extends JPanel {
 		});
 	}
 	
-//	private void addDeleteTrainingListener(ManageTraining p) {
-//		p.getDeleteButton().addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this training course?", "Delete Training Course", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-//				// 0 = yes, 1 = no, 2 = cancel
-//				if (input == 0) {
-//					listOfPanel.remove(p);
-//					container.removeAll();
-//					for (JPanel temp : listOfPanel) {
-//						container.add(temp);
-//					}
-//					container.repaint();
-//					container.revalidate();
-//				}
-//			}
-//		});
-//	}
+	private void addDeleteTrainingListener(ManageTraining p) {
+		p.getDeleteButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this training course?", "Delete Training Course", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					listOfPanel.remove(p);
+					container.removeAll();
+					for (JPanel temp : listOfPanel) {
+						container.add(temp);
+					}
+					container.repaint();
+					container.revalidate();
+				}
+			}
+		});
+	}
 	
 	private void addDeleteMaterialListener(TrainingMaterial p) {
 		p.getDeleteButton().addActionListener(new ActionListener() {

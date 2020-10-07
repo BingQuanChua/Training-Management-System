@@ -87,7 +87,5 @@ public class AdminModel extends User {
 		return super.executeUpdate(query);
 
 	}
-	
-	
 
 }

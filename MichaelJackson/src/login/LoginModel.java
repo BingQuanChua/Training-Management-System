@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.JDBCinfo;
+
 
 public class LoginModel {
 	
 	// For database
-	private String url = JDBCinfo.getURL();
-	private String serverName = JDBCinfo.getServerName();
-	private String serverPassword = JDBCinfo.getServerPassword();
+	private String url  ;
+	private String serverName ;
+	private String serverPassword;
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
