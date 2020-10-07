@@ -93,6 +93,7 @@ public class TrainingMaterialDetails extends JPanel {
 		// creating a list of materials
 		trainingMaterialList = new ListPanel(); 
 		trainingMaterialList.setBackground(new Color(255,255,200));
+		trainingMaterialList.addItem(new TrainingMaterial()); 
 		////// end of list creation //////
 			
 		// adding both panels into this panel

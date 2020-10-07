@@ -17,33 +17,29 @@ public class EnrolledTraining extends JPanel {
 	
 	private JButton enrolledTrainingButton;
 	private EnrolledTrainingDetails trainingDetails;
-	private String courseName;
-	private String courseID;
+	private String trainingName;
+	private String trainingID;
 	private Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
-	public EnrolledTraining(
-			String courseID, String courseName, String courseDesc,
-			String trainerID, String trainerName, 
-			String traineeID, String traineeName) {
+	public EnrolledTraining(String trainingName, String trainingID) {
 		
-		this.courseName = courseName;
-		this.courseID = courseID;
+		this.trainingName = trainingName;
+		this.trainingID = trainingID;
 		
 		setPreferredSize(new Dimension(800, 70));
 		setLayout(null);
 		
-		enrolledTrainingButton = new JButton(courseName);
+		trainingDetails = new EnrolledTrainingDetails(trainingName, trainingID);
+		
+		enrolledTrainingButton = new JButton(trainingName);
 		enrolledTrainingButton.setFont(heading2);
 		enrolledTrainingButton.setBackground(Color.LIGHT_GRAY);
 		enrolledTrainingButton.setBounds(0, 0, 800, 70);
 		add(enrolledTrainingButton);
-		
-		trainingDetails = new EnrolledTrainingDetails(courseID, courseName, courseDesc, 
-				trainerID, trainerName, traineeID, traineeName);
 	}
 	
-	public String getCourseID() {
-		return courseID;
+	public String getTrainingID() {
+		return trainingID;
 	}
 	
 	public JButton getEnrolledTrainingButton() {

@@ -66,10 +66,8 @@ public class JDBCtest {
 				invalidChoice = false;
 			}
 			
-			/* /
 			TrainingProgress tp = new TrainingProgress();
 			System.out.println("Progress: " + tp.calculateProgress("tne00001", "trc00001"));
-			/**/
 		}
 		
 	}

@@ -107,10 +107,7 @@ public class Training extends JPanel {
 					feedbackFormLink = JOptionPane.showInputDialog("Enter Google Form link");
 				}
 				else {
-					int response = JOptionPane.showConfirmDialog (null, "You have entered a link previously.\nExisting Google Form link:\n" + feedbackFormLink + "\n\nDo you want to overwrite it?","WARNING",JOptionPane.YES_NO_OPTION);
-					if (response == 0) {
-						feedbackFormLink = JOptionPane.showInputDialog("Existing Google Form link:\n" + feedbackFormLink + "\n\nEnter new Google Form link");
-					}
+					feedbackFormLink = JOptionPane.showInputDialog("Existing Google Form link:\n" + feedbackFormLink + "\n\nEnter new Google Form link");
 				}
 			}
 		});

@@ -17,8 +17,6 @@ public class EditCourse extends JPanel{
 	private JTextField txtDate;
 	private JButton editButton;
 	private JButton cancelButton;
-	
-	private String currentCourseID;
     
     public EditCourse() {
         
@@ -222,14 +220,6 @@ public class EditCourse extends JPanel{
     
     public JTextArea getTrainingDesc() {
     	return txtDesc;
-    }
-    
-    public String getCurrentCourseID() {
-    	return currentCourseID;
-    }
-    
-    public void setCurrentCourseID(String currentCourseID) {
-    	this.currentCourseID = currentCourseID;
     }
 
 }
