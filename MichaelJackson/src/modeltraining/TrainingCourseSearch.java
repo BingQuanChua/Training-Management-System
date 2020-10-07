@@ -13,21 +13,13 @@ public class TrainingCourseSearch {
 		database = new JDBCexecute();
 	}
 	
+	/**
+	 * @param list
+	 */
 	public void getAllTrainingCourseID(ArrayList<String> list) {
 		
 		String column = "COURSE_ID";
 		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
-		
-		database.executeMultiRowQuery(query, column, list);
-	}
-	
-	public void getEnrolledTrainingCourseID(String traineeID, ArrayList<String> list) {
-		
-		String status = "approved";
-		String column = "COURSE_ID";
-		String query = ("SELECT COURSE_ID FROM ENROLL " + 
-						"WHERE USER_ID = '" + traineeID + "' " +
-						"AND TRAINING_STATUS = '"+ status + "' ;" );
 		
 		database.executeMultiRowQuery(query, column, list);
 	}
@@ -79,10 +71,69 @@ public class TrainingCourseSearch {
 				return courseDetails;
 		}
 
-		
 		// Execute Query
 		courseDetails = database.executeQuery(query, column);
 		return courseDetails;
+	}
+	
+	
+	// Trainee
+	public void getAvailableTrainingCourseID(String traineeID, ArrayList<String> list) {
+		
+	}
+	
+	// Trainee
+	public void getEnrolledTrainingCourseID(String traineeID, ArrayList<String> list) {
+
+		String status = "approved";
+		String column = "COURSE_ID";
+		String query = ("SELECT COURSE_ID FROM ENROLL " + 
+				"WHERE USER_ID = '" + traineeID + "' " +
+				"AND TRAINING_STATUS = '"+ status + "' ;" );
+
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	// Get all material in specific course
+	public void getAllCourseMaterial(String courseID, ArrayList<String> list) {
+		
+		String column = "MATERIAL_ID";
+		String query = ("SELECT MATERIAL_ID FROM COURSE_MATERIAL " + 
+						"WHERE COURSE_ID = '" + courseID + "'; ");
+		
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	// Course Material
+	public String getCourseMaterialDetails(String materialID, int choice) throws Exception {
+		
+		String materialDetails = "Fail To Obtain Result";
+		String query = "";
+		String column = "";
+
+		// Query
+		switch(choice) 
+		{
+			case 1:	
+				query = ("SELECT MATERIAL_ID FROM COURSE_MATERIAL WHERE MATERIAL_ID = '"+ materialID +"';");
+				column = "COURSE_ID";
+				break;
+			case 2: 
+				query = ("SELECT MATERIAL_TITLE FROM COURSE_MATERIAL WHERE MATERIAL_ID = '"+ materialID +"';");
+				column = "MATERIAL_TITLE";
+				break;
+			case 3: 
+				query = ("SELECT MATERIAL_DESC FROM COURSE_MATERIAL WHERE MATERIAL_ID = '"+ materialID +"';");
+				column = "MATERIAL_DESC";
+				break;
+			default:
+				System.out.println("Invalid choice");
+				return materialDetails;
+		}
+
+		// Execute Query
+		materialDetails = database.executeQuery(query, column);
+		return materialDetails;
 	}
 
 }

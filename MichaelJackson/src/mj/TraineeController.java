@@ -24,35 +24,35 @@ public class TraineeController {
 	private TraineeModel traineeModel;
 	private TrainingCourseSearch courseModel;
 	private TrainingProgress progressModel;
-
 	private EnrolledTrainingDetails tempEnrolledTrainingDetails;
 	private IndividualProgress tempProgressBar;
 	private ListPanel tempTrainingMaterialList;
+	
 	
 	private String traineeID;
 	
 	TraineeController(TraineeUI traineeUI, TraineeModel traineeModel){
 		
 		System.out.println("\n\n********************\n"
-						+ "TraineeController\n"
-						+ "********************\n");
+						     + "TraineeController\n"
+						     + "********************\n");
 		
 		this.traineeUI = traineeUI;
 		this.traineeModel = traineeModel;
 		this.traineeID = traineeModel.getTraineeID();
 		courseModel = new TrainingCourseSearch();
 		progressModel = new TrainingProgress();
-		System.out.println("\n\n***\nSetAvailableTrainingCourse\n***\n");
+		System.out.println("\n\n*********\nsetAvailableTrainingCourse\n*********\n");
 		setAvailableTrainingCourse();
-		System.out.println("\n\n***\nsetEnrolledTrainingCourse\n***\n");
+		System.out.println("\n\n*********\nsetEnrolledTrainingCourse\n*********\n");
 		setEnrolledTrainingCourse();
-		System.out.println("\n\n***\nsetListener\n***\n");
+		System.out.println("\nSet Listener\n");
 		setAvailableTrainingCourseListener();
 		setEnrolledTrainingCourseListener();
 		
 		System.out.println("\n\n*********************\n"
-						+ "TraineeController End\n"
-						+ "*********************\n");
+						     + "TraineeController End\n"
+						     + "*********************\n");
 	}
 
 	
