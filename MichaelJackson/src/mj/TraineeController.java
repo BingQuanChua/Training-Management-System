@@ -21,18 +21,17 @@ public class TraineeController {
 	
 	private TraineeUI traineeUI;
 	private TraineeModel traineeModel;
-	private TrainingCourseGetterModel trainingCourseGetterModel;
 	
 	private EnrolledTrainingDetails tempEnrolledTrainingDetails;
 	private IndividualProgress tempProgressBar;
 	private ListPanel tempTrainingMaterialList;
+	private TrainingCourseGetterModel trainingCourseGetterModel;
 	
 	TraineeController(TraineeUI traineeUI, TraineeModel traineeModel){
 		this.traineeUI = traineeUI;
 		this.traineeModel = traineeModel;
+		
 		trainingCourseGetterModel = new TrainingCourseGetterModel();
-		setAvailableTrainingCourse();
-		setEnrolledTrainingCourse();
 		setAvailableTrainingCourseListener();
 		setEnrolledTrainingCourseListener();
 	}
@@ -80,9 +79,9 @@ public class TraineeController {
 	private void setEnrolledTrainingCourseListener() {
 		// setListener to each of the EnrolledTraining
 		// will change, need to loop here
-		EnrolledTraining temp = (EnrolledTraining) traineeUI.getEnrolledTrainingList().getItem(0);
-		temp.getEnrolledTrainingButton().addActionListener(trainingButtonListener);
-		tempEnrolledTrainingDetails = temp.getTrainingDetails();
+		// EnrolledTraining temp = (EnrolledTraining) traineeUI.getEnrolledTrainingList().getItem(0);
+		// temp.getEnrolledTrainingButton().addActionListener(trainingButtonListener);
+		// tempEnrolledTrainingDetails = temp.getTrainingDetails();
 		// description text area update
 		// trainee profile button listener
 		// trainer profile button listener
