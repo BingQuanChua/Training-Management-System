@@ -38,7 +38,7 @@ public class ListPanel extends JPanel {
 		
 		if (item instanceof ManageUser) {
 			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
-			addDeleteUserListener((ManageUser) item);
+			
 		}
 //		if (item instanceof ManageTraining) {
 //			addDeleteTrainingListener((ManageTraining) item);
@@ -67,7 +67,7 @@ public class ListPanel extends JPanel {
 	public JPanel getContainerPanel() {
 		return container;
 	}
-	
+	/*
 	private void addDeleteUserListener(ManageUser p) {
 		p.getDeleteButton().addActionListener(new ActionListener() {
 			@Override
@@ -87,7 +87,7 @@ public class ListPanel extends JPanel {
 				}
 			}
 		});
-	}
+	}*/
 	
 //	private void addDeleteTrainingListener(ManageTraining p) {
 //		p.getDeleteButton().addActionListener(new ActionListener() {
