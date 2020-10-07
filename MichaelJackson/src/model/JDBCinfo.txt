@@ -1,10 +1,10 @@
 package model;
 
-public class JDBCinfo {
-	private static String url = "jdbc:mysql://localhost:3306/mjtms";
+class JDBCinfo{
+
+	private static String url = "jdbc:mysql://localhost:3306/mjtms ?useTimezone=true&serverTimezone=UTC ";
 	private static String serverName = "root";
-	private static String serverPassword = "";
-	public static String user_DBtable_Name = "tms_user";
+	private static String serverPassword = "  YourPassword  ";
 	
 	public static String getURL() {
 		return url;

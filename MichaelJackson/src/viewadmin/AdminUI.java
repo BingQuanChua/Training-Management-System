@@ -118,6 +118,13 @@ public class AdminUI extends UserUI {
 		super.home();
 	}
 	
+	public void trainingListSubMenu() {
+		getPanelBody().removeAll();
+		getPanelBody().add(new SubMenu("Manage Training Course", allTrainingList));
+        getPanelBody().repaint();
+		getPanelBody().revalidate();
+	}
+	
 	public AddNewUser getAddNewUser() {
 		return addNewUser;
 	}

@@ -1,8 +1,6 @@
 package login;
 
-import mj.*;
-import model.JDBCexecute;
-import model.JDBCinfo;
+import mj.*; 
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
@@ -33,7 +31,6 @@ import java.awt.Font;
 
 public class Login extends JFrame {
 
-	
 	/**
 	 * Create the panel.
 	 */
@@ -45,16 +42,11 @@ public class Login extends JFrame {
 	private JLabel passwordLabel;
 	private JPanel panel;
 	private JPanel iconPanel;
-	public static String global_Email_var;
-	
-	JDBCexecute excuteJDBC_object = new JDBCexecute(); 
 	
 	public Login() {
-		
 		super("MJ Training Management System");
 		getContentPane().setBackground(new Color(233, 150, 122));
 		getContentPane().setForeground(new Color(238, 130, 238));
-		
 		passwordField = new JPasswordField("passwordField");
 		getContentPane().setLayout(null);
 	
@@ -101,7 +93,7 @@ public class Login extends JFrame {
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				SQLconnector(userIDField.getText(), passwordField_1.getPassword());
+				SQLconnector(userIDField.getText(), passwordField.getPassword());
 				dispose();
 				
 			
@@ -134,42 +126,34 @@ public class Login extends JFrame {
 
 		
 	}
-	
-	
-	
+
 	public void SQLconnector(String username, char[] password) {
 		
-			//changing the password fron char array to String
+		
 			String pass = new String(password);
+			//AdminUI adminUI = new AdminUI();
+			//TrainerUI trainerUI = new TrainerUI();
+			//TraineeUI traineeUI = new TraineeUI();
 		
+			
+	//		System.out.println(pass);
 		try {
-		
-			Connection connection = excuteJDBC_object.connect_To_DB();
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
 			Statement state =connection.createStatement();
-			String query = "select * from user where USER_ID = '"+username+"' and USER_PASS = '"+pass+"'";
+			String query = "select * from user_login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
 			ResultSet result = state.executeQuery(query);
-			
-			//result.next == true .
-			
 			if(result.next())
 			{
-								
-				if(result.getString("user_type").equals("admin")) {
-					AdminUI adminUI = new AdminUI(result.getString("user_email"));
-					adminUI.setVisible(true);
+				//JOptionPane.showMessageDialog(null, "'"+result.getString("user_Full_name")+"' Logged In");
+				if(result.getInt("user_role") == 1) {
+					//adminUI.setVisible(true);
 				}
-				
-				
-				if(result.getString("user_type").equals( "trainer")) {
-					TrainerUI trainerUI = new TrainerUI(result.getString("user_email"));
-					trainerUI.setVisible(true);
+				if(result.getInt("user_role") == 2) {
+					//trainerUI.setVisible(true);
 				}
-				
-				
-				if(result.getString("user_type").equals( "trainee")) {
-					TraineeUI traineeUI = new TraineeUI(result.getString("user_email"));
-					traineeUI.setVisible(true);
+				if(result.getInt("user_role") == 3) {
+					//traineeUI.setVisible(true);
 				}
 			
 	

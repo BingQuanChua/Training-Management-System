@@ -18,9 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import login.Login;
-
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.GroupLayout;
@@ -107,9 +104,8 @@ public class UserUI extends JFrame {
         // signOutButton.setForeground(Color.WHITE);
         signOutButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Login login = new Login();
-        		login.setVisible(true);
-        		dispose();
+        		// Need to handle this later
+        		System.exit(0); 
         	}
         });
         signOutButton.setBackground(null);

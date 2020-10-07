@@ -79,7 +79,6 @@ public class TrainingCourseSearch {
 				return courseDetails;
 		}
 
-		
 		// Execute Query
 		courseDetails = database.executeQuery(query, column);
 		return courseDetails;

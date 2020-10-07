@@ -64,13 +64,6 @@ public class AllTraineeList extends JPanel {
         
         traineeList = new ListPanel();
         traineeList.setBackground(Color.WHITE);
-        // dummy data input //
-        traineeList.addItem(new ManageUser("Yong Sheng Kai"));
-     	traineeList.addItem(new ManageUser("Kong Yee Ling"));
-     	traineeList.addItem(new ManageUser("Wong Keng Hao"));
-     	traineeList.addItem(new ManageUser("Wong Wen Yao"));
-		traineeList.addItem(new ManageUser("Hee Wai Bing"));
-		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(traineeList);
 		scrollPane.setBounds(100, 150, 820, 550);
@@ -100,6 +93,14 @@ public class AllTraineeList extends JPanel {
 	
 	public JButton getBackButton() {
 		return backButton;
+	}
+	
+	public ListPanel getTraineeList() {
+		return traineeList;
+	}
+	   
+	public void addTraineeList(String traineeName) {
+		traineeList.addItem(new ManageUser(traineeName));
 	}
 
 }

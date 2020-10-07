@@ -21,10 +21,12 @@ public class ManageTraining extends JPanel {
 	
 	private JButton trainingButton;
 	private JButton deleteButton;
+	private String courseID;
 	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
 
-	public ManageTraining(String name) {
+	public ManageTraining(String name, String courseID) {
+		this.courseID = courseID;
 		
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
@@ -48,6 +50,10 @@ public class ManageTraining extends JPanel {
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
 		
+	}
+	
+	public String getCourseID() {
+		return courseID;
 	}
 	
 	public JButton getTrainingButton() {

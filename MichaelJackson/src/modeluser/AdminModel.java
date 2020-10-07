@@ -1,13 +1,17 @@
 package modeluser;
 
-
+import java.util.ArrayList;
+import model.JDBCexecute;
+	
 public class AdminModel extends User {
 	
 	private String adminID;
+	private JDBCexecute database;
 	
 	public AdminModel(String adminID){
 		super();
 		this.adminID = adminID;
+		database = new JDBCexecute();
 	}
 	
 	public String getAdminProfile(int choice) {
@@ -86,6 +90,51 @@ public class AdminModel extends User {
 	
 		return super.executeUpdate(query);
 
+	}
+	public void getAllTrainerID(ArrayList<String> list) {
+		
+		String column = "USER_ID";
+		String query = ("SELECT USER_ID FROM TRAINER; " );
+		
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	public void getAllTraineeID(ArrayList<String> list) {
+		
+		String column = "USER_ID";
+		String query = ("SELECT USER_ID FROM TRAINEE; " );
+		
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	public String getUserName(String userID, int choice) throws Exception {
+		
+		String userDetails = "Fail To Get Name";
+		String query = "";
+		String column = "";
+
+		// Query
+		switch(choice) 
+		{
+			case 1:	
+				query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ userID + "' " +
+						"AND USER_TYPE = 'trainee';");
+				column = "USER_NAME";
+				break;
+			case 2: 
+				query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ userID + "' " +
+						"AND USER_TYPE = 'trainer';");
+				column = "USER_NAME";
+				break;
+			
+			default:
+				System.out.println("Invalid choice");
+				return userDetails;
+		}
+
+		// Execute Query
+		userDetails = database.executeQuery(query, column);
+		return userDetails;
 	}
 
 }

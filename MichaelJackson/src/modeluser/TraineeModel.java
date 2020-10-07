@@ -9,7 +9,7 @@ public class TraineeModel extends User{
 		this.traineeID = traineeID;
 	}
 	
-	public String getTrainerProfile(int choice) {
+	public String getTraineeProfile(int choice) {
 		try {
 			return super.getUserProfile(traineeID, choice);
 		} catch (Exception e) {

@@ -16,20 +16,32 @@ import viewtrainer.TrainingTraineeList;
 
 public class TrainerController {
 	private TrainerUI trainerUI;
+	private TrainerModel trainerModel;
 	
 	private TrainingMaterialDetails tempTrainingMaterialDetails;
 	private TrainingRequestList tempRequestList;
 	private TrainingTraineeList tempTraineeList;
+
 	
-	public TrainerController(TrainerUI trainerUI) {
+	public TrainerController(TrainerUI trainerUI, TrainerModel trainerModel) {
 		this.trainerUI = trainerUI;
+		this.trainerModel = trainerModel;
 		setManageTrainingCourseListener();
         setTrainingProgressListener();
 	}
 	
 	private void setManageTrainingCourseListener() {
-		// will change, suppose to loop data from database
-		// items here are Training
+		// looping from database, getting data
+//		while () {
+//
+//			System.out.println();
+//		}
+		
+		
+		
+		
+		
+		
 		Training tempTraining = (Training) trainerUI.getTrainingList().getItem(0);
 		tempTrainingMaterialDetails = tempTraining.getTrainingMaterialDetails();
 		tempRequestList = tempTraining.getTrainingRequestList();

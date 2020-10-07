@@ -61,9 +61,6 @@ public class AllTrainingList extends JPanel {
 //		});
 		
 		trainingList = new ListPanel();
-		trainingList.addItem(new ManageTraining("Python Advance Training Course"));
-		trainingList.addItem(new ManageTraining("Software Engineering with Java"));
-		trainingList.addItem(new ManageTraining("Python Advance Training Course"));
 		
 		GridBagConstraints gbc_upperButton = new GridBagConstraints();
 		gbc_upperButton.anchor = GridBagConstraints.CENTER;
