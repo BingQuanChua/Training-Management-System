@@ -93,37 +93,36 @@ PRIMARY KEY(MATERIAL_ID),
 FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_COURSE(COURSE_ID)
 ) ;
 
-INSERT INTO TRAINING_COURSE VALUES ('trc00001', 'tnr00001','Testing Course', 'Testing 01', '2020-10-02');
-INSERT INTO TRAINING_COURSE VALUES ('trc00002', 'tnr00002','Testing Course 2', 'Testing 02', '2020-10-02');
+INSERT INTO TRAINING_COURSE VALUES ('crs00001', 'tnr00001','Testing Course', 'Testing 01', '2020-10-02');
+INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Testing Course 2', 'Testing 02', '2020-10-02');
 
 UPDATE TRAINING_COURSE
-	SET COURSE_NAME = 'Testing Course 3'
-	WHERE COURSE_ID = 'trc00003';
-
+	SET COURSE_ID = 'crs00003'
+    WHERE USER_ID = 'tnr00001';
 DELETE FROM TRAINING_COURSE
 	WHERE COURSE_ID = 'trc00001';
 
 SELECT * FROM TRAINING_COURSE;
 
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'trc00001', 'mtr 1 - trc 1', 'Material 1 from Course 1');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'trc00001', 'mtr 2 - trc 1', 'Material 2 from Course 1');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00003', 'trc00001', 'mtr 3 - trc 1', 'Material 3 from Course 1');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00004', 'trc00002', 'mtr 1 - trc 2', 'Material 1 from Course 2');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'crs00001', 'mtr 1 - trc 1', 'Material 1 from Course 1');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'crs00001', 'mtr 2 - trc 1', 'Material 2 from Course 1');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00003', 'crs00001', 'mtr 3 - trc 1', 'Material 3 from Course 1');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00004', 'crs00002', 'mtr 1 - trc 2', 'Material 1 from Course 2');
 
 
 UPDATE COURSE_MATERIAL
 	SET MATERIAL_TITLE = 'newDetails'
 	WHERE MATERIAL_ID = 'mtr00001';
-
 DELETE FROM COURSE_MATERIAL
-	WHERE MATERIAL_ID = 'mtr00001';
+	WHERE COURSE_ID = 'trc00001';
 
 SELECT * FROM COURSE_MATERIAL;
-
 SELECT MATERIAL_ID FROM COURSE_MATERIAL WHERE COURSE_ID = 'trc00001';
 
+INSERT INTO ENROLL VALUES ('tne00001', 'crs00001', 'approved');
+INSERT INTO ENROLL VALUES ('tne00001', 'crs00002', 'rejected');
 
-SELECT * FROM `JOIN`;
+SELECT * FROM ENROLL;
 
 ########################################
 # Progress and Evaluation Management   #

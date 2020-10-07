@@ -84,7 +84,7 @@ public class JDBCexecute {
 			System.out.println("executeQuery Successful");
 			
 		} catch (SQLException e) {
-			System.out.println("??? executeQuery Fail ???");
+			System.out.println("\n??? executeQuery Fail ???\n");
 		}
 		
 		return result;
@@ -110,7 +110,7 @@ public class JDBCexecute {
 		    }
 			
 		} catch (SQLException e) {
-			System.out.print("??? executeMultiRowQuery Fail ???");
+			System.out.print("\n??? executeMultiRowQuery Fail ???\n");
 		}
 	    
 	    return false;
@@ -126,9 +126,9 @@ public class JDBCexecute {
 			// Close statement
 			st.close();
 		} catch (SQLException e) {
-			System.out.println("Database fail to closed"); 
+			System.out.println("\n??? Database fail to closed ???\n"); 
 			e.printStackTrace();
 		}
-		System.out.println("Database closed");
+		System.out.println("\nDatabase closed\n");
 	}
 }

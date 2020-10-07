@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import model.JDBCexecute;
 
-public class TrainingCourseGetterModel {
+public class TraineeTrainingCourseModel {
 	
 	private JDBCexecute database;
 	
-	public TrainingCourseGetterModel(){
+	public TraineeTrainingCourseModel(){
 	
 		database = new JDBCexecute();
 	}
@@ -32,7 +32,19 @@ public class TrainingCourseGetterModel {
 		database.executeMultiRowQuery(query, column, list);
 	}
 	
-	
+	/**
+	 * 
+	 * @param courseID
+	 * @param choice
+	 * 1: USER_ID // traienrID
+	 * 2: COURSE_NAME
+	 * 3: COURSE_DESC
+	 * 4: COURSE_DATE
+	 * 5: TRAINER_NAME //courseID used as trainerID
+	 * 
+	 * @return String
+	 * @throws Exception
+	 */
 	public String getTrainingCourseDetails(String courseID, int choice) throws Exception {
 		
 		String courseDetails = "Fail To Obtain Result";
@@ -58,6 +70,10 @@ public class TrainingCourseGetterModel {
 				query = ("SELECT COURSE_DATE FROM TRAINING_COURSE WHERE COURSE_ID = '"+ courseID +"';");
 				column = "COURSE_DATE";
 				break;
+			case 5:
+				query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ courseID +"';"); //the courseID is userID
+				column = "USER_NAME";
+				break;
 			default:
 				System.out.println("Invalid choice");
 				return courseDetails;
@@ -66,10 +82,6 @@ public class TrainingCourseGetterModel {
 		
 		// Execute Query
 		courseDetails = database.executeQuery(query, column);
-		System.out.println("getTrainingCourseDetails Result \n"
-				+ "CourseID: " + courseID + "\n" 
-				+ column + ": " + courseDetails);
-
 		return courseDetails;
 	}
 

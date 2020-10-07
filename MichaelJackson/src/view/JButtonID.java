@@ -7,13 +7,13 @@ public class JButtonID extends JButton {
 	String UserID;
 	String MaterialID; // For Mark As Done Button Button
 	
-	JButtonID(String text , String UserID){
+	public JButtonID(String text , String UserID){
 		super(text);
 		this.UserID = UserID;
 		this.MaterialID = "";
 	}
 	
-	JButtonID(String text , String UserID, String MaterialID){
+	public JButtonID(String text , String UserID, String MaterialID){
 		super(text);
 		this.UserID = UserID;
 		this.MaterialID = MaterialID;

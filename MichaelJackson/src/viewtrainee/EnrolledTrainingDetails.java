@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import view.IndividualProgress;
+import view.JButtonID;
 import view.ListPanel;
 
 public class EnrolledTrainingDetails extends JPanel {
@@ -30,21 +31,22 @@ public class EnrolledTrainingDetails extends JPanel {
 
 	private ListPanel trainingMaterialList;
 	private IndividualProgress individualProgress;
-	private JButton trainerProfileButton;
+	private JButtonID trainerProfileButton;
 	private JButton feedbackButton;
 	private String feedbackLink = "";
-	private String trainingName;
-	private String trainingID;
+	private String courseName;
+	private String courseID;
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public EnrolledTrainingDetails(String trainingName, String trainingID) {
+	public EnrolledTrainingDetails(String courseID, String courseName, String courseDesc,
+			String traineeID, String traineeName, String trainerID, String trainerName) {
 		
-		this.trainingName = trainingName;
-		this.trainingID = trainingID;
+		this.courseName = courseName;
+		this.courseID = courseID;
 		
 		setBackground(new Color(255, 255, 200));
 		
@@ -65,7 +67,7 @@ public class EnrolledTrainingDetails extends JPanel {
 		upperPanel.setBackground(new Color(255, 255, 200));
 		upperPanel.setPreferredSize(new Dimension(1000, 500));
 		
-		JLabel trainingLabel = new JLabel(trainingName);
+		JLabel trainingLabel = new JLabel(courseName);
 		trainingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		trainingLabel.setFont(heading1);
 		trainingLabel.setBounds(0, 0, 1000, 80);
@@ -82,15 +84,15 @@ public class EnrolledTrainingDetails extends JPanel {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(heading3);
 		textArea.setBounds(100, 135, 800, 125);
-		textArea.setText("Description for " + trainingName + ".");
+		textArea.setText(courseDesc);
 		textArea.setEditable(false);
 		upperPanel.add(textArea);
 		
-		individualProgress = new IndividualProgress("Trainee", "TraineeID", 0);
+		individualProgress = new IndividualProgress(traineeName, traineeID, 0);
 		individualProgress.setBounds(115, 270, 770, 70);
 		upperPanel.add(individualProgress);
 		
-		trainerProfileButton = new JButton("Trainer");
+		trainerProfileButton = new JButtonID(trainerName, trainerID);
 		trainerProfileButton.setFont(heading3);
 		trainerProfileButton.setBounds(115, 350, 380, 50);
 		upperPanel.add(trainerProfileButton);
@@ -120,11 +122,6 @@ public class EnrolledTrainingDetails extends JPanel {
 		////// dummy list creation //////
 		trainingMaterialList = new ListPanel();
 		trainingMaterialList.setBackground(new Color(255, 255, 200));
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		////// end of list creation //////
@@ -167,10 +164,19 @@ public class EnrolledTrainingDetails extends JPanel {
 	}
 	
 	public String getCourseID() {
-		return trainingID;
+		return courseID;
 	}
 	
 	public IndividualProgress getIndividualProgress() {
 		return individualProgress;
 	}
+	
+	
+	/**
+	 * Things to update from time to time
+	 * 
+	 * The feedback form
+	 * 
+	 * Individual Progress
+	 */
 }
