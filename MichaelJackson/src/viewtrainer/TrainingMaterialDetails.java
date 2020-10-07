@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
@@ -25,7 +26,9 @@ public class TrainingMaterialDetails extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private String courseID;
+	private JTextArea textArea;
 	private JButton addNewMaterialButton;
 	private ListPanel trainingMaterialList;
 	
@@ -34,7 +37,8 @@ public class TrainingMaterialDetails extends JPanel {
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public TrainingMaterialDetails(String trainingName) {
+	public TrainingMaterialDetails(String trainingName, String courseID) {
+		this.courseID = courseID;
 		setBackground(new Color(255, 255, 200));
 		
 		JPanel panel = new JPanel();
@@ -68,12 +72,14 @@ public class TrainingMaterialDetails extends JPanel {
 		label1.setBounds(100, 85, 800, 50);
 		upperPanel.add(label1);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setFont(heading3);
-		textArea.setBounds(100, 135, 800, 125);
+		// textArea.setBounds(100, 135, 800, 125);
 		textArea.setText("Description for " + trainingName + ".");
 		textArea.setEditable(false);
-		upperPanel.add(textArea);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setBounds(100, 135, 800, 125);
+		upperPanel.add(scrollPane);
 		
 		JLabel label2 = new JLabel("Training Course Materials");
 		label2.setFont(heading2);
@@ -110,6 +116,14 @@ public class TrainingMaterialDetails extends JPanel {
 		panel.add(trainingMaterialList, gbc_trainingMaterialList);
 		
 		add(panel);
+	}
+	
+	public String getCourseID() {
+		return courseID;
+	}
+	
+	public JTextArea getTextArea() {
+		return textArea;
 	}
 	
 	public JButton getAddNewMaterialButton() {

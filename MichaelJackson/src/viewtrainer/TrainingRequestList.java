@@ -23,9 +23,14 @@ public class TrainingRequestList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String courseID;
 	private ListPanel requestList;
 	
-	public TrainingRequestList() {
+	
+	public TrainingRequestList(String courseID) {
+		this.courseID = courseID;
 		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 800));
 		
@@ -61,11 +66,6 @@ public class TrainingRequestList extends JPanel {
         
         requestList = new ListPanel();
 		requestList.setBackground(Color.WHITE);
-		// dummy data input //
-		requestList.addItem(new TrainingRequest("Norman Reedus"));
-		requestList.addItem(new TrainingRequest("Keanu Reeves"));
-		requestList.addItem(new TrainingRequest("Michael Jackson"));
-		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(requestList);
 		scrollPane.setBounds(100, 150, 820, 550);
@@ -84,5 +84,13 @@ public class TrainingRequestList extends JPanel {
 		panel.add(title);
 		
 		add(panel);
+	}
+	
+	public String getCourseID() {
+		return courseID;
+	}
+	
+	public ListPanel getRequestList() {
+		return requestList;
 	}
 }

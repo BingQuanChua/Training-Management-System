@@ -63,6 +63,10 @@ public class TrainingCourseSearch {
 				query = ("SELECT USER_NAME FROM USER WHERE USER_ID = '"+ courseID +"';"); //the courseID is userID
 				column = "USER_NAME";
 				break;
+			case 6:
+				query = ("SELECT FEEDBACK_LINK FROM TRAINING_COURSE WHERE COURSE_ID = '"+ courseID +"';"); //the courseID is userID
+				column = "FEEDBACK_LINK";
+				break;
 			default:
 				System.out.println("Invalid choice");
 				return courseDetails;
@@ -71,6 +75,16 @@ public class TrainingCourseSearch {
 		// Execute Query
 		courseDetails = database.executeQuery(query, column);
 		return courseDetails;
+	}
+	
+	// training assigned to trainer
+	public void getAssignedTrainingCourseID(String trainerID, ArrayList<String> list) {
+		
+		String column = "COURSE_ID";
+		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE " + 
+				"WHERE USER_ID = '" + trainerID + "' ;" );
+		
+		database.executeMultiRowQuery(query, column, list);
 	}
 	
 	public void getAvailableTrainingCourseID() {

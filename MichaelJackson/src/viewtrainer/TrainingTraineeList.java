@@ -19,9 +19,13 @@ public class TrainingTraineeList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-private ListPanel traineeList;
+	private static final long serialVersionUID = 1L;
 	
-	public TrainingTraineeList() {
+	private String courseID;
+	private ListPanel traineeList;
+	
+	public TrainingTraineeList(String courseID) {
+		this.courseID = courseID;
 		setBackground(new Color(255, 255, 200));
 		setPreferredSize(new Dimension(1000, 800));
 		
@@ -80,6 +84,14 @@ private ListPanel traineeList;
 		panel.add(title);
 		
 		add(panel);
+	}
+	
+	public String getCourseID() {
+		return courseID;
+	}
+	
+	public ListPanel getTraineeList() {
+		return traineeList;
 	}
 
 }

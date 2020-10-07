@@ -277,6 +277,8 @@ public class AdminController {
 					}
 					p.getContainerPanel().repaint();
 					p.getContainerPanel().revalidate();
+					
+					JOptionPane.showConfirmDialog (null, "Successfully deleted training course","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});

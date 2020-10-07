@@ -22,8 +22,9 @@ public class Training extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private String courseID;
+	
 	private JButton trainingButton;
-	private JButton editButton;
 	private JTextArea textArea;
 	private JButton feedbackButton;
 	private JButton requestButton;
@@ -36,84 +37,38 @@ public class Training extends JPanel {
 	
 	private String feedbackFormLink = "";
 	private String description;
-	private boolean isTextAreaEditable = false;
-	
-	private TrainingMaterialDetails trainingMaterialDetails; 
-    private TrainingRequestList trainingRequestList;
-    private TrainingTraineeList trainingTraineeList;
     
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public Training(String trainingName) {
+	public Training(String trainingName, String courseID) {
+		this.courseID = courseID;
 		
 		setPreferredSize(new Dimension(800, retractedHeight));
 		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
-		
-		// for dummy program
-        trainingMaterialDetails = new TrainingMaterialDetails(trainingName); 
-        trainingRequestList = new TrainingRequestList();
-        trainingTraineeList = new TrainingTraineeList(); 
+	
 		
 		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
 		trainingButton.setBackground(Color.LIGHT_GRAY);
-		trainingButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		trainingButton.setBounds(0, 0, 800, 70);
 		add(trainingButton);
 		
 		textArea = new JTextArea();
 		textArea.setFont(heading3);
 		textArea.setBackground(Color.WHITE);
-		textArea.setBounds(50, 75, 620, 125);
+		textArea.setBounds(50, 75, 700, 125);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setSize(620, 125);
+		scrollPane.setSize(700, 125);
 		scrollPane.setLocation(50, 75);
 		add(scrollPane);
 		textArea.setText("Description for " + trainingName + ".");
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		
-		editButton = new JButton("Edit");
-		editButton.setFont(heading3);
-		editButton.setBackground(new Color(205,133,63));
-		editButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(!isTextAreaEditable) {
-					textArea.setEditable(true);
-					editButton.setText("Save");
-					isTextAreaEditable = true;
-				}
-				else {
-					textArea.setEditable(false);
-					editButton.setText("Edit");
-					description = textArea.getText();
-					isTextAreaEditable = false;
-				}
-			}
-		});
-		editButton.setBounds(675, 75, 75, 125);
-		add(editButton);
-		
 		feedbackButton = new JButton("Feedback");
 		feedbackButton.setFont(heading3);
-		feedbackButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				if (feedbackFormLink == "") {
-					feedbackFormLink = JOptionPane.showInputDialog("Enter Google Form link");
-				}
-				else {
-					int response = JOptionPane.showConfirmDialog (null, "You have entered a link previously.\nExisting Google Form link:\n" + feedbackFormLink + "\n\nDo you want to overwrite it?","WARNING",JOptionPane.YES_NO_OPTION);
-					if (response == 0) {
-						feedbackFormLink = JOptionPane.showInputDialog("Existing Google Form link:\n" + feedbackFormLink + "\n\nEnter new Google Form link");
-					}
-				}
-			}
-		});
 		feedbackButton.setBounds(50, 370, 700, 50);
 		add(feedbackButton);
 		
@@ -161,18 +116,6 @@ public class Training extends JPanel {
 		textArea.setText(description);
 	}
 	
-	public TrainingRequestList getTrainingRequestList() {
-		return trainingRequestList;
-	}
-	
-	public TrainingTraineeList getTrainingTraineeList() {
-		return trainingTraineeList;
-	}
-	
-	public TrainingMaterialDetails getTrainingMaterialDetails() {
-		return trainingMaterialDetails;
-	}
-	
 	private void showMenu() {
         new Thread(new Runnable() {
             @Override
@@ -203,8 +146,19 @@ public class Training extends JPanel {
         } catch (Exception e) {
         }
     }
-
-	// more to come above
+    
+    public String getCourseID() {
+		return courseID;
+	}
+    
+    public JTextArea getTextArea() {
+    	return textArea;
+    }
+    
+    public JButton getUpdateButton() {
+		return updateButton;
+	}
+    
 	public JButton getRequestButton() {
 		return requestButton;
 	}
@@ -213,7 +167,7 @@ public class Training extends JPanel {
 		return traineeListButton;
 	}
 	
-	public JButton getUpdateButton() {
-		return updateButton;
+	public JButton getFeedbackButton() {
+		return feedbackButton;
 	}
 }

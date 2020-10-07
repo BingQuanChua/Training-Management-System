@@ -27,13 +27,13 @@ public class TrainingCourseController {
 	}
 	
 	public void showTrainingList() {
-		ArrayList <String> availableTrainingCourseList = new ArrayList<>();
-		courseSearch.getAllTrainingCourseID(availableTrainingCourseList);
+		ArrayList <String> allTrainingCourseList = new ArrayList<>();
+		courseSearch.getAllTrainingCourseID(allTrainingCourseList);
 		try {
-			for(int i = 0;  i< availableTrainingCourseList.size(); i++) {
+			for(int i = 0;  i < allTrainingCourseList.size(); i++) {
 				ManageTraining tempTraining = new ManageTraining(
-						courseSearch.getTrainingCourseDetails(availableTrainingCourseList.get(i), 2), 
-						availableTrainingCourseList.get(i));
+						courseSearch.getTrainingCourseDetails(allTrainingCourseList.get(i), 2), 
+						allTrainingCourseList.get(i));
 				
 				allTrainingList.getTrainingList().addItem(tempTraining);
 			}
