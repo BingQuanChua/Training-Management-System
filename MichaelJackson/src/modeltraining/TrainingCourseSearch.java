@@ -22,7 +22,6 @@ public class TrainingCourseSearch {
 	}
 	
 	/**
-	 * 
 	 * @param courseID
 	 * @param choice
 	 * 1: USER_ID // traienrID
@@ -73,11 +72,19 @@ public class TrainingCourseSearch {
 		return courseDetails;
 	}
 	
-	public void getAvailableTrainingCourseID() {
+	
+	
+	// Trainee
+	public void getAvailableTrainingCourseID(ArrayList<String> list) {
+		
+		String column = "COURSE_ID";
+		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
+		
+		database.executeMultiRowQuery(query, column, list);
 		
 	}
 	
-	
+	// Trainee
 	public void getEnrolledTrainingCourseID(String traineeID, ArrayList<String> list) {
 
 		String status = "approved";
@@ -89,7 +96,8 @@ public class TrainingCourseSearch {
 		database.executeMultiRowQuery(query, column, list);
 	}
 	
-	//
+	
+	// Course material
 	public void getAllCourseMaterial(String courseID, ArrayList<String> list ) {
 		
 		String column = "MATERIAL_ID";
@@ -100,6 +108,7 @@ public class TrainingCourseSearch {
 	}
 	
 	/**
+	 * Course material
 	 * 
 	 * @param materialID
 	 * @param choice
@@ -120,7 +129,7 @@ public class TrainingCourseSearch {
 		switch(choice) 
 		{
 			case 1:	
-				query = ("SELECT USER_ID FROM COURSE_MATERIAL WHERE MATERIAL_ID = '"+ materialID +"';");
+				query = ("SELECT COURSE_ID FROM COURSE_MATERIAL WHERE MATERIAL_ID = '"+ materialID +"';");
 				column = "COURSE_ID";
 				break;
 			case 2: 

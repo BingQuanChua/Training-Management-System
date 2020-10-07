@@ -42,8 +42,12 @@ public class EnrolledTrainingDetails extends JPanel {
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public EnrolledTrainingDetails(String courseID, String courseName, String courseDesc,
-			String traineeID, String traineeName, String trainerID, String trainerName) {
+	public EnrolledTrainingDetails(
+			String courseID, String courseName, String courseDesc,
+			String traineeID, String traineeName, 
+			String trainerID, String trainerName) {
+		
+		System.out.println("\n\n\nTrainingDetail " + courseID + "\n\n\n");
 		
 		this.courseName = courseName;
 		this.courseID = courseID;
@@ -122,8 +126,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		////// dummy list creation //////
 		trainingMaterialList = new ListPanel();
 		trainingMaterialList.setBackground(new Color(255, 255, 200));
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		trainingMaterialList.addItem(new EnrolledTrainingMaterial());
+		//trainingMaterialList.addItem(new EnrolledTrainingMaterial());
+		//trainingMaterialList.addItem(new EnrolledTrainingMaterial());
 		////// end of list creation //////
 		
 		// adding both panels into this panel
@@ -143,8 +147,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		add(panel);
 	}
 	
-	public ListPanel getTrainingMaterialList() {
-		return trainingMaterialList;
+	public String getCourseID() {
+		return courseID;
 	}
 	
 	public JButton getTrainerProfileButton() {
@@ -163,12 +167,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		this.feedbackLink = feedbackLink;
 	}
 	
-	public String getCourseID() {
-		return courseID;
-	}
-	
-	public IndividualProgress getIndividualProgress() {
-		return individualProgress;
+	public ListPanel getTrainingMaterialList() {
+		return trainingMaterialList;
 	}
 	
 	
@@ -179,4 +179,19 @@ public class EnrolledTrainingDetails extends JPanel {
 	 * 
 	 * Individual Progress
 	 */
+	
+	public void addCourseMaterial(
+			String courseID, String traineeID,
+			String materialID, String materialTitle, String materialDesc) {
+		
+		trainingMaterialList.addItem(
+				new EnrolledTrainingMaterial(
+						courseID, traineeID, 
+						materialID, materialTitle, materialDesc));
+		
+	}
+	
+	public IndividualProgress getIndividualProgress() {
+		return individualProgress;
+	}
 }

@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import view.JButtonID;
+
 public class EnrolledTrainingMaterial extends JPanel {
 
 	/**
@@ -20,21 +22,26 @@ public class EnrolledTrainingMaterial extends JPanel {
 	
 	private JTextField titleField;
 	private JTextArea txtrDescription;
-	private JButton doneButton;
+	private JButtonID doneButton;
 	
-	private String title;
-	private String description;
+	private String materialID;
+	private String courseID;
 	private boolean isDone = false;
 	
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public EnrolledTrainingMaterial() {
+	public EnrolledTrainingMaterial(
+			String courseID, String traineeID,
+			String materialID, String materialTitle, String materialDesc ) {
+		
+		this.courseID = courseID;
+		this.materialID = materialID;
 		setPreferredSize(new Dimension(800, 115));
 		setLayout(null);
 		
 		titleField = new JTextField();
 		titleField.setFont(heading4);
-		titleField.setText("Title");
+		titleField.setText(materialTitle);
 		titleField.setBounds(5, 5, 635, 30);
 		add(titleField);
 		titleField.setColumns(100);
@@ -42,7 +49,7 @@ public class EnrolledTrainingMaterial extends JPanel {
 		
 		txtrDescription = new JTextArea();
 		txtrDescription.setFont(heading4);
-		txtrDescription.setText("Description");
+		txtrDescription.setText(materialDesc);
 		txtrDescription.setBounds(5, 35, 635, 75);
 		JScrollPane scrollPane = new JScrollPane(txtrDescription);
 		scrollPane.setSize(635, 75);
@@ -51,7 +58,7 @@ public class EnrolledTrainingMaterial extends JPanel {
 		txtrDescription.setEditable(false);
 		txtrDescription.setLineWrap(true);
 		
-		doneButton = new JButton("Mark As Done");
+		doneButton = new JButtonID("Mark As Done", traineeID, materialID);
 		doneButton.setFont(heading4);
 		doneButton.setBounds(645, 30, 150, 55);
 		add(doneButton);
@@ -62,42 +69,24 @@ public class EnrolledTrainingMaterial extends JPanel {
 		add(background);
 	}
 	
-	public JTextField getTitleField() {
-		return titleField;
-	}
-	
-	public JTextArea getTxtrDescription() {
-		return txtrDescription;
-	}
-	
 	public JButton getDoneButton() {
 		return doneButton;
 	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-		titleField.setText(title);
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-		txtrDescription.setText(description);
-	}
-	
+
 	public boolean getIsDone() {
 		return isDone;
 	}
 	
 	public void setIsDone(boolean isDone) {
 		this.isDone = isDone;
+	}
+	
+	public String getCourseID() {
+		return courseID;
+	}
+	
+	public String getMaterialID() {
+		return materialID;
 	}
 
 }

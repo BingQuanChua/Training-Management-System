@@ -3,6 +3,7 @@ package viewtrainee;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import view.JButtonID;
 import view.SubMenu;
 
 import java.awt.Color;
@@ -15,7 +16,7 @@ public class EnrolledTraining extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private JButton enrolledTrainingButton;
+	private JButtonID enrolledTrainingButton;
 	private EnrolledTrainingDetails trainingDetails;
 	private String courseName;
 	private String courseID;
@@ -32,14 +33,16 @@ public class EnrolledTraining extends JPanel {
 		setPreferredSize(new Dimension(800, 70));
 		setLayout(null);
 		
-		enrolledTrainingButton = new JButton(courseName);
+		enrolledTrainingButton = new JButtonID(courseName, courseID);
 		enrolledTrainingButton.setFont(heading2);
 		enrolledTrainingButton.setBackground(Color.LIGHT_GRAY);
 		enrolledTrainingButton.setBounds(0, 0, 800, 70);
 		add(enrolledTrainingButton);
 		
-		trainingDetails = new EnrolledTrainingDetails(courseID, courseName, courseDesc, 
-				trainerID, trainerName, traineeID, traineeName);
+		trainingDetails = new EnrolledTrainingDetails(
+				courseID, courseName, courseDesc, 
+				trainerID, trainerName, 
+				traineeID, traineeName);
 	}
 	
 	public String getCourseID() {
