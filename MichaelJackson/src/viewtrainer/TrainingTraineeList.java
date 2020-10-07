@@ -62,9 +62,11 @@ public class TrainingTraineeList extends JPanel {
         traineeList = new ListPanel();
         traineeList.setBackground(Color.WHITE);
         // dummy data input //
+        /*
         traineeList.addItem(new ManageUser("Norman Reedus"));
 		traineeList.addItem(new ManageUser("Keanu Reeves"));
 		traineeList.addItem(new ManageUser("Michael Jackson"));
+		*/
 		// end of dummy data //
 		
 		JScrollPane scrollPane = new JScrollPane(traineeList);
