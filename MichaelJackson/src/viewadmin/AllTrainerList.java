@@ -100,7 +100,6 @@ public class AllTrainerList extends JPanel {
 		return trainerList;
 	}
 	   
-	public void addTrainerList(String trainerName) {
-		trainerList.addItem(new ManageUser(trainerName));
-	}
+
+	
 }

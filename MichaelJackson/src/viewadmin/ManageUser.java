@@ -23,12 +23,13 @@ public class ManageUser extends JPanel {
 	private JButton profileButton;
 	private JButton deleteButton;
 	private UserProfile userProfile;
+	private String userID;
 	
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	
 
-	public ManageUser(String name) {
-		
+	public ManageUser(String name,String userID) {
+		this.userID = userID;
 		userProfile = new UserProfile();
 		setPreferredSize(new Dimension(1070, 60));
 		setBackground(Color.WHITE);
@@ -52,15 +53,6 @@ public class ManageUser extends JPanel {
 		profileButton = new JButton(name);
 		profileButton.setForeground(Color.BLACK);
 		profileButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		/*profileButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				list.removeAll();
-                list.add(userProfile);
-                list.repaint();
-                list.revalidate();
-                userProfile.getEditButton().setVisible(false);
-			}
-		});*/
 		profileButton.setBorder(null);
 		profileButton.setBackground(Color.WHITE);
 		profileButton.setFocusPainted(false);
@@ -89,4 +81,7 @@ public class ManageUser extends JPanel {
 		return deleteButton;
 	}
 	
+	public String getUserID() {
+		return userID;
+	}
 }

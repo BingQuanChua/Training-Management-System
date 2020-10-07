@@ -16,6 +16,7 @@ import viewadmin.EditCourse;
 import viewadmin.ReportTraining;
 import viewadmin.ManageTraining;
 import viewadmin.Report;
+import viewadmin.ManageUser;
 import modeluser.AdminModel;
 
 public class AdminController {
@@ -24,9 +25,9 @@ public class AdminController {
 	private AddNewCourse addNewCourse; // all adding and editing a training course shares the same panel
 	private EditCourse editCourse; 
 	private TrainingCourseController trainingCourseController;
-	private boolean isTextAreaEditable = false;
-
 	private UserManagementController userManagementController;
+	private boolean isTextAreaEditable = false;
+	private String trainerID,trainerName;
 
 	
 	public AdminController(AdminUI adminUI,AdminModel adminModel) {
@@ -36,12 +37,11 @@ public class AdminController {
 		userManagementController = new UserManagementController(adminUI,adminModel);
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
-
 		
 		setAddNewUserListener();
-		setManageTrainerList();
+		setTrainerList();
 		setManageTrainerListener();
-		setManageTraineeList();
+		setTraineeList();
 		setManageTraineeListener();
 		setManageTrainingCourseListener();
 		setReportListener();
@@ -52,51 +52,60 @@ public class AdminController {
 		adminUI.getAddNewUser().getCancelButton().addActionListener(backToMenuListener);
 	}
 	
-	private void setManageTrainerList() {
+	private void setTrainerList() {
 		ArrayList <String> trainerList = new ArrayList<>();
 		adminModel.getAllTrainerID(trainerList);
-		
-		String trainerID,trainerName;
+
 		try {
-			for(int i = 0;  i< trainerList.size(); i++) {
-				
-				trainerID = trainerList.get(i);
-				trainerName = adminModel.getUserName(trainerID, 2);
-		
-				adminUI.getAllTrainerList().addTrainerList(trainerName);
-			
+			for(int i = 0;  i< trainerList.size(); i++) {	
+				ManageUser tempUser = new ManageUser(
+						adminModel.getUserName(trainerList.get(i), 2), 
+						trainerList.get(i));
+				if(adminModel.getUserName(trainerList.get(i),2) == null) 
+					tempUser = new ManageUser("TrainerName",trainerList.get(i));
+				adminUI.getAllTrainerList().getTrainerList().addItem(tempUser);	
 			}
 		} catch (Exception e) {
-			System.out.println("Fail to get list of trainers");
+			System.out.println("Fail to get list of trainers.");
 		}
 	}
 	
 	private void setManageTrainerListener() {
 
 		adminUI.getAllTrainerList().getBackButton().addActionListener(backToMenuListener);
+		ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
+		for (int i = 0; i < trainerPanel.getListOfPanel().size(); i++) {
+			addDeleteTrainerListener((ManageUser) trainerPanel.getItem(i));
+		}
 	}
 	
-	private void setManageTraineeList() {
+	private void setTraineeList() {
 		ArrayList <String> traineeList = new ArrayList<>();
 		adminModel.getAllTraineeID(traineeList);
-		
-		String traineeID,traineeName;
+
 		try {
 			for(int i = 0;  i< traineeList.size(); i++) {
 				
-				traineeID = traineeList.get(i);
-				traineeName = adminModel.getUserName(traineeID, 1);
-				adminUI.getAllTraineeList().addTraineeList(traineeName);
+				ManageUser tempUser = new ManageUser(
+						adminModel.getUserName(traineeList.get(i), 1), 
+						traineeList.get(i));
+				if(adminModel.getUserName(traineeList.get(i),1) == null) 
+					tempUser = new ManageUser("TrainerName",traineeList.get(i));
+				adminUI.getAllTraineeList().getTraineeList().addItem(tempUser);	
 				
 			}
 		} catch (Exception e) {
-			System.out.println("Fail to get list of trainees");
+			System.out.println("Fail to get list of trainers.");
 		}
 	}
 	
 	private void setManageTraineeListener() {
 		
 		adminUI.getAllTraineeList().getBackButton().addActionListener(backToMenuListener);
+		ListPanel traineePanel = adminUI.getAllTraineeList().getTraineeList();
+		for (int i = 0; i < traineePanel.getListOfPanel().size(); i++) {
+			addDeleteTraineeListener((ManageUser) traineePanel.getItem(i));
+		}
 	}
 	
 	private void setManageTrainingCourseListener() {
@@ -293,6 +302,60 @@ public class AdminController {
 				adminUI.getPanelBody().add(r.getIndividualReport());
 		        adminUI.getPanelBody().repaint();
 				adminUI.getPanelBody().revalidate();
+			}
+		});
+	}
+
+	private void addDeleteTrainerListener(ManageUser manageUser) {
+		manageUser.getDeleteButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this trainer?", "Delete Trainer", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					// Delete from database
+					adminModel.deleteExistingUser(manageUser.getUserID());
+					
+					// Wipe from view
+					ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
+					trainerPanel.getListOfPanel().remove(manageUser);
+					trainerPanel.getContainerPanel().removeAll();
+					for (int i = 0; i < trainerPanel.getListOfPanel().size(); i++) {
+						ManageUser temp = (ManageUser) trainerPanel.getListOfPanel().get(i);
+						temp.getNumberLabel().setText((i+1)+".");
+						trainerPanel.getContainerPanel().add(temp);
+					}
+					trainerPanel.getContainerPanel().repaint();
+					trainerPanel.getContainerPanel().revalidate();
+					JOptionPane.showConfirmDialog (null, "Successfully deleted this trainer","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
+	}
+	
+	private void addDeleteTraineeListener(ManageUser manageUser) {
+		manageUser.getDeleteButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this trainee?", "Delete Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					// Delete from database
+					adminModel.deleteExistingUser(manageUser.getUserID());
+					
+					// Wipe from view
+					ListPanel traineePanel = adminUI.getAllTraineeList().getTraineeList();
+					traineePanel.getListOfPanel().remove(manageUser);
+					traineePanel.getContainerPanel().removeAll();
+					for (int i = 0; i < traineePanel.getListOfPanel().size(); i++) {
+						ManageUser temp = (ManageUser) traineePanel.getListOfPanel().get(i);
+						temp.getNumberLabel().setText((i+1)+".");
+						traineePanel.getContainerPanel().add(temp);
+					}
+					traineePanel.getContainerPanel().repaint();
+					traineePanel.getContainerPanel().revalidate();
+					JOptionPane.showConfirmDialog (null, "Successfully deleted this trainee","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 	}
