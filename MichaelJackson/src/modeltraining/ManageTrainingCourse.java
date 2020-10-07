@@ -45,7 +45,8 @@ public class ManageTrainingCourse {
 				trainerID 		+ "', '" + 
 				courseName	 	+ "', '" +
 				courseDesc	 	+ "', '" +
-				courseDate 		+ "');" );
+				courseDate 		+ "', " +
+				"''" + ");" );
 
 		// Execute Query 
 		if(database.executeUpdate(query)) {
@@ -94,6 +95,11 @@ public class ManageTrainingCourse {
 			case 4:
 				query = ( "UPDATE TRAINING_COURSE " 
 						+ "SET COURSE_DATE = '" + newDetails + "' "
+						+ "WHERE COURSE_ID = '"+ courseID +"';");
+				break;
+			case 5:
+				query = ( "UPDATE TRAINING_COURSE " 
+						+ "SET FEEDBACK_LINK = '" + newDetails + "' "
 						+ "WHERE COURSE_ID = '"+ courseID +"';");
 				break;
 			default:

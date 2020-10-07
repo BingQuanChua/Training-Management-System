@@ -25,12 +25,12 @@ public class UserManagementController {
 		int response = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
 		if (response == 0) {
 			
-			if(validateEmpty() && validateCheckBox()) {
+			if(validateEmpty() && validateCheckBox() ) {
 				
 				if(adminUI.getAddNewUser().getTrainerBox().getState() == true) {
 					
 					trainerChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
-					if(validateTrainer(trainerChar)) {
+					if(validateTrainer(trainerChar) && validateID(adminUI.getAddNewUser().getUserIDField().getText())) {
 					userType = "trainer";
 					adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText().toLowerCase(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
 					JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -44,7 +44,7 @@ public class UserManagementController {
 				else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
 				
 					traineeChar = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase().substring(0,3);
-					if(validateTrainee(traineeChar)) {
+					if(validateTrainee(traineeChar) && validateID(adminUI.getAddNewUser().getUserIDField().getText())) {
 						userType = "trainee";
 						adminModel.addNewUser(adminUI.getAddNewUser().getUserIDField().getText().toLowerCase(), adminUI.getAddNewUser().getPasswordField().getText(), userType);
 						JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -80,16 +80,28 @@ public class UserManagementController {
 	}
 	
 	private boolean validateTrainer(String user) {
-		if(user.equals("trn"))
+		if(user.equals("tnr"))
 			return true;
 		else
 			return false;
 	}
 	
 	private boolean validateTrainee(String user) {
-		if(user.equals("tre"))
+		if(user.equals("tne"))
 			return true;
 		else
 			return false;
+	}
+	
+	private boolean validateID(String user) {
+		if (user.length() != 8) {
+			return false;
+		}
+		for (int i = 3; i < user.length(); i++) {
+			if(!Character.isDigit(user.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

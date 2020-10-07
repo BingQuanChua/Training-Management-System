@@ -99,8 +99,8 @@ public class AllTraineeList extends JPanel {
 		return traineeList;
 	}
 	   
-	public void addTraineeList(String traineeName) {
-		traineeList.addItem(new ManageUser(traineeName));
+	public void addTraineeList(String traineeName,String userID) {
+		traineeList.addItem(new ManageUser(traineeName,userID));
 	}
 
 }

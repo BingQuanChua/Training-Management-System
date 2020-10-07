@@ -39,7 +39,7 @@ public class TrainerUI extends UserUI {
         trainingList = new ListPanel();
         subMenuMTC = new SubMenu("Manage Training Course", trainingList);
         // dummy data for trainingList
-        trainingList.addItem(new Training("Python Advance Training Course"));
+//        trainingList.addItem(new Training("Python Advance Training Course"));
 //        trainingList.addItem(new Training("Software Engineering with Java"));
 //        trainingList.addItem(new Training("Introduction to OOPDS"));
         
