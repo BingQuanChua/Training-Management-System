@@ -16,17 +16,8 @@ import java.util.Scanner;
 import controlleradmin.AdminController;
 
 public class Main {
-
-	private static Login login;
-	private static AdminUI adminUI;
-	private static TrainerUI trainerUI;
-	private static TraineeUI traineeUI;
-	private static AdminModel adminModel;
-	private static TrainerModel trainerModel;
-	private static TraineeModel traineeModel;
-	private static UserUI userUI;
-	private AdminModel user;
-	private String userID;
+	
+	private Login login;
 	
 	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
@@ -66,11 +57,13 @@ public class Main {
 	public Main() {
 
 		login = new Login();
-		login.setVisible(false);
+		login.setVisible(true);
 		
-
+/**/
 		Scanner scan = new Scanner(System.in);
 		int loginRole = 0;
+		String userID = "";
+		UserLogin userLogin;
 		boolean invalidChoice = true;
 		while(invalidChoice) {
 			
@@ -92,35 +85,11 @@ public class Main {
 				userID = "tne00001";
 				invalidChoice = false;
 			}
-		}	
-		
-		// start showing the UI for admin/trainer/trainee	
-		roleLogin(loginRole);
-	}
-	
-	
-	public void roleLogin(int loginRole) {
-		login.setVisible(false);
-		switch (loginRole) {
-		case 1:
-			adminUI = new AdminUI(userID);
-			adminModel = new AdminModel(userID);
-			new AdminController(adminUI,adminModel);
-			adminUI.setVisible(true);
-			break;
-		case 2:
-			trainerUI = new TrainerUI(userID);
-			trainerModel = new TrainerModel(userID);
-			new TrainerController(trainerUI, trainerModel);
-			trainerUI.setVisible(true);
-			break;
-		case 3:
-			traineeUI = new TraineeUI(userID);
-			traineeModel = new TraineeModel(userID);
-			new TraineeController(traineeUI, traineeModel);
-			traineeUI.setVisible(true);
-			break;
+			
+			if(!invalidChoice)
+				userLogin = new UserLogin(loginRole, userID);
 		}
+/**/
 	}
 
 }
