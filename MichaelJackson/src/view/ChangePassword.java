@@ -11,16 +11,31 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
+import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import login.Login;
+import model.JDBCexecute;
+import model.JDBCinfo;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class ChangePassword extends JPanel{
 
+public class ChangePassword extends JPanel{
+	
+		private String url = JDBCinfo.getURL();
+		private String serverName = JDBCinfo.getServerName();
+		private String serverPassword = JDBCinfo.getServerPassword();
+		private Connection con;
 		private JButton saveButton;
 		private JButton cancelButton;
 		private JTextField txtCurrentPass;
@@ -28,12 +43,14 @@ public class ChangePassword extends JPanel{
 		private JTextField txtConfirmPass;
 		private int dialogButton_1;
 		private int dialogButton_2;
+		JDBCexecute database;
 		/**
 		 * Create the panel.
 		 */
 		
 		public ChangePassword() {
-
+			
+			database = new JDBCexecute();
 			setBackground(Color.WHITE);
 			setPreferredSize(new Dimension(1000,1000));
 			setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -111,11 +128,11 @@ public class ChangePassword extends JPanel{
 	        	@Override
 	        	public void focusGained(FocusEvent e) {
 	        		if(txtConfirmPass.getText().trim().equals("Enter your new password again")) 
-	        			txtConfirmPass.setText("");
+        			txtConfirmPass.setText("");
 	        	}
 	        	@Override
 	        	public void focusLost(FocusEvent e) {
-	        		 if(txtConfirmPass.getText().trim().equals("")) 
+        		 if(txtConfirmPass.getText().trim().equals("")) 
 	        			 txtConfirmPass.setText("Enter your new password again");
 	        	}
 	        }); 
@@ -148,10 +165,54 @@ public class ChangePassword extends JPanel{
 			saveButton = new JButton("Save");
 			saveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to save the changes?","WARNING",JOptionPane.YES_NO_OPTION);
-	    			if(dialogButton_1 == JOptionPane.YES_OPTION) {
-	    				dialogButton_2 = JOptionPane.showConfirmDialog (null, "Password has been changed successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-	    			}
+					
+					String oldPassword = txtCurrentPass.getText();
+					String newPassword = txtNewPass.getText();
+					String confirmPassword = txtConfirmPass.getText();
+					if(validateEmpty()) {
+					if(newPassword.equals(confirmPassword))
+					{
+						dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to save the changes?","WARNING",JOptionPane.YES_NO_OPTION);
+		    			
+						if(dialogButton_1 == JOptionPane.YES_OPTION) {
+		    				
+		    		
+		    				try {
+		    					con = DriverManager.getConnection(url, serverName, serverPassword);
+		    					Statement st = con.createStatement();
+		    					String query = ("SELECT * FROM USER WHERE USER_PASS = '"+ oldPassword +"';");
+		    					ResultSet rs = st.executeQuery(query);
+		    					
+		    					//boolean success = database.executeUpdate(query);
+		    					
+		    					if(rs.next()) {
+		    					 String query2 = "UPDATE user SET USER_PASS = '"+newPassword+"' where USER_PASS ='"+oldPassword+"' ";	
+				    				database.executeUpdate(query2);
+				    				JOptionPane.showMessageDialog(null, "Password is  Updated");
+		    					}
+			    				else {
+			    					JOptionPane.showMessageDialog(null, "Password is not Updated");
+			    				}	
+		    					
+		    				}
+		    				catch(Exception e1 )
+		    				{
+		    					JOptionPane.showMessageDialog(null, "Password is not Updated");
+		    					e1.printStackTrace();
+		    				}	
+		    				
+		    			}
+					}
+					
+//					System.out.println(Login.global_Email_var);
+					else {
+						JOptionPane.showMessageDialog(null, "Password Does not match !!!");
+					}
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "No empty field allowed");
+					}
+					
 	        	}
 				});
 			
@@ -184,5 +245,27 @@ public class ChangePassword extends JPanel{
 		public JTextField gettxtConfirmPass() {
 			return txtConfirmPass;
 		}
+		
+		private boolean validateEmpty() {
+			if(txtCurrentPass.getText().contains("Enter current password") || txtNewPass.getText().contains("Enter new password")
+					|| txtConfirmPass.getText().contains("Enter your new password again")) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		
+	
+		
+		
+//		public void updatePassword(String Password) {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
+//			Statement state =connection.createStatement();
+//			String query = "select * from login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
+//			ResultSet result = state.executeQuery(query);
+//			if(result.next())
+//		}
 	}
 
