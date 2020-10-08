@@ -110,7 +110,7 @@ public class JDBCexecute {
 		    }
 			
 		} catch (SQLException e) {
-			System.out.print("\n??? executeMultiRowQuery Fail ???\n");
+			System.out.println("\n??? executeMultiRowQuery Fail ???\n");
 		}
 	    
 	    return false;

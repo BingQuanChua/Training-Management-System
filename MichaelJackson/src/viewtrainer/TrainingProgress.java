@@ -29,13 +29,16 @@ public class TrainingProgress extends JPanel {
 	private boolean extend = false;
 	private int extendedHeight = 430;
 	private int retractedHeight = 70;
+	private String trainingID;
 	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
-	public TrainingProgress(String trainingName) {
+	public TrainingProgress(String trainingID, String trainingName) {
 		
 		setPreferredSize(new Dimension(800, retractedHeight));
 		setLayout(null);
+		
+		this.trainingID = trainingID;
 		progressList = new ArrayList<>();
 		
 		trainingButton = new JButton(trainingName);
@@ -57,17 +60,6 @@ public class TrainingProgress extends JPanel {
 		list = new JPanel();
 		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		scrollPane.setViewportView(list);
-		
-		/*
-		addProgress(new IndividualProgress("Jim Helpert", 50));
-		addProgress(new IndividualProgress("Michael Scott", 30));
-		addProgress(new IndividualProgress("Dwight Schrute", 70));
-		addProgress(new IndividualProgress("Pam Beesly", 60));
-		addProgress(new IndividualProgress("Kevin Malone", 90));
-		addProgress(new IndividualProgress("Creed Bratton", 20));
-		addProgress(new IndividualProgress("Andy Bernard", 10));
-		addProgress(new IndividualProgress("Toby Flenderson", 100));
-		*/
 	
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -116,9 +108,14 @@ public class TrainingProgress extends JPanel {
         }
     }
 	
-	private void addProgress(IndividualProgress p) {
+	public void addProgress(String traineeID, String traineeName, int progress) {
+		IndividualProgress p = new IndividualProgress(traineeName, traineeID, progress);
 		progressList.add(p);
 		list.add(p);
 		list.revalidate();
+	}
+	
+	public String getCourseID() {
+		return trainingID;
 	}
 }

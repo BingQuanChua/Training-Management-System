@@ -38,18 +38,11 @@ public class TrainerUI extends UserUI {
         // list of assigned training 
         trainingList = new ListPanel();
         subMenuMTC = new SubMenu("Manage Training Course", trainingList);
-        // dummy data for trainingList
-//        trainingList.addItem(new Training("Python Advance Training Course"));
-//        trainingList.addItem(new Training("Software Engineering with Java"));
-//        trainingList.addItem(new Training("Introduction to OOPDS"));
         
         // list of training progress
         trainingProgressList = new ListPanel();
         subMenuTP = new SubMenu("Training Progress", trainingProgressList);
-        // dummy data for trainingProgressList
-        trainingProgressList.addItem(new TrainingProgress("Python Advance Training Course"));
-//        trainingProgressList.addItem(new TrainingProgress("Software Engineering with Java"));
-//        trainingProgressList.addItem(new TrainingProgress("Introduction to OOPDS"));
+
     }
 	
 	// This method is called from within the constructor to initialize the form.
@@ -94,4 +87,9 @@ public class TrainerUI extends UserUI {
 	public ListPanel getTrainingProgressList() {
 		return trainingProgressList;
 	}
+	
+	public void addTrainingProgress(String courseID, String courseName) {
+		trainingProgressList.addItem(new TrainingProgress(courseID, courseName));
+	}
+
 }

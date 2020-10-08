@@ -1,6 +1,6 @@
 package controllertrainee;
 
-import java.awt.event.ActionEvent; 
+import java.awt.event.ActionEvent;  
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modeltraining.TrainingCourseSearch;
-import modeltraining.TrainingProgress;
+import modeltraining.TrainingProgressModel;
 import modeluser.TraineeModel;
 import view.JButtonID;
 import viewtrainee.EnrolledTraining;
@@ -18,7 +18,7 @@ import viewtrainee.TraineeUI;
 
 public class EnrolledCourseController {
 	
-	private TrainingProgress progressModel;
+	private TrainingProgressModel progressModel;
 	private ArrayList<String> enrolledCourseList;
 	private TrainingCourseSearch courseModel;
 	private TraineeModel traineeModel;
@@ -34,7 +34,7 @@ public class EnrolledCourseController {
 		this.courseModel = courseModel;
 		this.traineeModel = traineeModel;
 		this.traineeUI = traineeUI;
-		progressModel = new TrainingProgress();
+		progressModel = new TrainingProgressModel();
 		traineeID = traineeModel.getTraineeID();
 		
 		setEnrolledTrainingCourse();
@@ -69,30 +69,33 @@ public class EnrolledCourseController {
 				addEnrolledTrainingCourseListener(i);
 
 				// Set progress
-				((EnrolledTraining)traineeUI.getEnrolledTrainingList()
+				((EnrolledTraining)traineeUI
+						.getEnrolledTrainingList()
 						.getItem(i))  //return EnrolledTraining
-				.getTrainingDetails()  // return EnrolledTrainingDetail
-				.getIndividualProgress()
-				.setIndividualProgress(
-						traineeModel.getTraineeProfile(1), 
-						traineeID, 
-						progressModel.calculateProgress(traineeID, courseID));
+							.getTrainingDetails()  // return EnrolledTrainingDetail
+							.getIndividualProgress()
+							.setIndividualProgress(
+									traineeModel.getTraineeProfile(1), 
+									traineeID, 
+									progressModel.calculateProgress(traineeID, courseID));
 
 				// set material
 				courseMaterialList.clear();
 				courseModel.getAllCourseMaterial(courseID, courseMaterialList);
+				
 				for(int j = 0; j < courseMaterialList.size(); j++) {
+					
 					materialID = courseMaterialList.get(j);
 					materialTitle = courseModel.getCourseMaterialDetails(materialID, 2);
 					materialDesc = courseModel.getCourseMaterialDetails(materialID, 3);
 					((EnrolledTraining)traineeUI.getEnrolledTrainingList()
 							.getItem(i))  //return EnrolledTraining
-					.getTrainingDetails()  // return EnrolledTrainingDetail
-					.addCourseMaterial(courseID, trainerName, 
-							materialID, materialTitle, materialDesc);
+								.getTrainingDetails()  // return EnrolledTrainingDetail
+								.addCourseMaterial(courseID, trainerName, 
+										materialID, materialTitle, materialDesc);
 
 					// Mark as done
-					if(progressModel.getMaterialIsDone(traineeID, materialID).equals("true")) {
+					if(progressModel.getMaterialIsDone(traineeID, materialID)) {
 						// disable button
 						System.out.println("### closeMarkAsDone ### " + materialID);
 						closeMarkAsDoneListener(i, j);
@@ -136,8 +139,6 @@ public class EnrolledCourseController {
 			traineeUI.getPanelBody().revalidate();
 		}
 	};
-
-
 
 	private void closeMarkAsDoneListener(int i, int j) {
 
@@ -204,10 +205,11 @@ public class EnrolledCourseController {
 
 		try {
 			int index = enrolledCourseList.indexOf(courseID);
-			return
-					((EnrolledTraining)traineeUI.getEnrolledTrainingList()
+			
+			return		((EnrolledTraining)traineeUI
+							.getEnrolledTrainingList()
 							.getItem(index))  //return EnrolledTraining
-					.getTrainingDetails();  // return EnrolledTrainingDetail
+								.getTrainingDetails();  // return EnrolledTrainingDetail
 
 		} catch (Exception e) {
 			System.out.println("resetProgress Fail");

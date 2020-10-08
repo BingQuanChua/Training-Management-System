@@ -76,12 +76,22 @@ public class TrainingCourseSearch {
 		return courseDetails;
 	}
 	
-	// training assigned to trainer
+	// training assigned to trainerID
 	public void getAssignedTrainingCourseID(String trainerID, ArrayList<String> list) {
 
 		String column = "COURSE_ID";
 		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE " + 
-				"WHERE USER_ID = '" + trainerID + "' ;" );
+						"WHERE USER_ID = '" + trainerID + "' ;" );
+
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
+	// trainee enrolled in courseID
+	public void getEnrolledTraineeID(String courseID, ArrayList<String> list){
+		
+		String column = "USER_ID";
+		String query = ("SELECT USER_ID FROM ENROLL " + 
+						"WHERE COURSE_ID = '" + courseID + "' ;" );
 
 		database.executeMultiRowQuery(query, column, list);
 	}
@@ -94,11 +104,6 @@ public class TrainingCourseSearch {
 		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
 		
 		database.executeMultiRowQuery(query, column, list);
-	}
-	
-	// Trainee
-	public void getAvailableTrainingCourseID() {
-		
 	}
 	
 	// Trainee

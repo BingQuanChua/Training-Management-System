@@ -1,6 +1,6 @@
 package mj;
 
-import modeltraining.TrainingProgress; 
+import modeltraining.TrainingProgressModel; 
 import viewtrainee.*;
 
 public class ProgressController {
@@ -8,14 +8,14 @@ public class ProgressController {
 	TraineeUI traineeUI;
 	String traineeID;
 	String traineeName;
-	TrainingProgress progressModel;
+	TrainingProgressModel progressModel;
 	
 	
 	ProgressController(TraineeUI traineeUI, String traineeID){
 		
 		this.traineeUI = traineeUI;
 		this.traineeID = traineeID;
-		progressModel = new TrainingProgress(); 
+		progressModel = new TrainingProgressModel(); 
 		setTraineeProgress();
 	}
 	

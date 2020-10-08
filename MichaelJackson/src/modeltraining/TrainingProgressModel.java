@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import model.JDBCexecute;
 
-public class TrainingProgress {
+public class TrainingProgressModel {
 	
 	// For database
 	private JDBCexecute database;
@@ -14,12 +14,12 @@ public class TrainingProgress {
 	 * Constructor
 	 * init JDBC
 	 *************/
-	public TrainingProgress() {
+	public TrainingProgressModel() {
 
 		database = new JDBCexecute();
 	}
 	
-	public String getMaterialIsDone(String traineeID, String materialID) throws Exception {
+	public boolean getMaterialIsDone(String traineeID, String materialID) throws Exception {
 		
 		String result = "Fail to Obtain Result";
 		String column = "MATERIAL_IS_DONE";
@@ -29,7 +29,14 @@ public class TrainingProgress {
 		
 		result = database.executeQuery(query, column);
 		
-		return result;
+		if (result.equals("true") || result.toLowerCase().equals("true") ){
+			return true;
+		} else 
+		if (result.equals("false") || result.toLowerCase().equals("false")) {
+			return false;
+		} 
+		
+		return false;
 	}
 	
 	public boolean setMaterialIsDone(String traineeID, String materialID) {
@@ -61,7 +68,7 @@ public class TrainingProgress {
 		
 		try {
 			for(int i = 0; i<total ; i++) {
-				if(getMaterialIsDone(traineeID, materialIDList.get(i)).equals("true")) {
+				if(getMaterialIsDone(traineeID, materialIDList.get(i))) {
 					temp++;
 					System.out.println("temp++ " + temp);
 				} 

@@ -20,26 +20,47 @@ import viewtrainer.TrainingRequestList;
 import viewtrainer.TrainingTraineeList;
 
 public class TrainerController {
+	
+	// View
 	private TrainerUI trainerUI;
 	private TrainerModel trainerModel;
 	
-	private String feedbackLink = "";
-	
+	// Controller
+	private TrainingProgressController progressController;
 	private TrainingCourseMaterialController trainingCourseMaterialController;
+	
+	// Model
 	private ManageTrainingCourse trainingCourseModel;
 	private TrainingCourseSearch courseSearch;
 	
+	// Variables
+	private String feedbackLink = "";
+	
+	// Constructor
 	public TrainerController(TrainerUI trainerUI, TrainerModel trainerModel) {
+		
 		this.trainerUI = trainerUI;
 		this.trainerModel = trainerModel;
+		courseSearch = new TrainingCourseSearch();
 
-		setManageTrainingCourseListener();
-        setTrainingProgressListener();
+		System.out.println("\n\n********************\n"
+				 		 + "Trainer Controller\n\n");
+		
+		System.out.println("\n\nsetManageTrainingCourse\n");
+		setManageTrainingCourse();
+		
+		System.out.println("\n\nsetTrainingProgress\n");
+        setTrainingProgress(trainerUI, courseSearch, trainerModel);
+        
+        System.out.println("\n\nTrainer Controller\n"
+				 		 + "*********************\n");
 	}
 	
-	private void setManageTrainingCourseListener() {
-		
-		courseSearch = new TrainingCourseSearch();
+	// Allow trainer to manage
+	// 1: Assigned training course
+	// 2: material
+	// 3: trainee
+	private void setManageTrainingCourse() {
 		
 		ArrayList <String> assignedTrainingCourseList = new ArrayList<>();
 		courseSearch.getAssignedTrainingCourseID(trainerModel.getTrainerID(), assignedTrainingCourseList);
@@ -64,10 +85,19 @@ public class TrainerController {
 		}
 	}
 	
-	private void setTrainingProgressListener() {
-		// should allow trainer to view trainee profile
+	// Allow trainer to view trainee progress and profile
+	private void setTrainingProgress(TrainerUI trainerUI, 
+									 TrainingCourseSearch courseSearch,
+									 TrainerModel trainerModel) {
+		
+		progressController = new TrainingProgressController(trainerUI,
+															courseSearch,
+															trainerModel);
+		
+		
 	}
 	
+	// Add listener to manage training
 	private void addTrainingButtonListener(Training training, String courseID) {
 		
 		trainingCourseMaterialController = new TrainingCourseMaterialController();
@@ -152,17 +182,8 @@ public class TrainerController {
 			});
 			
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("addTrainingButtonListener Fail");
 		}
 	}
 	
-//	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			trainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
-//			trainingMaterialDetails.getTrainingMaterialList().repaint();
-//			trainingMaterialDetails.getTrainingMaterialList().revalidate();
-//		}
-//	};
 }
