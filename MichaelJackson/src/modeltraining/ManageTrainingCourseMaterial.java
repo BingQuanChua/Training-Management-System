@@ -1,5 +1,7 @@
 package modeltraining;
 
+import java.util.ArrayList;
+
 import model.JDBCexecute;
 
 public class ManageTrainingCourseMaterial {
@@ -17,6 +19,24 @@ public class ManageTrainingCourseMaterial {
 		database = new JDBCexecute();
 	}
 	
+	/********************************
+	 * Get all the course material ID
+	 * 
+	 * @param materialID
+	 * @param courseID
+	 * @param materialTitle
+	 * @param MaterialDesc
+	 * 
+	 * @return boolean
+	 *******************************/
+	public void getAllCourseMaterialID(String courseID, ArrayList<String> list) {
+		
+		String column = "MATERIAL_ID";
+		String query = ("SELECT MATERIAL_ID FROM COURSE_MATERIAL " + 
+				"WHERE COURSE_ID = '" + courseID + "'; " );
+		
+		database.executeMultiRowQuery(query, column, list);
+	}
 	
 	/********************************
 	 * Add new material into course
@@ -98,7 +118,7 @@ public class ManageTrainingCourseMaterial {
 	public boolean deleteMaterial(String materialID) {
 		
 		// Query
-		String query = ("DELETE FROM COURSE_MATERIAL" + 
+		String query = ("DELETE FROM COURSE_MATERIAL " + 
 				"WHERE MATERIAL_ID = '" + materialID + "';" );
 
 		// Execute Query 
@@ -163,7 +183,7 @@ public class ManageTrainingCourseMaterial {
 				+ "Material_ID: " + materialID + "\n"
 				+ "MATERIAL_TITLE: " + materialTitle ); 
 		
-		return materialID;
+		return materialTitle;
 	}
 	
 	/**********************
@@ -188,11 +208,42 @@ public class ManageTrainingCourseMaterial {
 
 		// Extract result
 		System.out.println("getMaterialCourseID result: \n"
-				+ "Material_ID: " + materialID + "\n"
+				+ "MATERIAL_ID: " + materialID + "\n"
 				+ "MATERIAL_DESC: " + materialDesc ); 
 
 		
 		return materialDesc;
+	}
+	
+	public String getLastMaterialID() throws Exception {
+		
+		// Query
+		String lastID = "Fail to Obtain Result";
+		String column = "MATERIAL_ID";
+		String query = ("SELECT MATERIAL_ID FROM COURSE_MATERIAL " +
+				"ORDER BY MATERIAL_ID DESC LIMIT 1;" );
+		System.out.println(query);
+		
+		// Test if table is empty
+		String c = "COUNT(MATERIAL_ID)";
+		String q = "SELECT COUNT(MATERIAL_ID) FROM COURSE_MATERIAL; ";
+		int row = Integer.parseInt(database.executeQuery(q,c));
+		if (row == 0) {
+			// if table is empty
+			lastID = "mtr00000";
+			System.out.println("table is empty, MATERIAL_ID reset");
+		}
+		else {
+			// Execute Query
+			lastID = database.executeQuery(query, column);
+			System.out.println("getLastMaterialID executed");
+
+		}
+		// Extract result
+		System.out.println("getLastMaterialID result: \n"
+				+ "Last MATERIAL_ID: " + lastID); 
+		return lastID;
+
 	}
 
 }

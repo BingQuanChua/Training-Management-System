@@ -23,9 +23,6 @@ public class TrainerController {
 	private TrainerUI trainerUI;
 	private TrainerModel trainerModel;
 	
-	private TrainingMaterialDetails trainingMaterialDetails;
-	private TrainingRequestList requestList;
-	private TrainingTraineeList traineeList;
 	private String feedbackLink = "";
 	
 	private TrainingCourseMaterialController trainingCourseMaterialController;
@@ -81,7 +78,7 @@ public class TrainerController {
 			String courseDesc = courseSearch.getTrainingCourseDetails(courseID, 3);
 			
 			
-			trainingMaterialDetails = new TrainingMaterialDetails(courseName, courseID);
+			TrainingMaterialDetails trainingMaterialDetails = new TrainingMaterialDetails(courseName, courseID);
 			
 			training.getUpdateButton().addActionListener(new ActionListener() {
 				@Override 
@@ -101,16 +98,15 @@ public class TrainerController {
 			trainingMaterialDetails.getAddNewMaterialButton().addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					trainingCourseMaterialController.addNewMaterial(trainingMaterialDetails.getTrainingMaterialList());
+					trainingCourseMaterialController.addNewMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 				}
 			});
+			trainingCourseMaterialController.showMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 			
-			
-			requestList = new TrainingRequestList(courseID);
+			TrainingRequestList requestList = new TrainingRequestList(courseID);
 			training.getRequestButton().addActionListener(new ActionListener() {
 				@Override 
 				public void actionPerformed(ActionEvent e) {
-					requestList = new TrainingRequestList(trainerModel.getTrainerID());
 					trainerUI.getPanelBody().removeAll();
 					trainerUI.getPanelBody().add(new SubMenu("Manage Training Course", requestList));
 					trainerUI.getPanelBody().repaint();
@@ -118,11 +114,10 @@ public class TrainerController {
 				}
 			});
 			
-			traineeList = new TrainingTraineeList(courseID);
+			TrainingTraineeList traineeList = new TrainingTraineeList(courseID);
 			training.getTraineeListButton().addActionListener(new ActionListener() {
 				@Override 
 				public void actionPerformed(ActionEvent e) {
-					traineeList = new TrainingTraineeList(trainerModel.getTrainerID());
 					trainerUI.getPanelBody().removeAll();
 					trainerUI.getPanelBody().add(new SubMenu("Manage Training Course", traineeList));
 					trainerUI.getPanelBody().repaint();
@@ -162,12 +157,12 @@ public class TrainerController {
 		}
 	}
 	
-	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			trainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
-			trainingMaterialDetails.getTrainingMaterialList().repaint();
-			trainingMaterialDetails.getTrainingMaterialList().revalidate();
-		}
-	};
+//	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			trainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
+//			trainingMaterialDetails.getTrainingMaterialList().repaint();
+//			trainingMaterialDetails.getTrainingMaterialList().revalidate();
+//		}
+//	};
 }

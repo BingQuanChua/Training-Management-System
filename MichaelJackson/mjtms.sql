@@ -197,3 +197,9 @@ CREATE TRIGGER UpdateTrainer
         INSERT INTO TRAINER(USER_ID)
         (SELECT USER.USER_ID FROM USER 
         WHERE USER.USER_ID NOT IN(SELECT TRAINER.USER_ID FROM TRAINER) AND USER.USER_TYPE ='trainer');
+        
+        
+        
+        
+        
+#######################

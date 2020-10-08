@@ -27,13 +27,19 @@ public class TrainingMaterial extends JPanel {
 	private JButton editButton;
 	private JButton deleteButton;
 	
-	private String title = "Title";
-	private String description = "Material Description.";
+	private String materialID;
+	private String courseID;
+	private String title;
+	private String description;
 	private boolean isEditing = false;
 	
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
-	public TrainingMaterial() {
+	public TrainingMaterial(String materialID, String courseID, String title, String description) {
+		this.materialID = materialID;
+		this.courseID = courseID;
+		this.title = title;
+		this.description = description;
 		
 		setPreferredSize(new Dimension(800, 115));
 		setLayout(null);
@@ -61,23 +67,6 @@ public class TrainingMaterial extends JPanel {
 		editButton.setFont(heading4);
 		editButton.setBackground(new Color(205,133,63));
 		editButton.setForeground(Color.WHITE);
-		editButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!isEditing) {
-					titleField.setEditable(true);
-					txtrDescription.setEditable(true);
-					editButton.setText("Save");
-					isEditing = true;
-				}
-				else {
-					titleField.setEditable(false);
-					txtrDescription.setEditable(false);
-					editButton.setText("Edit");
-					isEditing = false;
-				}
-			}
-		});
 		editButton.setBounds(645, 30, 100, 55);
 		add(editButton);
 		
@@ -85,12 +74,6 @@ public class TrainingMaterial extends JPanel {
 		deleteButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 25));
 		deleteButton.setBackground(new Color(205,133,63));
 		deleteButton.setForeground(Color.WHITE);
-		deleteButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		deleteButton.setBounds(745, 30, 50, 55);
 		add(deleteButton);
 		
@@ -108,8 +91,36 @@ public class TrainingMaterial extends JPanel {
 		this.description = description;
 	}
 	
+	public String getMaterialID() {
+		return materialID;
+	}
+	
+	public String getCourseID() {
+		return courseID;
+	}
+	
+	public JTextField getTitleField() {
+		return titleField;
+	}
+	
+	public JTextArea getTxtrDescription() {
+		return txtrDescription;
+	}
+	
+	public JButton getEditButton() {
+		return editButton;
+	}
+	
 	public JButton getDeleteButton() {
 		return deleteButton;
+	}
+	
+	public boolean getIsEditing() {
+		return isEditing;
+	}
+	
+	public void setIsEditing(boolean isEditing) {
+		this.isEditing = isEditing;
 	}
 
 }

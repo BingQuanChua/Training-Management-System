@@ -79,8 +79,13 @@ public class AdminModel extends User {
 				       newUserPassword + "', " +
 				       "null, null, null, null, null, '" +
 				       newUserType + "');" );
-		
-		return super.executeUpdate(query);
+		if(database.executeUpdate(query)) {
+			System.out.println("addNewUser Success");
+			return true;
+		} else {
+			System.out.println("addNewUser Fail");
+			return false;
+		}
 	}
 	
 	public boolean deleteExistingUser(String userID) {

@@ -34,7 +34,7 @@ public class AdminController {
 	
 		this.adminUI = adminUI;
 		this.adminModel = adminModel;
-		userManagementController = new UserManagementController(adminUI,adminModel);
+		userManagementController = new UserManagementController(adminUI,adminModel,this);
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
 		
@@ -90,7 +90,7 @@ public class AdminController {
 						adminModel.getUserName(traineeList.get(i), 1), 
 						traineeList.get(i));
 				if(adminModel.getUserName(traineeList.get(i),1) == null) 
-					tempUser = new ManageUser("TrainerName",traineeList.get(i));
+					tempUser = new ManageUser("TraineeName",traineeList.get(i));
 				adminUI.getAllTraineeList().getTraineeList().addItem(tempUser);	
 				
 			}
@@ -141,7 +141,16 @@ public class AdminController {
 	ActionListener addUserButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			userManagementController.addNewUser();
+			try {
+				userManagementController.addNewUser();
+				//ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
+				//ListPanel traineePanel =  adminUI.getAllTraineeList().getTraineeList();
+		
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 	};
 	
@@ -306,7 +315,7 @@ public class AdminController {
 		});
 	}
 
-	private void addDeleteTrainerListener(ManageUser manageUser) {
+	public void addDeleteTrainerListener(ManageUser manageUser) {
 		manageUser.getDeleteButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -333,7 +342,7 @@ public class AdminController {
 		});
 	}
 	
-	private void addDeleteTraineeListener(ManageUser manageUser) {
+	public void addDeleteTraineeListener(ManageUser manageUser) {
 		manageUser.getDeleteButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
