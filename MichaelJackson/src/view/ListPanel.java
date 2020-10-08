@@ -36,16 +36,16 @@ public class ListPanel extends JPanel {
 		listOfPanel.add(item);
 		container.add(item);
 		
-		if (item instanceof ManageUser) {
-			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
-			
-		}
+//		if (item instanceof ManageUser) {
+//			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
+//			
+//		}
 //		if (item instanceof ManageTraining) {
 //			addDeleteTrainingListener((ManageTraining) item);
 //		}
-		if (item instanceof TrainingMaterial) {
-			addDeleteMaterialListener((TrainingMaterial) item);
-		}
+//		if (item instanceof TrainingMaterial) {
+//			addDeleteMaterialListener((TrainingMaterial) item);
+//		}
 		if (item instanceof TrainingRequest) {
 			((TrainingRequest) item).getNumberLabel().setText(listOfPanel.size()+".");
 			addAcceptRejectTraineeListener((TrainingRequest) item);
@@ -53,6 +53,9 @@ public class ListPanel extends JPanel {
 		if (item instanceof AvailableTraining) {
 			addEnrollTrainingListener((AvailableTraining) item);
 		}
+		
+		container.repaint();
+		container.revalidate();
 	}
 
 	// getting an item from the container
@@ -67,27 +70,27 @@ public class ListPanel extends JPanel {
 	public JPanel getContainerPanel() {
 		return container;
 	}
-	/*
-	private void addDeleteUserListener(ManageUser p) {
-		p.getDeleteButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Are you sure to remove this user?", "Remove user", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					listOfPanel.remove(p);
-					container.removeAll();
-					for (int i = 0; i < listOfPanel.size(); i++) {
-						ManageUser temp = (ManageUser) listOfPanel.get(i);
-						temp.getNumberLabel().setText((i+1)+".");
-						container.add(temp);
-					}
-					container.repaint();
-					container.revalidate();
-				}
-			}
-		});
-	}*/
+	
+//	private void addDeleteUserListener(ManageUser p) {
+//		p.getDeleteButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				int input = JOptionPane.showConfirmDialog(null, "Are you sure to remove this user?", "Remove user", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//				// 0 = yes, 1 = no, 2 = cancel
+//				if (input == 0) {
+//					listOfPanel.remove(p);
+//					container.removeAll();
+//					for (int i = 0; i < listOfPanel.size(); i++) {
+//						ManageUser temp = (ManageUser) listOfPanel.get(i);
+//						temp.getNumberLabel().setText((i+1)+".");
+//						container.add(temp);
+//					}
+//					container.repaint();
+//					container.revalidate();
+//				}
+//			}
+//		});
+//	}
 	
 //	private void addDeleteTrainingListener(ManageTraining p) {
 //		p.getDeleteButton().addActionListener(new ActionListener() {
@@ -108,24 +111,24 @@ public class ListPanel extends JPanel {
 //		});
 //	}
 	
-	private void addDeleteMaterialListener(TrainingMaterial p) {
-		p.getDeleteButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this material?", "Delete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					listOfPanel.remove(p);
-					container.removeAll();
-					for (JPanel temp : listOfPanel) {
-						container.add(temp);
-					}
-					container.repaint();
-					container.revalidate();
-				}
-			}
-		});
-	}
+//	private void addDeleteMaterialListener(TrainingMaterial p) {
+//		p.getDeleteButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this material?", "Delete Material", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//				// 0 = yes, 1 = no, 2 = cancel
+//				if (input == 0) {
+//					listOfPanel.remove(p);
+//					container.removeAll();
+//					for (JPanel temp : listOfPanel) {
+//						container.add(temp);
+//					}
+//					container.repaint();
+//					container.revalidate();
+//				}
+//			}
+//		});
+//	}
 	
 	private void addAcceptRejectTraineeListener(TrainingRequest p) {
 		p.getAcceptButton().addActionListener(new ActionListener() {
