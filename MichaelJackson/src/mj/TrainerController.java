@@ -5,16 +5,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import modeltraining.ManageTrainingCourse;
 import modeltraining.TrainingCourseSearch;
 import modeluser.TrainerModel;
-import view.ListPanel;
 import view.SubMenu;
 import viewtrainer.TrainerUI;
 import viewtrainer.Training;
-import viewtrainer.TrainingMaterial;
 import viewtrainer.TrainingMaterialDetails;
 import viewtrainer.TrainingRequestList;
 import viewtrainer.TrainingTraineeList;
@@ -101,8 +98,11 @@ public class TrainerController {
 					trainingCourseMaterialController.addNewMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 				}
 			});
+			
+			// show all material for this particular training
 			trainingCourseMaterialController.showMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 			
+			// request list for this training
 			TrainingRequestList requestList = new TrainingRequestList(courseID);
 			training.getRequestButton().addActionListener(new ActionListener() {
 				@Override 
@@ -114,6 +114,7 @@ public class TrainerController {
 				}
 			});
 			
+			// enrolled trainee list for this training
 			TrainingTraineeList traineeList = new TrainingTraineeList(courseID);
 			training.getTraineeListButton().addActionListener(new ActionListener() {
 				@Override 
@@ -125,6 +126,7 @@ public class TrainerController {
 				}
 			});
 			
+			// feedback link
 			training.getFeedbackButton().addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -156,13 +158,4 @@ public class TrainerController {
 			e1.printStackTrace();
 		}
 	}
-	
-//	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			trainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
-//			trainingMaterialDetails.getTrainingMaterialList().repaint();
-//			trainingMaterialDetails.getTrainingMaterialList().revalidate();
-//		}
-//	};
 }
