@@ -173,6 +173,15 @@ public class AdminController {
 	ActionListener addNewTrainingListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+						
+			// set back to initial state
+			String lastID = trainingCourseController.getLatestTrainingCourseID();
+			addNewCourse.getTxtCourseID().setText(lastID);
+			addNewCourse.getTxtName().setText("Enter training course name");
+			addNewCourse.getTxtDesc().setText("Enter short description");
+			addNewCourse.getTxtTrainer().setText("Enter trainer ID for this training course (e.g. tnr12345)");
+			addNewCourse.getTxtDate().setText("Enter training date (format: YYYY-MM-DD)");
+			
 			adminUI.getPanelBody().removeAll();
 			adminUI.getPanelBody().add(addNewCourse);
 	        adminUI.getPanelBody().repaint();
