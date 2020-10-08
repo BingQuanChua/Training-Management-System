@@ -29,11 +29,11 @@ public class TraineeController {
 		this.traineeID = traineeModel.getTraineeID();
 		courseModel = new TrainingCourseSearch();
 		
-		System.out.println("\n\nSetAvailableTrainingCourse\n");
-		setAvailableTrainingCourse(availableCourseList, courseModel, this.traineeUI);
-		
 		System.out.println("\n\nsetEnrolledTrainingCourse\n");
 		setEnrolledTrainingCourse(enrolledCourseList, courseModel, this.traineeModel, this.traineeUI);
+		
+		System.out.println("\n\nSetAvailableTrainingCourse\n");
+		setAvailableTrainingCourse(availableCourseList, courseModel, this.traineeUI, this.enrolledCourseControl);
 		
 		System.out.println("\n\nTraineeController\n"
 						 + "*********************\n");
@@ -42,12 +42,14 @@ public class TraineeController {
 	
 	public void setAvailableTrainingCourse(ArrayList<String> availableCourseList,
 			  							   TrainingCourseSearch courseModel,
-			  							   TraineeUI traineeUI) {
+			  							   TraineeUI traineeUI,
+			  							   EnrolledCourseController enrolledCourseControl) {
 		
 		availableCourseControl = 
 				new AvailableCourseController(availableCourseList,
 											  courseModel,
-											  traineeUI);
+											  traineeUI,
+											  enrolledCourseControl);
 		
 	}
 	

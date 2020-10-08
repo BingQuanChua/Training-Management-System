@@ -18,17 +18,22 @@ public class AvailableCourseController {
 	ArrayList<String> availableCourseList;
 	TrainingCourseSearch courseModel;
 	TraineeUI traineeUI;
+	EnrolledCourseController enrolledCourseControl;
+	
 	TrainingRegistration trainingRegistrationModel;
 	
 	public AvailableCourseController(ArrayList<String> availableCourseList,
 								  	TrainingCourseSearch courseModel,
-								  	TraineeUI traineeUI) {
+								  	TraineeUI traineeUI,
+								  	EnrolledCourseController enrolledCourseControl) {
 		
 		this.availableCourseList = availableCourseList;
 		this.courseModel = courseModel;
 		this.traineeUI = traineeUI;
+		this.enrolledCourseControl = enrolledCourseControl;
 		
 		trainingRegistrationModel = new TrainingRegistration();
+		
 		setAvailableTrainingCourse();
 		
 	}
@@ -84,7 +89,7 @@ public class AvailableCourseController {
 					p.getContainerPanel().revalidate();
 					
 					// add to enrolled training list
-					
+					enrolledCourseControl.addNewEnrolledTrainingCourse(courseID);
 				}
 			}
 			

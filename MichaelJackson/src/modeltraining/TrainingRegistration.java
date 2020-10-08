@@ -37,7 +37,7 @@ public class TrainingRegistration {
 				"VALUES ('" 	+
 				userID 			+ "', '" +
 				courseID 		+ "', '" + 
-				"pending"	 	+ "');");
+				"approved"	 	+ "');"); // pending
 
 		// Execute Query 
 		if(database.executeUpdate(query)) {

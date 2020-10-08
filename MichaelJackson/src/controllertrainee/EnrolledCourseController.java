@@ -45,75 +45,91 @@ public class EnrolledCourseController {
 	public void setEnrolledTrainingCourse() {
 
 		enrolledCourseList = new ArrayList<>();
-		ArrayList <String> courseMaterialList = new ArrayList<>();
-		String courseID; String courseName; String courseDesc;
-		String trainerID; String trainerName;
-		String materialID; String materialTitle; String materialDesc;
 
 		try {
 			courseModel.getEnrolledTrainingCourseID(traineeModel.getTraineeID(), enrolledCourseList);
-			for(int i = 0;  i< enrolledCourseList.size(); i++) {
+			for(int i = 0;  i < enrolledCourseList.size(); i++) {
 
-				// set enrolled course
-				courseID = enrolledCourseList.get(i);
-				System.out.println("\nLOOP: " + courseID + "\n");
-				trainerID = courseModel.getTrainingCourseDetails(courseID, 1);
-				courseName = courseModel.getTrainingCourseDetails(courseID, 2);
-				courseDesc = courseModel.getTrainingCourseDetails(courseID, 3);
-				trainerName = courseModel.getTrainingCourseDetails(trainerID, 5);
-				traineeUI.addEnrolledTraining(courseID, courseName, courseDesc,
-						trainerID, trainerName, 
-						traineeModel.getTraineeProfile(1));
-
-				// add listener
-				addEnrolledTrainingCourseListener(i);
-
-				// Set progress
-				((EnrolledTraining)traineeUI.getEnrolledTrainingList()
-						.getItem(i))  //return EnrolledTraining
-				.getTrainingDetails()  // return EnrolledTrainingDetail
-				.getIndividualProgress()
-				.setIndividualProgress(
-						traineeModel.getTraineeProfile(1), 
-						traineeID, 
-						progressModel.calculateProgress(traineeID, courseID));
-
-				// set material
-				courseMaterialList.clear();
-				courseModel.getAllCourseMaterial(courseID, courseMaterialList);
-				for(int j = 0; j < courseMaterialList.size(); j++) {
-					materialID = courseMaterialList.get(j);
-					materialTitle = courseModel.getCourseMaterialDetails(materialID, 2);
-					materialDesc = courseModel.getCourseMaterialDetails(materialID, 3);
-					((EnrolledTraining)traineeUI.getEnrolledTrainingList()
-							.getItem(i))  //return EnrolledTraining
-					.getTrainingDetails()  // return EnrolledTrainingDetail
-					.addCourseMaterial(courseID, trainerName, 
-							materialID, materialTitle, materialDesc);
-
-					// Mark as done
-					if(progressModel.getMaterialIsDone(traineeID, materialID).equals("true")) {
-						// disable button
-						System.out.println("### closeMarkAsDone ### " + materialID);
-						closeMarkAsDoneListener(i, j);
-					} else {
-						// add listener
-						System.out.println("### addMarkAsDone ### " + materialID);
-						addMarkAsDoneListener(i, j);
-					}
-				}
+				addEnrolledTrainingCourse(i);
 
 			}
 		} catch (Exception e) {
 			System.out.println("setEnrolledTrainingCourse Fail");
 		}
-	}
-	
-	public void addNewEnrolledTrainingCourse(String courseID) {
 		
 	}
+	
+	// i being the index in enrolledCourseList
+	public void addEnrolledTrainingCourse(int i) {
+		// enrolledCourseList = new ArrayList<>();
+		ArrayList <String> courseMaterialList = new ArrayList<>();
+		String courseID;
+		String courseName; String courseDesc;
+		String trainerID; String trainerName;
+		String materialID; String materialTitle; String materialDesc;
 
+		try {
 
+			// set enrolled course
+			courseID = enrolledCourseList.get(i);
+			System.out.println("\nLOOP: " + courseID + "\n");
+			trainerID = courseModel.getTrainingCourseDetails(courseID, 1);
+			courseName = courseModel.getTrainingCourseDetails(courseID, 2);
+			courseDesc = courseModel.getTrainingCourseDetails(courseID, 3);
+			trainerName = courseModel.getTrainingCourseDetails(trainerID, 5);
+			traineeUI.addEnrolledTraining(courseID, courseName, courseDesc,
+					trainerID, trainerName, 
+					traineeModel.getTraineeProfile(1));
+
+			// add listener
+			addEnrolledTrainingCourseListener(i);
+
+			// Set progress
+			((EnrolledTraining)traineeUI.getEnrolledTrainingList()
+					.getItem(i))  //return EnrolledTraining
+			.getTrainingDetails()  // return EnrolledTrainingDetail
+			.getIndividualProgress()
+			.setIndividualProgress(
+					traineeModel.getTraineeProfile(1), 
+					traineeID, 
+					progressModel.calculateProgress(traineeID, courseID));
+
+			// set material
+			courseMaterialList.clear();
+			courseModel.getAllCourseMaterial(courseID, courseMaterialList);
+			for(int j = 0; j < courseMaterialList.size(); j++) {
+				materialID = courseMaterialList.get(j);
+				materialTitle = courseModel.getCourseMaterialDetails(materialID, 2);
+				materialDesc = courseModel.getCourseMaterialDetails(materialID, 3);
+				((EnrolledTraining)traineeUI.getEnrolledTrainingList()
+						.getItem(i))  //return EnrolledTraining
+				.getTrainingDetails()  // return EnrolledTrainingDetail
+				.addCourseMaterial(courseID, trainerName, 
+						materialID, materialTitle, materialDesc);
+
+				// Mark as done
+				if(progressModel.getMaterialIsDone(traineeID, materialID).equals("true")) {
+					// disable button
+					System.out.println("### closeMarkAsDone ### " + materialID);
+					closeMarkAsDoneListener(i, j);
+				} else {
+					// add listener
+					System.out.println("### addMarkAsDone ### " + materialID);
+					addMarkAsDoneListener(i, j);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("setEnrolledTrainingCourse Fail");
+		}
+	}
+
+	
+	public void addNewEnrolledTrainingCourse(String courseID) {
+		enrolledCourseList.add(courseID);
+		addEnrolledTrainingCourse(enrolledCourseList.size()-1);
+		
+	}
+	
 	private void addEnrolledTrainingCourseListener(int i) {
 
 		EnrolledTrainingDetails tempETD;
