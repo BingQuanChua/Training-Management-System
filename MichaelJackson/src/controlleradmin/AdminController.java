@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import view.ListPanel;
 import view.SubMenu;
+import view.UserProfile;
 import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
 import viewadmin.AllTrainingList;
@@ -18,6 +19,7 @@ import viewadmin.ManageTraining;
 import viewadmin.Report;
 import viewadmin.ManageUser;
 import modeluser.AdminModel;
+import mj.UserProfileController;
 
 public class AdminController {
 	private AdminUI adminUI;
@@ -26,9 +28,11 @@ public class AdminController {
 	private EditCourse editCourse; 
 	private TrainingCourseController trainingCourseController;
 	private UserManagementController userManagementController;
+	private UserProfileController userProfileController;
 	private ReportController reportController;
 	private boolean isTextAreaEditable = false;
 	private String trainerID,trainerName;
+	private UserProfile userProfile;
 
 	
 	public AdminController(AdminUI adminUI,AdminModel adminModel) {
@@ -36,6 +40,8 @@ public class AdminController {
 		this.adminUI = adminUI;
 		this.adminModel = adminModel;
 		userManagementController = new UserManagementController(adminUI,adminModel,this);
+		
+		userProfile = new UserProfile();
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
 		
@@ -85,6 +91,7 @@ public class AdminController {
 		ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
 		for (int i = 0; i < trainerPanel.getListOfPanel().size(); i++) {
 			addDeleteTrainerListener((ManageUser) trainerPanel.getItem(i));
+			addProfileListener((ManageUser) trainerPanel.getItem(i));
 		}
 	}
 	
@@ -114,6 +121,7 @@ public class AdminController {
 		ListPanel traineePanel = adminUI.getAllTraineeList().getTraineeList();
 		for (int i = 0; i < traineePanel.getListOfPanel().size(); i++) {
 			addDeleteTraineeListener((ManageUser) traineePanel.getItem(i));
+			addProfileListener((ManageUser) traineePanel.getItem(i));
 		}
 	}
 	
@@ -385,6 +393,27 @@ public class AdminController {
 					traineePanel.getContainerPanel().repaint();
 					traineePanel.getContainerPanel().revalidate();
 					JOptionPane.showConfirmDialog (null, "Successfully deleted this trainee","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
+	}
+	public void addProfileListener(ManageUser manageUser) {
+		manageUser.getProfileButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				adminUI.getPanelBody().removeAll();
+				adminUI.getPanelBody().add(userProfile);
+		        adminUI.getPanelBody().repaint();
+				adminUI.getPanelBody().revalidate();
+				
+			
+				try {
+					userProfile.getEditButton().setVisible(false);	
+					userProfileController = new UserProfileController(userProfile, manageUser.getUserID());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});

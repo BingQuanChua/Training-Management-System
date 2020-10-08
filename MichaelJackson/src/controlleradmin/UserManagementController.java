@@ -58,6 +58,7 @@ public class UserManagementController {
 								trainerPanel.getContainerPanel().add(temp);
 							}
 							adminController.addDeleteTrainerListener((ManageUser) trainerPanel.getItem(trainerPanel.getListOfPanel().size()-1));
+							adminController.addProfileListener((ManageUser) trainerPanel.getItem(trainerPanel.getListOfPanel().size()-1));
 							JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 							adminUI.home();
 						}
@@ -66,7 +67,7 @@ public class UserManagementController {
 						}
 					}
 					else {
-						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainer. Example of correct format: trn00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainer. Example of correct format: tnr00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
@@ -93,6 +94,7 @@ public class UserManagementController {
 						}
 						
 						adminController.addDeleteTraineeListener((ManageUser) traineePanel.getItem(traineePanel.getListOfPanel().size()-1));
+						adminController.addProfileListener((ManageUser) traineePanel.getItem(traineePanel.getListOfPanel().size()-1));
 						JOptionPane.showConfirmDialog (null, "Account has been added successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 						adminUI.home();
 						}
@@ -102,7 +104,7 @@ public class UserManagementController {
 					
 					}
 					else {
-						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainee. Example of correct format: tre00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainee. Example of correct format: tne00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
