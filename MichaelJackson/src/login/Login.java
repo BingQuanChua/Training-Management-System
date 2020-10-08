@@ -1,9 +1,16 @@
 package login;
 
-import mj.*; 
+import mj.*;
+import model.JDBCexecute;
+import model.JDBCinfo;
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.sql.*;
 import java.awt.Color;
@@ -12,6 +19,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.imageio.ImageIO;
@@ -31,22 +39,41 @@ import java.awt.Font;
 
 public class Login extends JFrame {
 
+	
 	/**
 	 * Create the panel.
 	 */
 	
 	private JTextField userIDField;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private  JPasswordField passwordField;
 	private JLabel userLabel;
 	private JLabel passwordLabel;
 	private JPanel panel;
 	private JPanel iconPanel;
+	private String url = JDBCinfo.getURL();
+	private String serverName = JDBCinfo.getServerName();
+	private String serverPassword = JDBCinfo.getServerPassword();
+	private String userID;
+	private  JButton loginButton;
+	private Connection con;
+	private Statement st;
+	private ResultSet rs;
+	public static int choice = 0;
 	
 	public Login() {
+		
+		
 		super("MJ Training Management System");
+		try {
+			con = DriverManager.getConnection(url, serverName, serverPassword);
+			st = con.createStatement();
+			System.out.println("USER LOGIN: Connected to Database\n");
+		} catch (SQLException e) {
+			System.out.println("USER LOGIN: Fail to Connect Database\n");
+		}
 		getContentPane().setBackground(new Color(233, 150, 122));
 		getContentPane().setForeground(new Color(238, 130, 238));
+		
 		passwordField = new JPasswordField("passwordField");
 		getContentPane().setLayout(null);
 	
@@ -57,7 +84,7 @@ public class Login extends JFrame {
 		panel.setBorder(new TitledBorder("Login"));
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		JButton loginButton = new JButton("Login");
+		loginButton = new JButton("Login");
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setBackground(new Color(205, 133, 63));
 		loginButton.setFont(new Font("Dialog", Font.PLAIN, 25));
@@ -65,11 +92,11 @@ public class Login extends JFrame {
 		loginButton.setFocusable(false);
 		panel.add(loginButton);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setForeground(Color.GRAY);
-		passwordField_1.setFont(new Font("Serif", Font.PLAIN, 20));
-		passwordField_1.setBounds(221, 165, 322, 34);
-		panel.add(passwordField_1);
+		passwordField = new JPasswordField();
+		passwordField.setForeground(Color.GRAY);
+		passwordField.setFont(new Font("Serif", Font.PLAIN, 20));
+		passwordField.setBounds(221, 165, 322, 34);
+		panel.add(passwordField);
 		
 		passwordLabel = new JLabel("Password:");
 		passwordLabel.setForeground(Color.DARK_GRAY);
@@ -83,37 +110,33 @@ public class Login extends JFrame {
 		userLabel.setFont(new Font("Serif", Font.PLAIN, 30));
 		userLabel.setBounds(56, 99, 121, 25);
 		panel.add(userLabel);
-		userIDField = new JTextField("");
+		userIDField = new JTextField();
 		userIDField.setForeground(Color.GRAY);
 		userIDField.setFont(new Font("Serif", Font.PLAIN, 20));
 		userIDField.setBounds(221, 100, 322, 34);
+		userIDField.setEditable(true);  
 		panel.add(userIDField);
 		userIDField.setColumns(10);
+		
 
-		loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				SQLconnector(userIDField.getText(), passwordField.getPassword());
-				dispose();
-				
-			
-			}
-		});
+		loginButton.addActionListener(loginListener); 
 		
 		iconPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		iconPanel.setLocation(386, 124);
 		iconPanel.setSize(605, 130);
 		iconPanel.setBackground(new Color(233, 150, 122));
-
+		
 		try {
-			Image originalIcon = ImageIO.read(getClass().getResource("images/logo.PNG"));
+			File logo = new File("src/images/logo.PNG");
+			Image originalIcon = ImageIO.read(logo);
 			Image resizedIcon = originalIcon.getScaledInstance(500, 120, Image.SCALE_DEFAULT);
 			ImageIcon icon = new ImageIcon(resizedIcon);
 				iconPanel.add(new JLabel(icon));
 			} catch(Exception ex) {
 			System.out.println(ex);
-		}	
-		
+		}
+
+		userID = getUserID();
 		getContentPane().add(iconPanel);
 	        
 		setBackground(Color.WHITE);
@@ -126,37 +149,55 @@ public class Login extends JFrame {
 
 		
 	}
-
-	public void SQLconnector(String username, char[] password) {
-		
-		
-			String pass = new String(password);
-			//AdminUI adminUI = new AdminUI();
-			//TrainerUI trainerUI = new TrainerUI();
-			//TraineeUI traineeUI = new TraineeUI();
-		
-			
-	//		System.out.println(pass);
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
-			Statement state =connection.createStatement();
-			String query = "select * from user_login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
-			ResultSet result = state.executeQuery(query);
-			if(result.next())
-			{
-				//JOptionPane.showMessageDialog(null, "'"+result.getString("user_Full_name")+"' Logged In");
-				if(result.getInt("user_role") == 1) {
-					//adminUI.setVisible(true);
-				}
-				if(result.getInt("user_role") == 2) {
-					//trainerUI.setVisible(true);
-				}
-				if(result.getInt("user_role") == 3) {
-					//traineeUI.setVisible(true);
-				}
-			
 	
+	ActionListener loginListener = new ActionListener() {
+		
+			public void actionPerformed(ActionEvent e) {
+				userID = userIDField.getText();
+				System.out.println(userID);
+				SQLconnector(userID, passwordField.getPassword());
+
+			}
+	};
+	
+	public static void main(String args[]) {
+		new Login();
+	}
+	
+	private void SQLconnector(String username, char[] password) {
+		
+			//changing the password from char array to String
+			String pass = new String(password);
+		
+		try {
+		
+			
+			String query = "select * from user where USER_ID = '"+username+"' and USER_PASS = '"+pass+"'";
+			rs = st.executeQuery(query);
+			
+			//result.next == true .
+			
+			if(rs.next())
+			{
+								
+				if(rs.getString("USER_TYPE").equals("admin")) {
+				
+					choice = 1;
+					System.out.println(choice);
+					dispose();
+				}
+				
+				
+				else if(rs.getString("USER_TYPE").equals( "trainer")) {
+					choice = 2;
+					dispose();
+				}
+				
+				
+				else if(rs.getString("USER_TYPE").equals( "trainee")) {
+					choice = 3;
+					dispose();
+				}
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Invalid User");
@@ -164,9 +205,21 @@ public class Login extends JFrame {
 		} catch(Exception e) {
 			System.out.println(e);
 		}
+		
+
 	}
 	
-	public static void main(String[] args) {
-		new Login();
+	
+	public static int getChoice() {
+		return choice;
 	}
+	
+	public  String getUserID() {
+		return userID;
+	}
+	
+	public JPasswordField getPassword() {
+		return passwordField;
+	}
+	
 }
