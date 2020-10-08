@@ -26,7 +26,7 @@ public class TrainerController {
 	private TrainerModel trainerModel;
 	
 	// Controller
-	private TrainingProgressController progressController;
+	private TraineeProgressController progressController;
 	private TrainingCourseMaterialController trainingCourseMaterialController;
 	
 	// Model
@@ -77,6 +77,7 @@ public class TrainerController {
 				// setting listeners to the buttons
 				addTrainingButtonListener(tempTraining, tempCourseID);
 				
+				// add Training
 				trainerUI.getTrainingList().addItem(tempTraining);
 				
 			}
@@ -90,7 +91,7 @@ public class TrainerController {
 									 TrainingCourseSearch courseSearch,
 									 TrainerModel trainerModel) {
 		
-		progressController = new TrainingProgressController(trainerUI,
+		progressController = new TraineeProgressController(trainerUI,
 															courseSearch,
 															trainerModel);
 		
@@ -144,6 +145,9 @@ public class TrainerController {
 				}
 			});
 			
+			// loop, get from database table enroll where 
+			// requestList.getRequestList().addItem(item);
+			
 			TrainingTraineeList traineeList = new TrainingTraineeList(courseID);
 			training.getTraineeListButton().addActionListener(new ActionListener() {
 				@Override 
@@ -182,8 +186,8 @@ public class TrainerController {
 			});
 			
 		} catch (Exception e1) {
+
 			System.out.println("addTrainingButtonListener Fail");
 		}
 	}
-	
 }

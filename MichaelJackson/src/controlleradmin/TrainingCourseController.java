@@ -111,6 +111,21 @@ public class TrainingCourseController {
 		return false;
 	}
 	
+	public String getLatestTrainingCourseID() {
+		try {
+			String lastID = courseSearch.getLastCourseID();
+			int id = Integer.parseInt(lastID.substring(3, 8))+1;
+			String newID = String.format("crs%05d", id);
+			
+			return lastID;
+			
+		} catch (Exception e) {
+			System.out.println("setLatestTrainingCourseID failed");
+		}
+		return "ERROR";
+		
+	}
+	
 	public void deleteTrainingCourse(String courseID) {
 		boolean success = trainingCourseModel.deleteTrainingCourse(courseID);
 	}

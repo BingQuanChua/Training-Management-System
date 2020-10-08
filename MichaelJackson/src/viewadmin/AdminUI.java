@@ -44,11 +44,6 @@ public class AdminUI extends UserUI {
 		allTraineeList = new AllTraineeList();
 		allTrainingList = new AllTrainingList();
 		reportList = new ListPanel();
-		
-		reportList.addItem(new Report("Python Advance Training Course"));
-        reportList.addItem(new Report("Software Engineering with Java"));
-		reportList.addItem(new Report("Introduction to OOPDS"));
-		
 	}
 
 	// This method is called from within the constructor to initialize the form.
@@ -142,7 +137,15 @@ public class AdminUI extends UserUI {
 	}
 	
 	public ListPanel getReportList() {
+		
+		System.out.println("\n\ngetReportList\n\n");
+		
 		return reportList;
+	}
+	
+	public void addReport(String courseID, String courseName, String courseDesc) {
+		
+		reportList.addItem(new Report(courseID, courseName, courseDesc));
 	}
 
 }

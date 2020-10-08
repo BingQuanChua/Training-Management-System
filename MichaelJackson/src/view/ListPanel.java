@@ -50,9 +50,9 @@ public class ListPanel extends JPanel {
 			((TrainingRequest) item).getNumberLabel().setText(listOfPanel.size()+".");
 			addAcceptRejectTraineeListener((TrainingRequest) item);
 		}
-		if (item instanceof AvailableTraining) {
-			addEnrollTrainingListener((AvailableTraining) item);
-		}
+//		if (item instanceof AvailableTraining) {
+//			addEnrollTrainingListener((AvailableTraining) item);
+//		}
 		
 		container.repaint();
 		container.revalidate();
@@ -169,22 +169,22 @@ public class ListPanel extends JPanel {
 		});
 	}
 	
-	private void addEnrollTrainingListener(AvailableTraining p) {
-		p.getEnrollButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Confirm enrollment?", "Enroll Training Course", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					listOfPanel.remove(p);
-					container.removeAll();
-					for (JPanel temp : listOfPanel) {
-						container.add(temp);
-					}
-					container.repaint();
-					container.revalidate();
-				}
-			}
-		});
-	}
+//	private void addEnrollTrainingListener(AvailableTraining p) {
+//		p.getEnrollButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				int input = JOptionPane.showConfirmDialog(null, "Confirm enrollment?", "Enroll Training Course", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//				// 0 = yes, 1 = no, 2 = cancel
+//				if (input == 0) {
+//					listOfPanel.remove(p);
+//					container.removeAll();
+//					for (JPanel temp : listOfPanel) {
+//						container.add(temp);
+//					}
+//					container.repaint();
+//					container.revalidate();
+//				}
+//			}
+//		});
+//	}
 }

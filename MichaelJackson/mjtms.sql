@@ -40,14 +40,14 @@ INSERT INTO USER VALUES ('adm00001', 'adminName','admin1234', 'adminPosition', '
 INSERT INTO USER VALUES ('tnr00001', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
 INSERT INTO USER VALUES ('tne00001', 'traineeName','trainee1234', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
 INSERT INTO USER VALUES ('tnr00002', 'trainerName','trainer1234', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tne00002', 'noob','trainee1234', null, null, null, null, null, 'trainee');
+INSERT INTO USER VALUES ('tne00004', 'Programmer','trainee1234', null, null, null, null, null, 'trainee');
 
 DELETE FROM USER 
 	WHERE USER_ID = 'tne00003';
     
 UPDATE USER 
-	SET USER_DESC = 'New Description' 
-	WHERE USER_ID = 'adm00001';
+	SET USER_NAME = 'Ivan Pro' 
+	WHERE USER_ID = 'tne00001';
 
 SELECT USER_ID FROM USER;
 SELECT * FROM USER;
@@ -95,8 +95,10 @@ PRIMARY KEY(MATERIAL_ID),
 FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_COURSE(COURSE_ID)
 ) ;
 
-INSERT INTO TRAINING_COURSE VALUES ('crs00001', 'tnr00001','Testing Course', 'Testing 01', '2020-10-02');
-INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Testing Course 2', 'Testing 02', '2020-10-02');
+INSERT INTO TRAINING_COURSE VALUES ('crs00001', 'tnr00001','Python Training', 'Basic programming training', '2020-9-14');
+INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Ruby On Rails', 'Learn enough to be dangerous', '2020-10-02');
+INSERT INTO TRAINING_COURSE VALUES ('crs00003', 'tnr00002','Andriod Studio', 'Start from a simple app', '2020-10-05');
+INSERT INTO TRAINING_COURSE VALUES ('crs00004', 'tnr00002','dotNet', 'Service Framework', '2020-10-08');
 
 UPDATE TRAINING_COURSE
 	SET COURSE_ID = 'crs00003'
@@ -106,10 +108,12 @@ DELETE FROM TRAINING_COURSE
 
 SELECT * FROM TRAINING_COURSE;
 
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'crs00001', 'mtr 1 - trc 1', 'Material 1 from Course 1');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'crs00001', 'mtr 2 - trc 1', 'Material 2 from Course 1');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00007', 'crs00002', 'TESTING', 'SEF ASSIGNMENT');
-INSERT INTO COURSE_MATERIAL VALUES ('mtr00004', 'crs00002', 'mtr 1 - trc 2', 'Material 1 from Course 2');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'crs00001', 'material 1', 'Hello Word');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'crs00001', 'Built in data type', 'Variables can store data of different types, and different types can do different things.');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00003', 'crs00001', 'Advance', 'Object Oriented Programming');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00004', 'crs00002', 'Scaffold ', 'Scaffolding provides more than cheap demo thrills');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00005', 'crs00002', 'Rails Migration ', 'https://www.tutorialspoint.com/ruby-on-rails/rails-migrations.htm');
+INSERT INTO COURSE_MATERIAL VALUES ('mtr00006', 'crs00003', 'Installation', 'Download from https://developer.android.com/studio/');
 
 UPDATE COURSE_MATERIAL
 	SET MATERIAL_TITLE = 'newDetails'
@@ -121,13 +125,16 @@ SELECT MATERIAL_ID FROM COURSE_MATERIAL
     
 SELECT * FROM COURSE_MATERIAL;
 
-INSERT INTO ENROLL VALUES ('tne00001', 'crs00001', 'approved');
 INSERT INTO ENROLL VALUES ('tne00001', 'crs00002', 'approved');
+INSERT INTO ENROLL VALUES ('tne00002', 'crs00003', 'approved');
+INSERT INTO ENROLL VALUES ('tne00004', 'crs00004', 'approved');
 
 UPDATE ENROLL
 	SET TRAINING_STATUS = 'approved'
 	WHERE COURSE_ID = 'crs00002';
-    
+
+SELECT USER_ID FROM ENROLL
+	WHERE COURSE_ID = 'crs00002';    
 SELECT * FROM ENROLL;
 
 ########################################
@@ -150,9 +157,9 @@ FOREIGN KEY(USER_ID) REFERENCES TRAINEE(USER_ID),
 FOREIGN KEY(MATERIAL_ID) REFERENCES COURSE_MATERIAL(MATERIAL_ID)
 ) ;
 
-INSERT INTO PROGRESS VALUES ('tne00001','mtr00001','false');
-INSERT INTO PROGRESS VALUES ('tne00001','mtr00002','true');
-INSERT INTO PROGRESS VALUES ('tne00001','mtr00007','false');
+INSERT INTO PROGRESS VALUES ('tne00001','mtr00004','false');
+INSERT INTO PROGRESS VALUES ('tne00001','mtr00005','false');
+INSERT INTO PROGRESS VALUES ('tne00002','mtr00006','false');
 
 UPDATE PROGRESS
 	SET MATERIAL_IS_DONE = 'false'

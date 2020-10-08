@@ -98,12 +98,16 @@ public class TrainingCourseSearch {
 	
 	
 	// Trainee
-	public void getAvailableTrainingCourseID(ArrayList<String> list) {
+	public void getAvailableTrainingCourseID(String traineeID, ArrayList<String> list) {
 		
-		String column = "COURSE_ID";
-		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
+		ArrayList<String> tempEnrolledTrainingList = new ArrayList<>();
+		this.getEnrolledTrainingCourseID(traineeID, tempEnrolledTrainingList);
 		
-		database.executeMultiRowQuery(query, column, list);
+		this.getAllTrainingCourseID(list);
+		
+		for (int i = 0; i < tempEnrolledTrainingList.size(); i++) {
+			list.remove(tempEnrolledTrainingList.get(i));
+		}
 	}
 	
 	// Trainee
@@ -170,6 +174,37 @@ public class TrainingCourseSearch {
 		// Execute Query
 		materialDetails = database.executeQuery(query, column);
 		return materialDetails;
+	}
+	
+	public String getLastCourseID() throws Exception {
+		
+		// Query
+		String lastID = "Fail to Obtain Result";
+		String column = "COURSE_ID";
+		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE " +
+				"ORDER BY COURSE_ID DESC LIMIT 1;" );
+		System.out.println(query);
+		
+		// Test if table is empty
+		String c = "COUNT(COURSE_ID)";
+		String q = "SELECT COUNT(COURSE_ID) FROM TRAINING_COURSE; ";
+		int row = Integer.parseInt(database.executeQuery(q,c));
+		if (row == 0) {
+			// if table is empty
+			lastID = "crs00000";
+			System.out.println("table is empty, TRAINING_COURSE reset");
+		}
+		else {
+			// Execute Query
+			lastID = database.executeQuery(query, column);
+			System.out.println("getLastCourseID executed");
+
+		}
+		// Extract result
+		System.out.println("getLastCourseID result: \n"
+				+ "Last TRAINING_COURSE: " + lastID); 
+		return lastID;
+
 	}
 
 }

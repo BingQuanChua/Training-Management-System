@@ -11,9 +11,10 @@ public class ReportTraining extends JPanel{
 	 * Report of one training
 	 */
 	private JPanel list = new JPanel();
+	private JTextArea txtFeedback;
 	
 	// need to pass something in...
-	public ReportTraining(String trainingName) {
+	public ReportTraining(String courseID, String courseName, String courseDesc) {
 		setBackground( new Color(255, 255, 200));
 		
 		JPanel panel = new JPanel();
@@ -21,7 +22,7 @@ public class ReportTraining extends JPanel{
 	    panel.setBackground( new Color(255, 255, 200));
 	    panel.setLayout(null);
 	    
-	    JLabel trainingLabel = new JLabel(trainingName);
+	    JLabel trainingLabel = new JLabel(courseName);
 		trainingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		trainingLabel.setFont(new Font("SansSerif", Font.PLAIN, 24));
 		trainingLabel.setBounds(0, 0, 1000, 80);
@@ -38,7 +39,7 @@ public class ReportTraining extends JPanel{
 		panel.add(lblTrainingCourseDescription);
 	    
 		JTextArea txtDesc = new JTextArea();
-		txtDesc.setText("Description");
+		txtDesc.setText(courseDesc);
 		txtDesc.setEditable(false);
 		txtDesc.setLineWrap(true);
 		txtDesc.setBackground(Color.WHITE);
@@ -59,13 +60,11 @@ public class ReportTraining extends JPanel{
 		panel.add(lblFeedback);
 		add(panel);
 		
-		JTextArea txtFeedback = new JTextArea();
+		txtFeedback = new JTextArea();
 		txtFeedback.setBackground(Color.WHITE);
 		txtFeedback.setLineWrap(true);
 		txtFeedback.setEditable(false);
-		txtFeedback.setText("1. This training course is awesome!!!!!!!!"
-				+ "\n2.Looking forward to the next training!!!"
-				+ "\n3.Best training course ever!!!");
+		txtFeedback.setText("Feedback Link: " );
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(txtFeedback);
 		scrollPane_1.setBounds(107, 380, 800, 200);
@@ -89,22 +88,23 @@ public class ReportTraining extends JPanel{
 		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 		scrollPane.setViewportView(list);
 		
-		/*
-		addProgress(new IndividualProgress("Jim Helpert", 50));
-		addProgress(new IndividualProgress("Michael Scott", 30));
-		addProgress(new IndividualProgress("Dwight Schrute", 70));
-		addProgress(new IndividualProgress("Pam Beesly", 60));
-		addProgress(new IndividualProgress("Kevin Malone", 90));
-		addProgress(new IndividualProgress("Creed Bratton", 20));
-		addProgress(new IndividualProgress("Andy Bernard", 10));
-		addProgress(new IndividualProgress("Toby Flenderson", 100));
-		*/
 		panel.add(scrollPane);
 
 	}
 	
-	// Progress Update
-	private void addProgress(IndividualProgress p) {
-		list.add(p);
+	// Feedback update
+	public void setFeedbackLink(String feedback) {
+		txtFeedback.setText("Feedback Link:\n" + feedback );
 	}
+	
+	
+	// Progress Update
+	public void addProgress(String traineeID, String traineeName, int progress) {
+		
+		System.out.println("\n\naddProgress\n\n");
+		
+		list.add(new IndividualProgress(traineeName, traineeID, progress));
+	}
+
+
 }

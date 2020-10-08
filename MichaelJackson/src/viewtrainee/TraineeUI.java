@@ -79,6 +79,10 @@ public class TraineeUI extends UserUI {
  	public void home() {
  		super.home();
  	} 
+ 	
+ 	public String getTraineeID() {
+ 		return userID;
+ 	}
     
  	public ListPanel getAvailableTrainingList() {
  		return availableTrainingList;

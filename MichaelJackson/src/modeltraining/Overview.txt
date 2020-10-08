@@ -90,6 +90,7 @@
  * - AdminUI => add Report panel
  * - Report (knows how many courses + CourseID)
  * - Report training (individual report)
+ * - AdminUI.get
  *
  * Trainer:
  * - TrainerUI.getTrainingProgressList()

@@ -18,17 +18,16 @@ public class Report extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton trainingButton;
-	private ReportTraining individualReport; // individual report for each report
+	private ReportTraining reportTraining; // individual report for each report
 	
 	Font f1 = new Font(Font.DIALOG, Font.PLAIN, 20);
 	
-	public Report(String name) {
+	public Report(String courseID, String courseName, String courseDesc) {
 
 		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		
-		
-		trainingButton = new JButton(name);
+		trainingButton = new JButton(courseName);
 		trainingButton.setForeground(Color.BLACK);
 		trainingButton.setBounds(0, 0, 800, 70);
 		trainingButton.setPreferredSize(new Dimension(800, 70));
@@ -39,15 +38,18 @@ public class Report extends JPanel {
 		trainingButton.setFocusPainted(false);
 		add(trainingButton);
 				
-		individualReport = new ReportTraining(name);
+		reportTraining = new ReportTraining(courseID, courseName, courseDesc);
 	}
 	
 	public JButton getTrainingButton() {
 		return trainingButton;
 	}
 	
-	public ReportTraining getIndividualReport() {
-		return individualReport;
+	public ReportTraining getReportTraining() {
+		
+		System.out.println("\n\ngetReportTraining\n\n");
+		
+		return reportTraining;
 	}
 	
 }

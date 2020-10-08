@@ -13,7 +13,7 @@ public class ManageTrainingCourse {
 	}
 	
 	/**
-	 * training_course table
+	 *  training_course table
 	 * +-------------+--------------+------+-----+---------+-------+
 	 * | Field       | Type         | Null | Key | Default | Extra |
 	 * +-------------+--------------+------+-----+---------+-------+

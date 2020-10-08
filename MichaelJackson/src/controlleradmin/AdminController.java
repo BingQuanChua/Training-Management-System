@@ -26,6 +26,7 @@ public class AdminController {
 	private EditCourse editCourse; 
 	private TrainingCourseController trainingCourseController;
 	private UserManagementController userManagementController;
+	private ReportController reportController;
 	private boolean isTextAreaEditable = false;
 	private String trainerID,trainerName;
 
@@ -38,12 +39,20 @@ public class AdminController {
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
 		
+		System.out.println("\nUser Management\n\n");
 		setAddNewUserListener();
+		
 		setTrainerList();
 		setManageTrainerListener();
+		
 		setTraineeList();
 		setManageTraineeListener();
+		
+		System.out.println("\nTraining Course Management\n\n");
 		setManageTrainingCourseListener();
+		
+		System.out.println("\nProgress and Evaluation Management\n\n");
+		setReport(adminUI, adminModel);
 		setReportListener();
 	}
 	
@@ -130,6 +139,11 @@ public class AdminController {
 		
 	}
 	
+	
+	private void setReport(AdminUI adminUI, AdminModel adminModel) {
+		reportController = new ReportController(adminUI, adminModel);
+	}
+	
 	private void setReportListener() {
 		ListPanel p = adminUI.getReportList();
 		for (int i = 0; i < p.getListOfPanel().size(); i++) {
@@ -147,8 +161,7 @@ public class AdminController {
 				//ListPanel traineePanel =  adminUI.getAllTraineeList().getTraineeList();
 		
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("addUserButtonListener Fail");
 			}
 			
 		}
@@ -173,6 +186,15 @@ public class AdminController {
 	ActionListener addNewTrainingListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+						
+			// set back to initial state
+			String lastID = trainingCourseController.getLatestTrainingCourseID();
+			addNewCourse.getTxtCourseID().setText(lastID);
+			addNewCourse.getTxtName().setText("Enter training course name");
+			addNewCourse.getTxtDesc().setText("Enter short description");
+			addNewCourse.getTxtTrainer().setText("Enter trainer ID for this training course (e.g. tnr12345)");
+			addNewCourse.getTxtDate().setText("Enter training date (format: YYYY-MM-DD)");
+			
 			adminUI.getPanelBody().removeAll();
 			adminUI.getPanelBody().add(addNewCourse);
 	        adminUI.getPanelBody().repaint();
@@ -269,8 +291,7 @@ public class AdminController {
 					trainingCourseController.getTrainingDetails(mt.getCourseID());
 					editCourse.setCurrentCourseID(mt.getCourseID());
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					System.out.println("addEditTrainingPanelListener Fail");
 				}
 			}
 		});
@@ -308,7 +329,7 @@ public class AdminController {
 			public void actionPerformed(ActionEvent e) {
 				
 				adminUI.getPanelBody().removeAll();
-				adminUI.getPanelBody().add(r.getIndividualReport());
+				adminUI.getPanelBody().add(r.getReportTraining());
 		        adminUI.getPanelBody().repaint();
 				adminUI.getPanelBody().revalidate();
 			}

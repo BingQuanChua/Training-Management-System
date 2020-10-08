@@ -9,14 +9,14 @@ import viewtrainer.TrainerUI;
 import viewtrainer.Training;
 import viewtrainer.TrainingProgress;
 
-public class TrainingProgressController {
+public class TraineeProgressController {
 	
 	private TrainerUI trainerUI;
 	private TrainerModel trainerModel;
 	private TrainingCourseSearch courseSearch;
 	private TrainingProgressModel progressModel;
 	
-	public TrainingProgressController(TrainerUI trainerUI, 
+	public TraineeProgressController(TrainerUI trainerUI, 
 									  TrainingCourseSearch courseSearch,
 									  TrainerModel trainerModel) {
 		
@@ -32,12 +32,14 @@ public class TrainingProgressController {
 		
 		ArrayList <String> assignedCourseList = new ArrayList<>();
 		ArrayList <String> enrolledTraineeList = new ArrayList<>();
+		String courseID, courseName;
+		
 		courseSearch.getAssignedTrainingCourseID(trainerModel.getTrainerID(), assignedCourseList);
 		try {
 			for(int i = 0;  i< assignedCourseList.size(); i++) {			
 				
-				String courseID = assignedCourseList.get(i);
-				String courseName = courseSearch.getTrainingCourseDetails(courseID, 2);
+				courseID = assignedCourseList.get(i);
+				courseName = courseSearch.getTrainingCourseDetails(courseID, 2);
 				
 				// set all assigned training
 				trainerUI.addTrainingProgress(courseID, courseName);

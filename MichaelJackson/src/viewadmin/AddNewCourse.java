@@ -190,23 +190,11 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(lblCourseID);
         
         txtCourseID = new JTextField();
-        txtCourseID.setText("Enter training course ID (e.g. crs12345)");
         txtCourseID.setForeground(Color.GRAY);
         txtCourseID.setFont(new Font("Dialog", Font.PLAIN, 20));
         txtCourseID.setBorder(null);
         txtCourseID.setBounds(103, 165, 757, 47);
-        txtCourseID.addFocusListener(new FocusAdapter() {
-        	@Override
-        	public void focusGained(FocusEvent e) {
-        		if(txtCourseID.getText().trim().equals("Enter training course ID (e.g. crs12345)")) 
-        	         txtCourseID.setText("");
-        	}
-        	@Override
-        	public void focusLost(FocusEvent e) {
-        		 if(txtCourseID.getText().trim().equals("")) 
-        	           txtCourseID.setText("Enter training course ID (e.g. crs12345)");
-        	}
-        });
+        txtCourseID.setEditable(false);
         frontPanel.add(txtCourseID);
         
         JSeparator separator_3_1 = new JSeparator();

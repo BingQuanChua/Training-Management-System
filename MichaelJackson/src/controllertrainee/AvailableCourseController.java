@@ -1,8 +1,16 @@
 package controllertrainee;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import modeltraining.TrainingCourseSearch;
+import modeltraining.TrainingRegistration;
+import view.ListPanel;
+import viewtrainee.AvailableTraining;
 import viewtrainee.TraineeUI;
 
 public class AvailableCourseController {
@@ -10,17 +18,23 @@ public class AvailableCourseController {
 	ArrayList<String> availableCourseList;
 	TrainingCourseSearch courseModel;
 	TraineeUI traineeUI;
+	EnrolledCourseController enrolledCourseControl;
+	
+	TrainingRegistration trainingRegistrationModel;
 	
 	public AvailableCourseController(ArrayList<String> availableCourseList,
 								  	TrainingCourseSearch courseModel,
-								  	TraineeUI traineeUI) {
+								  	TraineeUI traineeUI,
+								  	EnrolledCourseController enrolledCourseControl) {
 		
 		this.availableCourseList = availableCourseList;
 		this.courseModel = courseModel;
 		this.traineeUI = traineeUI;
+		this.enrolledCourseControl = enrolledCourseControl;
+		
+		trainingRegistrationModel = new TrainingRegistration();
 		
 		setAvailableTrainingCourse();
-		addAvailableTrainingCourseListener();
 		
 	}
 	
@@ -32,8 +46,8 @@ public class AvailableCourseController {
 
 		try {
 			// set Available Course
-			courseModel.getAllTrainingCourseID(availableCourseList);
-			for(int i = 0;  i< availableCourseList.size(); i++) {
+			courseModel.getAvailableTrainingCourseID(traineeUI.getTraineeID(), availableCourseList);
+			for(int i = 0;  i < availableCourseList.size(); i++) {
 
 				courseID = availableCourseList.get(i);
 				trainerID = courseModel.getTrainingCourseDetails(courseID, 1);
@@ -44,7 +58,7 @@ public class AvailableCourseController {
 						trainerID, trainerName);
 
 				// add listener
-				addAvailableTrainingCourseListener();
+				addAvailableTrainingCourseListener((AvailableTraining)traineeUI.getAvailableTrainingList().getItem(i), courseID);
 
 			}
 		} catch (Exception e) {
@@ -52,8 +66,34 @@ public class AvailableCourseController {
 		}
 	}
 	
-	private void addAvailableTrainingCourseListener() {
+	private void addAvailableTrainingCourseListener(AvailableTraining at, String courseID) {
+		// at.getTrainerProfileButton() // add listener for trainer profile
 		
+		at.getEnrollButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(null, "Confirm enrollment?", "Enroll Training Course", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				// 0 = yes, 1 = no, 2 = cancel
+				if (input == 0) {
+					// add to database (training is enrolled)
+					trainingRegistrationModel.addNewEnroll(traineeUI.getTraineeID(), courseID);
+					
+					// remove from view (enrolled)
+					ListPanel p = traineeUI.getAvailableTrainingList();
+					p.getListOfPanel().remove(at);
+					p.getContainerPanel().removeAll();
+					for (JPanel temp : p.getListOfPanel()) {
+						p.getContainerPanel().add(temp);
+					}
+					p.getContainerPanel().repaint();
+					p.getContainerPanel().revalidate();
+					
+					// add to enrolled training list
+					enrolledCourseControl.addNewEnrolledTrainingCourse(courseID);
+				}
+			}
+			
+		});
 	}
 
 }
