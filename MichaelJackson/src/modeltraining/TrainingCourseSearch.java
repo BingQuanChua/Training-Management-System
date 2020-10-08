@@ -88,16 +88,15 @@ public class TrainingCourseSearch {
 	
 	
 	// Trainee
-	public void getAvailableTrainingCourseID(ArrayList<String> list) {
+	public void getAvailableTrainingCourseID(String traineeID, ArrayList<String> list) {
 		
-		String column = "COURSE_ID";
-		String query = ("SELECT COURSE_ID FROM TRAINING_COURSE; " );
+		ArrayList<String> tempEnrolledTrainingList = new ArrayList<>();
+		getAllTrainingCourseID(list);
+		getEnrolledTrainingCourseID(traineeID, tempEnrolledTrainingList);
 		
-		database.executeMultiRowQuery(query, column, list);
-	}
-	
-	// Trainee
-	public void getAvailableTrainingCourseID() {
+		for (int i = 0; i < tempEnrolledTrainingList.size(); i++) {
+			list.remove(tempEnrolledTrainingList.get(i));
+		}
 		
 	}
 	

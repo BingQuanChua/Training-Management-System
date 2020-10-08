@@ -108,6 +108,10 @@ public class EnrolledCourseController {
 			System.out.println("setEnrolledTrainingCourse Fail");
 		}
 	}
+	
+	public void addNewEnrolledTrainingCourse(String courseID) {
+		
+	}
 
 
 	private void addEnrolledTrainingCourseListener(int i) {

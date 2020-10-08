@@ -114,6 +114,9 @@ public class TrainerController {
 				}
 			});
 			
+			// loop, get from database table enroll where 
+			// requestList.getRequestList().addItem(item);
+			
 			TrainingTraineeList traineeList = new TrainingTraineeList(courseID);
 			training.getTraineeListButton().addActionListener(new ActionListener() {
 				@Override 
@@ -152,17 +155,7 @@ public class TrainerController {
 			});
 			
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("addTrainingListener failed");
 		}
 	}
-	
-//	ActionListener addNewTrainingMaterialButtonListener = new ActionListener() {
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			trainingMaterialDetails.getTrainingMaterialList().addItem(new TrainingMaterial());
-//			trainingMaterialDetails.getTrainingMaterialList().repaint();
-//			trainingMaterialDetails.getTrainingMaterialList().revalidate();
-//		}
-//	};
 }

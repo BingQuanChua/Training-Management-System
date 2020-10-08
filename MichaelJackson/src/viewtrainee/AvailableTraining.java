@@ -127,7 +127,15 @@ public class AvailableTraining extends JPanel {
         }
     }
     
+    public JButton getTrainingButton() {
+    	return trainingButton;
+    }
+    
     public JButton getEnrollButton() {
     	return enrollButton;
+    }
+    
+    public JButtonID getTrainerProfileButton() {
+    	return trainerProfileButton;
     }
 }
