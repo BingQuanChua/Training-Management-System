@@ -1,4 +1,4 @@
-package mj;
+package controlleradmin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,4 +1,4 @@
-package mj;
+package controlleradmin;
 import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
 import viewadmin.ManageUser;

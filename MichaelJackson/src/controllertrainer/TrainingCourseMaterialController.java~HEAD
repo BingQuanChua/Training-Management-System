@@ -1,4 +1,4 @@
-package controllertrainer;
+package mj;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,12 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import modeltraining.ManageTrainingCourse;
 import modeltraining.ManageTrainingCourseMaterial;
-import modeltraining.TrainingCourseSearch;
 import view.ListPanel;
-import viewadmin.ManageTraining;
-import viewtrainer.Training;
 import viewtrainer.TrainingMaterial;
 
 public class TrainingCourseMaterialController {
@@ -53,6 +49,8 @@ public class TrainingCourseMaterialController {
 			boolean success = trainingCourseMaterialModel.addNewMaterial(newID, courseID, "Title", "Material description");
 			if (success) {
 				
+				JOptionPane.showConfirmDialog (null, "New training course material added.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				
 				TrainingMaterial material = new TrainingMaterial(newID, courseID, "Title", "Material description");
 				addEditButtonListener(material);
 				addDeleteButtonListener(material, materialList);
@@ -91,7 +89,7 @@ public class TrainingCourseMaterialController {
 					material.setIsEditing(false);
 					
 					System.out.println("Override course materail details success");
-					JOptionPane.showConfirmDialog (null, "Training course material details overwritten successfully","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog (null, "Training course material details overwritten successfully.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -121,7 +119,7 @@ public class TrainingCourseMaterialController {
 					materialList.getContainerPanel().repaint();
 					materialList.getContainerPanel().revalidate();
 					
-					JOptionPane.showConfirmDialog (null, "Successfully deleted training course material","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog (null, "Successfully deleted training course material.","Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});

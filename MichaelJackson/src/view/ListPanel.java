@@ -36,10 +36,10 @@ public class ListPanel extends JPanel {
 		listOfPanel.add(item);
 		container.add(item);
 		
-//		if (item instanceof ManageUser) {
-//			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
-//			
-//		}
+		if (item instanceof ManageUser) {
+			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
+			
+		}
 //		if (item instanceof ManageTraining) {
 //			addDeleteTrainingListener((ManageTraining) item);
 //		}
