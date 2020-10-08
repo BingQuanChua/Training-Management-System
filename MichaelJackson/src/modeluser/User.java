@@ -77,9 +77,6 @@ public class User {
 		
 		// Execute Query
 		profileDetails = database.executeQuery(query, column);
-		System.out.println("getUserpProfile Result \n"
-				+ "User: " + userID + "\n" 
-				+ column + ": " + profileDetails);
 
 		return profileDetails;
 	}

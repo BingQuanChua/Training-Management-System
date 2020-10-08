@@ -101,8 +101,7 @@ public class TrainingCourseSearch {
 	public void getAvailableTrainingCourseID(String traineeID, ArrayList<String> list) {
 		
 		ArrayList<String> tempEnrolledTrainingList = new ArrayList<>();
-		this.getEnrolledTrainingCourseID(traineeID, tempEnrolledTrainingList);
-		
+		this.getEnrolledTrainingCourseID(traineeID, tempEnrolledTrainingList);	
 		this.getAllTrainingCourseID(list);
 		
 		for (int i = 0; i < tempEnrolledTrainingList.size(); i++) {

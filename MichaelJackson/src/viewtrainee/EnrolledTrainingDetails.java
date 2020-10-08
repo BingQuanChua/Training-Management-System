@@ -47,8 +47,6 @@ public class EnrolledTrainingDetails extends JPanel {
 			String traineeID, String traineeName, 
 			String trainerID, String trainerName) {
 		
-		System.out.println("\n\n\nTrainingDetail " + courseID + "\n\n\n");
-		
 		this.courseName = courseName;
 		this.courseID = courseID;
 		
@@ -123,12 +121,8 @@ public class EnrolledTrainingDetails extends JPanel {
 		////// end of upperPanel creation //////
 		
 		// creating a list of assigned materials
-		////// dummy list creation //////
 		trainingMaterialList = new ListPanel();
 		trainingMaterialList.setBackground(new Color(255, 255, 200));
-		//trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		//trainingMaterialList.addItem(new EnrolledTrainingMaterial());
-		////// end of list creation //////
 		
 		// adding both panels into this panel
 		GridBagConstraints gbc_upperPanel = new GridBagConstraints();

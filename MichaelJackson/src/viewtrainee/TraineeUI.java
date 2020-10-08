@@ -33,15 +33,10 @@ public class TraineeUI extends UserUI {
         
         availableTrainingList = new ListPanel();
         subMenuATC = new SubMenu("Available Training Course", availableTrainingList);
-        // dummy data for trainingList
-        //availableTrainingList.addItem(new AvailableTraining("Python Advance Training Course", "Dr Liew Kuan Yung"));
-        //////
+
 		enrolledTrainingList = new ListPanel();
-        // enrolledTrainingList = new EnrolledTrainingDetails("Python Advance Training Course"); //
         subMenuETC = new SubMenu("Enrolled Training Course", enrolledTrainingList);
-        // dummy data for trainingList
-        //enrolledTrainingList.addItem(new EnrolledTraining("Python Advance Training Course", "trc00001"));
-        /////
+        
     }
    
     // This method is called from within the constructor to initialize the form.

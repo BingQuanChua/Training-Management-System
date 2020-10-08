@@ -29,12 +29,11 @@ public class TraineeController {
 		this.traineeID = traineeModel.getTraineeID();
 		courseModel = new TrainingCourseSearch();
 		
-		System.out.println("\n\nSetAvailableTrainingCourse\n");
-		setAvailableTrainingCourse(availableCourseList, courseModel, this.traineeUI, this.enrolledCourseControl);
-		
 		System.out.println("\n\nsetEnrolledTrainingCourse\n");
 		setEnrolledTrainingCourse(enrolledCourseList, courseModel, this.traineeModel, this.traineeUI);
 		
+		System.out.println("\n\nSetAvailableTrainingCourse\n");
+		setAvailableTrainingCourse(availableCourseList, courseModel, this.traineeUI, this.enrolledCourseControl);
 		
 		System.out.println("\n\nTraineeController\n"
 						 + "*********************\n");

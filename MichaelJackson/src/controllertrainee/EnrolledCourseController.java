@@ -49,9 +49,6 @@ public class EnrolledCourseController {
 			courseModel.getEnrolledTrainingCourseID(
 					traineeModel.getTraineeID(), 
 					enrolledCourseList);
-					
-			
-			System.out.println("\n\n" + enrolledCourseList.size() + "\n\n");
 			
 			for(int i = 0;  i < enrolledCourseList.size(); i++) {
 
@@ -79,10 +76,12 @@ public class EnrolledCourseController {
 			courseName = courseModel.getTrainingCourseDetails(courseID, 2);
 			courseDesc = courseModel.getTrainingCourseDetails(courseID, 3);
 			trainerName = courseModel.getTrainingCourseDetails(trainerID, 5);
+			
 			traineeUI.addEnrolledTraining(
 					courseID, courseName, courseDesc,
 					trainerID, trainerName, 
 					traineeModel.getTraineeProfile(1));
+		
 
 			// add listener
 			addEnrolledTrainingCourseListener(i);
