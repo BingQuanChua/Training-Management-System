@@ -43,9 +43,9 @@ public class EnrolledTrainingDetails extends JPanel {
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
 	public EnrolledTrainingDetails(
-			String courseID, String courseName, String courseDesc,
-			String traineeID, String traineeName, 
-			String trainerID, String trainerName) {
+			String courseID, String courseName, String courseDesc, 
+			String trainerID, String trainerName,
+			String traineeID, String traineeName) {
 		
 		this.courseName = courseName;
 		this.courseID = courseID;

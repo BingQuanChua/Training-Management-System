@@ -45,6 +45,9 @@ public class AdminController {
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
 		
+		System.out.println("\n\n********************\n"
+				 		 + "TraineeController\n\n");
+		
 		System.out.println("\nUser Management\n\n");
 		setAddNewUserListener();
 		
@@ -60,6 +63,9 @@ public class AdminController {
 		System.out.println("\nProgress and Evaluation Management\n\n");
 		setReport(adminUI, adminModel);
 		setReportListener();
+		
+		System.out.println("\n\nTraineeController\n"
+				 		 + "*********************\n");
 	}
 	
 	private void setAddNewUserListener() {

@@ -47,8 +47,6 @@ public class Report extends JPanel {
 	
 	public ReportTraining getReportTraining() {
 		
-		System.out.println("\n\ngetReportTraining\n\n");
-		
 		return reportTraining;
 	}
 	

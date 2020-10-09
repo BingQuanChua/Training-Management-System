@@ -138,8 +138,6 @@ public class AdminUI extends UserUI {
 	
 	public ListPanel getReportList() {
 		
-		System.out.println("\n\ngetReportList\n\n");
-		
 		return reportList;
 	}
 	

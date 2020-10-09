@@ -101,10 +101,6 @@ public class ReportTraining extends JPanel{
 	// Progress Update
 	public void addProgress(String traineeID, String traineeName, int progress) {
 		
-		System.out.println("\n\naddProgress\n\n");
-		
 		list.add(new IndividualProgress(traineeName, traineeID, progress));
 	}
-
-
 }

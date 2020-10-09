@@ -56,8 +56,8 @@ public class Main {
 	
 	public Main() {
 
-		login = new Login();
-		login.setVisible(true);
+		//login = new Login();
+		//login.setVisible(true);
 		
 /**/
 		Scanner scan = new Scanner(System.in);

@@ -54,7 +54,6 @@ public class ReportController {
 
 			// set all training in report
 			adminUI.addReport(courseID, courseName, courseDesc);
-			System.out.println("\n\n" +adminUI.getReportList().getListOfPanel().size()+ "\n\n");
 			
 			// set all trainee progress
 			enrolledTraineeList.clear();
