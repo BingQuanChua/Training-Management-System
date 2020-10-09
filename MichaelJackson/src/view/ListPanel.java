@@ -46,10 +46,10 @@ public class ListPanel extends JPanel {
 //		if (item instanceof TrainingMaterial) {
 //			addDeleteMaterialListener((TrainingMaterial) item);
 //		}
-		if (item instanceof TrainingRequest) {
-			((TrainingRequest) item).getNumberLabel().setText(listOfPanel.size()+".");
-			addAcceptRejectTraineeListener((TrainingRequest) item);
-		}
+//		if (item instanceof TrainingRequest) {
+//			((TrainingRequest) item).getNumberLabel().setText(listOfPanel.size()+".");
+//			addAcceptRejectTraineeListener((TrainingRequest) item);
+//		}
 //		if (item instanceof AvailableTraining) {
 //			addEnrollTrainingListener((AvailableTraining) item);
 //		}
@@ -130,44 +130,44 @@ public class ListPanel extends JPanel {
 //		});
 //	}
 	
-	private void addAcceptRejectTraineeListener(TrainingRequest p) {
-		p.getAcceptButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Are you sure to accept this trainee?", "Accept Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					listOfPanel.remove(p);
-					container.removeAll();
-					for (int i = 0; i < listOfPanel.size(); i++) {
-						TrainingRequest temp = (TrainingRequest) listOfPanel.get(i);
-						temp.getNumberLabel().setText((i+1)+".");
-						container.add(temp);
-					}
-					container.repaint();
-					container.revalidate();
-				}
-			}
-		});
-		p.getRejectButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(null, "Are you sure to reject this trainee?", "Reject Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-				// 0 = yes, 1 = no, 2 = cancel
-				if (input == 0) {
-					listOfPanel.remove(p);
-					container.removeAll();
-					for (int i = 0; i < listOfPanel.size(); i++) {
-						TrainingRequest temp = (TrainingRequest) listOfPanel.get(i);
-						temp.getNumberLabel().setText((i+1)+".");
-						container.add(temp);
-					}
-					container.repaint();
-					container.revalidate();
-				}
-			}
-		});
-	}
+//	private void addAcceptRejectTraineeListener(TrainingRequest p) {
+//		p.getAcceptButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				int input = JOptionPane.showConfirmDialog(null, "Are you sure to accept this trainee?", "Accept Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//				// 0 = yes, 1 = no, 2 = cancel
+//				if (input == 0) {
+//					listOfPanel.remove(p);
+//					container.removeAll();
+//					for (int i = 0; i < listOfPanel.size(); i++) {
+//						TrainingRequest temp = (TrainingRequest) listOfPanel.get(i);
+//						temp.getNumberLabel().setText((i+1)+".");
+//						container.add(temp);
+//					}
+//					container.repaint();
+//					container.revalidate();
+//				}
+//			}
+//		});
+//		p.getRejectButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				int input = JOptionPane.showConfirmDialog(null, "Are you sure to reject this trainee?", "Reject Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//				// 0 = yes, 1 = no, 2 = cancel
+//				if (input == 0) {
+//					listOfPanel.remove(p);
+//					container.removeAll();
+//					for (int i = 0; i < listOfPanel.size(); i++) {
+//						TrainingRequest temp = (TrainingRequest) listOfPanel.get(i);
+//						temp.getNumberLabel().setText((i+1)+".");
+//						container.add(temp);
+//					}
+//					container.repaint();
+//					container.revalidate();
+//				}
+//			}
+//		});
+//	}
 	
 //	private void addEnrollTrainingListener(AvailableTraining p) {
 //		p.getEnrollButton().addActionListener(new ActionListener() {

@@ -134,10 +134,9 @@ public class TrainerController {
 			});
 			trainingCourseMaterialController.showMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 			
-			// loop, get from database table enroll where 
-			// requestList.getRequestList().addItem(item);
 			
 			TrainingTraineeList traineeList = new TrainingTraineeList(courseID);
+			EnrolledTraineeController enrolledTraineeController = new EnrolledTraineeController(courseID, traineeList);
 			training.getTraineeListButton().addActionListener(new ActionListener() {
 				@Override 
 				public void actionPerformed(ActionEvent e) {
