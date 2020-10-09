@@ -83,6 +83,8 @@ public class EnrolledTraineeController {
 					}
 					p.getContainerPanel().repaint();
 					p.getContainerPanel().revalidate();
+					
+					JOptionPane.showConfirmDialog (null, "Removed Trainee from Training Course.","Remove Trainee Success",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});

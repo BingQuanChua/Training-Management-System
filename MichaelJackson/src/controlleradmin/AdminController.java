@@ -115,7 +115,7 @@ public class AdminController {
 						adminModel.getUserName(traineeList.get(i), 1), 
 						traineeList.get(i));
 				if(adminModel.getUserName(traineeList.get(i),1) == null) 
-					tempUser = new ManageUser("TraineeName",traineeList.get(i));
+					tempUser = new ManageUser("TraineeName", traineeList.get(i));
 				adminUI.getAllTraineeList().getTraineeList().addItem(tempUser);	
 				
 			}
