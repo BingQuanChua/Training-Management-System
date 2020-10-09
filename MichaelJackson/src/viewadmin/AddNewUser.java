@@ -15,11 +15,11 @@ public class AddNewUser extends JPanel {
 	
 	private JTextField userIDField;
 	private JTextField passwordField;
-	private CheckboxGroup cbg;
+	private ButtonGroup group;
 	private JButton addButton;
 	private JButton cancelButton;
-	private Checkbox trainerBox;
-	private Checkbox traineeBox;
+	private JCheckBox trainerBox;
+	private JCheckBox traineeBox;
 	
     public AddNewUser() {
     	
@@ -30,9 +30,12 @@ public class AddNewUser extends JPanel {
         JSeparator separator_2 = new JSeparator();
         userIDField = new JTextField(20);
         passwordField = new JTextField(20);
-        cbg = new CheckboxGroup();
-        trainerBox = new Checkbox("New Trainer", cbg, false);
-        traineeBox = new Checkbox("New Trainee", cbg, false);
+        group = new ButtonGroup();
+        trainerBox = new JCheckBox("New Trainer", false);
+        traineeBox = new JCheckBox("New Trainee", false);
+        group.add(trainerBox);
+        group.add(traineeBox);
+        
         addButton = new JButton("Add");
         cancelButton = new JButton("Cancel");
 
@@ -69,19 +72,20 @@ public class AddNewUser extends JPanel {
         frontPanel.add(separator_2);
         
         //TextField// 
-        userIDField.setText("Enter userID");
-        userIDField.addFocusListener(new FocusAdapter() {
-        	@Override
-        	public void focusGained(FocusEvent e) {
-        		if(userIDField.getText().trim().equals("Enter userID")) 
-        	         userIDField.setText("");
-        	}
-        	@Override
-        	public void focusLost(FocusEvent e) {
-        		 if(userIDField.getText().trim().equals("")) 
-        	           userIDField.setText("Enter userID");
-        	}
-        }); 
+        userIDField.setText("[Auto-generate] Please select user type");
+        userIDField.setEditable(false);
+//        userIDField.addFocusListener(new FocusAdapter() {
+//        	@Override
+//        	public void focusGained(FocusEvent e) {
+//        		if(userIDField.getText().trim().equals("Enter userID")) 
+//        	         userIDField.setText("");
+//        	}
+//        	@Override
+//        	public void focusLost(FocusEvent e) {
+//        		 if(userIDField.getText().trim().equals("")) 
+//        	           userIDField.setText("Enter userID");
+//        	}
+//        }); 
         userIDField.setBounds(227, 229, 600, 80);
         userIDField.setForeground(Color.GRAY);
         userIDField.setFont(f1);
@@ -111,15 +115,15 @@ public class AddNewUser extends JPanel {
         //checkbox
         trainerBox.setBounds(227, 569, 300, 46);
         frontPanel.add(trainerBox);
-        trainerBox.setForeground(Color.WHITE);
-        trainerBox.setBackground(new Color(205,133,63));
-        trainerBox.setFont(new Font("Serif", Font.PLAIN, 20));
+//        trainerBox.setBackground(new Color(205,133,63));
+//        trainerBox.setForeground(Color.WHITE);
+        trainerBox.setFont(new Font("Serif", Font.BOLD, 25));
         
         traineeBox.setBounds(529, 569, 300, 46);
         frontPanel.add(traineeBox);
-        traineeBox.setBackground(new Color(205,133,63));
-        traineeBox.setForeground(Color.WHITE);
-        traineeBox.setFont(new Font("Serif", Font.PLAIN, 20));
+//       traineeBox.setBackground(new Color(205,133,63));
+//       traineeBox.setForeground(Color.WHITE);
+       traineeBox.setFont(new Font("Serif", Font.BOLD, 25));
             
         addButton.setBackground(new Color(205,133,63));
         addButton.setForeground(Color.WHITE);
@@ -165,15 +169,15 @@ public class AddNewUser extends JPanel {
     	return passwordField;
     }
     
-    public CheckboxGroup getCBG() {
-    	return cbg;
+    public ButtonGroup getCBG() {
+    	return group;
     }
     
-    public Checkbox getTrainerBox() {
+    public JCheckBox getTrainerBox() {
     	return trainerBox;
     }
     
-    public Checkbox getTraineeBox() {
+    public JCheckBox getTraineeBox() {
     	return traineeBox;
     }
     public JButton getAddButton() {

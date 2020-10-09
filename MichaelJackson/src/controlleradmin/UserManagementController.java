@@ -29,6 +29,7 @@ public class UserManagementController {
 	}	
 	
 	public void addNewUser() throws Exception {
+		
 	    userID = adminUI.getAddNewUser().getUserIDField().getText().toLowerCase();
 	    userPass = adminUI.getAddNewUser().getPasswordField().getText();
 		int response = JOptionPane.showConfirmDialog (null, "Are you sure want to register this new account?","WARNING",JOptionPane.YES_NO_OPTION);
@@ -36,7 +37,7 @@ public class UserManagementController {
 			
 			if(validateEmpty() && validateCheckBox() ) {
 				
-				if(adminUI.getAddNewUser().getTrainerBox().getState() == true) {
+				if(adminUI.getAddNewUser().getTrainerBox().isSelected() == true) {
 					
 					trainerChar = userID.substring(0,3);
 					
@@ -70,7 +71,7 @@ public class UserManagementController {
 						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainer. Example of correct format: tnr00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 				}
-				else if(adminUI.getAddNewUser().getTraineeBox().getState() == true) {
+				else if(adminUI.getAddNewUser().getTraineeBox().isSelected() == true) {
 				
 					traineeChar = userID.substring(0,3);
 					
@@ -124,7 +125,7 @@ public class UserManagementController {
 	}
 	
 	private boolean validateCheckBox() {
-		if(adminUI.getAddNewUser().getTrainerBox().getState() == false && adminUI.getAddNewUser().getTraineeBox().getState() == false) {
+		if(adminUI.getAddNewUser().getTrainerBox().isSelected() == false && adminUI.getAddNewUser().getTraineeBox().isSelected() == false) {
 			return false;
 		}
 		else {

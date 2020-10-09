@@ -69,6 +69,9 @@ public class AdminController {
 	}
 	
 	private void setAddNewUserListener() {
+		adminUI.getAddNewUser().getTrainerBox().addActionListener(trainerBoxListener);
+		adminUI.getAddNewUser().getTraineeBox().addActionListener(traineeBoxListener);
+		
 		adminUI.getAddNewUser().getAddButton().addActionListener(addUserButtonListener);
 		adminUI.getAddNewUser().getCancelButton().addActionListener(backToMenuListener);
 	}
@@ -165,14 +168,50 @@ public class AdminController {
 		}
 	}
 	
+	ActionListener trainerBoxListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				
+				String lastID = adminModel.getLastUserID(1);
+				int id = Integer.parseInt(lastID.substring(3, 8))+1;
+				String newID = String.format("tnr%05d", id);
+				
+				adminUI.getAddNewUser().getUserIDField().setText(newID);
+				System.out.println(adminUI.getAddNewUser().getTrainerBox().isSelected());
+			} catch (Exception e1) {
+				System.out.println("getLastTrainerID Failed");
+			}
+			
+		}
+	};
+	
+	ActionListener traineeBoxListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				
+				String lastID = adminModel.getLastUserID(2);
+				int id = Integer.parseInt(lastID.substring(3, 8))+1;
+				String newID = String.format("tne%05d", id);
+				
+				adminUI.getAddNewUser().getUserIDField().setText(newID);
+				System.out.println(adminUI.getAddNewUser().getTrainerBox().isSelected());
+			} catch (Exception e1) {
+				System.out.println("getLastTraineeID Failed");
+			}
+			
+		}
+	};
+	
 
 	ActionListener addUserButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
 				userManagementController.addNewUser();
-				//ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
-				//ListPanel traineePanel =  adminUI.getAllTraineeList().getTraineeList();
 		
 			} catch (Exception e1) {
 				System.out.println("addUserButtonListener Fail");

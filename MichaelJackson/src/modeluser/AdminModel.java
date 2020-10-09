@@ -141,5 +141,45 @@ public class AdminModel extends User {
 		userDetails = database.executeQuery(query, column);
 		return userDetails;
 	}
+	
+	public String getLastUserID(int choice) throws Exception {
+		
+		// Query
+		String lastID = "Fail to Obtain Result";
+		String column = "USER_ID";
+		String userType = "";
+		
+		switch (choice) {
+			case 1: userType = "TRAINER";
+					break;
+			case 2: userType = "TRAINEE";
+					break;
+		}
+		
+		String query = ("SELECT USER_ID FROM " + userType +
+				" ORDER BY USER_ID DESC LIMIT 1;" );
+		System.out.println(query);
+			
+		String c = "COUNT(USER_ID)";
+		String q = "SELECT COUNT(USER_ID) FROM " + userType + "; ";
+		
+		 
+		int row = Integer.parseInt(database.executeQuery(q,c));
+		if (row == 0) {	
+			// if table is empty
+			lastID = (choice < 2) ? "tnr00000" : "tne00000";
+			System.out.println("table is empty, USER_ID reset");
+		}
+		else {
+			// Execute Query
+			lastID = database.executeQuery(query, column);
+			System.out.println("getLastUserID executed");
 
+		}
+		// Extract result
+		System.out.println("getLastUserID result: \n"
+				+ "Last USER_ID: " + lastID); 
+		return lastID;
+
+	}
 }

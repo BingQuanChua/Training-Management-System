@@ -34,10 +34,6 @@ public class IndividualProgress extends JPanel {
 		
 		nameButton = new JButtonID(traineeName, traineeID);
 		nameButton.setFont(f2);
-		nameButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		nameButton.setBorder(null);
 		nameButton.setBackground(new Color(205,133,63));
 		nameButton.setFocusPainted(false);
