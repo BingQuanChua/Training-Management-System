@@ -111,7 +111,6 @@ public class UserUI extends JFrame {
         		Login login = new Login();
         		login.setVisible(true);
         		dispose();
-        		JOptionPane.showConfirmDialog (null, "You have logged out successfully.","Sign Out",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         	}
         });
         signOutButton.setBackground(Color.white);
@@ -246,6 +245,9 @@ public class UserUI extends JFrame {
         setLocationRelativeTo(null);
     }
     
+    public void setProfileButtonText(String text) {
+    	profileButton.setText(text);
+    }
    
     // Return for child class
    protected JPanel getPanelBody() {

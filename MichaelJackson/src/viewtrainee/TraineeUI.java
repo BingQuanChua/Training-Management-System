@@ -24,6 +24,7 @@ public class TraineeUI extends UserUI {
     public TraineeUI(String userID) {
     	super(userID);
     	this.userID = userID;
+    	setProfileButtonText("Trainee Profile");
     	initTraineeComponents();
     	initTraineeMenu();
     }

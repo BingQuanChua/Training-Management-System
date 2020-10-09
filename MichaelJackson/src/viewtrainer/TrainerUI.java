@@ -29,6 +29,7 @@ public class TrainerUI extends UserUI {
 	public TrainerUI(String userID) {
 		super(userID);
 		this.userID = userID;
+		setProfileButtonText("Trainer Profile");
 		initTrainerComponents();
 		initTrainerMenu(); //Based on role		
 	}

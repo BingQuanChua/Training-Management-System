@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.ScrollPaneConstants;
 
 import view.IndividualProgress;
+import view.ListPanel;
 
 public class TrainingProgress extends JPanel {
 
@@ -22,8 +23,7 @@ public class TrainingProgress extends JPanel {
 	 * This panel holds all the individual training progresses of a single training.
 	 */
 	
-	private JPanel list;
-	private ArrayList<IndividualProgress> progressList;
+	private ListPanel progressList;
 	private JButton trainingButton;
 	
 	private boolean extend = false;
@@ -39,7 +39,6 @@ public class TrainingProgress extends JPanel {
 		setLayout(null);
 		
 		this.trainingID = trainingID;
-		progressList = new ArrayList<>();
 		
 		trainingButton = new JButton(trainingName);
 		trainingButton.setFont(heading2);
@@ -51,16 +50,15 @@ public class TrainingProgress extends JPanel {
 		trainingButton.setBounds(0, 0, 800, 70);
 		add(trainingButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		progressList = new ListPanel();
+		progressList.setBackground(new Color(230, 230, 250));
+		
+		JScrollPane scrollPane = new JScrollPane(progressList);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setBounds(0, 70, 800, 360);
 		add(scrollPane);
-		
-		list = new JPanel();
-		list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
-		scrollPane.setViewportView(list);
-	
+			
 		trainingButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,9 +108,7 @@ public class TrainingProgress extends JPanel {
 	
 	public void addProgress(String traineeID, String traineeName, int progress) {
 		IndividualProgress p = new IndividualProgress(traineeName, traineeID, progress);
-		progressList.add(p);
-		list.add(p);
-		list.revalidate();
+		progressList.addItem(p);
 	}
 	
 	public String getCourseID() {

@@ -94,6 +94,8 @@ public class AvailableCourseController {
 					
 					// add to enrolled training list
 					enrolledCourseControl.addNewEnrolledTrainingCourse(courseID);
+				
+					JOptionPane.showConfirmDialog (null, "You have enrolled to this training course.","Enroll Successfully",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			

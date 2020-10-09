@@ -33,6 +33,7 @@ public class AdminUI extends UserUI {
 	
 		super(userID);
 		this.userID = userID;
+		setProfileButtonText("Admin Profile");
 		initAdminComponents();
 		initAdminMenu();
 	}

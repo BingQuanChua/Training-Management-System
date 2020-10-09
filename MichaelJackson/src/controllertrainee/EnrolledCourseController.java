@@ -119,6 +119,7 @@ public class EnrolledCourseController {
 					System.out.println("### addMarkAsDone ### " + materialID);
 					addMarkAsDoneListener(i, j);
 				}
+				
 			}
 		} catch (Exception e) {
 			System.out.println("setEnrolledTrainingCourse Fail");

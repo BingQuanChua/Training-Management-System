@@ -51,14 +51,6 @@ public class AllTrainingList extends JPanel {
 		addNewTrainingButton.setFont(new Font("Dialog", Font.PLAIN, 20));
 		addNewTrainingButton.setBounds(0, 0, 800, 70);
 		upperPanel.add(addNewTrainingButton);
-//		addNewTraningButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				removeAll();
-//				add(new AddNewCourse(adminUI));
-//		        repaint();
-//				revalidate();
-//			}	
-//		});
 		
 		trainingList = new ListPanel();
 		
