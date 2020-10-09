@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modeltraining.TrainingCourseSearch;
+import modeltraining.TrainingProgressTrigger;
 import modeltraining.TrainingRegistration;
 import view.ListPanel;
 import viewtrainee.AvailableTraining;
@@ -15,12 +16,13 @@ import viewtrainee.TraineeUI;
 
 public class AvailableCourseController {
 	
-	ArrayList<String> availableCourseList;
-	TrainingCourseSearch courseModel;
-	TraineeUI traineeUI;
+	private ArrayList<String> availableCourseList;
+	private TrainingCourseSearch courseModel;
+	private TraineeUI traineeUI;
 	EnrolledCourseController enrolledCourseControl;
+	private TrainingRegistration trainingRegistrationModel;
+	private TrainingProgressTrigger progressTableTrigger;
 	
-	TrainingRegistration trainingRegistrationModel;
 	
 	public AvailableCourseController(ArrayList<String> availableCourseList,
 								  	TrainingCourseSearch courseModel,
@@ -33,6 +35,7 @@ public class AvailableCourseController {
 		this.enrolledCourseControl = enrolledCourseControl;
 		
 		trainingRegistrationModel = new TrainingRegistration();
+		progressTableTrigger = new TrainingProgressTrigger();
 		
 		setAvailableTrainingCourse();
 		
@@ -77,6 +80,7 @@ public class AvailableCourseController {
 				if (input == 0) {
 					// add to database (training is enrolled)
 					trainingRegistrationModel.addNewEnroll(traineeUI.getTraineeID(), courseID);
+					progressTableTrigger.enrollCourseTrigger(courseID, traineeUI.getTraineeID());
 					
 					// remove from view (enrolled)
 					ListPanel p = traineeUI.getAvailableTrainingList();
