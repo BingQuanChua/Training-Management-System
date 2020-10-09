@@ -15,9 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class LoginView extends JPanel {
 	
 	/**
@@ -82,7 +79,7 @@ public class LoginView extends JPanel {
 		loginButton = new JButton("Login");
 		loginButton.setBounds(415, 450, 120, 45);
 		loginButton.setForeground(Color.WHITE);
-		loginButton.setBackground(Color.black);
+		loginButton.setBackground(Color.BLACK);
 		loginButton.setFont(new Font("Dialog", Font.PLAIN, 25));
 		loginButton.setFocusable(false);
 		panel.add(loginButton);

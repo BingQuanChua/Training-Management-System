@@ -202,7 +202,7 @@ public class UserUI extends JFrame {
         			.addContainerGap())
         		.addGroup(panelHeaderLayout.createSequentialGroup()
         			.addContainerGap(72, Short.MAX_VALUE)
-        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(signOutButton, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
         			.addGap(8))
         );
         panelHeader.setLayout(panelHeaderLayout);

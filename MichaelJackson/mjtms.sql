@@ -1,4 +1,4 @@
-Drop database mjtms;
+DROP DATABASE mjtms;
 CREATE DATABASE mjtms;
 USE mjtms;
 
@@ -149,6 +149,9 @@ INSERT INTO REPORT VALUES ('rpt00004', 'crs00004');
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00001','false');
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00002','false');
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00003','false');
+
+
+
 
 
 
