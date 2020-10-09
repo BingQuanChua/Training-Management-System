@@ -5,6 +5,7 @@ import view.ListPanel;
 import view.MenuItem;
 import view.SubMenu;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -63,6 +64,7 @@ public class TraineeUI extends UserUI {
         });
         
         MenuItem menuTraining = new MenuItem("Training", null, menuMTC, menuTP);
+        menuTraining.setBackground(new Color(250, 240, 230));
         super.addMenu(menuTraining);
         super.home(); //show home menu initially
     }

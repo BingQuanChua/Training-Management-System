@@ -176,7 +176,6 @@ public class Login extends JFrame {
 				if(rs.getString("USER_TYPE").equals("admin")) {
 				
 					choice = 1;
-					System.out.println(choice);
 					dispose();
 				}
 				else if(rs.getString("USER_TYPE").equals( "trainer")) {

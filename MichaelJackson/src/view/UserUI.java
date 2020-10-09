@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
@@ -109,6 +110,8 @@ public class UserUI extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		Login login = new Login();
         		login.setVisible(true);
+        		dispose();
+        		JOptionPane.showConfirmDialog (null, "You have logged out successfully.","Sign Out",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         	}
         });
         signOutButton.setBackground(Color.white);

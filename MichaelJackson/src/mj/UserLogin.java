@@ -1,5 +1,7 @@
 package mj;
 
+import javax.swing.JOptionPane;
+
 import controlleradmin.AdminController;
 import controllertrainee.TraineeController;
 import controllertrainer.TrainerController;
@@ -30,18 +32,21 @@ public class UserLogin {
 				adminModel = new AdminModel(userID);
 				new AdminController(adminUI,adminModel);
 				adminUI.setVisible(true);
+				JOptionPane.showConfirmDialog (null, "Login successfully.","Login",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 2:
 				trainerUI = new TrainerUI(userID);
 				trainerModel = new TrainerModel(userID);
 				new TrainerController(trainerUI, trainerModel);
 				trainerUI.setVisible(true);
+				JOptionPane.showConfirmDialog (null, "Login successfully.","Login",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 3:
 				traineeUI = new TraineeUI(userID);
 				traineeModel = new TraineeModel(userID);
 				new TraineeController(traineeUI, traineeModel);
 				traineeUI.setVisible(true);
+				JOptionPane.showConfirmDialog (null, "Login successfully.","Login",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
 		}
