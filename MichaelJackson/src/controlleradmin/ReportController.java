@@ -46,14 +46,24 @@ public class ReportController {
 		try {		
 			
 			ArrayList <String> enrolledTraineeList = new ArrayList<>();
-			String courseID, courseName, courseDesc;
+			String courseID, courseName, courseDesc, feedbackLink;
 
 			courseID = allCourseList.get(i);
 			courseName = courseSearch.getTrainingCourseDetails(courseID, 2);
 			courseDesc = courseSearch.getTrainingCourseDetails(courseID, 3);
-
+			feedbackLink = courseSearch.getTrainingCourseDetails(courseID, 6);
+			
 			// set all training in report
 			adminUI.addReport(courseID, courseName, courseDesc);
+			
+			// set feedback link (if exist)
+			if(feedbackLink.length() > 1 ) {
+				((ReportTraining)((Report) adminUI
+						.getReportList()
+						.getItem(i))
+							.getReportTraining())
+								.setFeedbackLink(feedbackLink);
+			}
 			
 			// set all trainee progress
 			enrolledTraineeList.clear();

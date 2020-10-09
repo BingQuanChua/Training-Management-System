@@ -90,10 +90,19 @@ public class TrainingProgressTrigger {
 	
 	public void deleteTraineeTrigger(String courseID, String traineeID) {
 
-		String query = ("DELETE FROM PROGRESS "
-					  + "WHERE USER_ID = '" + traineeID + "';" );
-		database.executeUpdate(query);
-
+		String column = "MATERIAL_ID";
+		String query = ("SELECT MATERIAL_ID FROM COURSE_MATERIAL " + 
+						"WHERE COURSE_ID = '" + courseID + "';  " );
+		ArrayList<String> materialList = new ArrayList<>();
+		database.executeMultiRowQuery(query, column, materialList);
+		
+		for(int i = 0; i < materialList.size() ; i++) {
+			
+			query = ("DELETE FROM PROGRESS " + 
+					 "WHERE USER_ID = '" + traineeID + 
+					 "MATERIAL_ID = " + materialList.get(i) + "';" );
+			database.executeUpdate(query);
+		}
 	}
 	
 	

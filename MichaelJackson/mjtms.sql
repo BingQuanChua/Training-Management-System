@@ -191,8 +191,23 @@ CREATE TRIGGER UpdateTrainer
         (SELECT USER.USER_ID FROM USER 
         WHERE USER.USER_ID NOT IN(SELECT TRAINER.USER_ID FROM TRAINER) AND USER.USER_TYPE ='trainer');
         
+<<<<<<< HEAD
 CREATE TRIGGER UpdateMarkAsDone
 	AFTER INSERT
 		ON COURSE_MATERIAL FOR EACH ROW
          INSERT INTO PROGRESS
         
+=======
+        
+        
+        
+        
+##########
+desc progress;
+select * from course_material;
+select * from progress;
+select * from enroll;
+select * from user;
+insert into progress values ('tne00001', 'mtr00003', 'false');
+delete from enroll where user_ID = 'tne00001' AND course_id = 'crs00001';
+>>>>>>> 62b06df5e333368323087fdeacc1904d43bc9960

@@ -29,6 +29,7 @@ public class TrainingCourseSearch {
 	 * 3: COURSE_DESC
 	 * 4: COURSE_DATE
 	 * 5: TRAINER_NAME //courseID used as trainerID
+	 * 6: FEEDBACK_LINK
 	 * 
 	 * @return String
 	 * @throws Exception
@@ -63,7 +64,7 @@ public class TrainingCourseSearch {
 				column = "USER_NAME";
 				break;
 			case 6:
-				query = ("SELECT FEEDBACK_LINK FROM TRAINING_COURSE WHERE COURSE_ID = '"+ courseID +"';"); //the courseID is userID
+				query = ("SELECT FEEDBACK_LINK FROM TRAINING_COURSE WHERE COURSE_ID = '"+ courseID +"';");
 				column = "FEEDBACK_LINK";
 				break;
 			default:

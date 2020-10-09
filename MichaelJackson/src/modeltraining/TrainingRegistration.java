@@ -1,5 +1,7 @@
 package modeltraining;
 
+import java.util.ArrayList;
+
 import model.JDBCexecute;
 
 public class TrainingRegistration {
@@ -50,57 +52,33 @@ public class TrainingRegistration {
 		return false;
 	}
 	
-	/********************************
-	 * Accept request
-	 * 
-	 * @param userID
-	 * @param courseID
-	 *  
-	 * @return boolean
-	 *******************************/
-	public boolean acceptRequest(String userID, String courseID) {
-		
+	public boolean deleteEnroll(String userID, String courseID) {
+	
 		// Query
-		String query = ("UPDATE ENROLL " +
-				"SET TRAINING_STATUS = 'approved' WHERE " +
-				"USER_ID = '" + userID + "' AND " +
-				"COURSE_ID = '" + courseID + "';");
-
+		String query = ("DELETE FROM ENROLL WHERE " +
+				"USER_ID = '" + userID	+ "' AND " +
+				"COURSE_ID = '" + courseID + "';"); 
+	
 		// Execute Query 
 		if(database.executeUpdate(query)) {
-			System.out.println("acceptRequest Success");
+			System.out.println("deleteEnroll Success");
 			return true;
 		} else {
-			System.out.println("acceptRequest Fail");
+			System.out.println("deleteEnroll Fail");
 		}
 		
 		return false;
 	}
 	
-	/********************************
-	 * Reject request
-	 * 
-	 * @param userID
-	 * @param courseID
-	 *  
-	 * @return boolean
-	 *******************************/
-	public boolean rejectRequest(String userID, String courseID) {
-		
-		// Query
-		String query = ("UPDATE ENROLL " +
-				"SET TRAINING_STATUS = 'rejected' WHERE " +
-				"USER_ID = '" + userID + "' AND " +
-				"COURSE_ID = '" + courseID + "';");
+	public void getEnrolledTraineeID(String courseID, ArrayList<String> list) {
 
-		// Execute Query 
-		if(database.executeUpdate(query)) {
-			System.out.println("rejectRequest Success");
-			return true;
-		} else {
-			System.out.println("rejectRequest Fail");
-		}
-		
-		return false;
+		String status = "approved";
+		String column = "USER_ID";
+		String query = ("SELECT USER_ID FROM ENROLL " + 
+				"WHERE COURSE_ID = '" + courseID + "' " +
+				"AND TRAINING_STATUS = '"+ status + "' ;" );
+
+		database.executeMultiRowQuery(query, column, list);
 	}
 }
+	
