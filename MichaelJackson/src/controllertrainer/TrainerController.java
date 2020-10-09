@@ -134,17 +134,6 @@ public class TrainerController {
 			});
 			trainingCourseMaterialController.showMaterial(courseID, trainingMaterialDetails.getTrainingMaterialList());
 			
-			TrainingRequestList requestList = new TrainingRequestList(courseID);
-			training.getRequestButton().addActionListener(new ActionListener() {
-				@Override 
-				public void actionPerformed(ActionEvent e) {
-					trainerUI.getPanelBody().removeAll();
-					trainerUI.getPanelBody().add(new SubMenu("Manage Training Course", requestList));
-					trainerUI.getPanelBody().repaint();
-					trainerUI.getPanelBody().revalidate();
-				}
-			});
-			
 			// loop, get from database table enroll where 
 			// requestList.getRequestList().addItem(item);
 			

@@ -117,7 +117,7 @@ public class TrainingCourseController {
 			int id = Integer.parseInt(lastID.substring(3, 8))+1;
 			String newID = String.format("crs%05d", id);
 			
-			return lastID;
+			return newID;
 			
 		} catch (Exception e) {
 			System.out.println("setLatestTrainingCourseID failed");

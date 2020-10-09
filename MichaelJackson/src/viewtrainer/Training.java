@@ -27,12 +27,11 @@ public class Training extends JPanel {
 	private JButton trainingButton;
 	private JTextArea textArea;
 	private JButton feedbackButton;
-	private JButton requestButton;
 	private JButton traineeListButton;
 	private JButton updateButton;
 	
 	private boolean extend = false;
-	private int extendedHeight = 430;
+	private int extendedHeight = 375;
 	private int retractedHeight = 70;
 	
 	private String feedbackFormLink = "";
@@ -44,7 +43,7 @@ public class Training extends JPanel {
 	public Training(String trainingName, String courseID) {
 		this.courseID = courseID;
 		
-		setPreferredSize(new Dimension(800, retractedHeight));
+		setPreferredSize(new Dimension(800, 70));
 		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
 	
@@ -69,22 +68,20 @@ public class Training extends JPanel {
 		
 		feedbackButton = new JButton("Feedback");
 		feedbackButton.setFont(heading3);
-		feedbackButton.setBounds(50, 370, 700, 50);
+		feedbackButton.setBounds(50, 315, 700, 50);
+		// feedbackButton.setBackground(new Color(205,133,63));
 		add(feedbackButton);
 		
 		updateButton = new JButton("Update Material");
 		updateButton.setFont(heading3);
 		updateButton.setBounds(50, 205, 700, 50);
+		// updateButton.setBackground(new Color(205,133,63));
 		add(updateButton);
-		
-		requestButton = new JButton("Training Requests");
-		requestButton.setFont(heading3);
-		requestButton.setBounds(50, 260, 700, 50);
-		add(requestButton);
 		
 		traineeListButton = new JButton("List of Trainees");
 		traineeListButton.setFont(heading3);
-		traineeListButton.setBounds(50, 315, 700, 50);
+		traineeListButton.setBounds(50, 260, 700, 50);
+		// traineeListButton.setBackground(new Color(205,133,63));
 		add(traineeListButton);
 		
 		trainingButton.addMouseListener(new MouseAdapter() {
@@ -157,10 +154,6 @@ public class Training extends JPanel {
     
     public JButton getUpdateButton() {
 		return updateButton;
-	}
-    
-	public JButton getRequestButton() {
-		return requestButton;
 	}
 	
 	public JButton getTraineeListButton() {
