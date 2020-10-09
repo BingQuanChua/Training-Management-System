@@ -36,12 +36,13 @@ public class UserManagementController {
 		if (response == 0) {
 			
 			if(validateEmpty() && validateCheckBox() ) {
-				
+				if (validatePassword(userPass)) {
 				if(adminUI.getAddNewUser().getTrainerBox().isSelected() == true) {
 					
 					trainerChar = userID.substring(0,3);
 					
-					if(validateTrainer(trainerChar) && validateID(userID)) {	
+					if(validateTrainer(trainerChar) && validateID(userID)) {
+					
 						userType = "trainer";
 						boolean success = adminModel.addNewUser(userID, userPass, userType);
 						
@@ -104,9 +105,14 @@ public class UserManagementController {
 						}
 					
 					}
+					
 					else {
 						JOptionPane.showConfirmDialog (null, "Error! Wrong format of user ID for trainee. Example of correct format: tne00001","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
+				}
+				}
+				else {
+					JOptionPane.showConfirmDialog (null, "Error! Wrong password format. The password should consists of a minimum length of 10 with at least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			else {
@@ -157,5 +163,75 @@ public class UserManagementController {
 			}
 		}
 		return true;
+	}
+	
+	public static boolean validatePassword(String password) {
+		
+		boolean containsLowerCase = false;
+		boolean containsUpperCase = false;
+		boolean containsNumber = false;
+		boolean containsSymbol = false;
+
+		String symbol = "!@#$%^&*()_+{}|:<>?-=[];,./~`";
+
+		if(password.length() < 10) {
+			System.out.println("Password must be at least 10 characters");
+			return false; // invalid
+		}
+		for(int i = 0; i < password.length(); i++) {
+			boolean flag = true; // contains illegal characters
+
+			if(Character.isDigit(password.charAt(i))) {
+				containsNumber = true;
+				flag = false;
+			}
+			else {
+				if(Character.isLowerCase(password.charAt(i))) {
+					containsLowerCase = true;
+					flag = false;
+				}
+				else {
+					if(Character.isUpperCase(password.charAt(i))) {
+						containsUpperCase = true;
+						flag = false;
+					}
+					else {
+						for(int j = 0; j < symbol.length(); j++) {
+							if(password.charAt(i) == symbol.charAt(j)) {
+								containsSymbol = true;
+								flag = false;
+							}
+						}
+					}
+				}
+			}
+
+			if(flag) {
+				System.out.println("<!> Password contains illegal characters");
+				return false; // invalid
+			}
+		}
+
+		if(!containsLowerCase) {
+			System.out.println("Password must contain at least one lowercase");
+		}
+		if(!containsUpperCase) {
+			System.out.println("Password must contain at least one uppercase");
+		}
+		if(!containsNumber) {
+			System.out.println("Password must contain at least one number");
+		}
+		if(!containsSymbol) {
+			System.out.println("Password must contain at least one symbol");
+		}
+
+		if(containsLowerCase && containsUpperCase && containsNumber && containsSymbol) {
+			// valid password
+			System.out.println("Password is strong ^^");
+			return true;
+		}
+		else {
+			return false; // invalid
+		}
 	}
 }

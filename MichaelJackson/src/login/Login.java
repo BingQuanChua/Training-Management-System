@@ -69,15 +69,15 @@ public class Login extends JFrame {
 			System.out.println("USER LOGIN: Fail to Connect Database\n");
 		}
 		
-		getContentPane().setBackground(new Color(255, 255, 200));
+		getContentPane().setBackground(new Color(233, 150, 122));
 		getContentPane().setForeground(new Color(238, 130, 238));
 		
 		passwordField = new JPasswordField("passwordField");
 		getContentPane().setLayout(null);
 	
 		panel = new JPanel();
-		panel.setBackground(new Color(233, 150, 122));
-		panel.setLocation(386, 263);
+		panel.setBackground(new Color(255, 218, 185));
+		panel.setLocation(327, 263);
 		panel.setSize(609, 337);
 		panel.setBorder(new TitledBorder("Login"));
 		panel.setLayout(null);
@@ -120,9 +120,9 @@ public class Login extends JFrame {
 		loginButton.addActionListener(loginListener); 
 		
 		iconPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		iconPanel.setLocation(386, 135);
+		iconPanel.setLocation(327, 135);
 		iconPanel.setSize(609, 130);
-		iconPanel.setBackground(new Color(149, 7, 6));
+		iconPanel.setBackground(new Color(233, 150, 122));
 		
 		
 		try {

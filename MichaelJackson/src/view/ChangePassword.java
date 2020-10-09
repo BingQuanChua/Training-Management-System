@@ -169,13 +169,13 @@ public class ChangePassword extends JPanel{
 					String newPassword = txtNewPass.getText();
 					String confirmPassword = txtConfirmPass.getText();
 					if(validateEmpty()) {
+					if(validatePassword(newPassword)) {
 					if(newPassword.equals(confirmPassword))
 					{
 						dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to save the changes?","WARNING",JOptionPane.YES_NO_OPTION);
 		    			
 						if(dialogButton_1 == JOptionPane.YES_OPTION) {
 		    				
-		    		
 		    				try {
 		    					con = DriverManager.getConnection(url, serverName, serverPassword);
 		    					Statement st = con.createStatement();
@@ -206,6 +206,10 @@ public class ChangePassword extends JPanel{
 //					System.out.println(Login.global_Email_var);
 					else {
 						JOptionPane.showMessageDialog(null, "Password Does not match !!!");
+					}
+					}
+					else {
+						JOptionPane.showConfirmDialog (null, "Error! Wrong password format. The password should consists of a minimum length of 10 with at least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 					}
 					else {
@@ -255,17 +259,76 @@ public class ChangePassword extends JPanel{
 			}
 		}
 		
-	
-		
-		
-//		public void updatePassword(String Password) {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/training_management_system","root","");
-//			Statement state =connection.createStatement();
-//			String query = "select * from login_data where user_email = '"+username+"' and user_password = '"+pass+"'";
-//			ResultSet result = state.executeQuery(query);
-//			if(result.next())
-//		}
+		public static boolean validatePassword(String password) {
+			
+			boolean containsLowerCase = false;
+			boolean containsUpperCase = false;
+			boolean containsNumber = false;
+			boolean containsSymbol = false;
+
+			String symbol = "!@#$%^&*()_+{}|:<>?-=[];,./~`";
+
+			if(password.length() < 10) {
+				System.out.println("Password must be at least 10 characters");
+				return false; // invalid
+			}
+			for(int i = 0; i < password.length(); i++) {
+				boolean flag = true; // contains illegal characters
+
+				if(Character.isDigit(password.charAt(i))) {
+					containsNumber = true;
+					flag = false;
+				}
+				else {
+					if(Character.isLowerCase(password.charAt(i))) {
+						containsLowerCase = true;
+						flag = false;
+					}
+					else {
+						if(Character.isUpperCase(password.charAt(i))) {
+							containsUpperCase = true;
+							flag = false;
+						}
+						else {
+							for(int j = 0; j < symbol.length(); j++) {
+								if(password.charAt(i) == symbol.charAt(j)) {
+									containsSymbol = true;
+									flag = false;
+								}
+							}
+						}
+					}
+				}
+
+				if(flag) {
+					System.out.println("<!> Password contains illegal characters");
+					return false; // invalid
+				}
+			}
+
+			if(!containsLowerCase) {
+				System.out.println("Password must contain at least one lowercase");
+			}
+			if(!containsUpperCase) {
+				System.out.println("Password must contain at least one uppercase");
+			}
+			if(!containsNumber) {
+				System.out.println("Password must contain at least one number");
+			}
+			if(!containsSymbol) {
+				System.out.println("Password must contain at least one symbol");
+			}
+
+			if(containsLowerCase && containsUpperCase && containsNumber && containsSymbol) {
+				// valid password
+				System.out.println("Password is strong ^^");
+				return true;
+			}
+			else {
+				return false; // invalid
+			}
+
+		}
 
 }
 
