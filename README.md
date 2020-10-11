@@ -18,7 +18,7 @@ Click "Finish"
 
 ## Setting up MySQL database connection
 
-<u>Step 1:</u> Create a database in your local machine
+<ins>Step 1:</ins> Create a database in your local machine
 
 Go to tms\MichaelJackson
 
@@ -30,7 +30,7 @@ Highlight all the syntax and click the "⚡" icon, executing all the queries (an
 
 
 
-<u>Step 2:</u> Making a connection to the database
+<ins>Step 2:</ins> Making a connection to the database
 
 Notice that there is a text file "JDBCinfo.txt" in the model package
 
@@ -42,10 +42,9 @@ Change the serverPassword field to your password
 
 ## Running the Program
 
+To run the program, simply run Main.java (click the green play button on top)
 
-To run the program, simply run Main.java
-
-#note : dummy user accounts (from database)
+You may log in the system with the accounts below: (dummy data from creation)
 
 | Type of User | User_ID  | Password      |
 | ------------ | -------- | ------------- |
@@ -57,22 +56,30 @@ To run the program, simply run Main.java
 
 ## Screenshots
 
-![ss1](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss1-Login.PNG?raw=true)
+![ss1](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss1-Login.png?raw=true)
 
-![ss2](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss2-AdminUI.PNG?raw=true)
+![ss2](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss2-AdminUI.png?raw=true)
 
-![ss3](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss3-AddNewUser.PNG?raw=true)
+![ss3](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss3-AddNewUser.png?raw=true)
 
-![ss4](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss4-ManageTrainingCourse.PNG?raw=true)
+![ss4](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss4-ManageTrainingCourse.png?raw=true)
 
-![ss5](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss5-AddNewTrainingCourse.PNG?raw=true)
+![ss5](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss5-AddNewTrainingCourse.png?raw=true)
 
-![ss6](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss6-TrainerManageTrainingCourse.PNG?raw=true)
+![ss6](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss6-TrainerManageTrainingCourse.png?raw=true)
 
-![ss7](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss7-ManageTrainingMaterial.PNG?raw=true)
+![ss7](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss7-ManageTrainingMaterial.png?raw=true)
 
-![ss8](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss8-AvailableTrainingList.PNG?raw=true)
+![ss8](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss8-AvailableTrainingList.png?raw=true)
 
-![ss9](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss9-AvailableTrainingList.PNG?raw=true)
+![ss9](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss9-AvailableTrainingList.png?raw=true)
 
-![ss10](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss10-TrainingProgress.PNG?raw=true)
+![ss10](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss10-TrainingProgress.png?raw=true)
+
+## Future Extension or Improvement
+
+- Binary files for training course material
+
+- Upgrade progress feedback 
+
+- Platform independent update
