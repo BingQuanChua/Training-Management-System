@@ -57,4 +57,22 @@ To run the program, simply run Main.java
 
 ## Screenshots
 
-~
+![ss1](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss1-Login.PNG?raw=true)
+
+![ss2](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss2-AdminUI.PNG?raw=true)
+
+![ss3](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss3-AddNewUser.PNG?raw=true)
+
+![ss4](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss4-ManageTrainingCourse.PNG?raw=true)
+
+![ss5](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss5-AddNewTrainingCourse.PNG?raw=true)
+
+![ss6](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss6-TrainerManageTrainingCourse.PNG?raw=true)
+
+![ss7](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss7-ManageTrainingMaterial.PNG?raw=true)
+
+![ss8](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss8-AvailableTrainingList.PNG?raw=true)
+
+![ss9](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss9-AvailableTrainingList.PNG?raw=true)
+
+![ss10](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/ss10-TrainingProgress.PNG?raw=true)
