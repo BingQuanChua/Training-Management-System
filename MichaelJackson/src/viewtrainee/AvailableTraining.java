@@ -1,7 +1,6 @@
 package viewtrainee;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
@@ -30,18 +29,12 @@ public class AvailableTraining extends JPanel {
 	private int extendedHeight = 275;
 	private int retractedHeight = 70;
 	
-	private String courseID;
-	private String trainerID;
-	
 	Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	Font heading3 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 	
 	public AvailableTraining(
 			String courseID, String courseName, String courseDesc, 
 			String trainerID, String trainerName) {
-		
-		this.courseID = courseID;
-		this.courseID = courseID;
 		
 		setPreferredSize(new Dimension(800, retractedHeight));
 		setBackground(UIManager.getColor("Button.background"));

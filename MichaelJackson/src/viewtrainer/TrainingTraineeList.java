@@ -12,7 +12,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import view.ListPanel;
-import viewadmin.ManageUser;
 
 public class TrainingTraineeList extends JPanel {
 

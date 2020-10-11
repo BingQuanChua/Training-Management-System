@@ -10,22 +10,18 @@ import javax.swing.JSeparator;
 
 public class MenuItem extends JPanel{
 	
-    private JSeparator jSeparator1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private JSeparator jSeparator1;
     private JLabel lbName;
     private final ArrayList<MenuItem> subMenu = new ArrayList<>();
     private ActionListener act;
+    private boolean showing = false;
       
-	//To determine the subMenu is currently visible or not
-    public void setShowing(boolean showing) {
-	    this.showing = showing;
-	}
-
-    // <MenuItem> Arraylist getter
-    public ArrayList<MenuItem> getSubMenu() {
-        return subMenu;
-    }
-
-    // Parameterized Constructor, need icon/menuName/actionListenr 
+	// Parameterized Constructor, need icon/menuName/actionListenr 
     public MenuItem(String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
         lbName.setText(menuName);
@@ -81,10 +77,16 @@ public class MenuItem extends JPanel{
         );
     }
     
-    
-    
+  //To determine the subMenu is currently visible or not
+    public void setShowing(boolean showing) {
+	    this.showing = showing;
+	}
 
-    private boolean showing = false;
+    // <MenuItem> Arraylist getter
+    public ArrayList<MenuItem> getSubMenu() {
+        return subMenu;
+    }    
+    
     private void formMousePressed(java.awt.event.MouseEvent evt) {
         if (showing) {
             hideMenu();

@@ -4,7 +4,6 @@ import view.MenuItem;
 import view.SubMenu;
 import view.ListPanel;
 import view.UserUI;
-import mj.UserProfileController;
 
 import java.awt.Color;  
 import java.awt.event.ActionEvent;
@@ -141,6 +140,10 @@ public class AdminUI extends UserUI {
 		
 		return reportList;
 	}
+	
+	public String getAdminID() {
+ 		return userID;
+ 	}
 	
 	public void addReport(String courseID, String courseName, String courseDesc) {
 		

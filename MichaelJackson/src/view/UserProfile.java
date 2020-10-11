@@ -3,49 +3,32 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import viewadmin.AdminUI;
 
 public class UserProfile extends JPanel {
 	
-	private JPanel panel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
-	private JLabel lblPersonalInfo;
-	private JButton editButton;
-	private JButton cancelButton;
+	/**
+	 * User profile panel
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField txtName;
 	private JTextField txtGender;
 	private JTextField txtPosition;
 	private JTextField txtContact;
 	private JTextField txtEmail;
 	private JTextArea txtDesc;
-	private JSeparator separator_1;
-	private JSeparator separator_2;
-	private JSeparator separator_3;
-	private JSeparator separator_4;
-	private JSeparator separator_5;
-	private JSeparator separator_6;
-	private JSeparator separator_7;
-	private JScrollPane scrollPane;
+	private JButton editButton;
+	// private JButton cancelButton;
 	
 	/**
 	 * Create the panel.
@@ -57,7 +40,7 @@ public class UserProfile extends JPanel {
 		setPreferredSize(new Dimension(1000,1000));
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	
-		panel = new JPanel();
+		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
 		panel.setBackground(Color.WHITE);
 		panel.setPreferredSize(new Dimension(1000, 1000));
@@ -66,32 +49,32 @@ public class UserProfile extends JPanel {
 		
 		
 		//Header
-		lblNewLabel_1 = new JLabel("Name");
+		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_1.setBounds(200, 100, 300, 28);
 		panel.add(lblNewLabel_1);
 		
-		lblNewLabel_2 = new JLabel("Gender");
+		JLabel lblNewLabel_2 = new JLabel("Gender");
 		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_2.setBounds(200, 200, 300, 28);
 		panel.add(lblNewLabel_2);
 		
-		lblNewLabel_3 = new JLabel("Position");
+		JLabel lblNewLabel_3 = new JLabel("Position");
 		lblNewLabel_3.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_3.setBounds(200, 300, 300, 28);
 		panel.add(lblNewLabel_3);
 		
-		lblNewLabel_4 = new JLabel("Contact Number");
+		JLabel lblNewLabel_4 = new JLabel("Contact Number");
 		lblNewLabel_4.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_4.setBounds(200, 400, 300, 28);
 		panel.add(lblNewLabel_4);
 		
-		lblNewLabel_5 = new JLabel("Email");
+		JLabel lblNewLabel_5 = new JLabel("Email");
 		lblNewLabel_5.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_5.setBounds(200, 500, 300, 28);
 		panel.add(lblNewLabel_5);
 		
-		lblNewLabel_6 = new JLabel("About me");
+		JLabel lblNewLabel_6 = new JLabel("About me");
 		lblNewLabel_6.setFont(new Font("Serif", Font.BOLD, 30));
 		lblNewLabel_6.setBounds(200, 600, 300, 28);
 		panel.add(lblNewLabel_6);
@@ -145,42 +128,42 @@ public class UserProfile extends JPanel {
 		txtDesc.setEditable(false);
 		txtDesc.setLineWrap(true);	
 		txtDesc.setBorder(null);
-		scrollPane = new JScrollPane(txtDesc);
+		JScrollPane scrollPane = new JScrollPane(txtDesc);
 		scrollPane.setBounds(200, 650, 500, 130);
 		panel.add(scrollPane);
 		
 		///Separator
-		separator_1 = new JSeparator();
+		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(200, 180, 500, 5);
 		panel.add(separator_1);
 				
-		separator_2 = new JSeparator();
+		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(200, 280, 500, 5);
 		panel.add(separator_2);
 		
-		separator_3 = new JSeparator();
+		JSeparator separator_3 = new JSeparator();
 		separator_3.setBounds(200, 380, 500, 5);
 		panel.add(separator_3);
 		
-		separator_4 = new JSeparator();
+		JSeparator separator_4 = new JSeparator();
 		separator_4.setBounds(200, 480, 500, 5);
 		panel.add(separator_4);
 		
-		separator_5 = new JSeparator();
+		JSeparator separator_5 = new JSeparator();
 		separator_5.setBounds(200, 580, 500, 5);
 		panel.add(separator_5);
 		
-		separator_6 = new JSeparator();
+		JSeparator separator_6 = new JSeparator();
 		separator_6.setBounds(200, 796, 500, 5);
 		panel.add(separator_6);
 		
-		lblPersonalInfo = new JLabel("Personal Info");
+		JLabel lblPersonalInfo = new JLabel("Personal Info");
 		lblPersonalInfo.setForeground(Color.BLACK);
 		lblPersonalInfo.setFont(new Font("Serif", Font.PLAIN, 40));
 		lblPersonalInfo.setBounds(15, 0, 221, 52);
 		panel.add(lblPersonalInfo);
 		
-	    separator_7 = new JSeparator();
+		JSeparator separator_7 = new JSeparator();
 		separator_7.setForeground(Color.GRAY);
 		separator_7.setBackground(Color.GRAY);
 		separator_7.setBounds(0, 60, 1000, 2);
@@ -205,10 +188,6 @@ public class UserProfile extends JPanel {
 		
 	;}
 
-	public JButton getEditButton() {
-		return editButton;
-	}
-	
 	public JTextField getTxtName() {
 		return txtName;
 	}
@@ -231,5 +210,9 @@ public class UserProfile extends JPanel {
 	
 	public JTextArea getTxtDesc() {
 		return txtDesc;
+	}
+	
+	public JButton getEditButton() {
+		return editButton;
 	}
 }

@@ -4,12 +4,13 @@ import javax.swing.*;
 import view.IndividualProgress;
 
 import java.awt.*;
-import java.awt.event.*;
 
 public class ReportTraining extends JPanel{
 	/**
 	 * Report of one training
 	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel list = new JPanel();
 	private JTextArea txtFeedback;
 	

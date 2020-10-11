@@ -104,7 +104,6 @@ public class User {
 	protected boolean setUserProfile(String content, String userID, int choice) throws Exception {
 
 		String query = "";
-		boolean valid = false;
 		
 		// Query
 		switch(choice) 
@@ -154,22 +153,18 @@ public class User {
 	 ****************************************/
 	protected boolean setUserPassword(String userID, String newPass) {
 		
-		if(validatePassword(newPass)) {
-		
-			// Query
-			String query = ("UPDATE USER SET USER_PASS = '" + newPass + "' WHERE USER_ID = '"+ userID +"';");
+		// Query
+		String query = ("UPDATE USER SET USER_PASS = '" + newPass + "' WHERE USER_ID = '"+ userID +"';");
 
-			// Execute Query 
-			if(database.executeUpdate(query)) {			
-				System.out.println("setUserPassword Success");
-				return true;
-			} else {
-				System.out.println("setUserPassword Fail");
-			}
-		
+		// Execute Query 
+		if(database.executeUpdate(query)) {			
+			System.out.println("setUserPassword Success");
+			return true;
 		} else {
 			System.out.println("setUserPassword Fail");
 		}
+		
+		
 		
 		return false;
 	}
@@ -200,35 +195,5 @@ public class User {
 		
 		return "Fail To Obtain Result";
 	}
-	
-	
-	/***********************
-	 * Setter verification 
-	 **********************/
-	private boolean validateContent(String content) {
-		
-		if(content.length() > 1) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	private boolean validateGender(String gender) {
-		
-		if(gender == "m" || gender == "f") {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	private boolean validatePassword(String password) {
-		
-		if(password.length() > 8) {
-			return true;
-		}
-		
-		return false;
-	}
+
 }

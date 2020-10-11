@@ -3,11 +3,8 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
-import java.awt.event.ActionListener;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class IndividualProgress extends JPanel {
@@ -15,6 +12,8 @@ public class IndividualProgress extends JPanel {
 	/**
 	 * This panel holds a progress bar for an individual trainee in a single training
 	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JButtonID nameButton;
 	private JProgressBar progressBar;
 	private String traineeName;

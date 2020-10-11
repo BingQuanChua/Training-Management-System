@@ -10,11 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
@@ -34,7 +31,6 @@ public class EnrolledTrainingDetails extends JPanel {
 	private JButtonID trainerProfileButton;
 	private JButton feedbackButton;
 	private String feedbackLink = "";
-	private String courseName;
 	private String courseID;
 	
 	Font heading1 = new Font(Font.SANS_SERIF, Font.BOLD, 24);
@@ -47,7 +43,6 @@ public class EnrolledTrainingDetails extends JPanel {
 			String trainerID, String trainerName,
 			String traineeID, String traineeName) {
 		
-		this.courseName = courseName;
 		this.courseID = courseID;
 		
 		setBackground(new Color(255, 255, 200));

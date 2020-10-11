@@ -7,13 +7,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import modeltraining.ManageTrainingCourse;
 import modeltraining.ManageTrainingCourseMaterial;
-import modeltraining.TrainingCourseSearch;
 import modeltraining.TrainingProgressTrigger;
+
 import view.ListPanel;
-import viewadmin.ManageTraining;
-import viewtrainer.Training;
+
 import viewtrainer.TrainingMaterial;
 
 public class TrainingCourseMaterialController {

@@ -4,13 +4,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import view.JButtonID;
-import view.SubMenu;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class EnrolledTraining extends JPanel {
 
@@ -18,7 +15,6 @@ public class EnrolledTraining extends JPanel {
 	
 	private JButtonID enrolledTrainingButton;
 	private EnrolledTrainingDetails trainingDetails;
-	private String courseName;
 	private String courseID;
 	private Font heading2 = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 	
@@ -27,7 +23,6 @@ public class EnrolledTraining extends JPanel {
 			String trainerID, String trainerName, 
 			String traineeID, String traineeName) {
 		
-		this.courseName = courseName;
 		this.courseID = courseID;
 		
 		setPreferredSize(new Dimension(800, 70));

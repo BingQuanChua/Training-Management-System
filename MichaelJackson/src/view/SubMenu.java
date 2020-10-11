@@ -13,6 +13,7 @@ public class SubMenu extends JPanel {
 	/**
 	 * Right panel.
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JLabel titleLabel;
 	

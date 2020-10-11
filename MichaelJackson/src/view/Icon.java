@@ -5,11 +5,8 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
-import java.net.URL;
-
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -21,6 +18,8 @@ public class Icon extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	private static final long serialVersionUID = 1L;
+	
 	public Icon() {
 		setLayout(new BorderLayout());
 		setBackground(new Color(255, 255, 200));

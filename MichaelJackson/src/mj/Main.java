@@ -1,19 +1,10 @@
 package mj;
 
 import login.Login;  
-import view.UserUI;
+
 import viewadmin.AdminUI;
 import viewtrainee.TraineeUI;
 import viewtrainer.TrainerUI;
-import modeluser.AdminModel;
-import modeluser.TrainerModel;
-import modeluser.TraineeModel;
-import controllertrainee.TraineeController;
-import controllertrainer.TrainerController;
-
-import java.util.Scanner;
-
-import controlleradmin.AdminController;
 
 public class Main {
 	

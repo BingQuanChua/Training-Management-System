@@ -11,7 +11,6 @@ import modeltraining.TrainingRegistration;
 import modeluser.TraineeModel;
 import view.ListPanel;
 import viewadmin.ManageUser;
-import viewtrainer.TrainingMaterial;
 import viewtrainer.TrainingTraineeList;
 
 public class EnrolledTraineeController {

@@ -1,19 +1,12 @@
 package view;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.util.ArrayList;
 
-import viewadmin.ManageTraining;
 import viewadmin.ManageUser;
-import viewtrainee.AvailableTraining;
-import viewtrainer.TrainingMaterial;
-import viewtrainer.TrainingRequest;
 
 public class ListPanel extends JPanel {
 
@@ -38,7 +31,6 @@ public class ListPanel extends JPanel {
 		
 		if (item instanceof ManageUser) {
 			((ManageUser) item).getNumberLabel().setText(listOfPanel.size()+".");
-			
 		}
 		
 		container.repaint();
@@ -50,11 +42,11 @@ public class ListPanel extends JPanel {
 		return listOfPanel.get(i);
 	}	
 	
-	public ArrayList<JPanel> getListOfPanel() {
-		return listOfPanel;
-	}
-	
 	public JPanel getContainerPanel() {
 		return container;
+	}
+	
+	public ArrayList<JPanel> getListOfPanel() {
+		return listOfPanel;
 	}
 }

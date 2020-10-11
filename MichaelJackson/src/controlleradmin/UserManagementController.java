@@ -1,13 +1,12 @@
 package controlleradmin;
-import viewadmin.AddNewCourse;
+
 import viewadmin.AdminUI;
 import viewadmin.ManageUser;
-import viewadmin.AllTraineeList;
-import viewadmin.AllTrainerList;
+
 import modeluser.AdminModel;
+
 import view.ListPanel;
 
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 

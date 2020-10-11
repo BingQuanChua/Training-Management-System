@@ -92,5 +92,8 @@ public class TrainerUI extends UserUI {
 	public void addTrainingProgress(String courseID, String courseName) {
 		trainingProgressList.addItem(new TrainingProgress(courseID, courseName));
 	}
-
+	
+	public String getTrainerID() {
+ 		return userID;
+ 	}
 }

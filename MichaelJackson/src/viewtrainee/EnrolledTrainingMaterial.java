@@ -2,11 +2,8 @@ package viewtrainee;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -19,6 +16,7 @@ public class EnrolledTrainingMaterial extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JTextField titleField;
 	private JTextArea txtrDescription;

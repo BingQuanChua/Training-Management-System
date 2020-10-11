@@ -8,13 +8,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.ListPanel;
-import view.SubMenu;
 import view.UserProfile;
 import viewadmin.AddNewCourse;
 import viewadmin.AdminUI;
-import viewadmin.AllTrainingList;
 import viewadmin.EditCourse;
-import viewadmin.ReportTraining;
 import viewadmin.ManageTraining;
 import viewadmin.Report;
 import viewadmin.ManageUser;
@@ -28,10 +25,7 @@ public class AdminController {
 	private EditCourse editCourse; 
 	private TrainingCourseController trainingCourseController;
 	private UserManagementController userManagementController;
-	private UserProfileController userProfileController;
-	private ReportController reportController;
 	private boolean isTextAreaEditable = false;
-	private String trainerID,trainerName;
 	private UserProfile userProfile;
 
 	
@@ -158,7 +152,7 @@ public class AdminController {
 	
 	
 	private void setReport(AdminUI adminUI, AdminModel adminModel) {
-		reportController = new ReportController(adminUI, adminModel);
+		new ReportController(adminUI, adminModel);
 	}
 	
 	private void setReportListener() {
@@ -389,19 +383,19 @@ public class AdminController {
 		});
 	}
 
-	public void addDeleteTrainerListener(ManageUser manageUser) {
-		manageUser.getDeleteButton().addActionListener(new ActionListener() {
+	public void addDeleteTrainerListener(ManageUser mu) {
+		mu.getDeleteButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this trainer?", "Delete Trainer", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
 				// 0 = yes, 1 = no, 2 = cancel
 				if (input == 0) {
 					// Delete from database
-					adminModel.deleteExistingUser(manageUser.getUserID());
+					adminModel.deleteExistingUser(mu.getUserID());
 					
 					// Wipe from view
 					ListPanel trainerPanel = adminUI.getAllTrainerList().getTrainerList();
-					trainerPanel.getListOfPanel().remove(manageUser);
+					trainerPanel.getListOfPanel().remove(mu);
 					trainerPanel.getContainerPanel().removeAll();
 					for (int i = 0; i < trainerPanel.getListOfPanel().size(); i++) {
 						ManageUser temp = (ManageUser) trainerPanel.getListOfPanel().get(i);
@@ -416,19 +410,19 @@ public class AdminController {
 		});
 	}
 	
-	public void addDeleteTraineeListener(ManageUser manageUser) {
-		manageUser.getDeleteButton().addActionListener(new ActionListener() {
+	public void addDeleteTraineeListener(ManageUser mu) {
+		mu.getDeleteButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int input = JOptionPane.showConfirmDialog(null, "Are you sure to delete this trainee?", "Delete Trainee", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
 				// 0 = yes, 1 = no, 2 = cancel
 				if (input == 0) {
 					// Delete from database
-					adminModel.deleteExistingUser(manageUser.getUserID());
+					adminModel.deleteExistingUser(mu.getUserID());
 					
 					// Wipe from view
 					ListPanel traineePanel = adminUI.getAllTraineeList().getTraineeList();
-					traineePanel.getListOfPanel().remove(manageUser);
+					traineePanel.getListOfPanel().remove(mu);
 					traineePanel.getContainerPanel().removeAll();
 					for (int i = 0; i < traineePanel.getListOfPanel().size(); i++) {
 						ManageUser temp = (ManageUser) traineePanel.getListOfPanel().get(i);
@@ -442,8 +436,8 @@ public class AdminController {
 			}
 		});
 	}
-	public void addProfileListener(ManageUser manageUser) {
-		manageUser.getProfileButton().addActionListener(new ActionListener() {
+	public void addProfileListener(ManageUser mu) {
+		mu.getProfileButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -455,7 +449,7 @@ public class AdminController {
 			
 				try {
 					userProfile.getEditButton().setVisible(false);	
-					userProfileController = new UserProfileController(userProfile, manageUser.getUserID());
+					new UserProfileController(userProfile, mu.getUserID());
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

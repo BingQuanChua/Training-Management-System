@@ -41,8 +41,6 @@ public class AddNewUser extends JPanel {
 
         JLabel lblUserID = new JLabel("UserID");
         JLabel lblPassword = new JLabel("Password\r\n");
-        JPanel NavPanel = new JPanel();
-        Font heading1 = new Font(Font.SERIF, Font.PLAIN, 40);
         Font f1 = new Font(Font.SERIF, Font.PLAIN, 20);
        
         //Add New User panel //        
@@ -74,18 +72,6 @@ public class AddNewUser extends JPanel {
         //TextField// 
         userIDField.setText("[Auto-generate] Please select user type");
         userIDField.setEditable(false);
-//        userIDField.addFocusListener(new FocusAdapter() {
-//        	@Override
-//        	public void focusGained(FocusEvent e) {
-//        		if(userIDField.getText().trim().equals("Enter userID")) 
-//        	         userIDField.setText("");
-//        	}
-//        	@Override
-//        	public void focusLost(FocusEvent e) {
-//        		 if(userIDField.getText().trim().equals("")) 
-//        	           userIDField.setText("Enter userID");
-//        	}
-//        }); 
         userIDField.setBounds(227, 229, 600, 80);
         userIDField.setForeground(Color.GRAY);
         userIDField.setFont(f1);

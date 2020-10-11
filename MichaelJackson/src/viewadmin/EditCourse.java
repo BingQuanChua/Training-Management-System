@@ -23,8 +23,6 @@ public class EditCourse extends JPanel{
     public EditCourse() {
         
         JPanel frontPanel =  new JPanel();
-        JPanel NavPanel = new JPanel();    
-        
         //Front Panel//
         frontPanel.setForeground(SystemColor.desktop);
         frontPanel.setBounds(384, 120, 1071, 834);

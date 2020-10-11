@@ -13,8 +13,8 @@ public class TraineeController {
 	private TrainingCourseSearch courseModel;
 	
 	private String traineeID;
-	private ArrayList <String> enrolledCourseList;
 	private ArrayList <String> availableCourseList;
+	private ArrayList <String> enrolledCourseList;
 	
 	private AvailableCourseController availableCourseControl;
 	private EnrolledCourseController enrolledCourseControl;

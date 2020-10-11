@@ -10,15 +10,12 @@ import java.sql.Statement;
 
 import java.awt.Color;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import mj.UserLogin;
 
@@ -38,7 +35,6 @@ public class Login extends JFrame {
 	private Statement st;
 	private ResultSet rs;
 	
-	private UserLogin userLogin;
 	private LoginView view;
 	public static int choice = 0;
 	
@@ -115,7 +111,7 @@ public class Login extends JFrame {
 					choice = 3;
 					dispose();
 				}
-				userLogin = new UserLogin(choice, userID);
+				new UserLogin(choice, userID);
 				this.setVisible(false);
 			}
 			else {

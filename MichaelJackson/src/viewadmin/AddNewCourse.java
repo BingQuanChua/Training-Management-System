@@ -25,10 +25,7 @@ public class AddNewCourse extends JPanel {
     public AddNewCourse() {
     	
     	setBackground(new Color(255, 255, 200));        
-    	JPanel addNewCourse = new JPanel();
-        JPanel frontPanel =  new JPanel();
-        JPanel NavPanel = new JPanel();
-        
+    	JPanel frontPanel =  new JPanel();
         //Front Panel//
         frontPanel.setForeground(SystemColor.desktop);
         frontPanel.setBounds(378, 138, 1071, 834);

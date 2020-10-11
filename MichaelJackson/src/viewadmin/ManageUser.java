@@ -2,15 +2,12 @@ package viewadmin;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Color;
 
 import view.UserProfile;
 
@@ -22,7 +19,6 @@ public class ManageUser extends JPanel {
 	private JLabel numberLabel;
 	private JButton profileButton;
 	private JButton deleteButton;
-	private UserProfile userProfile;
 	private String userID;
 	
 	Font f1 = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
@@ -30,7 +26,7 @@ public class ManageUser extends JPanel {
 
 	public ManageUser(String name,String userID) {
 		this.userID = userID;
-		userProfile = new UserProfile();
+		new UserProfile();
 		setPreferredSize(new Dimension(1070, 60));
 		setBackground(Color.WHITE);
 		setLayout(null);

@@ -4,6 +4,11 @@ import javax.swing.JButton;
 
 public class JButtonID extends JButton {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	String UserID;
 	String MaterialID; // For Mark As Done Button Button
 	

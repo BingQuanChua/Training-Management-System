@@ -1,10 +1,10 @@
 package viewtrainer;
 
 import javax.swing.JPanel;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.ScrollPaneConstants;
 
 import view.IndividualProgress;
 import view.ListPanel;
@@ -22,6 +21,7 @@ public class TrainingProgress extends JPanel {
 	/**
 	 * This panel holds all the individual training progresses of a single training.
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private ListPanel progressList;
 	private JButton trainingButton;

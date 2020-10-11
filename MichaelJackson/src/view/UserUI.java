@@ -7,14 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
@@ -52,11 +49,8 @@ public class UserUI extends JFrame {
     private JButton accountSettingButton;
     private ChangePassword changePassword;
     private UserProfile profile;
-    private UserProfileController profileController;  
-    
     // Other
     private Icon icon;
-    private Font heading1 = new Font(Font.SERIF, Font.PLAIN, 30);
     private String userID;
  
  
@@ -141,7 +135,7 @@ public class UserUI extends JFrame {
                   panelBody.revalidate();
         	  } 
         	} );
-        profileController =  new UserProfileController(profile,userID);
+        new UserProfileController(profile,userID);
         profileButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         profileButton.setBackground(null);
         accountSettingButton = new JButton("Change Password");
@@ -245,7 +239,7 @@ public class UserUI extends JFrame {
         setLocationRelativeTo(null);
     }
     
-    public void setProfileButtonText(String text) {
+    protected void setProfileButtonText(String text) {
     	profileButton.setText(text);
     }
    

@@ -6,21 +6,17 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.Color;
 
 public class TrainingMaterial extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * This panel is for one single material
 	 */
+	private static final long serialVersionUID = 1L;
 	
 	private JTextField titleField;
 	private JTextArea txtrDescription;
@@ -29,8 +25,6 @@ public class TrainingMaterial extends JPanel {
 	
 	private String materialID;
 	private String courseID;
-	private String title;
-	private String description;
 	private boolean isEditing = false;
 	
 	Font heading4 = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
@@ -38,8 +32,6 @@ public class TrainingMaterial extends JPanel {
 	public TrainingMaterial(String materialID, String courseID, String title, String description) {
 		this.materialID = materialID;
 		this.courseID = courseID;
-		this.title = title;
-		this.description = description;
 		
 		setPreferredSize(new Dimension(800, 115));
 		setLayout(null);
@@ -81,14 +73,6 @@ public class TrainingMaterial extends JPanel {
 		background.setEnabled(false);
 		background.setBounds(0, 0, 800, 115);
 		add(background);
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 	public String getMaterialID() {

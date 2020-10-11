@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import modeltraining.*;
-
 public class JDBCtest {
 	
 	public static void main(String[] args) {
@@ -70,6 +68,7 @@ public class JDBCtest {
 			TrainingProgress tp = new TrainingProgress();
 			System.out.println("Progress: " + tp.calculateProgress("tne00001", "trc00001"));
 			/**/
+			scan.close();
 		}
 		
 	}

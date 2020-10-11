@@ -1,6 +1,5 @@
 package view;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -8,14 +7,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.JComboBox;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
-import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import login.Login;
 import model.JDBCexecute;
 import model.JDBCinfo;
 
@@ -31,17 +26,20 @@ import java.awt.event.ActionEvent;
 
 public class ChangePassword extends JPanel{
 	
+		/**
+		 * 
+	 	*/
+		private static final long serialVersionUID = 1L;
+	
 		private String url = JDBCinfo.getURL();
 		private String serverName = JDBCinfo.getServerName();
 		private String serverPassword = JDBCinfo.getServerPassword();
 		private Connection con;
 		private JButton saveButton;
-		private JButton cancelButton;
+		// private JButton cancelButton;
 		private JTextField txtCurrentPass;
 		private JTextField txtNewPass;
 		private JTextField txtConfirmPass;
-		private int dialogButton_1;
-		private int dialogButton_2;
 		JDBCexecute database;
 		/**
 		 * Create the panel.
@@ -172,9 +170,9 @@ public class ChangePassword extends JPanel{
 					if(validatePassword(newPassword)) {
 					if(newPassword.equals(confirmPassword))
 					{
-						dialogButton_1 = JOptionPane.showConfirmDialog (null, "Are you sure want to save the changes?","WARNING",JOptionPane.YES_NO_OPTION);
+						int choice = JOptionPane.showConfirmDialog (null, "Are you sure want to save the changes?","WARNING",JOptionPane.YES_NO_OPTION);
 		    			
-						if(dialogButton_1 == JOptionPane.YES_OPTION) {
+						if(choice == 0) {
 		    				
 		    				try {
 		    					con = DriverManager.getConnection(url, serverName, serverPassword);

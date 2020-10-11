@@ -6,7 +6,6 @@ import modeltraining.TrainingCourseSearch;
 import modeltraining.TrainingProgressModel;
 import modeluser.TrainerModel;
 import viewtrainer.TrainerUI;
-import viewtrainer.Training;
 import viewtrainer.TrainingProgress;
 
 public class TraineeProgressController {
