@@ -1,6 +1,8 @@
 package controlleradmin;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import modeltraining.ManageTrainingCourse;
 import modeltraining.TrainingCourseSearch;
@@ -48,18 +50,58 @@ public class TrainingCourseController {
 		String courseName = addNewCourse.getTxtName().getText();
 		String courseDesc = addNewCourse.getTxtDesc().getText();
 		String courseDate = addNewCourse.getTxtDate().getText();
+		String errorMessage = "Error!";
+		
+		// validate if courseName is empty
+		if (courseName.equals("Enter training course name")) {
+			errorMessage += "\nCourse name cannot be left empty!";
+		}
+		
+		// validate if courseDesc is empty
+		if (courseDesc.equals("Enter short description")) {
+			errorMessage += "\nCourse description cannot be left empty!";
+		}
+		
+		// validate if courseDesc is empty
+		if (trainerID.equals("Enter trainer ID for this training course (e.g. tnr12345)")) {
+			errorMessage += "\nTrainer ID cannot be left empty!";
+		}
+		
+		// validate if courseDate is empty
+		if (courseDate.equals("Enter training date (format: YYYY-MM-DD)")) {
+			errorMessage += "\nCourse date cannot be left emptyt!";
+		}
+		
+		if (errorMessage.length() > 6) {
+			JOptionPane.showConfirmDialog (null, errorMessage,"ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		/*
+		 * If all the fields are not empty
+		 */
 		
 		// validate courseID and trainerID format
 		if (idValidator(courseID, "crs") && idValidator(trainerID, "tnr")) {
-			boolean success = trainingCourseModel.addNewTrainingCourse(courseID, trainerID, courseName, courseDesc, courseDate);
-			if (success) {
-				ManageTraining newTraining = new ManageTraining(courseName, courseID);
-				allTrainingList.getTrainingList().addItem(newTraining);
-				return true;
+			
+			if (dateValidator(courseDate)) {
+				boolean success = trainingCourseModel.addNewTrainingCourse(courseID, trainerID, courseName, courseDesc, courseDate);
+				if (success) {
+					ManageTraining newTraining = new ManageTraining(courseName, courseID);
+					allTrainingList.getTrainingList().addItem(newTraining);
+					return true;
+				}
 			}
+			else {
+				// courseDate is wrong
+				JOptionPane.showConfirmDialog (null, "Error! Wrong date format! \nDate format: YYYY-MM-DD","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				System.out.println("Invalid input while adding new course");
+			}
+				
 		}
 		else {
-			// if one or both are wrong
+			// I bet only trainerID is wrong
+			JOptionPane.showConfirmDialog (null, "Error! Trainer does not exist! Please check the list of trainers","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 			System.out.println("Invalid input while adding new course");
 		}
 		return false;
@@ -159,5 +201,28 @@ public class TrainingCourseController {
 			}
 		}
 		return true;
+	}
+	
+	public static boolean dateValidator(String date) {
+		// checks length YYYY-MM-DD
+		if (date.length() != 10) {
+			return false;
+		}
+		// checks character
+		if (date.charAt(4) != '-' || date.charAt(7) != '-') {
+			return false;
+		}
+		// checks number
+		for (int i = 0; i < 10; i++) {
+			if (i == 4 || i == 7) {
+				continue;
+			}
+			if (!Character.isDigit(date.charAt(i))) {
+				return false;
+			}
+		}
+		
+		return true;
+		
 	}
 }

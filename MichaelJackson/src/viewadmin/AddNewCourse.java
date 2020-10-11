@@ -77,7 +77,7 @@ public class AddNewCourse extends JPanel {
         frontPanel.add(lblDesc);
         
         txtDesc = new JTextArea();
-        txtDesc.setText("Enter short description\r\n");
+        txtDesc.setText("Enter short description");
         txtDesc.setForeground(Color.GRAY);
         txtDesc.setLineWrap(true);
         txtDesc.setFont(new Font("Dialog", Font.PLAIN, 20));
