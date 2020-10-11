@@ -16,7 +16,8 @@ public class AddNewCourse extends JPanel {
 	private JTextField txtCourseID;
 	private JTextField txtName;
 	private JTextArea txtDesc;
-	private JTextField txtTrainer;
+	// private JTextField txtTrainer;
+	private JComboBox<String> trainerIDComboBox;
 	private JTextField txtDate;
 	
 	private JButton addButton;
@@ -108,25 +109,25 @@ public class AddNewCourse extends JPanel {
         lblTrainer.setBounds(103, 598, 100, 27);
         frontPanel.add(lblTrainer);
         
-        txtTrainer = new JTextField();
-        txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
-        txtTrainer.setForeground(Color.GRAY);
-        txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
-        txtTrainer.setBorder(null);
-        txtTrainer.setBounds(103, 639, 757, 47);
-        txtTrainer.addFocusListener(new FocusAdapter() {
-        	@Override
-        	public void focusGained(FocusEvent e) {
-        		if( txtTrainer.getText().trim().equals("Enter trainer ID for this training course (e.g. tnr12345)"))
-        			 txtTrainer.setText("");
-        	}
-        	@Override
-        	public void focusLost(FocusEvent e) {
-        		 if( txtTrainer.getText().trim().equals("")) 
-        			 txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
-        	}
-        });
-        frontPanel.add(txtTrainer);
+//        txtTrainer = new JTextField();
+//        txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
+//        txtTrainer.setForeground(Color.GRAY);
+//        txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
+//        txtTrainer.setBorder(null);
+//        txtTrainer.setBounds(103, 639, 757, 47);
+//        txtTrainer.addFocusListener(new FocusAdapter() {
+//        	@Override
+//        	public void focusGained(FocusEvent e) {
+//        		if( txtTrainer.getText().trim().equals("Enter trainer ID for this training course (e.g. tnr12345)"))
+//        			 txtTrainer.setText("");
+//        	}
+//        	@Override
+//        	public void focusLost(FocusEvent e) {
+//        		 if( txtTrainer.getText().trim().equals("")) 
+//        			 txtTrainer.setText("Enter trainer ID for this training course (e.g. tnr12345)");
+//        	}
+//        });
+        // frontPanel.add(txtTrainer);
         
         JSeparator separator_3 = new JSeparator();
         separator_3.setForeground(Color.GRAY);
@@ -215,6 +216,12 @@ public class AddNewCourse extends JPanel {
         separator_3_2.setBackground(Color.GRAY);
         separator_3_2.setBounds(0, 71, 1000, 2);
         frontPanel.add(separator_3_2);
+        
+        trainerIDComboBox = new JComboBox<String>();
+        trainerIDComboBox.setBounds(103, 639, 757, 47);
+        trainerIDComboBox.setForeground(Color.GRAY);
+        trainerIDComboBox.setFont(new Font("Dialog", Font.PLAIN, 20));
+        frontPanel.add(trainerIDComboBox);
  
         //Navigation Bar
         //NavPanel.setBackground(new Color(54, 33, 89));
@@ -238,9 +245,13 @@ public class AddNewCourse extends JPanel {
 		return txtDesc;
 	}
 	
-	public JTextField getTxtTrainer() {
-		return txtTrainer;
+	public JComboBox<String> getTrainerIDComboBox() {
+		return trainerIDComboBox;
 	}
+	
+//	public JTextField getTxtTrainer() {
+//		return txtTrainer;
+//	}
 	
 	public JTextField getTxtDate() {
 		return txtDate;

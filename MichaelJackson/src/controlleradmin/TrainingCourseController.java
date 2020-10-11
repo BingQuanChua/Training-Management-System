@@ -46,7 +46,7 @@ public class TrainingCourseController {
 	
 	public boolean addNewCourse() {
 		String courseID = addNewCourse.getTxtCourseID().getText();
-		String trainerID = addNewCourse.getTxtTrainer().getText();
+		String trainerID = (String) addNewCourse.getTrainerIDComboBox().getSelectedItem();
 		String courseName = addNewCourse.getTxtName().getText();
 		String courseDesc = addNewCourse.getTxtDesc().getText();
 		String courseDate = addNewCourse.getTxtDate().getText();
@@ -63,8 +63,12 @@ public class TrainingCourseController {
 		}
 		
 		// validate if courseDesc is empty
-		if (trainerID.equals("Enter trainer ID for this training course (e.g. tnr12345)")) {
-			errorMessage += "\nTrainer ID cannot be left empty!";
+		if (trainerID.equals("--please select a trainer--")) {
+			errorMessage += "\nTrainer ID selection cannot be left empty!";
+		}
+		else {
+			trainerID = trainerID.substring(0,8);
+			System.out.println(trainerID);
 		}
 		
 		// validate if courseDate is empty

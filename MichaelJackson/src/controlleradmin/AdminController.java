@@ -239,8 +239,25 @@ public class AdminController {
 			addNewCourse.getTxtCourseID().setText(lastID);
 			addNewCourse.getTxtName().setText("Enter training course name");
 			addNewCourse.getTxtDesc().setText("Enter short description");
-			addNewCourse.getTxtTrainer().setText("Enter trainer ID for this training course (e.g. tnr12345)");
 			addNewCourse.getTxtDate().setText("Enter training date (format: YYYY-MM-DD)");
+			
+			
+			ArrayList<String> allTrainerID = new ArrayList<>();
+			adminModel.getAllTrainerID(allTrainerID);
+			addNewCourse.getTrainerIDComboBox().removeAllItems();
+			addNewCourse.getTrainerIDComboBox().addItem("--please select a trainer--");
+			for (int i = 0; i < allTrainerID.size(); i++) {
+				try {
+					String trainerID = allTrainerID.get(i);
+					String name;
+					name = adminModel.getUserProfile(trainerID, 1);
+					addNewCourse.getTrainerIDComboBox().addItem(trainerID + " - " + name);
+				} catch (Exception e1) {
+					System.out.println("addNewTrainingListener: get trainer details failed");
+				}	
+				
+			}
+			
 			
 			adminUI.getPanelBody().removeAll();
 			adminUI.getPanelBody().add(addNewCourse);

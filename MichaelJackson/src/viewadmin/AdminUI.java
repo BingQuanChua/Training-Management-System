@@ -51,6 +51,13 @@ public class AdminUI extends UserUI {
 		MenuItem menuANU = new MenuItem(" -- Add New User", new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+				
+				// reset the view
+				addNewUser.getUserIDField().setText("[Auto-generate] Please select user type");
+				addNewUser.getPasswordField().setText("Enter password");
+				addNewUser.getTrainerBox().setSelected(false);
+				addNewUser.getTraineeBox().setSelected(false);
+				
 				getPanelBody().removeAll();
 				getPanelBody().add(new SubMenu("Add New User", addNewUser));
 				getPanelBody().repaint();

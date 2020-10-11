@@ -56,22 +56,14 @@ CREATE TRIGGER UpdateTrainer
         WHERE USER.USER_ID NOT IN(SELECT TRAINER.USER_ID FROM TRAINER) AND USER.USER_TYPE ='trainer');
 
 INSERT INTO USER VALUES ('adm00001', 'Admin','Admin12345!', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
-INSERT INTO USER VALUES ('tnr00001', 'John','Trainer12345!', 'trainerPosition', 'trainerDescription', 'm', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tnr00002', 'Wanda','Trainer12345!', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tne00001', 'Jim','Trainee12345!', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
-INSERT INTO USER VALUES ('tne00002', 'Darren','Trainee12345!', null, null, null, null, null, 'trainee');
-INSERT INTO USER VALUES ('tne00003', 'Dwight','Trainee12345!', null, null, null, null, null, 'trainee');
-INSERT INTO USER VALUES ('tne00004', 'Lily','Trainee12345!', null, null, null, null, null, 'trainee');
+INSERT INTO USER VALUES ('tnr00001', 'William','Trainer12345!', 'trainerPosition', 'trainerDescription', 'm', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tnr00002', 'Elizabeth','Trainer12345!', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tne00001', 'Michael','Trainee12345!', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
+INSERT INTO USER VALUES ('tne00002', 'Coby','Trainee12345!', null, null, null, null, null, 'trainee');
+INSERT INTO USER VALUES ('tne00003', 'Felix','Trainee12345!', null, null, null, null, null, 'trainee');
+INSERT INTO USER VALUES ('tne00004', 'Jennifer','Trainee12345!', null, null, null, null, null, 'trainee');
 
 INSERT INTO ADMIN VALUES ('adm00001');
-
-INSERT INTO TRAINER VALUES ('tnr00001');
-INSERT INTO TRAINER VALUES ('tnr00002');
-
-INSERT INTO TRAINEE VALUES ('tne00001');
-INSERT INTO TRAINEE VALUES ('tne00002');
-INSERT INTO TRAINEE VALUES ('tne00003');
-INSERT INTO TRAINEE VALUES ('tne00004');
 
 ###################################
 # Training Course Management      #
@@ -125,13 +117,6 @@ INSERT INTO ENROLL VALUES ('tne00002', 'crs00001', 'approved');
 # Progress and Evaluation Management   #
 ########################################
 
-CREATE TABLE REPORT(
-REPORT_ID CHAR(8) NOT NULL,
-COURSE_ID CHAR(8) NOT NULL,
-PRIMARY KEY(REPORT_ID),
-FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_COURSE(COURSE_ID) ON DELETE CASCADE
-) ;
-
 CREATE TABLE PROGRESS(
 USER_ID CHAR(8) NOT NULL,
 MATERIAL_ID CHAR(8) NOT NULL,
@@ -141,26 +126,11 @@ FOREIGN KEY(USER_ID) REFERENCES TRAINEE(USER_ID) ON DELETE CASCADE,
 FOREIGN KEY(MATERIAL_ID) REFERENCES COURSE_MATERIAL(MATERIAL_ID) ON DELETE CASCADE
 ) ;
 
-INSERT INTO REPORT VALUES ('rpt00001', 'crs00001');
-INSERT INTO REPORT VALUES ('rpt00002', 'crs00002');
-INSERT INTO REPORT VALUES ('rpt00003', 'crs00003');
-INSERT INTO REPORT VALUES ('rpt00004', 'crs00004');
-
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00001','false');
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00002','false');
 INSERT INTO PROGRESS VALUES ('tne00002','mtr00003','false');
 
 
+######## END ######## 
 
 
-
-
-#################
-        
-use mjtms;
-select * from enroll;
-select * from trainee;
-select * from user;
-
-INSERT INTO ENROLL VALUES ('tne00003', 'crs00001', 'approved');
-insert into trainee values ('tne00003');

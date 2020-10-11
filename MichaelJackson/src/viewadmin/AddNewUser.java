@@ -77,7 +77,7 @@ public class AddNewUser extends JPanel {
         userIDField.setFont(f1);
         userIDField.setBorder(null);
              
-        passwordField.setText("Enter password\r\n");
+        passwordField.setText("Enter password");
         passwordField.addFocusListener(new FocusAdapter() {
         	@Override
         	public void focusGained(FocusEvent e) {
@@ -109,7 +109,7 @@ public class AddNewUser extends JPanel {
         frontPanel.add(traineeBox);
 //       traineeBox.setBackground(new Color(205,133,63));
 //       traineeBox.setForeground(Color.WHITE);
-       traineeBox.setFont(new Font("Serif", Font.BOLD, 25));
+        traineeBox.setFont(new Font("Serif", Font.BOLD, 25));
             
         addButton.setBackground(new Color(205,133,63));
         addButton.setForeground(Color.WHITE);
