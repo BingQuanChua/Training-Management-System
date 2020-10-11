@@ -111,7 +111,7 @@ public class UserManagementController {
 				}
 				}
 				else {
-					JOptionPane.showConfirmDialog (null, "Error! Wrong password format. The password should consists of a minimum length of 10 with at least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog (null, "Error! Wrong password format. \nThe password should consists of a minimum length of 10 with \nat least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			else {

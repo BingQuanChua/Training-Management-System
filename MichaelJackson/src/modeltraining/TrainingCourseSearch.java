@@ -97,13 +97,20 @@ public class TrainingCourseSearch {
 		database.executeMultiRowQuery(query, column, list);
 	}
 	
+	public void getFreshTrainingCourseID(ArrayList<String> list) {
+		String column = "COURSE_ID";
+		String query = "SELECT COURSE_ID FROM TRAINING_COURSE WHERE COURSE_DATE >= NOW(); ";
+		
+		database.executeMultiRowQuery(query, column, list);
+	}
+	
 	
 	// Trainee
 	public void getAvailableTrainingCourseID(String traineeID, ArrayList<String> list) {
 		
 		ArrayList<String> tempEnrolledTrainingList = new ArrayList<>();
 		this.getEnrolledTrainingCourseID(traineeID, tempEnrolledTrainingList);	
-		this.getAllTrainingCourseID(list);
+		this.getFreshTrainingCourseID(list);
 		
 		for (int i = 0; i < tempEnrolledTrainingList.size(); i++) {
 			list.remove(tempEnrolledTrainingList.get(i));

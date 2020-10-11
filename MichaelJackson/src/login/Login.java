@@ -88,7 +88,7 @@ public class Login extends JFrame {
 		
 		try {
 		
-			String query = "select * from user where USER_ID = '"+username+"' and USER_PASS = '"+pass+"'";
+			String query = "SELECT * FROM USER WHERE USER_ID = '"+username+"' AND USER_PASS = '"+pass+"'";
 			rs = st.executeQuery(query);
 			
 			//result.next == true .
@@ -115,7 +115,7 @@ public class Login extends JFrame {
 				this.setVisible(false);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Invalid User");
+				JOptionPane.showMessageDialog(null, "Invalid user");
 			}
 		} catch(Exception e) {
 			System.out.println(e);

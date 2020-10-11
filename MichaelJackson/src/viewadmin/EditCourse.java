@@ -13,7 +13,7 @@ public class EditCourse extends JPanel{
 	
 	private JTextField txtName;
 	private JTextArea txtDesc;
-	private JTextField txtTrainer;
+	private JComboBox<String> trainerIDComboBox;
 	private JTextField txtDate;
 	private JButton editButton;
 	private JButton cancelButton;
@@ -105,26 +105,11 @@ public class EditCourse extends JPanel{
         lblTrainer.setBounds(157, 499, 100, 27);
         frontPanel.add(lblTrainer);
         
-        txtTrainer = new JTextField();
-        txtTrainer.setText("Enter trainer ID for this training course\r\n");
-        txtTrainer.setForeground(Color.GRAY);
-        txtTrainer.setFont(new Font("Dialog", Font.PLAIN, 20));
-        txtTrainer.setBorder(null);
-        txtTrainer.setEditable(false);
-        txtTrainer.setBounds(157, 537, 757, 47);
-        txtTrainer.addFocusListener(new FocusAdapter() {
-        	@Override
-        	public void focusGained(FocusEvent e) {
-        		if( txtTrainer.getText().trim().equals("Enter trainer ID for this training course")) 
-        			 txtTrainer.setText("");
-        	}
-        	@Override
-        	public void focusLost(FocusEvent e) {
-        		 if( txtTrainer.getText().trim().equals("")) 
-        			 txtTrainer.setText("Enter trainer ID for this training course");
-        	}
-        });
-        frontPanel.add(txtTrainer);
+        trainerIDComboBox = new JComboBox<String>();
+        trainerIDComboBox.setBounds(157, 537, 757, 47);
+        trainerIDComboBox.setForeground(Color.GRAY);
+        trainerIDComboBox.setFont(new Font("Dialog", Font.PLAIN, 20));
+        frontPanel.add(trainerIDComboBox);
         
         JSeparator separator_3 = new JSeparator();
         separator_3.setForeground(Color.GRAY);
@@ -210,9 +195,9 @@ public class EditCourse extends JPanel{
     	return txtName;
     }
     
-    public JTextField getTrainerID() {
-    	return txtTrainer;
-    }
+    public JComboBox<String> getTrainerIDComboBox() {
+		return trainerIDComboBox;
+	}
     
     public JTextField getTrainingDate() {
     	return txtDate;

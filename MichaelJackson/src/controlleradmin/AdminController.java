@@ -131,7 +131,7 @@ public class AdminController {
 	private void setManageTrainingCourseListener() {
 		addNewCourse = new AddNewCourse();
 		editCourse = new EditCourse();
-		trainingCourseController = new TrainingCourseController(adminUI.getAllTrainingList(), addNewCourse, editCourse);
+		trainingCourseController = new TrainingCourseController(adminUI.getAllTrainingList(), addNewCourse, editCourse, adminModel);
 		
 		trainingCourseController.showTrainingList();
 		adminUI.getAllTrainingList().getAddNewTrainingButton().addActionListener(addNewTrainingListener);	
@@ -302,7 +302,7 @@ public class AdminController {
 			if(!isTextAreaEditable) {
 				// Editing
 				editCourse.getTrainingName().setEditable(true);
-				editCourse.getTrainerID().setEditable(true);
+				editCourse.getTrainerIDComboBox().setEditable(true);
 				editCourse.getTrainingDate().setEditable(true);
 				editCourse.getTrainingDesc().setEditable(true);
 				editCourse.getEditButton().setText("Save");
@@ -313,7 +313,7 @@ public class AdminController {
 				boolean success = trainingCourseController.setCourseDetails(editCourse.getCurrentCourseID());
 				if (success) {
 					editCourse.getTrainingName().setEditable(false);
-					editCourse.getTrainerID().setEditable(false);
+					editCourse.getTrainerIDComboBox().setEditable(false);
 					editCourse.getTrainingDate().setEditable(false);
 					editCourse.getTrainingDesc().setEditable(false);
 					editCourse.getEditButton().setText("Edit");
@@ -343,7 +343,7 @@ public class AdminController {
 		        adminUI.getPanelBody().repaint();
 				adminUI.getPanelBody().revalidate();
 				editCourse.getTrainingName().setEditable(false);
-				editCourse.getTrainerID().setEditable(false);
+				editCourse.getTrainerIDComboBox().setEditable(false);
 				editCourse.getTrainingDate().setEditable(false);
 				editCourse.getTrainingDesc().setEditable(false);
 				editCourse.getEditButton().setText("Edit");

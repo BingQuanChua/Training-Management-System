@@ -249,10 +249,6 @@ public class AddNewCourse extends JPanel {
 		return trainerIDComboBox;
 	}
 	
-//	public JTextField getTxtTrainer() {
-//		return txtTrainer;
-//	}
-	
 	public JTextField getTxtDate() {
 		return txtDate;
 	}

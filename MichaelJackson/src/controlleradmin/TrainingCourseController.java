@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import modeltraining.ManageTrainingCourse;
 import modeltraining.TrainingCourseSearch;
+import modeluser.AdminModel;
 import view.ListPanel;
 import viewadmin.AddNewCourse;
 import viewadmin.AllTrainingList;
@@ -16,13 +17,15 @@ public class TrainingCourseController {
 	private AllTrainingList allTrainingList;
 	private AddNewCourse addNewCourse;
 	private EditCourse editCourse;
+	private AdminModel adminModel;
 	private ManageTrainingCourse trainingCourseModel;
 	private TrainingCourseSearch courseSearch;
 	
-	public TrainingCourseController(AllTrainingList allTrainingList, AddNewCourse addNewCourse, EditCourse editCourse) {
+	public TrainingCourseController(AllTrainingList allTrainingList, AddNewCourse addNewCourse, EditCourse editCourse, AdminModel adminModel) {
 		this.allTrainingList = allTrainingList;
 		this.addNewCourse = addNewCourse;
 		this.editCourse = editCourse;
+		this.adminModel = adminModel;
 		
 		trainingCourseModel = new ManageTrainingCourse();
 		courseSearch = new TrainingCourseSearch();
@@ -73,7 +76,7 @@ public class TrainingCourseController {
 		
 		// validate if courseDate is empty
 		if (courseDate.equals("Enter training date (format: YYYY-MM-DD)")) {
-			errorMessage += "\nCourse date cannot be left emptyt!";
+			errorMessage += "\nCourse date cannot be left empty!";
 		}
 		
 		if (errorMessage.length() > 6) {
@@ -115,8 +118,29 @@ public class TrainingCourseController {
 		try {
 			editCourse.getTrainingName().setText(courseSearch.getTrainingCourseDetails(courseID, 2));
 			editCourse.getTrainingDesc().setText(courseSearch.getTrainingCourseDetails(courseID, 3));
-			editCourse.getTrainerID().setText(courseSearch.getTrainingCourseDetails(courseID, 1));
 			editCourse.getTrainingDate().setText(courseSearch.getTrainingCourseDetails(courseID, 4));
+			
+			ArrayList<String> allTrainerID = new ArrayList<>();
+			adminModel.getAllTrainerID(allTrainerID);
+			editCourse.getTrainerIDComboBox().removeAllItems();
+			editCourse.getTrainerIDComboBox().addItem("--please select a trainer--");
+			for (int i = 0; i < allTrainerID.size(); i++) {
+				try {
+					String trainerID = allTrainerID.get(i);
+					String name;
+					name = adminModel.getUserProfile(trainerID, 1);
+					editCourse.getTrainerIDComboBox().addItem(trainerID + " - " + name);
+				} catch (Exception e1) {
+					System.out.println("getTrainingDetails: get trainer details failed");
+				}	
+			}
+			
+			String trainerID = courseSearch.getTrainingCourseDetails(courseID, 1);
+			for (int i = 0; i < allTrainerID.size(); i++) {
+				if (allTrainerID.get(i).equals(trainerID)) {
+					editCourse.getTrainerIDComboBox().setSelectedIndex(i+1);
+				}
+			}
 		
 		} catch (Exception e) {
 			System.out.println("getTrainingDetails Fail");
@@ -126,9 +150,38 @@ public class TrainingCourseController {
 	public boolean setCourseDetails(String courseID) {
 		String courseName = editCourse.getTrainingName().getText();
 		String courseDesc = editCourse.getTrainingDesc().getText();
-		String trainerID = editCourse.getTrainerID().getText();
+		String trainerID = ((String) editCourse.getTrainerIDComboBox().getSelectedItem());
 		String courseDate = editCourse.getTrainingDate().getText();
-
+		String errorMessage = "Error!";
+		// validate if courseName is empty
+		if (courseName.equals("Enter training course name")) {
+			errorMessage += "\nCourse name cannot be left empty!";
+		}
+				
+		// validate if courseDesc is empty
+		if (courseDesc.equals("Enter short description")) {
+			errorMessage += "\nCourse description cannot be left empty!";
+		}
+				
+		// validate if courseDesc is empty
+		if (trainerID.equals("--please select a trainer--")) {
+			errorMessage += "\nTrainer ID selection cannot be left empty!";
+		}
+		else {
+			trainerID = trainerID.substring(0,8);
+			System.out.println(trainerID);
+		}
+		
+		// validate if courseDate is empty
+		if (courseDate.equals("Enter training date (format: YYYY-MM-DD)")) {
+			errorMessage += "\nCourse date cannot be left empty!";
+		}
+		
+		if (errorMessage.length() > 6) {
+			JOptionPane.showConfirmDialog (null, errorMessage,"ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+				
 		// validate trainerID format
 		if (idValidator(trainerID, "tnr")) {
 			try {

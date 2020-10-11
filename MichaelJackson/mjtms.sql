@@ -56,9 +56,9 @@ CREATE TRIGGER UpdateTrainer
         WHERE USER.USER_ID NOT IN(SELECT TRAINER.USER_ID FROM TRAINER) AND USER.USER_TYPE ='trainer');
 
 INSERT INTO USER VALUES ('adm00001', 'Admin','Admin12345!', 'adminPosition', 'adminDescription', 'm', '999', 'admin@tms.com', 'admin');
-INSERT INTO USER VALUES ('tnr00001', 'William','Trainer12345!', 'trainerPosition', 'trainerDescription', 'm', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tnr00002', 'Elizabeth','Trainer12345!', 'trainerPosition', 'trainerDescription', 'f', '012-7654321', 'trainer@tms.com', 'trainer');
-INSERT INTO USER VALUES ('tne00001', 'Michael','Trainee12345!', 'traineePosition', 'traineeDescription', 'm', '012-1234567', 'trainee@tms.com', 'trainee');
+INSERT INTO USER VALUES ('tnr00001', 'William','Trainer12345!', 'trainerPosition', 'trainerDescription', 'm', '0127654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tnr00002', 'Elizabeth','Trainer12345!', 'trainerPosition', 'trainerDescription', 'f', '0127654321', 'trainer@tms.com', 'trainer');
+INSERT INTO USER VALUES ('tne00001', 'Michael','Trainee12345!', 'traineePosition', 'traineeDescription', 'm', '0121234567', 'trainee@tms.com', 'trainee');
 INSERT INTO USER VALUES ('tne00002', 'Coby','Trainee12345!', null, null, null, null, null, 'trainee');
 INSERT INTO USER VALUES ('tne00003', 'Felix','Trainee12345!', null, null, null, null, null, 'trainee');
 INSERT INTO USER VALUES ('tne00004', 'Jennifer','Trainee12345!', null, null, null, null, null, 'trainee');
@@ -99,9 +99,9 @@ FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_COURSE(COURSE_ID) ON DELETE CASCADE
 ) ;
 
 INSERT INTO TRAINING_COURSE VALUES ('crs00001', 'tnr00001','Python Training', 'Basic programming training', '2020-10-14', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
-INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Ruby On Rails', 'Learn enough to be dangerous', '2020-10-02', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
-INSERT INTO TRAINING_COURSE VALUES ('crs00003', 'tnr00002','Andriod Studio', 'Start from a simple app', '2020-10-05', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
-INSERT INTO TRAINING_COURSE VALUES ('crs00004', 'tnr00002','Introduction to OOAD', 'Learn OOAD with Java', '2020-10-08', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
+INSERT INTO TRAINING_COURSE VALUES ('crs00002', 'tnr00002','Ruby On Rails', 'Learn enough to be dangerous', '2020-10-11', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
+INSERT INTO TRAINING_COURSE VALUES ('crs00003', 'tnr00002','Andriod Studio', 'Start from a simple app', '2020-11-11', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
+INSERT INTO TRAINING_COURSE VALUES ('crs00004', 'tnr00002','Introduction to OOAD', 'Learn OOAD with Java', '2020-12-12', 'https://docs.google.com/forms/d/e/1FAIpQLSc3B0aW-9Z_wxfZOnrtZLungmz01uF4-YI5EvfFLLN4v4Kzqg/');
 
 INSERT INTO COURSE_MATERIAL VALUES ('mtr00001', 'crs00001', 'Your first Python code!', 'Hello Word');
 INSERT INTO COURSE_MATERIAL VALUES ('mtr00002', 'crs00001', 'Built in data type', 'Variables can store data of different types, and different types can do different things.');
@@ -132,5 +132,9 @@ INSERT INTO PROGRESS VALUES ('tne00002','mtr00003','false');
 
 
 ######## END ######## 
-
+select * from user;
+select current_date();
+select * from training_course;
+select * from training_course where course_date >= now();
+select now();
 

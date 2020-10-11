@@ -72,7 +72,7 @@ public class UserUI extends JFrame {
         panelBody = new JPanel();			//Right root panel
         jScrollPane1 = new JScrollPane(); 	//Able to scroll
         panelMenuHeader = new JPanel(); 	//Left header panel inside panelMenu for profile
-        changePassword = new ChangePassword();// Change password panel
+        changePassword = new ChangePassword(userID);// Change password panel
         icon = new Icon();					//Set image
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

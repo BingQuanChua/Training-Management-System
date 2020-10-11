@@ -45,7 +45,7 @@ public class ChangePassword extends JPanel{
 		 * Create the panel.
 		 */
 		
-		public ChangePassword() {
+		public ChangePassword(String userID) {
 			
 			database = new JDBCexecute();
 			setBackground(Color.WHITE);
@@ -177,24 +177,24 @@ public class ChangePassword extends JPanel{
 		    				try {
 		    					con = DriverManager.getConnection(url, serverName, serverPassword);
 		    					Statement st = con.createStatement();
-		    					String query = ("SELECT * FROM USER WHERE USER_PASS = '"+ oldPassword +"';");
+		    					String query = ("SELECT * FROM USER WHERE USER_ID = '" + userID + "' AND USER_PASS = '"+ oldPassword +"';");
 		    					ResultSet rs = st.executeQuery(query);
 		    					
 		    					//boolean success = database.executeUpdate(query);
 		    					
 		    					if(rs.next()) {
-		    					 String query2 = "UPDATE user SET USER_PASS = '"+newPassword+"' where USER_PASS ='"+oldPassword+"' ";	
+		    					 String query2 = "UPDATE user SET USER_PASS = '"+newPassword+"' WHERE USER_ID = '" + userID + "' AND USER_PASS ='" + oldPassword + "'; ";	
 				    				database.executeUpdate(query2);
-				    				JOptionPane.showMessageDialog(null, "Password is  Updated");
+				    				JOptionPane.showMessageDialog(null, "Password is updated");
 		    					}
 			    				else {
-			    					JOptionPane.showMessageDialog(null, "Password is not Updated");
+			    					JOptionPane.showMessageDialog(null, "Password is not updated");
 			    				}	
 		    					
 		    				}
 		    				catch(Exception e1 )
 		    				{
-		    					JOptionPane.showMessageDialog(null, "Password is not Updated");
+		    					JOptionPane.showMessageDialog(null, "Password is not updated");
 		    					e1.printStackTrace();
 		    				}	
 		    				
@@ -203,11 +203,11 @@ public class ChangePassword extends JPanel{
 					
 //					System.out.println(Login.global_Email_var);
 					else {
-						JOptionPane.showMessageDialog(null, "Password Does not match !!!");
+						JOptionPane.showMessageDialog(null, "Passwords do not match");
 					}
 					}
 					else {
-						JOptionPane.showConfirmDialog (null, "Error! Wrong password format. The password should consists of a minimum length of 10 with at least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog (null, "Error! Wrong password format. \nThe password should consists of a minimum length of 10 with \nat least one uppercase alphabetic character, one number and one symbol.","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 					}
 					else {
