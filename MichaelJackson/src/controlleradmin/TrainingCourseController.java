@@ -184,23 +184,32 @@ public class TrainingCourseController {
 				
 		// validate trainerID format
 		if (idValidator(trainerID, "tnr")) {
-			try {
-				trainingCourseModel.setTrainingCourseDetails(courseName, courseID, 2);
-				trainingCourseModel.setTrainingCourseDetails(courseDesc, courseID, 3);
-				trainingCourseModel.setTrainingCourseDetails(trainerID, courseID, 1);
-				trainingCourseModel.setTrainingCourseDetails(courseDate, courseID, 4);
-			} catch (Exception e) {
-				System.out.println("setCourseDetails Fail");
-			}
 			
-			// in cases course name is changed
-			ListPanel p = allTrainingList.getTrainingList();
-			for (int i = 0; i < p.getListOfPanel().size(); i++) {
-				if ((((ManageTraining) p.getItem(i)).getCourseID()).equals(courseID)) {
-					((ManageTraining) p.getItem(i)).getTrainingButton().setText(courseName);
+			if (dateValidator(courseDate)) {
+				
+				try {
+					trainingCourseModel.setTrainingCourseDetails(courseName, courseID, 2);
+					trainingCourseModel.setTrainingCourseDetails(courseDesc, courseID, 3);
+					trainingCourseModel.setTrainingCourseDetails(trainerID, courseID, 1);
+					trainingCourseModel.setTrainingCourseDetails(courseDate, courseID, 4);
+				} catch (Exception e) {
+					System.out.println("setCourseDetails Fail");
 				}
+				
+				// in cases course name is changed
+				ListPanel p = allTrainingList.getTrainingList();
+				for (int i = 0; i < p.getListOfPanel().size(); i++) {
+					if ((((ManageTraining) p.getItem(i)).getCourseID()).equals(courseID)) {
+						((ManageTraining) p.getItem(i)).getTrainingButton().setText(courseName);
+					}
+				}
+				return true;
 			}
-			return true;
+			else {
+				// courseDate is wrong
+				JOptionPane.showConfirmDialog (null, "Error! Wrong date format! \nDate format: YYYY-MM-DD","ERROR",JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				System.out.println("Invalid input while adding new course");
+			}
 			
 		}
 		else {
