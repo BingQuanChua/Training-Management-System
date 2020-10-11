@@ -1,5 +1,7 @@
 # Michael Jackson Training Management System 
 
+![banner](https://github.com/BingQuanChua/tms/blob/master/MichaelJackson/screenshot/banner.PNG?raw=true)
+
 ## Opening project in Eclipse
 
 In Eclipse, File > Import
