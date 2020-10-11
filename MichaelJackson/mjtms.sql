@@ -132,9 +132,4 @@ INSERT INTO PROGRESS VALUES ('tne00002','mtr00003','false');
 
 
 ######## END ######## 
-select * from user;
-select current_date();
-select * from training_course;
-select * from training_course where course_date >= now();
-select now();
 
